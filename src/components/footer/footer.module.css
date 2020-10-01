@@ -1,0 +1,88 @@
+.footer {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-family: 'Montserrat', sans-serif;
+  padding: 30px 85px;
+  background: linear-gradient(4.65deg, #FFFFFF -33.5%, #EEFDFF -33.49%, rgba(255, 255, 255, 0) 109.92%), #00C6DD;
+}
+
+.footer .footer_first_col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 25%;
+  height: 250px;
+}
+
+.footer .footer_first_col #logo_title {
+  font-size: 50px;
+  font-weight: 600;
+  color: #fff;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.footer .footer_first_col #logo_title:hover {
+  cursor: pointer;
+}
+
+.footer .footer_first_col #copyrights {
+  font-weight: 300;
+  font-size: 22px;
+  color: #5A5959;
+}
+
+.footer .footer_second_col, .footer .footer_third_col, .footer .footer_fourth_col {
+  width: 20%;
+  margin: 0 20px;
+}
+
+.footer .footer_second_col ul, .footer .footer_third_col ul, .footer .footer_fourth_col ul {
+  list-style: none;
+}
+
+.footer .footer_second_col ul li, .footer .footer_third_col ul li, .footer .footer_fourth_col ul li {
+  padding-bottom: 10px;
+  font-weight: 400;
+  font-size: 22px;
+  color: #1E6871;
+}
+
+.footer .footer_second_col ul li:hover, .footer .footer_third_col ul li:hover, .footer .footer_fourth_col ul li:hover {
+  cursor: pointer;
+  color: #000;
+  -webkit-transition: .3s linear;
+  transition: .3s linear;
+  font-weight: 500;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #000;
+          text-decoration-color: #000;
+  text-decoration-thickness: 10%;
+  text-underline-offset: 5px;
+}
+
+.footer #footer_first_col_title, .footer #footer_second_col_title, .footer #footer_third_col_title, .footer #footer_fourth_col_title {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 22px;
+}
+/*# sourceMappingURL=footer.module.css.map */
