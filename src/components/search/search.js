@@ -27,6 +27,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 const Search = (props) => {
 
+  /* FOR AUTOCOMPLETE GROUP */
   const search_options = top100Films.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
     return {
@@ -35,6 +36,7 @@ const Search = (props) => {
     };
   });
 
+  /* FOR BUTTON GROUP */
   const [alignment, setAlignment] = React.useState('left');
   const handleAlignment = (event, newAlignment) => {
     setAlignment(newAlignment);
@@ -42,6 +44,7 @@ const Search = (props) => {
 
   const classes = useStyles();
 
+  /* SORT BY FAMOUS */
   const [sort, setSort] = useState({
     age: '',
     name: 'hai'
@@ -54,6 +57,7 @@ const Search = (props) => {
     });
   };
 
+  /* SORT BY DATE */
   const [sortDate, setSortDate] = React.useState({
     age: '',
     name: 'hai',
@@ -298,7 +302,7 @@ const Search = (props) => {
       
       </section>
         
-        
+
       <Footer />
     </>
   )
@@ -306,11 +310,13 @@ const Search = (props) => {
 
 export default Search;
 
+/* FOR BREADCRUMBS */
 function handleClick(event) {
   event.preventDefault();
   console.info('You clicked a breadcrumb.');
 }
 
+/* DATA FOR AUTOCOMPLETE */
 const top100Films = [
   { title: 'The Shawshank Redemption', year: 1994 },
   { title: 'The Godfather', year: 1972 },
@@ -414,6 +420,7 @@ const top100Films = [
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
 
+/* SOME STYLES */
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),

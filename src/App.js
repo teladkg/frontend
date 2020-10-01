@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import MainPage from './components/main/mainPage';
 import Search from './components/search/search';
+import ClinicsSearch from './components/clinics-search/clinicsSearch';
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
         <Route
           exact path = "/search"
           component = {Search}
+        />
+        <Route
+          exact path = "/clinics-search"
+          component = {ClinicsSearch}
         />
       </Switch>
     </div>
