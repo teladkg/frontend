@@ -496,9 +496,7 @@ const MainPage = () => {
             <button id={styles.contact_us_button}>Позвоните мне</button>
           </div>
         </div>
-        <div className={styles.contact_us_right}>
-          <img src={require('../../content/images/main/hotpng_2.png')} alt="doc female"/>
-        </div>
+        <img id={styles.contact_us_right} src={require('../../content/images/main/hotpng_2.png')} alt="doc female"/>
       </section>
 
       <Footer />

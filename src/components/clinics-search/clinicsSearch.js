@@ -162,7 +162,7 @@ const ClinicsSearch = (props) => {
                 <p id={styles.clinic_list_item_textgroup_article1}>Медицинский центр «MEDCENTER.KG» — это многопрофильная клиника, расположенная в самом центре Бишкека.</p>
                 <p id={styles.clinic_list_item_textgroup_article2}>Здесь вы можете получить консультации специалистов различного профиля, прием ведут: Доктора медицинских наук, профессора, отличники здравоохранения и врачи высшей и первой категории.</p>
                 <p id={styles.clinic_list_item_textgroup_article3}>Медицинский центр.kg оснащен отличной диагностической базой, где проводятся лабораторные, ультразвуковые, эндоскопические, электрофизиологические обследования на современном оборудовании.</p>
-                <Link id={styles.clinic_list_item_textgroup_link} to="/">Ещё</Link>
+                <Link id={styles.clinic_list_item_textgroup_link} to="/clinic">Ещё</Link>
                 <div id={styles.clinic_list_item_textgroup_doctors}>
                   <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                   <p>20 врачей</p>
@@ -213,7 +213,7 @@ const ClinicsSearch = (props) => {
                 <p id={styles.clinic_list_item_textgroup_article1}>Медицинский центр «MEDCENTER.KG» — это многопрофильная клиника, расположенная в самом центре Бишкека.</p>
                 <p id={styles.clinic_list_item_textgroup_article2}>Здесь вы можете получить консультации специалистов различного профиля, прием ведут: Доктора медицинских наук, профессора, отличники здравоохранения и врачи высшей и первой категории.</p>
                 <p id={styles.clinic_list_item_textgroup_article3}>Медицинский центр.kg оснащен отличной диагностической базой, где проводятся лабораторные, ультразвуковые, эндоскопические, электрофизиологические обследования на современном оборудовании.</p>
-                <Link id={styles.clinic_list_item_textgroup_link} to="/">Ещё</Link>
+                <Link id={styles.clinic_list_item_textgroup_link} to="/clinic">Ещё</Link>
                 <div id={styles.clinic_list_item_textgroup_doctors}>
                   <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                   <p>20 врачей</p>
@@ -264,7 +264,7 @@ const ClinicsSearch = (props) => {
                 <p id={styles.clinic_list_item_textgroup_article1}>Медицинский центр «MEDCENTER.KG» — это многопрофильная клиника, расположенная в самом центре Бишкека.</p>
                 <p id={styles.clinic_list_item_textgroup_article2}>Здесь вы можете получить консультации специалистов различного профиля, прием ведут: Доктора медицинских наук, профессора, отличники здравоохранения и врачи высшей и первой категории.</p>
                 <p id={styles.clinic_list_item_textgroup_article3}>Медицинский центр.kg оснащен отличной диагностической базой, где проводятся лабораторные, ультразвуковые, эндоскопические, электрофизиологические обследования на современном оборудовании.</p>
-                <Link id={styles.clinic_list_item_textgroup_link} to="/">Ещё</Link>
+                <Link id={styles.clinic_list_item_textgroup_link} to="/clinic">Ещё</Link>
                 <div id={styles.clinic_list_item_textgroup_doctors}>
                   <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                   <p>20 врачей</p>

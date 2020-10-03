@@ -56,7 +56,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 .search_page .search_group #search_button {
@@ -108,6 +108,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 30px;
 }
 
 .search_page .sort_group #sort_group_famous {
@@ -195,6 +196,12 @@
   font-weight: 500;
   font-size: 20px;
   padding-bottom: 5px;
+}
+
+.search_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_name:hover {
+  color: #1488FC;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .search_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_specialty {

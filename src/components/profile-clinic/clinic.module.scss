@@ -1,4 +1,4 @@
-.search_page {
+.clinic_page {
   width: 100%;
   height: 100%;
   background-color: transparent;
@@ -7,8 +7,7 @@
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
   margin-top: 50px;
-
-  #search_page_header {
+  #clinic_page_header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -20,7 +19,7 @@
         cursor: pointer;
       }
     }
-    #search_page_title {
+    #clinic_page_title {
       font-weight: bold;
       font-size: 50px;
       text-align: center;
@@ -28,13 +27,11 @@
       margin-bottom: 50px;
     }
   }
-  
-
   .search_group {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
     // div[role=combobox] {
     //   padding: 0 20px;
     // }
@@ -56,20 +53,123 @@
       }
     }
   }
-  
-  #search_page_article1 {
+  #clinic_page_article1 {
     padding: 20px 0;
     font-weight: 500;
     font-size: 30px;
     color: #00C6DD;
+    border-bottom: 1px solid #C4C4C4;
+    margin-bottom: 35px;
   }
 
-  #search_page_article2 {
-    font-size: 22px;
-    color: #000000;
-    padding: 0 10% 40px 0;
+  .clinic_page_data {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+    #clinic_page_data_imagegroup {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      & > img {
+        width: 49%;
+      }
+    }
+    .clinic_page_data_text {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      #clinic_page_data_text_left, #clinic_page_data_text_right {
+        width: 49%;
+      }
+      #clinic_page_data_text_left {
+        margin-top: 25px;
+        &_title1 {
+          font-weight: 500;
+          font-size: 20px;
+          color: #00C6DD;
+          margin-bottom: 30px;
+        }
+        &_title2 {
+          font-weight: 500;
+          font-size: 18px;
+          margin-bottom: 25px;
+        }
+        &_article {
+          font-size: 18px;
+          margin-bottom: 15px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+      #clinic_page_data_text_right {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: 50px;
+        #clinic_page_data_text_right_addressgroup {
+          display: flex;
+          flex-direction: row;
+          #clinic_page_data_text_right_address {
+            font-size: 14px;
+            margin-bottom: 20px;
+            margin-left: 15px;
+          }
+        }
+        #clinic_page_data_text_right_timegroup {
+          display: flex;
+          flex-direction: row;
+          #clinic_page_data_text_right_time1 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            margin-left: 15px;
+          }
+        }
+        #clinic_page_data_text_right_time2, #clinic_page_data_text_right_time3 {
+          font-size: 14px;
+          margin-bottom: 10px;
+          margin-left: 32px;
+        }
+        #clinic_page_data_text_right_phonegroup {
+          display: flex;
+          flex-direction: row;
+          #clinic_page_data_text_right_phone {
+            font-size: 14px;
+            margin-bottom: 10px;
+            margin-left: 15px;
+          }
+        }
+        #clinic_page_data_text_right_button {
+          width: 200px;
+          padding: 10px 40px;
+          font-weight: 600;
+          font-size: 20px;
+          color: #FFFFFF;
+          background-color: #00C6DD;
+          border: 2px solid #00C6DD;
+          border-radius: 15px;
+          margin-top: 25px;
+          &:hover {
+            cursor: pointer;
+            background-color: transparent;
+            color: #00C6DD;
+            transition: all .3s ease-in-out;
+          }
+        }
+      }
+    }
   }
 
+  #clinic_page_article2 {
+    font-weight: 500;
+    font-size: 30px;
+    color: #00C6DD;
+    margin: 40px 0;
+  }
   .sort_group {
     width: 100%;
     height: 100%;
@@ -89,7 +189,6 @@
       align-items: center;
     }
   }
-
   .doctors_list {
     width: 100%;
     height: auto;
@@ -224,28 +323,4 @@
       }
     }
   }
-
-}
-
-
-
-
-.MuiBreadcrumbs-ol li a {
-  color: #C4C4C4 !important;
-}
-.MuiTypography-colorTextPrimary {
-  color: #00C6DD !important;
-}
-.MuiToggleButton-root.Mui-selected:hover {
-  background-color: #c4c4c4 !important;
-}
-.MuiToggleButton-root:hover {
-  background-color: #00c6dd !important;
-}
-.MuiToggleButton-root.Mui-selected {
-  color: #fff !important;
-  background-color: #00C6DD !important;
-}
-.MuiToggleButton-root {
-  padding: 5px 15px !important;
 }

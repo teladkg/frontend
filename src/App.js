@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import MainPage from './components/main/mainPage';
 import Search from './components/search/search';
 import ClinicsSearch from './components/clinics-search/clinicsSearch';
+import Clinic from './components/profile-clinic/clinic';
+import Doctor from './components/profile-doctor/doctor';
 
 function App() {
   return (
@@ -20,6 +22,14 @@ function App() {
         <Route
           exact path = "/clinics-search"
           component = {ClinicsSearch}
+        />
+        <Route
+          exact path = "/clinic"
+          component = {Clinic}
+        />
+        <Route
+          exact path = "/doctor"
+          component = {Doctor}
         />
       </Switch>
     </div>

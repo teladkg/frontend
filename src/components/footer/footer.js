@@ -14,9 +14,9 @@ const Footer = () => {
       <div className={styles.footer_second_col}>
         <p id={styles.footer_second_col_title}>Пациенту</p>
         <ul className={styles.second_col_links}>
-          <li>Запись на прием</li>
-          <li>Врачи</li>
-          <li>Клиники</li>
+          <li><Link to="/search">Запись на прием</Link></li>
+          <li><Link to="/search">Врачи</Link></li>
+          <li><Link to="/clinics-search">Клиники</Link></li>
           <li>Регистрация</li>
           <li>Согласие на обработку персональных данных</li>
         </ul>

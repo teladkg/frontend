@@ -60,14 +60,14 @@
   list-style: none;
 }
 
-.footer .footer_second_col ul li, .footer .footer_third_col ul li, .footer .footer_fourth_col ul li {
+.footer .footer_second_col ul li, .footer .footer_second_col ul li a, .footer .footer_third_col ul li, .footer .footer_third_col ul li a, .footer .footer_fourth_col ul li, .footer .footer_fourth_col ul li a {
   padding-bottom: 10px;
   font-weight: 400;
   font-size: 22px;
   color: #1E6871;
 }
 
-.footer .footer_second_col ul li:hover, .footer .footer_third_col ul li:hover, .footer .footer_fourth_col ul li:hover {
+.footer .footer_second_col ul li:hover, .footer .footer_second_col ul li a:hover, .footer .footer_third_col ul li:hover, .footer .footer_third_col ul li a:hover, .footer .footer_fourth_col ul li:hover, .footer .footer_fourth_col ul li a:hover {
   cursor: pointer;
   color: #000;
   -webkit-transition: .3s linear;

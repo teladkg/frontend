@@ -1,0 +1,479 @@
+.clinic_page {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding: 0 85px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 50px;
+}
+
+.clinic_page #clinic_page_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.clinic_page #clinic_page_header #logo_title {
+  font-size: 50px;
+  font-weight: 600;
+  color: #00C6DD;
+}
+
+.clinic_page #clinic_page_header #logo_title:hover {
+  cursor: pointer;
+}
+
+.clinic_page #clinic_page_header #clinic_page_title {
+  font-weight: bold;
+  font-size: 50px;
+  text-align: center;
+  color: #00C6DD;
+  margin-bottom: 50px;
+}
+
+.clinic_page .search_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.clinic_page .search_group #search_button {
+  width: 150px;
+  height: 100%;
+  padding: auto 36px;
+  color: #fff;
+  background: #00C6DD;
+  border: 2px solid #00C6DD;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.clinic_page .search_group #search_button:hover {
+  cursor: pointer;
+  color: #00C6DD;
+  background-color: transparent;
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.clinic_page #clinic_page_article1 {
+  padding: 20px 0;
+  font-weight: 500;
+  font-size: 30px;
+  color: #00C6DD;
+  border-bottom: 1px solid #C4C4C4;
+  margin-bottom: 35px;
+}
+
+.clinic_page .clinic_page_data {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 30px;
+  border: 1px solid #E5E5E5;
+  border-radius: 10px;
+}
+
+.clinic_page .clinic_page_data #clinic_page_data_imagegroup {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.clinic_page .clinic_page_data #clinic_page_data_imagegroup > img {
+  width: 49%;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_left, .clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right {
+  width: 49%;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_left {
+  margin-top: 25px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_left_title1 {
+  font-weight: 500;
+  font-size: 20px;
+  color: #00C6DD;
+  margin-bottom: 30px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_left_title2 {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_left_article {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_left_article:last-child {
+  margin-bottom: 0;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 50px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_addressgroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_addressgroup #clinic_page_data_text_right_address {
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_timegroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_timegroup #clinic_page_data_text_right_time1 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_time2, .clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_time3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-left: 32px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_phonegroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_phonegroup #clinic_page_data_text_right_phone {
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_button {
+  width: 200px;
+  padding: 10px 40px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #FFFFFF;
+  background-color: #00C6DD;
+  border: 2px solid #00C6DD;
+  border-radius: 15px;
+  margin-top: 25px;
+}
+
+.clinic_page .clinic_page_data .clinic_page_data_text #clinic_page_data_text_right #clinic_page_data_text_right_button:hover {
+  cursor: pointer;
+  background-color: transparent;
+  color: #00C6DD;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.clinic_page #clinic_page_article2 {
+  font-weight: 500;
+  font-size: 30px;
+  color: #00C6DD;
+  margin: 40px 0;
+}
+
+.clinic_page .sort_group {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+}
+
+.clinic_page .sort_group #sort_group_famous {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.clinic_page .sort_group #sort_group_date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.clinic_page .doctors_list {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 50px 0;
+}
+
+.clinic_page .doctors_list #doctor_list_item {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px;
+  padding: 30px 50px;
+  margin-bottom: 60px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_left svg {
+  margin-bottom: 10px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_name {
+  font-weight: 500;
+  font-size: 20px;
+  padding-bottom: 5px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_name:hover {
+  color: #1488FC;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_specialty {
+  font-weight: normal;
+  font-size: 14px;
+  padding: 5px 0;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle .doctor_list_item_middle_specialty_details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-weight: normal;
+  font-size: 14px;
+  color: #00C6DD;
+  padding: 5px 5px 25px 5px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle .doctor_list_item_middle_specialty_details p {
+  padding: 0 5px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_receptiontitle {
+  font-size: 18px;
+  padding-bottom: 15px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_receptiontype {
+  width: 112px;
+  font-size: 15px;
+  color: #00C6DD;
+  padding: 9px 14px;
+  border: 1px solid #00C6DD;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_costtitle {
+  font-size: 18px;
+  padding: 15px 0;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_middle #doctor_list_item_middle_cost {
+  font-size: 18px;
+  color: #00C6DD;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right #doctor_list_item_right_visitingdaystitle {
+  font-size: 18px;
+  color: #C4C4C4;
+  margin-bottom: 10px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right #doctor_list_item_right_visitingdays {
+  width: 106px;
+  font-size: 16px;
+  color: #00C6DD;
+  padding: 10px 25px;
+  border: 1px solid #00C6DD;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right #doctor_list_item_right_visitinghourstitle {
+  font-size: 18px;
+  color: #C4C4C4;
+  margin-bottom: 10px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right #doctor_list_item_right_visitinghours {
+  width: 110px;
+  font-size: 15px;
+  color: #00C6DD;
+  padding: 9px 10px;
+  border: 1px solid #00C6DD;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right button {
+  width: 110px;
+  padding: 10px;
+  font-size: 15px;
+  text-align: center;
+  color: #FFFFFF;
+  background: #00C6DD;
+  border: 2px solid #00C6DD;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right button:hover {
+  cursor: pointer;
+  color: #00C6DD;
+  background-color: transparent;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right .doctor_list_item_right_address #doctor_list_item_right_address_clinic {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.clinic_page .doctors_list #doctor_list_item .doctor_list_item_right .doctor_list_item_right_address #doctor_list_item_right_address_data {
+  font-size: 14px;
+}
+/*# sourceMappingURL=clinic.module.css.map */
