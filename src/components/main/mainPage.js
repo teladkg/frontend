@@ -33,7 +33,7 @@ const MainPage = () => {
 
   const doctors_slider = {
     rows: 2,
-    slidesPerRow: 3,
+    slidesPerRow: 4,
     dots: true,
     infinite: true,
     speed: 500,
@@ -67,16 +67,18 @@ const MainPage = () => {
     <>
       <Header />
 
-      <section className={styles.main_title}>
+      {/* <section className={styles.main_title}>
         <div className={styles.main_left}>
           <p id={styles.left_title}>В нашем сайте вы можете записаться к врачу</p>
           <Link to="/search"><button id={styles.left_button}>Записаться на прием</button></Link>
         </div>
         <img id={styles.main_right} src={require('../../content/images/main/35e451287927250012788876be5be764.png')} alt="main-pic"></img>
-      </section>
+      </section> */}
 
       <section className={styles.search}>
-        <p id={styles.search_title}>Найдите проверенного врача и запишитесь на прием</p>
+        <p id={styles.search_title1}>Справочная по врачам и клиникам</p>
+        <p id={styles.search_title2}>“Telad” - медицинский сервис, предоставляющий информацию о врачах и клиниках</p>
+        <p id={styles.search_title3}>Выберите категорию поиска</p>
         <div className={styles.search_group}>
           <Autocomplete
             id="grouped-demo"
@@ -170,7 +172,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3>
               <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
@@ -184,7 +186,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDИ</h3>
               <p id={styles.clinics_slide_right_article}>Клиника «Меди» — это передовой медицинский центр в Бишкеке, оказывающий поликлиническую, хирургическую,  стационарную медицинскую помощь населению.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>35 врачей</p>
@@ -198,7 +200,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3>
               <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
@@ -212,7 +214,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3>
               <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
@@ -226,7 +228,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3>
               <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
@@ -240,7 +242,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3>
               <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
@@ -254,7 +256,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3>
               <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
@@ -268,7 +270,7 @@ const MainPage = () => {
             <div id={styles.clinics_slide_right}>
               <h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3>
               <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <Link to="/">Подробнее</Link>
+              <Link to="/clinic">Подробнее</Link>
               <div id={styles.clinics_slide_right_comments}>
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>

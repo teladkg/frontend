@@ -1,7 +1,7 @@
 .main_title {
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: #00C6DD;
   padding: 0 85px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11,7 +11,6 @@
       -ms-flex-direction: row;
           flex-direction: row;
   font-family: 'Montserrat', sans-serif;
-  margin-top: 100px;
 }
 
 .main_title .main_left {
@@ -61,8 +60,8 @@
 .search {
   width: 100%;
   height: 100%;
-  background-color: transparent;
-  padding: 0 85px;
+  background-color: #00C6DD;
+  padding: 70px 85px 105px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -71,16 +70,30 @@
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  margin-top: 100px;
 }
 
-.search #search_title {
-  font-size: 50px;
+.search #search_title1 {
+  font-size: 60px;
   font-weight: 700;
-  color: #00C6DD;
+  color: #fff;
   text-align: center;
-  padding: 0 19%;
   margin-bottom: 50px;
+}
+
+.search #search_title2 {
+  font-size: 35px;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 0 10%;
+  margin-bottom: 25px;
+}
+
+.search #search_title3 {
+  font-size: 25px;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 0 10%;
+  margin-bottom: 40px;
 }
 
 .search .search_group {
@@ -98,27 +111,35 @@
 }
 
 .search .search_group div[role=combobox] {
-  padding: 0 20px;
+  margin: 0 20px;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background-color: #fff;
 }
 
 .search .search_group #search_button {
-  width: 150px;
+  width: 200px;
   height: 100%;
   padding: auto 36px;
   color: #fff;
-  background: #00C6DD;
-  border: 2px solid #00C6DD;
+  background: -webkit-gradient(linear, left top, left bottom, from(#9AF3E3), to(rgba(255, 255, 255, 0))), #00C6DD;
+  background: linear-gradient(180deg, #9AF3E3 0%, rgba(255, 255, 255, 0) 100%), #00C6DD;
+  border: 0.5px solid #00c6dd;
   border-radius: 10px;
-  font-size: 25px;
-  font-weight: 700;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .search .search_group #search_button:hover {
   cursor: pointer;
-  color: #00C6DD;
-  background-color: transparent;
-  -webkit-transition: .2s ease-in-out;
-  transition: .2s ease-in-out;
+  color: #fff;
+  background: #00C6DD;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  border: 1px solid #000000;
 }
 
 .doctors {
@@ -134,7 +155,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .doctors #doctors_title {
@@ -146,12 +167,11 @@
 }
 
 .doctors #doctors_slide {
-  width: 370px !important;
-  height: 260px;
-  border: 1px solid #C4C4C4;
+  width: 260px !important;
+  height: 180px;
+  border: 1px solid #00C6DD;
   border-radius: 10px;
   margin: 35px;
-  padding: 0 90px 60px 90px;
   text-align: center;
 }
 
@@ -182,7 +202,7 @@
 .clinics #clinics_slide {
   width: 620px !important;
   height: 373px;
-  border: 1px solid #C4C4C4;
+  border: 1px solid #00C6DD;
   border-radius: 10px;
   display: -webkit-box !important;
   display: -ms-flexbox !important;

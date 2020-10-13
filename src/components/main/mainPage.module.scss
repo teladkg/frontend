@@ -1,12 +1,12 @@
 .main_title {
   width: 100%;
   height: 100%;
-  background-color: transparent;
+  background-color: #00C6DD;
   padding: 0 85px;
   display: flex;
   flex-direction: row;
   font-family: 'Montserrat', sans-serif;
-  margin-top: 100px;
+  // margin-top: 100px;
   img {
     // width: 50%;
     // height: auto;
@@ -46,19 +46,33 @@
 .search {
   width: 100%;
   height: 100%;
-  background-color: transparent;
-  padding: 0 85px;
+  background-color: #00C6DD;
+  padding: 70px 85px 105px;
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  margin-top: 100px;
-  #search_title {
-    font-size: 50px;
+  // margin-top: 100px;
+  #search_title1 {
+    font-size: 60px;
     font-weight: 700;
-    color: #00C6DD;
+    color: #fff;
     text-align: center;
-    padding: 0 19%;
+    // padding: 0 19%;
     margin-bottom: 50px;
+  }
+  #search_title2 {
+    font-size: 35px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0 10%;
+    margin-bottom: 25px;
+  }
+  #search_title3 {
+    font-size: 25px;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 0 10%;
+    margin-bottom: 40px;
   }
   .search_group {
     display: flex;
@@ -66,27 +80,32 @@
     justify-content: center;
     margin-bottom: 50px;
     div[role=combobox] {
-      padding: 0 20px;
+      margin: 0 20px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      background-color: #fff;
     }
     // .MuiFormLabel-root {
     //   color: #c4c4c4;
     //   font-size: 25px;
     // }
     #search_button {
-      width: 150px;
+      width: 200px;
       height: 100%;
       padding: auto 36px;
       color: #fff;
-      background: #00C6DD;
-      border: 2px solid #00C6DD;
+      background: linear-gradient(180deg, #9AF3E3 0%, rgba(255, 255, 255, 0) 100%), #00C6DD;;
+      border: 0.5px solid #00c6dd;
       border-radius: 10px;
-      font-size: 25px;
-      font-weight: 700;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      font-size: 20px;
+      font-weight: 500;
       &:hover {
         cursor: pointer;
-        color: #00C6DD;
-        background-color: transparent;
-        transition: .2s ease-in-out;
+        color: #fff;
+        background: #00C6DD;
+        transition: all .2s ease-in-out;
+        border: 1px solid #000000;
       }
     }
   }
@@ -101,7 +120,7 @@
   display: flex;
   flex-direction: column;
   font-family: 'Montserrat', sans-serif;
-  margin-top: 100px;
+  margin-top: 70px;
   #doctors_title {
     font-size: 50px;
     font-weight: 700;
@@ -110,12 +129,12 @@
     margin-bottom: 50px;
   }
   #doctors_slide {
-    width: 370px !important;
-    height: 260px;
-    border: 1px solid #C4C4C4;
+    width: 260px !important;
+    height: 180px;
+    border: 1px solid #00C6DD;
     border-radius: 10px;
     margin: 35px;
-    padding: 0 90px 60px 90px;
+    // padding: 0 90px 60px 90px;
     text-align: center;
   }
 }
@@ -140,7 +159,7 @@
   #clinics_slide {
     width: 620px !important;
     height: 373px;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #00C6DD;
     border-radius: 10px;
     display: flex !important;
     flex-direction: row !important;
@@ -320,4 +339,3 @@
     width: 50%;
   }
 }
-
