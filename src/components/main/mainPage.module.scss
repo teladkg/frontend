@@ -185,10 +185,8 @@
       a {
         color: #00C6DD;
         &:hover {
-          text-decoration: underline;
-          text-decoration-color: #00C6DD;
-          text-decoration-thickness: 10%;
-          text-underline-offset: 5px;
+          color: #1488FC;
+          transition: all .3s ease-in-out;
         }
       }
       #clinics_slide_right_comments {

@@ -1,17 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
 
-import styles from './doctor.module.css';
+import './doctor.css';
 
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
+import { load } from '@2gis/mapgl';
+
+
 const Doctor = () => {
+
+  useEffect(() => {
+    let map;
+    load().then((mapglAPI) => {
+        // container — id of the div element in your html
+        map = new mapglAPI.Map('map-container-doctor', {
+            center: [74.59968, 42.85888],
+            zoom: 13,
+            key: 'ca6b71bc-b872-45c6-bec0-ebb977a1eaa4',
+        });
+    });
+
+    // Destroy the map on unmounted
+    return () => map && map.destroy();
+}, []);
+  
+
+  const MapWrapper = React.memo(
+    () => {
+        return <div id="map-container-doctor" style={{ width: '100%', height: '100%' }}></div>;
+    },
+    () => true,
+  );
+  const [mapInstance, setMapInstance] = useState();
+
 
   const search_options = top100Films.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
@@ -21,51 +49,56 @@ const Doctor = () => {
     };
   });
 
+
   const classes = useStyles();
+
 
   return (
     <>
       <Header />
 
-      <section className={styles.doctor_page}>
+      <section className="doctor_page">
 
-        <div className={styles.doctor_page_main}>
-          <div className={styles.doctor_page_main_left}>
-            <div id={styles.doctor_page_main_left_avatargroup}>
+        <div className="doctor_page_main">
+          <div className="doctor_page_main_left">
+            <div id="doctor_page_main_left_avatargroup">
               <svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="75" cy="75" r="74.5" stroke="#D7FBFF"/>
-              <path d="M74.9989 69.2308C78.9926 69.2308 82.8966 68.0465 86.2172 65.8278C89.5378 63.609 92.1259 60.4554 93.6542 56.7657C95.1825 53.0761 95.5824 49.0161 94.8033 45.0991C94.0241 41.1822 92.101 37.5843 89.2771 34.7603C86.4531 31.9364 82.8552 30.0133 78.9383 29.2341C75.0214 28.455 70.9613 28.8549 67.2717 30.3832C63.582 31.9115 60.4284 34.4996 58.2097 37.8202C55.9909 41.1408 54.8066 45.0448 54.8066 49.0385C54.8066 54.3938 56.934 59.5298 60.7208 63.3166C64.5076 67.1034 69.6436 69.2308 74.9989 69.2308ZM74.9989 34.6154C77.8516 34.6154 80.6401 35.4613 83.012 37.0461C85.3838 38.6309 87.2325 40.8835 88.3241 43.519C89.4158 46.1545 89.7014 49.0545 89.1449 51.8523C88.5884 54.6501 87.2147 57.22 85.1976 59.2371C83.1805 61.2542 80.6106 62.6279 77.8128 63.1844C75.0149 63.7409 72.115 63.4553 69.4795 62.3637C66.844 61.272 64.5914 59.4234 63.0066 57.0515C61.4218 54.6796 60.5759 51.8911 60.5759 49.0385C60.5759 45.2132 62.0954 41.5447 64.8003 38.8398C67.5051 36.135 71.1737 34.6154 74.9989 34.6154Z" fill="#00C6DD"/>
-              <path d="M77.8838 75H72.1146C63.699 75 55.6282 78.3431 49.6775 84.2937C43.7268 90.2444 40.3838 98.3152 40.3838 106.731C40.3838 107.496 40.6877 108.23 41.2287 108.771C41.7696 109.311 42.5034 109.615 43.2684 109.615H106.73C107.495 109.615 108.229 109.311 108.77 108.771C109.311 108.23 109.615 107.496 109.615 106.731C109.615 98.3152 106.272 90.2444 100.321 84.2937C94.3702 78.3431 86.2993 75 77.8838 75ZM46.3261 103.846C47.0354 97.5019 50.0574 91.6413 54.8146 87.3843C59.5718 83.1273 65.7307 80.7723 72.1146 80.7692H77.8838C84.2676 80.7723 90.4265 83.1273 95.1838 87.3843C99.941 91.6413 102.963 97.5019 103.672 103.846H46.3261Z" fill="#00C6DD"/>
-            </svg>
+                <circle cx="75" cy="75" r="74.5" stroke="#D7FBFF"/>
+                <path d="M74.9989 69.2308C78.9926 69.2308 82.8966 68.0465 86.2172 65.8278C89.5378 63.609 92.1259 60.4554 93.6542 56.7657C95.1825 53.0761 95.5824 49.0161 94.8033 45.0991C94.0241 41.1822 92.101 37.5843 89.2771 34.7603C86.4531 31.9364 82.8552 30.0133 78.9383 29.2341C75.0214 28.455 70.9613 28.8549 67.2717 30.3832C63.582 31.9115 60.4284 34.4996 58.2097 37.8202C55.9909 41.1408 54.8066 45.0448 54.8066 49.0385C54.8066 54.3938 56.934 59.5298 60.7208 63.3166C64.5076 67.1034 69.6436 69.2308 74.9989 69.2308ZM74.9989 34.6154C77.8516 34.6154 80.6401 35.4613 83.012 37.0461C85.3838 38.6309 87.2325 40.8835 88.3241 43.519C89.4158 46.1545 89.7014 49.0545 89.1449 51.8523C88.5884 54.6501 87.2147 57.22 85.1976 59.2371C83.1805 61.2542 80.6106 62.6279 77.8128 63.1844C75.0149 63.7409 72.115 63.4553 69.4795 62.3637C66.844 61.272 64.5914 59.4234 63.0066 57.0515C61.4218 54.6796 60.5759 51.8911 60.5759 49.0385C60.5759 45.2132 62.0954 41.5447 64.8003 38.8398C67.5051 36.135 71.1737 34.6154 74.9989 34.6154Z" fill="#00C6DD"/>
+                <path d="M77.8838 75H72.1146C63.699 75 55.6282 78.3431 49.6775 84.2937C43.7268 90.2444 40.3838 98.3152 40.3838 106.731C40.3838 107.496 40.6877 108.23 41.2287 108.771C41.7696 109.311 42.5034 109.615 43.2684 109.615H106.73C107.495 109.615 108.229 109.311 108.77 108.771C109.311 108.23 109.615 107.496 109.615 106.731C109.615 98.3152 106.272 90.2444 100.321 84.2937C94.3702 78.3431 86.2993 75 77.8838 75ZM46.3261 103.846C47.0354 97.5019 50.0574 91.6413 54.8146 87.3843C59.5718 83.1273 65.7307 80.7723 72.1146 80.7692H77.8838C84.2676 80.7723 90.4265 83.1273 95.1838 87.3843C99.941 91.6413 102.963 97.5019 103.672 103.846H46.3261Z" fill="#00C6DD"/>
+              </svg>
               <p>Stars</p>
             </div>
-            <div id={styles.doctor_page_main_left_infogroup}>
-              <p id={styles.doctor_page_main_left_infogroup_name}>Короткий Игорь Валентинович</p>
-              <p id={styles.doctor_page_main_left_infogroup_specialty}>Пластический хирург</p>
-              <p id={styles.doctor_page_main_left_infogroup_experience}>Стаж 29 лет</p>
-              <p id={styles.doctor_page_main_left_infogroup_category}>Врач высшей категории</p>
-              <p id={styles.doctor_page_main_left_infogroup_degree}>Доктор медицинский наук</p>
-              <p id={styles.doctor_page_main_left_infogroup_phonetitle}>Телефон для записи</p>
-              <p id={styles.doctor_page_main_left_infogroup_phone}>+996 555 55 55 55</p>
+            <div id="doctor_page_main_left_infogroup">
+              <p id="doctor_page_main_left_infogroup_name">Короткий Игорь Валентинович</p>
+              <p id="doctor_page_main_left_infogroup_specialty">Пластический хирург</p>
+              <p id="doctor_page_main_left_infogroup_experience">Стаж 29 лет</p>
+              <p id="doctor_page_main_left_infogroup_category">Врач высшей категории</p>
+              <p id="doctor_page_main_left_infogroup_degree">Доктор медицинский наук</p>
+              <p id="doctor_page_main_left_infogroup_phonetitle">Телефон для записи</p>
+              <p id="doctor_page_main_left_infogroup_phone">+996 555 55 55 55</p>
             </div>
           </div>
-          <img id={styles.doctor_page_main_right} src={require('../../content/images/profile-doctor/tiles4.png')} alt="doc map"/>
+          <div style={{ width: '40%', height: '500px' }}>
+            <MapWrapper />
+          </div>
+          {/* <img id="doctor_page_main_right" src={require('../../content/images/profile-doctor/tiles4.png')} alt="doc map"/> */}
         </div>
 
-        <div className={styles.doctor_page_info}>
-          <div className={styles.doctor_page_info_left}>
+        <div className="doctor_page_info">
+          <div className="doctor_page_info_left">
             <h1>Информация о враче</h1>
             <p>Занимается диагностикой и лечением бронхиальной астмы, хронической обструктивной болезни лёгких (ХОБЛ), пневмонии, острого и хронического бронхита, апноэ, дыхательной недостаточности и других болезней дыхательных путей. </p>
           </div>
-          <div className={styles.doctor_page_info_right}>
-            <div id={styles.doctor_page_info_right_receptiontype}>
-              <h6 id={styles.doctor_page_info_right_receptiontype_title}>Тип приема:</h6>
+          <div className="doctor_page_info_right">
+            <div id="doctor_page_info_right_receptiontype">
+              <h6 id="doctor_page_info_right_receptiontype_title">Тип приема:</h6>
               <p>В клинике</p>
               <p>На дому</p>
               <p>Онлайн</p>
             </div>
-            <div id={styles.doctor_page_info_right_receptiondate}>
-              <h6 id={styles.doctor_page_info_right_receptiondate_title}>Дни приема:</h6>
+            <div id="doctor_page_info_right_receptiondate">
+              <h6 id="doctor_page_info_right_receptiondate_title">Дни приема:</h6>
               <p>ПН, СР, ЧТ  12:00 - 15:00</p>
               <p>ДОГОВОРНАЯ ДАТА</p>
               <p>ВТ, ПТ, СБ  09:00 - 12:00</p>
@@ -73,8 +106,8 @@ const Doctor = () => {
           </div>
         </div>
 
-        <div className={styles.doctor_page_specialty}>
-          <div className={styles.doctor_page_specialty_left}>
+        <div className="doctor_page_specialty">
+          <div className="doctor_page_specialty_left">
             <h1>Специализация</h1>
             <ul>Диагностика и лечение следующих заболеваний:
               <li>бронхиальная астма:</li>
@@ -84,16 +117,16 @@ const Doctor = () => {
               <li>дыхательная недостаточность;</li>
             </ul>
           </div>
-          <div className={styles.doctor_page_specialty_right}>
-            <div id={styles.doctor_page_specialty_right_receptiontype}>
-              <h6 id={styles.doctor_page_specialty_right_receptiontype_title}>Тип приема:</h6>
+          <div className="doctor_page_specialty_right">
+            <div id="doctor_page_specialty_right_receptiontype">
+              <h6 id="doctor_page_specialty_right_receptiontype_title">Тип приема:</h6>
               <p>В клинике</p>
               <p>На дому</p>
               <p>Онлайн</p>
-              <button id={styles.doctor_page_specialty_right_receptiontype_button}>Записаться</button>
+              <button id="doctor_page_specialty_right_receptiontype_button">Записаться</button>
             </div>
-            <div id={styles.doctor_page_specialty_right_cost}>
-              <h6 id={styles.doctor_page_specialty_right_cost_title}>Стоимость:</h6>
+            <div id="doctor_page_specialty_right_cost">
+              <h6 id="doctor_page_specialty_right_cost_title">Стоимость:</h6>
               <p>600 сом</p>
               <p>700 сом</p>
               <p>500 сом</p>
@@ -101,12 +134,12 @@ const Doctor = () => {
           </div>
         </div>
 
-        <div className={styles.doctor_page_certificates}>
-          <h1 id={styles.doctor_page_certificates_title}>Сертификаты</h1>
-          <div className={styles.doctor_page_certificates_items}>
-            <div id={styles.doctor_page_certificates_items_1}></div>
-            <div id={styles.doctor_page_certificates_items_1}></div>
-            <div id={styles.doctor_page_certificates_items_1}></div>
+        <div className="doctor_page_certificates">
+          <h1 id="doctor_page_certificates_title">Сертификаты</h1>
+          <div className="doctor_page_certificates_items">
+            <div id="doctor_page_certificates_items_1"></div>
+            <div id="doctor_page_certificates_items_1"></div>
+            <div id="doctor_page_certificates_items_1"></div>
           </div>
         </div>
 

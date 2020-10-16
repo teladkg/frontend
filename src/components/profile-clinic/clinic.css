@@ -130,15 +130,18 @@
 }
 
 .clinic_profile_page #clinic_profile_page_article1 {
-  padding: 20px 0;
+  padding: 20px 85px;
   font-weight: 500;
   font-size: 30px;
   color: #00C6DD;
-  border-bottom: 1px solid #C4C4C4;
   margin-bottom: 35px;
 }
 
-.clinic_profile_page .clinic_profile_page_data {
+.clinic_profile_page .clinic_profile_page_data_container {
+  padding: 0 85px;
+}
+
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data {
   width: 100%;
   height: auto;
   display: -webkit-box;
@@ -153,7 +156,7 @@
   border-radius: 10px;
 }
 
-.clinic_profile_page .clinic_profile_page_data #clinic_profile_page_data_imagegroup {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data #clinic_profile_page_data_imagegroup {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -163,11 +166,11 @@
           justify-content: space-between;
 }
 
-.clinic_profile_page .clinic_profile_page_data #clinic_profile_page_data_imagegroup > img {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data #clinic_profile_page_data_imagegroup > img {
   width: 49%;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -177,37 +180,37 @@
           justify-content: space-between;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left, .clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left, .clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right {
   width: 49%;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left {
   margin-top: 25px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_title1 {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_title1 {
   font-weight: 500;
   font-size: 20px;
   color: #00C6DD;
   margin-bottom: 30px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_title2 {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_title2 {
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 25px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_article {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_article {
   font-size: 18px;
   margin-bottom: 15px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_article:last-child {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_left_article:last-child {
   margin-bottom: 0;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -221,7 +224,7 @@
   margin-top: 50px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_addressgroup {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_addressgroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -231,13 +234,13 @@
           flex-direction: row;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_addressgroup #clinic_profile_page_data_text_right_address {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_addressgroup #clinic_profile_page_data_text_right_address {
   font-size: 14px;
   margin-bottom: 20px;
   margin-left: 15px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_timegroup {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_timegroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -247,19 +250,19 @@
           flex-direction: row;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_timegroup #clinic_profile_page_data_text_right_time1 {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_timegroup #clinic_profile_page_data_text_right_time1 {
   font-size: 14px;
   margin-bottom: 10px;
   margin-left: 15px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_time2, .clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_time3 {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_time2, .clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_time3 {
   font-size: 14px;
   margin-bottom: 10px;
   margin-left: 32px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_phonegroup {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_phonegroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -269,13 +272,13 @@
           flex-direction: row;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_phonegroup #clinic_profile_page_data_text_right_phone {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_phonegroup #clinic_profile_page_data_text_right_phone {
   font-size: 14px;
   margin-bottom: 10px;
   margin-left: 15px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_button {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_button {
   width: 200px;
   padding: 10px 40px;
   font-weight: 600;
@@ -287,7 +290,7 @@
   margin-top: 25px;
 }
 
-.clinic_profile_page .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_button:hover {
+.clinic_profile_page .clinic_profile_page_data_container .clinic_profile_page_data .clinic_profile_page_data_text #clinic_profile_page_data_text_right #clinic_profile_page_data_text_right_button:hover {
   cursor: pointer;
   background-color: transparent;
   color: #00C6DD;
@@ -300,6 +303,7 @@
   font-size: 30px;
   color: #00C6DD;
   margin: 40px 0;
+  padding: 0 85px;
 }
 
 .clinic_profile_page .clinic_profile_page_sort_group {
@@ -319,6 +323,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 30px;
+  padding: 0 85px;
 }
 
 .clinic_profile_page .clinic_profile_page_sort_group #clinic_profile_page_sort_group_famous {
@@ -364,6 +369,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin: 50px 0;
+  padding: 0 85px;
 }
 
 .clinic_profile_page .clinic_profile_page_doctors_list #clinic_profile_page_doctor_list_item {
