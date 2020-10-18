@@ -17,7 +17,7 @@ const Footer = () => {
           <li><Link to="/search">Запись на прием</Link></li>
           <li><Link to="/search">Врачи</Link></li>
           <li><Link to="/clinics-search">Клиники</Link></li>
-          <li>Регистрация</li>
+          <li><Link to="/map">Карта</Link></li>
           <li>Согласие на обработку персональных данных</li>
         </ul>
       </div>

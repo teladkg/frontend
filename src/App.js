@@ -6,6 +6,7 @@ import Search from './components/search/search';
 import ClinicsSearch from './components/clinics-search/clinicsSearch';
 import Clinic from './components/profile-clinic/clinic';
 import Doctor from './components/profile-doctor/doctor';
+import Map from './components/map/map';
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
         <Route
           exact path = "/doctor"
           component = {Doctor}
+        />
+        <Route
+          exact path = "/map"
+          component = {Map}
         />
       </Switch>
     </div>

@@ -1,0 +1,35 @@
+.MuiBreadcrumbs-root {
+  padding: 10px 85px 10px;
+}
+
+.MuiBreadcrumbs-root .MuiBreadcrumbs-separator {
+  font-size: 20px;
+  color: #C4C4C4;
+}
+
+.MuiBreadcrumbs-root #map_page_breadcrumb_passive {
+  font-size: 20px;
+  color: #C4C4C4;
+}
+
+.MuiBreadcrumbs-root #map_page_breadcrumb_active {
+  font-size: 20px;
+  color: #00C6DD;
+}
+
+#map_page_article1 {
+  padding: 20px 85px;
+  font-weight: 600;
+  font-size: 35px;
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#map-cont canvas {
+  border-radius: 5px;
+}
+
+.map_page_search_group {
+  padding: 50px 85px;
+}
+/*# sourceMappingURL=map.css.map */
