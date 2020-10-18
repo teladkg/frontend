@@ -7,6 +7,8 @@ import ClinicsSearch from './components/clinics-search/clinicsSearch';
 import Clinic from './components/profile-clinic/clinic';
 import Doctor from './components/profile-doctor/doctor';
 import Map from './components/map/map';
+import Registration from './components/registration/registration';
+import Login from './components/login/login';
 
 function App() {
   return (
@@ -35,6 +37,14 @@ function App() {
         <Route
           exact path = "/map"
           component = {Map}
+        />
+        <Route
+          exact path = "/registration"
+          component = {Registration}
+        />
+        <Route
+          exact path = "/login"
+          component = {Login}
         />
       </Switch>
     </div>
