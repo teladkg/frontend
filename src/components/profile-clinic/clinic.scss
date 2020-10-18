@@ -97,13 +97,36 @@
   }
 
 
+  .MuiBreadcrumbs-root {
+    padding: 40px 85px 10px;
+    .MuiBreadcrumbs-separator {
+      font-size: 20px;
+      color: #C4C4C4;
+    }
+    #clinic_profile_page_breadcrumb_passive {
+      font-size: 20px;
+      color: #C4C4C4;
+    }
+    #clinic_profile_page_breadcrumb_active {
+      font-size: 20px;
+      color: #00C6DD;
+    }
+  }
+
+
   #clinic_profile_page_article1 {
     padding: 20px 85px;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 35px;
+    color: #000;
+  }
+
+  
+  #clinic_profile_page_article2 {
+    padding: 20px 85px;
+    font-weight: 600;
     font-size: 30px;
     color: #00C6DD;
-    // border-bottom: 1px solid #C4C4C4;
-    margin-bottom: 35px;
   }
 
 
@@ -114,37 +137,18 @@
       height: auto;
       display: flex;
       flex-direction: column;
-      padding: 30px;
-      border: 1px solid #E5E5E5;
       border-radius: 10px;
-      #clinic_profile_page_data_imagegroup {
+      #clinic_profile_page_data_group {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        padding-bottom: 60px;
         & > img {
-          width: 49%;
+          width: 48%;
         }
-      }
-      .clinic_profile_page_data_text {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        #clinic_profile_page_data_text_left, #clinic_profile_page_data_text_right {
-          width: 49%;
-        }
-        #clinic_profile_page_data_text_left {
+        #clinic_profile_page_data_group_text_right {
           margin-top: 25px;
-          &_title1 {
-            font-weight: 500;
-            font-size: 20px;
-            color: #00C6DD;
-            margin-bottom: 30px;
-          }
-          &_title2 {
-            font-weight: 500;
-            font-size: 18px;
-            margin-bottom: 25px;
-          }
+          width: 48%;
           &_article {
             font-size: 18px;
             margin-bottom: 15px;
@@ -153,71 +157,35 @@
             }
           }
         }
-        #clinic_profile_page_data_text_right {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          margin-top: 50px;
-          #clinic_profile_page_data_text_right_addressgroup {
-            display: flex;
-            flex-direction: row;
-            #clinic_profile_page_data_text_right_address {
-              font-size: 14px;
-              margin-bottom: 20px;
-              margin-left: 15px;
-            }
-          }
-          #clinic_profile_page_data_text_right_timegroup {
-            display: flex;
-            flex-direction: row;
-            #clinic_profile_page_data_text_right_time1 {
-              font-size: 14px;
-              margin-bottom: 10px;
-              margin-left: 15px;
-            }
-          }
-          #clinic_profile_page_data_text_right_time2, #clinic_profile_page_data_text_right_time3 {
-            font-size: 14px;
-            margin-bottom: 10px;
-            margin-left: 32px;
-          }
-          #clinic_profile_page_data_text_right_phonegroup {
-            display: flex;
-            flex-direction: row;
-            #clinic_profile_page_data_text_right_phone {
-              font-size: 14px;
-              margin-bottom: 10px;
-              margin-left: 15px;
-            }
-          }
-          #clinic_profile_page_data_text_right_button {
-            width: 200px;
-            padding: 10px 40px;
-            font-weight: 600;
-            font-size: 20px;
-            color: #FFFFFF;
-            background-color: #00C6DD;
-            border: 2px solid #00C6DD;
-            border-radius: 15px;
-            margin-top: 25px;
-            &:hover {
-              cursor: pointer;
-              background-color: transparent;
-              color: #00C6DD;
-              transition: all .3s ease-in-out;
-            }
-          }
+      }
+      .clinic_profile_page_data_map_group {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 15px;
+        flex-direction: column;
+        margin-bottom: 35px;
+        #clinic_profile_page_article3 {
+          width: 25%;
+          font-weight: 600;
+          font-size: 30px;
+          color: #00C6DD;
+          padding-bottom: 30px;
+        }
+        canvas {
+          width: 100%;
+          border-radius: 15px;
         }
       }
     }
   }
 
 
-  #clinic_profile_page_article2 {
+  #clinic_profile_page_article4 {
     font-weight: 500;
     font-size: 30px;
     color: #00C6DD;
-    margin: 40px 0;
+    margin: 25px 0;
     padding: 0 85px;
   }
 
@@ -231,15 +199,51 @@
     align-items: center;
     margin-bottom: 30px;
     padding: 0 85px;
+    .MuiToggleButton-root {
+      color: #000;
+      padding: 7px 15px !important;
+      text-transform: none;
+      font-size: 14px;
+    }
+    .MuiToggleButton-root.Mui-selected {
+      color: #fff !important;
+      background-color: #00C6DD !important;
+    }
     #clinic_profile_page_sort_group_famous {
       display: flex;
       flex-direction: row;
       align-items: center;
+      .MuiInputBase-root {
+        background-color: #00C6DD;
+      }
+      .MuiOutlinedInput-root {
+        border-radius: 10px;
+      }
+      .MuiOutlinedInput-input {
+        padding: 10px 15px;
+        padding-right: 30px;
+      }
+      .MuiSelect-outlined {
+        border-radius: 10px;
+      }
     }
     #clinic_profile_page_sort_group_date {
       display: flex;
       flex-direction: row;
       align-items: center;
+      .MuiInputBase-root {
+        background-color: #00C6DD;
+      }
+      .MuiOutlinedInput-root {
+        border-radius: 10px;
+      }
+      .MuiOutlinedInput-input {
+        padding: 10px 15px;
+        padding-right: 30px;
+      }
+      .MuiSelect-outlined {
+        border-radius: 10px;
+      }
     }
   }
 
@@ -259,78 +263,132 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      border: 1px solid #C4C4C4;
+      // border: 1px solid #00C6DD;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
       border-radius: 10px;
       padding: 30px 50px;
       margin-bottom: 60px;
       .clinic_profile_page_doctor_list_item_left {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        svg {
-          margin-bottom: 10px;
-        }
-      }
-      .clinic_profile_page_doctor_list_item_middle {
-        #clinic_profile_page_doctor_list_item_middle_name {
-          font-weight: 500;
-          font-size: 20px;
-          padding-bottom: 5px;
-          &:hover {
-            color: #1488FC;
-            transition: all .2s ease-in-out;
-          }
-        }
-        #clinic_profile_page_doctor_list_item_middle_specialty {
-          font-weight: normal;
-          font-size: 14px;
-          padding: 5px 0;
-        }
-        .clinic_profile_page_doctor_list_item_middle_specialty_details {
+        flex-direction: row;
+        .clinic_profile_page_doctor_list_item_avatargroup {
           display: flex;
-          flex-direction: row; 
-          flex-wrap: wrap;
-          font-weight: normal;
-          font-size: 14px;
-          color: #00C6DD;
-          padding: 5px 5px 25px 5px;
-          p {
-            padding: 0 5px;
+          flex-direction: column;
+          align-items: center;
+          svg {
+            margin-bottom: 10px;
           }
         }
-        #clinic_profile_page_doctor_list_item_middle_receptiontitle {
-          font-size: 18px;
-          padding-bottom: 15px;
-        }
-        #clinic_profile_page_doctor_list_item_middle_receptiontype {
-          width: 112px;
-          font-size: 15px;
-          color: #00C6DD;
-          padding: 9px 14px;
-          border: 1px solid #00C6DD;
-          border-radius: 10px;
-          margin-bottom: 10px;
-        }
-        #clinic_profile_page_doctor_list_item_middle_costtitle {
-          font-size: 18px;
-          padding: 15px 0;
-        }
-        #clinic_profile_page_doctor_list_item_middle_cost {
-          font-size: 18px;
-          color: #00C6DD;
+        .clinic_profile_page_doctor_list_item_infogroup {
+          padding-left: 60px;
+          #clinic_profile_page_doctor_list_item_infogroup_specialty {
+            font-size: 17px;
+            padding-bottom: 5px;
+          }
+          #clinic_profile_page_doctor_list_item_infogroup_name {
+            font-weight: 500;
+            font-size: 25px;
+            padding: 5px 0;
+            &:hover {
+              color: #1488FC;
+              transition: all .2s ease-in-out;
+            }
+          }
+          .clinic_profile_page_doctor_list_item_infogroup_specialty_details {
+            display: flex;
+            flex-direction: row; 
+            flex-wrap: wrap;
+            font-weight: normal;
+            font-size: 22px;
+            color: #00C6DD;
+            padding: 5px 5px 25px 0;
+            p:first-child {
+              padding-right: 10px;
+            }
+            p:last-child {
+              padding-left: 10px;
+            }
+          }
+          .clinic_profile_page_doctor_list_item_infogroup_additional {
+            display: flex;
+            flex-direction: row;
+            #clinic_profile_page_doctor_list_item_infogroup_reception {
+              padding-right: 45px;
+              #clinic_profile_page_doctor_list_item_infogroup_receptiontitle {
+                padding-bottom: 15px;
+                font-weight: 500;
+                font-size: 17px;
+              }
+              #clinic_profile_page_doctor_list_item_infogroup_receptiontype {
+                width: 112px;
+                font-size: 15px;
+                color: #fff;
+                background-color: #00C6DD;
+                padding: 9px 14px;
+                border: 1px solid #00C6DD;
+                border-radius: 10px;
+                margin-bottom: 10px;
+                text-align: center;
+              }
+            }
+            #clinic_profile_page_doctor_list_item_infogroup_cost {
+              padding-left: 45px;
+              #clinic_profile_page_doctor_list_item_infogroup_costtitle {
+                padding-bottom: 15px;
+                font-weight: 500;
+                font-size: 17px;
+              }
+              #clinic_profile_page_doctor_list_item_infogroup_money {
+                width: 112px;
+                font-size: 15px;
+                color: #fff;
+                background-color: #00C6DD;
+                padding: 9px 14px;
+                border: 1px solid #00C6DD;
+                border-radius: 10px;
+                margin-bottom: 10px;
+                text-align: center;
+              }
+            }
+          }
+          #clinic_profile_page_doctor_list_item_infogroup_phonegroup {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            #clinic_profile_page_doctor_list_item_infogroup_phonegroup_title {
+              font-weight: 500;
+              font-size: 17px;
+            }
+            #clinic_profile_page_doctor_list_item_infogroup_phonegroup_numbericon {
+              display: flex;
+              flex-direction: row;
+              align-items: center; 
+              padding-top: 12px;
+              p {
+                font-size: 17px;
+                padding-left: 10px;
+              }
+            }
+          }
         }
       }
+      
       .clinic_profile_page_doctor_list_item_right {
+        #clinic_profile_page_doctor_list_item_right_scheduletitle {
+          font-size: 17px;
+          margin-bottom: 20px;
+        }
         #clinic_profile_page_doctor_list_item_right_visitingdaystitle {
           font-size: 18px;
           color: #C4C4C4;
           margin-bottom: 10px;
         }
         #clinic_profile_page_doctor_list_item_right_visitingdays {
-          width: 106px;
-          font-size: 16px;
+          width: 88px;
+          font-size: 14px;
+          text-align: center;
           color: #00C6DD;
-          padding: 10px 25px;
+          padding: 7px 16px;
           border: 1px solid #00C6DD;
           border-radius: 10px;
           margin-bottom: 20px;
@@ -341,44 +399,32 @@
           margin-bottom: 10px;
         }
         #clinic_profile_page_doctor_list_item_right_visitinghours {
-          width: 110px;
-          font-size: 15px;
+          width: 90px;
+          font-size: 14px;
+          text-align: center;
           color: #00C6DD;
-          padding: 9px 10px;
+          padding: 6px;
           border: 1px solid #00C6DD;
           border-radius: 10px;
-          margin-bottom: 30px;
-        }
-        button {
-          width: 110px;
-          padding: 10px;
-          font-size: 15px;
-          text-align: center;
-          color: #FFFFFF;
-          background: #00C6DD;
-          border: 2px solid #00C6DD;
-          border-radius: 10px;
           margin-bottom: 40px;
-          &:hover {
-            cursor: pointer;
-            color: #00C6DD;
-            background-color: transparent;
-            transition: all .3s ease-in-out;
-          }
         }
         .clinic_profile_page_doctor_list_item_right_address {
           #clinic_profile_page_doctor_list_item_right_address_clinic {
             font-weight: 500;
-            font-size: 14px;
+            font-size: 17px;
             margin-bottom: 10px;
           }
           #clinic_profile_page_doctor_list_item_right_address_data {
-            font-size: 14px;
+            font-size: 17px;
           }
         }
       }
     }
   }
 
+
+  .MuiToggleButton-root {
+    border-radius: 10px;
+  }
 
 }

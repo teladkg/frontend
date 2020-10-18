@@ -169,10 +169,23 @@
 .doctors #doctors_slide {
   width: 260px !important;
   height: 180px;
-  border: 1px solid #00C6DD;
+  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
   border-radius: 10px;
   margin: 35px;
   text-align: center;
+}
+
+.doctors #doctors_slide h3 {
+  margin-top: 10px;
+}
+
+.doctors #doctors_slide #doctors_slide_icon {
+  width: 100px;
+  height: 100px;
+  background-color: #DFDFDF;
+  vertical-align: middle;
+  margin: 20px 0 0 80px;
 }
 
 .clinics {
@@ -201,8 +214,9 @@
 
 .clinics #clinics_slide {
   width: 620px !important;
-  height: 373px;
-  border: 1px solid #00C6DD;
+  height: auto;
+  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
   border-radius: 10px;
   display: -webkit-box !important;
   display: -ms-flexbox !important;
@@ -211,6 +225,26 @@
   -webkit-box-direction: normal !important;
       -ms-flex-direction: row !important;
           flex-direction: row !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+  margin: 20px 25px;
+}
+
+.clinics #clinics_slide .slick-dots > li > button {
+  width: auto !important;
+  font-size: 25px !important;
+}
+
+.clinics #clinics_slide .slick-dots li button::before {
+  font-size: 25px !important;
+}
+
+.clinics #clinics_slide .slick-dots li.slick-active button::before {
+  color: #00C6DD !important;
 }
 
 .clinics #clinics_slide #clinics_slide_left {
@@ -302,15 +336,24 @@
   margin-bottom: 50px;
 }
 
-.specialties .react-grid-layout > .layout .react-grid-item {
-  margin: 0 20px !important;
+.specialties .react-grid-layout .layout {
+  width: 100%;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: justify !important;
+      -ms-flex-pack: justify !important;
+          justify-content: space-between !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .specialties #specialties_col_title {
-  color: #fff;
+  color: #00c6dd;
   font-size: 18px;
   font-weight: 600;
-  background-color: #00C6DD;
+  background-color: transparent;
   border-radius: 15px;
   padding: 3px 0 3px 14px;
   margin-bottom: 10px;
@@ -325,7 +368,6 @@
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0 0 10px 0;
-  border: 2px solid #00C6DD;
   border-radius: 15px;
 }
 
@@ -343,9 +385,14 @@
   text-underline-offset: 5px;
 }
 
-.specialties .react-grid-item, .specialties .react-draggable, .specialties .cssTransforms, .specialties .react-resizable, .specialties div[key=a] {
-  border: 2px solid #00C6DD !important;
-  border-radius: 15px !important;
+.specialties .react-grid-item .react-resizable-handle, .specialties .react-grid-item .react-resizable-handle-se, .specialties .react-draggable .react-resizable-handle, .specialties .react-draggable .react-resizable-handle-se, .specialties .cssTransforms .react-resizable-handle, .specialties .cssTransforms .react-resizable-handle-se, .specialties .react-resizable .react-resizable-handle, .specialties .react-resizable .react-resizable-handle-se, .specialties div[key=a] .react-resizable-handle, .specialties div[key=a] .react-resizable-handle-se {
+  background-image: none !important;
+}
+
+.specialties .react-grid-item .react-grid-item > .react-resizable-handle::after, .specialties .react-draggable .react-grid-item > .react-resizable-handle::after, .specialties .cssTransforms .react-grid-item > .react-resizable-handle::after, .specialties .react-resizable .react-grid-item > .react-resizable-handle::after, .specialties div[key=a] .react-grid-item > .react-resizable-handle::after {
+  content: '' !important;
+  border: none !important;
+  border-right: none;
 }
 
 #specialties_show_btn {
@@ -405,6 +452,10 @@
           flex-direction: column;
 }
 
+.contact_us .contact_us_left .MuiInputBase-input {
+  font-size: 22px;
+}
+
 .contact_us .contact_us_left #contact_us_title {
   font-weight: bold;
   font-size: 50px;
@@ -426,7 +477,7 @@
   font-size: 22px;
   color: #fff;
   background-color: #00C6DD;
-  padding: 16px 17px;
+  padding: 10px 30px;
   border: 2px solid #00C6DD;
   border-radius: 15px;
   margin-left: 25px;
@@ -443,4 +494,4 @@
 .contact_us .contact_us_right {
   width: 50%;
 }
-/*# sourceMappingURL=mainPage.module.css.map */
+/*# sourceMappingURL=mainPage.css.map */

@@ -93,16 +93,16 @@
   .MuiBreadcrumbs-root {
     padding: 40px 85px 10px;
     .MuiBreadcrumbs-separator {
-      font-size: 24px;
+      font-size: 20px;
       color: #C4C4C4;
     }
     #clinics_page_breadcrumb_passive {
-      font-size: 25px;
+      font-size: 20px;
       color: #C4C4C4;
     }
     #clinics_page_breadcrumb_active {
-      font-size: 25px;
-      color: #000;
+      font-size: 20px;
+      color: #00c6dd;
     }
   }
 
@@ -110,8 +110,8 @@
   #clinics_page_article1 {
     padding: 10px 85px;
     font-weight: 600;
-    font-size: 50px;
-    color: #5A5959;
+    font-size: 40px;
+    color: #000;
   }
 
 
@@ -122,7 +122,6 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 30px;
     padding: 0 85px;
     #clinics_page_sort_group_title {
       padding-right: 17px;
@@ -130,7 +129,7 @@
     .MuiOutlinedInput-input {
       padding: 7px 14px;
       padding-right: 30px;
-      background: #73E7F4;
+      background: #00c6dd;
       border-radius: 10px;
       text-align: center;
     }
@@ -157,7 +156,8 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      border: 1px solid #00c6dd;
+      // border: 1px solid #00c6dd;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
       border-radius: 10px;
       margin-bottom: 60px;
       
@@ -167,7 +167,7 @@
         justify-content: flex-start;
         width: 60%;
         padding: 50px 40px;
-        border-right: 1px solid #00C6DD;
+        border-right: 1px solid #828ea53b;
         .clinics_page_clinic_list_item_imagegroup {
           display: flex;
           flex-direction: column;

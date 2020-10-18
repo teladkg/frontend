@@ -85,9 +85,16 @@
       border-radius: 5px;
       background-color: #fff;
     }
-    // .MuiFormLabel-root {
-    //   color: #c4c4c4;
-    //   font-size: 25px;
+    // .MuiOutlinedInput-input {
+    //   padding: 7px 14px;
+    //   padding-right: 30px;
+    //   background: #00c6dd;
+    //   border-radius: 10px;
+    //   text-align: center;
+    // }
+    // .MuiOutlinedInput-root {
+    //   border-radius: 10px;
+    //   text-align: center;
     // }
     #search_button {
       width: 200px;
@@ -131,11 +138,20 @@
   #doctors_slide {
     width: 260px !important;
     height: 180px;
-    border: 1px solid #00C6DD;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
     border-radius: 10px;
     margin: 35px;
-    // padding: 0 90px 60px 90px;
     text-align: center;
+    h3 {
+      margin-top: 10px;
+    }
+    #doctors_slide_icon {
+      width: 100px;
+      height: 100px;
+      background-color: #DFDFDF;
+      vertical-align: middle;
+      margin: 20px 0 0 80px;
+    }
   }
 }
 
@@ -158,11 +174,25 @@
   }
   #clinics_slide {
     width: 620px !important;
-    height: 373px;
-    border: 1px solid #00C6DD;
+    height: auto;
+    // border: 1px solid #00C6DD;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
     border-radius: 10px;
     display: flex !important;
     flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 20px 25px;
+    .slick-dots > li > button {
+      width: auto !important;
+      font-size: 25px !important;
+    }
+    .slick-dots li button::before {
+      font-size: 25px !important;
+    }
+    .slick-dots li.slick-active button::before {
+      color: #00C6DD !important;
+    }
     #clinics_slide_left {
       width: 35%;
       display: flex;
@@ -220,17 +250,18 @@
     margin-bottom: 50px;
   }
 
-  .react-grid-layout > .layout {
-    .react-grid-item {
-      margin: 0 20px !important;
-    }
+  .react-grid-layout .layout {
+    width: 100%;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
   }
 
   #specialties_col_title {
-    color: #fff;
+    color: #00c6dd;
     font-size: 18px;
     font-weight: 600;
-    background-color: #00C6DD;
+    background-color: transparent;
     border-radius: 15px;
     padding: 3px 0 3px 14px;
     margin-bottom: 10px;
@@ -239,7 +270,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 0 10px 0;
-    border: 2px solid #00C6DD;
+    // border: 2px solid #00C6DD;
     border-radius: 15px;
     span {
       margin: 2px 0;
@@ -254,8 +285,16 @@
     }
   }
   .react-grid-item, .react-draggable, .cssTransforms, .react-resizable, div[key=a] {
-    border: 2px solid #00C6DD !important;
-    border-radius: 15px !important;
+    // border: 2px solid #00C6DD !important;
+    // border-radius: 15px !important;
+    .react-resizable-handle, .react-resizable-handle-se {
+      background-image: none !important;
+    }
+    .react-grid-item > .react-resizable-handle::after {
+      content: '' !important;
+      border: none !important;
+      border-right: none;
+    }
   }
 }
 
@@ -297,6 +336,9 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    .MuiInputBase-input {
+      font-size: 22px;
+    }
     #contact_us_title {
       font-weight: bold;
       font-size: 50px;
@@ -320,7 +362,7 @@
         font-size: 22px;
         color: #fff;
         background-color: #00C6DD;
-        padding: 16px 17px;
+        padding: 10px 30px;
         border: 2px solid #00C6DD;
         border-radius: 15px;
         margin-left: 25px;

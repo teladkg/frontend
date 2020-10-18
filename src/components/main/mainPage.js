@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Header from '../header/header'
 import Footer from '../footer/footer'
 
-import styles from './mainPage.module.css';
+import './mainPage.css';
 
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
@@ -67,19 +67,11 @@ const MainPage = () => {
     <>
       <Header />
 
-      {/* <section className={styles.main_title}>
-        <div className={styles.main_left}>
-          <p id={styles.left_title}>В нашем сайте вы можете записаться к врачу</p>
-          <Link to="/search"><button id={styles.left_button}>Записаться на прием</button></Link>
-        </div>
-        <img id={styles.main_right} src={require('../../content/images/main/35e451287927250012788876be5be764.png')} alt="main-pic"></img>
-      </section> */}
-
-      <section className={styles.search}>
-        <p id={styles.search_title1}>Справочная по врачам и клиникам</p>
-        <p id={styles.search_title2}>“Telad” - медицинский сервис, предоставляющий информацию о врачах и клиниках</p>
-        <p id={styles.search_title3}>Выберите категорию поиска</p>
-        <div className={styles.search_group}>
+      <section className="search">
+        <p id="search_title1">Справочная по врачам и клиникам</p>
+        <p id="search_title2">“Telad” - медицинский сервис, предоставляющий информацию о врачах и клиниках</p>
+        <p id="search_title3">Выберите категорию поиска</p>
+        <div className="search_group">
           <Autocomplete
             id="grouped-demo"
             options={search_options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
@@ -104,166 +96,130 @@ const MainPage = () => {
             style={{ width: 217 }}
             renderInput={(params) => <TextField {...params} label="Радиус" variant="outlined" />}
           />
-          <Link to="/search"><button id={styles.search_button}>Найти</button></Link>
+          <Link to="/search"><button id="search_button">Найти</button></Link>
         </div>
       </section>
 
-      <section className={styles.doctors}>
-        <p id={styles.doctors_title}>Врачи</p>
+      <section className="doctors">
+        <p id="doctors_title">Популярные специализации</p>
         <Slider {...doctors_slider}>
-          <div id={styles.doctors_slide}>
-            <h3>Кардиологи</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Офтальмолог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Гинеколог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Педиатры</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Стоматолог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Хирург</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Акушер</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Венеролог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Косметолог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Логопед</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Психолог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Диетолог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Дерматолог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Травматолог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Невролог</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
-          <div id={styles.doctors_slide}>
-            <h3>Ортопед</h3>
+          <div id="doctors_slide">
+            <div id="doctors_slide_icon"></div>
+            <h3>Кардиолог</h3>
           </div>
         </Slider>
       </section>
 
-      <section className={styles.clinics}>
-        <p id={styles.clinics_title}>Клиники</p>
+      <section className="clinics">
+        <p id="clinics_title">Клиники</p>
         <Slider {...clinics_slider}>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
+          <div id="clinics_slide">
+            <div id="clinics_slide_left">
               <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c1.png')} alt="clinic pic"/>
             </div>    
-            <div id={styles.clinics_slide_right}>
+            <div id="clinics_slide_right">
               <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3></Link>
-              <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <div id={styles.clinics_slide_right_comments}>
+              <p id="clinics_slide_right_article">MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
+              <div id="clinics_slide_right_comments">
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
               </div>
             </div>
           </div>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
-              <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c2.png')} alt="clinic pic"/>
-            </div>    
-            <div id={styles.clinics_slide_right}>
-              <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDИ</h3></Link>
-              <p id={styles.clinics_slide_right_article}>Клиника «Меди» — это передовой медицинский центр в Бишкеке, оказывающий поликлиническую, хирургическую,  стационарную медицинскую помощь населению.</p>
-              <div id={styles.clinics_slide_right_comments}>
-                <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
-                <p>35 врачей</p>
-              </div>
-            </div>
-          </div>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
+          <div id="clinics_slide">
+            <div id="clinics_slide_left">
               <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c1.png')} alt="clinic pic"/>
             </div>    
-            <div id={styles.clinics_slide_right}>
+            <div id="clinics_slide_right">
               <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3></Link>
-              <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <div id={styles.clinics_slide_right_comments}>
+              <p id="clinics_slide_right_article">MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
+              <div id="clinics_slide_right_comments">
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
               </div>
             </div>
           </div>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
+          <div id="clinics_slide">
+            <div id="clinics_slide_left">
               <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c1.png')} alt="clinic pic"/>
             </div>    
-            <div id={styles.clinics_slide_right}>
+            <div id="clinics_slide_right">
               <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3></Link>
-              <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <div id={styles.clinics_slide_right_comments}>
+              <p id="clinics_slide_right_article">MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
+              <div id="clinics_slide_right_comments">
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
               </div>
             </div>
           </div>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
+          <div id="clinics_slide">
+            <div id="clinics_slide_left">
               <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c1.png')} alt="clinic pic"/>
             </div>    
-            <div id={styles.clinics_slide_right}>
+            <div id="clinics_slide_right">
               <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3></Link>
-              <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <div id={styles.clinics_slide_right_comments}>
-                <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
-                <p>20 врачей</p>
-              </div>
-            </div>
-          </div>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
-              <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c1.png')} alt="clinic pic"/>
-            </div>    
-            <div id={styles.clinics_slide_right}>
-              <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3></Link>
-              <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <div id={styles.clinics_slide_right_comments}>
-                <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
-                <p>20 врачей</p>
-              </div>
-            </div>
-          </div>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
-              <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c1.png')} alt="clinic pic"/>
-            </div>    
-            <div id={styles.clinics_slide_right}>
-              <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3></Link>
-              <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <div id={styles.clinics_slide_right_comments}>
-                <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
-                <p>20 врачей</p>
-              </div>
-            </div>
-          </div>
-          <div id={styles.clinics_slide}>
-            <div id={styles.clinics_slide_left}>
-              <img src={require('../../content/images/main/70e4b3c1bd7d70589e857693212fb33c1.png')} alt="clinic pic"/>
-            </div>    
-            <div id={styles.clinics_slide_right}>
-              <Link to="/clinic"><h3>МЕДИЦИНСКИЙ ЦЕНТР MEDCENTER.KG</h3></Link>
-              <p id={styles.clinics_slide_right_article}>MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
-              <div id={styles.clinics_slide_right_comments}>
+              <p id="clinics_slide_right_article">MEDCENTER.KG имеет новейшее техническоеоборудование, которое позволяет проводитьвесь спектр эндоскопических, пластических и хирургических вмешательств.</p>
+              <div id="clinics_slide_right_comments">
                 <img src={require('../../content/images/main/kisspng-physician-hospital-dr-mary-c-kirk-md-doctor-of-the-doctor-5ac2fc7fa9d6a91.svg')} alt="comment icon"/>
                 <p>20 врачей</p>
               </div>
@@ -272,14 +228,14 @@ const MainPage = () => {
         </Slider>
       </section>
 
-      <section className={styles.specialties}>
-        <p id={styles.specialties_title}>Все специальности</p>
-        <GridLayout className="layout" cols={4} rowHeight={45} width={document.documentElement.clientWidth-190}>
+      <section className="specialties">
+        <p id="specialties_title">Все специальности</p>
+        <GridLayout className="layout" cols={4} rowHeight={40} width={document.documentElement.clientWidth-190}>
 
           <div key="a" data-grid={{x: 0, y: 0, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>А</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">А</div>
               <span>Акушерство</span>
               <span>Аллергология</span>
               <span>Андрология</span>
@@ -291,8 +247,8 @@ const MainPage = () => {
 
           <div key="b" data-grid={{x: 1, y: 0, w: 1, h: 2, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>В</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">В</div>
               <span>Венерология</span>
               <span>Вертебрология</span>
             </div>
@@ -300,8 +256,8 @@ const MainPage = () => {
 
           <div key="c" data-grid={{x: 2, y: 0, w: 1, h: 5, minH: 2, maxH: 5}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>Г</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">Г</div>
               <span>Гастроэнтерология</span>
               <span>Гематология</span>
               <span>Генетика</span>
@@ -315,8 +271,8 @@ const MainPage = () => {
 
           <div key="d" data-grid={{x: 3, y: 0, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>Д</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">Д</div>
               <span>Дерматология</span>
               <span>Дерматоонкология</span>
               <span>Дефектология</span>
@@ -328,8 +284,8 @@ const MainPage = () => {
 
           <div key="e" data-grid={{x: 0, y: 1, w: 1, h: 2, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>И</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">И</div>
               <span>Иммунология</span>
               <span>Инфектология</span>
             </div>
@@ -337,8 +293,8 @@ const MainPage = () => {
 
           <div key="f" data-grid={{x: 1, y: 1, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>К</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">К</div>
               <span>Кардиология</span>
               <span>Кардиохирургия</span>
               <span>Кинезитерапия</span>
@@ -350,8 +306,8 @@ const MainPage = () => {
 
           <div key="g" data-grid={{x: 2, y: 1, w: 1, h: 2, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>Л</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">Л</div>
               <span>Лечебная физкультура</span>
               <span>Логопедия</span>
             </div>
@@ -359,8 +315,8 @@ const MainPage = () => {
 
           <div key="h" data-grid={{x: 3, y: 1, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>М</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">М</div>
               <span>Маммология</span>
               <span>Мануальная терапия</span>
               <span>Массаж</span>
@@ -371,8 +327,8 @@ const MainPage = () => {
 
           <div key="i" data-grid={{x: 0, y: 2, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>Н</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">Н</div>
               <span>Наркология</span>
               <span>Неврология</span>
               <span>Нейрохирургия</span>
@@ -384,8 +340,8 @@ const MainPage = () => {
 
           <div key="j" data-grid={{x: 1, y: 2, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>О</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">О</div>
               <span>Онкология</span>
               <span>Ортодонтия</span>
               <span>Ортопедия</span>
@@ -396,8 +352,8 @@ const MainPage = () => {
 
           <div key="k" data-grid={{x: 2, y: 2, w: 1, h: 5, minH: 2, maxH: 5}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>П</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">П</div>
               <span>Педиатрия</span>
               <span>Пластическая хирургия</span>
               <span>Подология</span>
@@ -411,8 +367,8 @@ const MainPage = () => {
 
           <div key="l" data-grid={{x: 3, y: 2, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>Р</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">Р</div>
               <span>Радиология</span>
               <span>Реабилитология</span>
               <span>Ревматология</span>
@@ -424,8 +380,8 @@ const MainPage = () => {
 
           <div key="m" data-grid={{x: 0, y: 3, w: 1, h: 5, minH: 2, maxH: 5}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>С</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">С</div>
               <span>Сексология</span>
               <span>Сексопатология</span>
               <span>Семейная медицина</span>
@@ -438,8 +394,8 @@ const MainPage = () => {
 
           <div key="n" data-grid={{x: 1, y: 3, w: 1, h: 3, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>Т</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">Т</div>
               <span>Терапия</span>
               <span>Травматология</span>
               <span>Трихология</span>
@@ -448,8 +404,8 @@ const MainPage = () => {
 
           <div key="o" data-grid={{x: 2, y: 3, w: 1, h: 2, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>У</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">У</div>
               <span>УЗ - диагностика</span>
               <span>Урология</span>
             </div>
@@ -457,8 +413,8 @@ const MainPage = () => {
 
           <div key="p" data-grid={{x: 3, y: 3, w: 1, h: 4, minH: 2, maxH: 4}}>
             
-            <div className={styles.specialties_col_list}>
-            <div id={styles.specialties_col_title}>Ф</div>
+            <div className="specialties_col_list">
+              <div id="specialties_col_title">Ф</div>
               <span>Физиотерапия</span>
               <span>Фитотерапия</span>
               <span>Флебология</span>
@@ -470,13 +426,13 @@ const MainPage = () => {
         </GridLayout>
       </section>
 
-      <div id={styles.specialties_show_btn}>Все 85 специальностей</div>
+      <div id="specialties_show_btn">Все 85 специальностей</div>
 
-      <section className={styles.contact_us}>
-        <div className={styles.contact_us_left}>
-          <p id={styles.contact_us_title}>Не нашли подходящего врача?</p>
-          <p id={styles.contact_us_number}>Свяжитесь с нами +996 555 55 55 55 или оставьте номер</p>
-          <div id={styles.contact_us_input}>
+      <section className="contact_us">
+        <div className="contact_us_left">
+          <p id="contact_us_title">Не нашли подходящего врача?</p>
+          <p id="contact_us_number">Свяжитесь с нами +996 555 55 55 55 или оставьте номер</p>
+          <div id="contact_us_input">
             <FormControl>
               <InputLabel htmlFor="formatted-text-mask-input"></InputLabel>
               <Input
@@ -487,10 +443,10 @@ const MainPage = () => {
                 inputComponent={TextMaskCustom}
               />
             </FormControl>
-            <button id={styles.contact_us_button}>Позвоните мне</button>
+            <button id="contact_us_button">Позвоните мне</button>
           </div>
         </div>
-        <img id={styles.contact_us_right} src={require('../../content/images/main/hotpng_2.png')} alt="doc female"/>
+        <img id="contact_us_right" src={require('../../content/images/main/hotpng_2.png')} alt="doc female"/>
       </section>
 
       <Footer />

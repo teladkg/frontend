@@ -93,16 +93,16 @@
   .MuiBreadcrumbs-root {
     padding: 40px 85px 10px;
     .MuiBreadcrumbs-separator {
-      font-size: 24px;
+      font-size: 20px;
       color: #C4C4C4;
     }
     #search_page_breadcrumb_passive {
-      font-size: 25px;
+      font-size: 20px;
       color: #C4C4C4;
     }
     #search_page_breadcrumb_active {
-      font-size: 25px;
-      color: #000;
+      font-size: 20px;
+      color: #00c6dd;
     }
   }
 
@@ -110,8 +110,8 @@
   #search_page_article1 {
     padding: 10px 85px;
     font-weight: 600;
-    font-size: 50px;
-    color: #5A5959;
+    font-size: 40px;
+    color: #000;
   }
 
 
@@ -188,7 +188,8 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      border: 1px solid #00C6DD;
+      // border: 1px solid #00C6DD;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
       border-radius: 10px;
       padding: 30px 50px;
       margin-bottom: 60px;
@@ -345,6 +346,7 @@
       }
     }
   }
+  
   
   .MuiToggleButton-root {
     border-radius: 10px;
