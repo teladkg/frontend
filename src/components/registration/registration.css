@@ -74,6 +74,7 @@
   border: 2px solid #00AFCA;
   border-radius: 4px;
   background-color: #00AFCA;
+  margin-left: 10px;
 }
 
 .registration_page .registration_page_container form #registration_page_button:hover {

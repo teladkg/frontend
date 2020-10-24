@@ -14,8 +14,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: 'Montserrat', sans-serif;
-  padding: 40px 85px 0 85px;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 28px 80px;
+  background-color: #00AFCA;
 }
 
 .header .header_nav {
@@ -34,18 +35,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 35px;
-}
-
-.header #logo_title {
-  font-size: 50px;
-  font-weight: 600;
-  color: #00c6dd;
-}
-
-.header #logo_title:hover {
-  cursor: pointer;
 }
 
 .header ul {
@@ -60,29 +49,31 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .header .nav_bar .nav_items li {
-  margin: 0 20px;
-  color: #000;
+  margin: 0 42.5px;
+  color: #fff;
 }
 
 .header .nav_bar .nav_items li:hover {
   cursor: pointer;
   text-decoration: underline;
-  -webkit-text-decoration-color: #00c6dd;
-          text-decoration-color: #00c6dd;
-  text-decoration-thickness: 10%;
-  text-underline-offset: 5px;
+  -webkit-text-decoration-color: #fff;
+          text-decoration-color: #fff;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 8px;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .header .nav_bar .nav_items li a {
-  color: #000;
+  color: #fff;
 }
 
-.header .icon_group svg:first-child {
-  margin-right: 35px;
+.header .icon_group #icon_group_first {
+  margin-right: 40px;
 }
 
 .header .icon_group svg:hover {
