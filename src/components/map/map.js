@@ -5,6 +5,7 @@ import Header from '../header/header';
 import Footer from '../footer/footer';
 
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Chip from '@material-ui/core/Chip';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
@@ -16,6 +17,7 @@ import './map.css';
 
 const Map = () => {
 
+
   /* FOR AUTOCOMPLETE GROUP */
   const search_options = top100Films.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
@@ -25,7 +27,15 @@ const Map = () => {
     };
   });
 
+
   const classes = useStyles();
+
+
+  /* RESET BUTTON */
+  const handleDelete = () => {
+    console.info('You clicked the delete icon.');
+  };
+
 
   useEffect(() => {
     let map;
@@ -42,6 +52,7 @@ const Map = () => {
     return () => map && map.destroy();
   }, []);
 
+
   /* 2GIS MAP */
   const MapWrapper = React.memo(
     () => {
@@ -55,36 +66,52 @@ const Map = () => {
     <>
       <Header />
 
-      <Breadcrumbs aria-label="breadcrumb">
-        <LinkMaterial color="inherit" onClick={handleClick}>
-          <Link id="map_page_breadcrumb_passive" to="/">Главная</Link>
-        </LinkMaterial>
-        <LinkMaterial
-          color="textPrimary"
-          onClick={handleClick}
-          aria-current="page"
-        >
-          <Link id="map_page_breadcrumb_active" to="/clinic">Карта</Link>
-        </LinkMaterial>
-      </Breadcrumbs>      
+      <section className="map_page">
 
-      <h1 id="map_page_article1">Карта</h1>
+        <Breadcrumbs aria-label="breadcrumb">
+          <LinkMaterial color="inherit" onClick={handleClick}>
+            <Link id="map_page_breadcrumb_passive" to="/">Главная</Link>
+          </LinkMaterial>
+          <LinkMaterial
+            color="textPrimary"
+            onClick={handleClick}
+            aria-current="page"
+          >
+            <Link id="map_page_breadcrumb_active" to="/map">Карта</Link>
+          </LinkMaterial>
+        </Breadcrumbs>      
 
-      <div className="map_page_search_group">
-        <Autocomplete
-          id="grouped-demo"
-          options={search_options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
-          groupBy={(option) => option.firstLetter}
-          getOptionLabel={(option) => option.title}
-          style={{ width: 390 }}
-          renderInput={(params) => <TextField {...params} label="Выберите тип сортировки" variant="outlined" />}
-        />
-      </div>
+        <h1 id="map_page_article1">Карта</h1>
 
-      <div id="map-cont" style={{ width: '100%', height: '600px', padding: "0 85px 50px"}}>
-        <MapWrapper />
-      </div>
+        <div id="map_page_sort_group_reset">
+          <Chip label="Сбросить" onDelete={handleDelete} />
+        </div>
 
+        <div className="map_page_search_group">
+          <Autocomplete
+            id="grouped-demo"
+            options={search_options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            groupBy={(option) => option.firstLetter}
+            getOptionLabel={(option) => option.title}
+            style={{ width: "49%" }}
+            renderInput={(params) => <TextField {...params} label="Клиники" variant="outlined" />}
+          />
+          <Autocomplete
+            id="grouped-demo"
+            options={search_options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            groupBy={(option) => option.firstLetter}
+            getOptionLabel={(option) => option.title}
+            style={{ width: "49%" }}
+            renderInput={(params) => <TextField {...params} label="Врачи" variant="outlined" />}
+          />
+        </div>
+
+        <div id="map-cont" style={{ width: '100%', height: '600px', padding: "0 85px 50px"}}>
+          <MapWrapper />
+        </div>
+
+      </section>
+      
       <Footer />
     </>
   )
@@ -92,17 +119,20 @@ const Map = () => {
 
 export default Map;
 
+
 /* FOR BREADCRUMBS */
 function handleClick(event) {
   event.preventDefault();
   console.info('You clicked a breadcrumb.');
 }
 
+
 /* DATA FOR AUTOCOMPLETE */
 const top100Films = [
-  { title: 'Клиники', year: 1994 },
-  { title: 'Врачи', year: 1972 },
+  { title: 'Клиники' },
+  { title: 'Врачи' },
 ];
+
 
 /* SOME STYLES */
 const useStyles = makeStyles((theme) => ({

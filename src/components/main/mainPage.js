@@ -121,7 +121,7 @@ const MainPage = () => {
 
             <div className="nav_bar">
               <ul className="nav_items">
-                <li><Link to="/search">Мой кабинет</Link></li>
+                <li><Link to="/login">Мой кабинет</Link></li>
                 <li><Link to="/search">Врачи</Link></li>
                 <li><Link to="/clinics-search">Клиники</Link></li>
                 <li><Link to="/map">Карта</Link></li>

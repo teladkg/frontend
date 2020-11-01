@@ -1,35 +1,82 @@
-.MuiBreadcrumbs-root {
-  padding: 10px 85px 10px;
+.map_page {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: 'Roboto', sans-serif;
 }
 
-.MuiBreadcrumbs-root .MuiBreadcrumbs-separator {
-  font-size: 20px;
-  color: #C4C4C4;
+.map_page .MuiBreadcrumbs-root {
+  padding: 60px 80px 0;
 }
 
-.MuiBreadcrumbs-root #map_page_breadcrumb_passive {
-  font-size: 20px;
-  color: #C4C4C4;
+.map_page .MuiBreadcrumbs-root .MuiBreadcrumbs-separator {
+  font-size: 14px;
+  color: #898F97;
 }
 
-.MuiBreadcrumbs-root #map_page_breadcrumb_active {
-  font-size: 20px;
-  color: #00C6DD;
+.map_page .MuiBreadcrumbs-root #map_page_breadcrumb_passive {
+  font-size: 14px;
+  color: #898F97;
 }
 
-#map_page_article1 {
-  padding: 20px 85px;
-  font-weight: 600;
-  font-size: 35px;
-  color: #000;
-  font-family: 'Montserrat', sans-serif;
+.map_page .MuiBreadcrumbs-root #map_page_breadcrumb_active {
+  font-size: 14px;
+  color: #00AFCA;
 }
 
-#map-cont canvas {
+.map_page #map_page_article1 {
+  font-weight: bold;
+  font-size: 64px;
+  color: #2B2B2B;
+  padding: 0 80px;
+  margin-top: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.map_page #map_page_sort_group_reset {
+  padding: 0 80px;
+  margin-top: 60px;
+}
+
+.map_page #map_page_sort_group_reset .MuiChip-root {
   border-radius: 5px;
 }
 
-.map_page_search_group {
-  padding: 50px 85px;
+.map_page #map_page_sort_group_reset .MuiChip-root:hover {
+  cursor: pointer;
+}
+
+.map_page #map_page_sort_group_reset .MuiChip-label {
+  font-size: 18px;
+  color: #828282;
+}
+
+.map_page .map_page_search_group {
+  padding: 30px 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.map_page #map-cont {
+  margin-bottom: 70px;
+}
+
+.map_page #map-cont canvas {
+  border-radius: 5px;
 }
 /*# sourceMappingURL=map.css.map */

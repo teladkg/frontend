@@ -1,27 +1,43 @@
 .registration_page {
   width: 100%;
   height: 100%;
-  padding: 50px 100px;
-  font-family: 'Montserrat', sans-serif;
-  background-color: #F4F4F4;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+}
+
+.registration_page .MuiBreadcrumbs-root {
+  padding: 60px 80px 0;
+  font-family: 'Roboto', sans-serif;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.registration_page .MuiBreadcrumbs-root .MuiBreadcrumbs-separator {
+  font-size: 14px;
+  color: #898F97;
+}
+
+.registration_page .MuiBreadcrumbs-root #registration_page_breadcrumb_passive {
+  font-size: 14px;
+  color: #898F97;
+}
+
+.registration_page .MuiBreadcrumbs-root #registration_page_breadcrumb_active {
+  font-size: 14px;
+  color: #00AFCA;
 }
 
 .registration_page .registration_page_container {
-  width: 60%;
-  height: 100%;
-  background-color: #fff;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
-          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.27);
+  padding: 0 80px;
+  font-family: 'Roboto', sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -35,14 +51,19 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 100px;
 }
 
 .registration_page .registration_page_container h1 {
-  text-align: center;
-  margin: 50px 0;
+  margin-top: 60px;
+  padding-bottom: 40px;
+  font-weight: bold;
+  font-size: 35px;
+  color: #2B2B2B;
 }
 
 .registration_page .registration_page_container form {
+  width: 52%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -53,28 +74,75 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.registration_page .registration_page_container form div[role=combobox] {
+  border-radius: 5px;
+  background-color: transparent;
+  color: #2B2B2B;
+}
+
+.registration_page .registration_page_container form div[role=combobox]:hover {
+  border-color: #00C6DD;
+}
+
+.registration_page .registration_page_container form .MuiFormControl-root {
+  margin-bottom: 30px;
+}
+
+.registration_page .registration_page_container form .MuiFormLabel-root, .registration_page .registration_page_container form .MuiInputBase-input, .registration_page .registration_page_container form .MuiIconButton-root {
+  color: #2B2B2B;
+}
+
+.registration_page .registration_page_container form .MuiOutlinedInput-notchedOutline, .registration_page .registration_page_container form .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #C4C4C4;
+}
+
+.registration_page .registration_page_container form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #00AFCA;
 }
 
 .registration_page .registration_page_container form p {
   font-size: 15px;
-  color: #BDBDBD;
+  line-height: 130%;
+  color: #828282;
+}
+
+.registration_page .registration_page_container form #registration_page_attachbutton {
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #4F4F4F;
+  padding: 20px 0;
+  border: 2px solid #828282;
+  border-radius: 4px;
+  background-color: transparent;
+  margin-bottom: 30px;
+}
+
+.registration_page .registration_page_container form #registration_page_attachbutton:hover {
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #828282;
+  -webkit-transition: .3s all ease-in-out;
+  transition: .3s all ease-in-out;
 }
 
 .registration_page .registration_page_container form #registration_page_button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  font-weight: 500;
   font-size: 18px;
   text-transform: uppercase;
+  text-align: center;
   color: #FFFFFF;
-  padding: 20px 75px;
+  padding: 20px 0;
   border: 2px solid #00AFCA;
   border-radius: 4px;
   background-color: #00AFCA;
-  margin-left: 10px;
+  margin-top: 30px;
 }
 
 .registration_page .registration_page_container form #registration_page_button:hover {
@@ -86,21 +154,14 @@
 }
 
 .registration_page .registration_page_container #registration_page_login_button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   font-weight: 500;
   font-size: 18px;
   text-align: center;
   color: #828282;
-  padding: 20px 75px;
+  padding: 30px 0;
   border-radius: 4px;
   background-color: transparent;
   border: none;
-  margin-bottom: 50px;
 }
 
 .registration_page .registration_page_container #registration_page_login_button:hover {

@@ -33,7 +33,7 @@ const Footer = () => {
           <div className={styles.footer_third_col}>
             <p id={styles.footer_third_col_title}>Врачу</p>
             <ul className={styles.third_col_links}>
-              <li>Личный кабинет</li>
+              <Link to="/login"><li>Личный кабинет</li></Link>
               <Link to="/registration"><li>Регистрация</li></Link>
               <Link to="/login"><li>Войти</li></Link>
             </ul>

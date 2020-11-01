@@ -8,6 +8,8 @@ import './login.css';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import LinkMaterial from '@material-ui/core/Link';
 
 const Login = () => {
 
@@ -17,7 +19,21 @@ const Login = () => {
     <>
       <Header />
 
-      <div className="login_page">
+      <section className="login_page">
+
+        <Breadcrumbs aria-label="breadcrumb">
+          <LinkMaterial color="inherit" onClick={handleClick}>
+            <Link id="login_page_breadcrumb_passive" to="/">Главная</Link>
+          </LinkMaterial>
+          <LinkMaterial
+            color="textPrimary"
+            onClick={handleClick}
+            aria-current="page"
+          >
+            <Link id="login_page_breadcrumb_active" to="/login">Войти</Link>
+          </LinkMaterial>
+        </Breadcrumbs>
+
         <div className="login_page_container">
           <h1>Войти</h1>
           <form className={classes.root} noValidate autoComplete="off">
@@ -25,9 +41,10 @@ const Login = () => {
             <TextField id="outlined-basic" label="Пароль" variant="outlined" />
             <button id="login_page_button">Войти</button>
           </form>
-          <Link to="/registration"><button id="login_page_login_button">Зарегистрироваться</button></Link>
+          <Link to="/registration"><button id="login_page_registration_button">Зарегистрироваться</button></Link>
         </div>
-      </div>
+
+      </section>
 
       <Footer />
     </>
@@ -36,11 +53,18 @@ const Login = () => {
 
 export default Login;
 
+/* FOR BREADCRUMBS */
+function handleClick(event) {
+  event.preventDefault();
+  console.info('You clicked a breadcrumb.');
+}
+
+
+/* SOME STYLES */
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
-      width: '30ch',
+      width: '100%',
     },
   },
 }));
