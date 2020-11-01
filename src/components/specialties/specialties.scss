@@ -1,0 +1,136 @@
+.MuiBreadcrumbs-root {
+  padding: 60px 80px 0;
+  font-family: 'Roboto', sans-serif;
+  .MuiBreadcrumbs-separator {
+    font-size: 14px;
+    color: #898F97;
+  }
+  #specialties_page_breadcrumb_passive {
+    font-size: 14px;
+    color: #898F97;
+  }
+  #specialties_page_breadcrumb_active {
+    font-size: 14px;
+    color: #00AFCA;
+  }
+}
+
+
+#specialties_page_article1 {
+  font-weight: bold;
+  font-size: 64px;
+  color: #2B2B2B;
+  padding: 0 80px;
+  margin-top: 30px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+#specialties_page_article2 {
+  font-weight: 500;
+  font-size: 35px;
+  color: #2B2B2B;
+  padding: 0 80px;
+  margin-top: 60px;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.specialties_page_search_group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 50px 0;
+  padding: 0 80px;
+  div[role=combobox] {
+    margin: 0 15px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    &:hover {
+      border-color: #00AFCA;
+    }
+  }
+  div[role=combobox]:first-child {
+    margin-left: 0;
+  }
+  .MuiFormLabel-root, .MuiInputBase-input, .MuiIconButton-root {
+    color: #BDBDBD;
+  }
+  .MuiOutlinedInput-notchedOutline, .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #BDBDBD;
+  }
+  .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #00AFCA;
+  }
+  #specialties_page_search_button {
+    width: 200px;
+    height: 100%;
+    padding: auto 36px;
+    color: #fff;
+    background: #00AFCA;
+    border: 2px solid #00AFCA;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    &:hover {
+      cursor: pointer;
+      color: #00AFCA;
+      border-color: #00AFCA;
+      background: transparent;
+      transition: all .3s ease-in-out;
+    }
+  }
+}
+
+
+.specialties_page_specialties {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding: 0 55px 0 80px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: 'Roboto', sans-serif;
+  margin-top: 50px;
+  margin-bottom: 120px;
+  #specialties_page_specialties_slide {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 23.1%;
+    height: auto;
+    padding: 30px;
+    color: #fff;
+    background-color: #F5864D;
+    border-radius: 5px;
+    margin: 0 25px 25px 0;
+    text-align: start;
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+      #specialties_page_specialties_slide_right {
+        stroke: #00AFCA;
+        transition: .3s all ease-in-out;
+      }
+    }
+    #specialties_page_specialties_slide_left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      h3 {
+        font-weight: 500;
+        font-size: 20px;
+        margin-right: 8px;
+      }
+      p {
+        font-size: 20px;
+        margin-right: 2px;
+      }
+    }
+  }
+}

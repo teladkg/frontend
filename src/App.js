@@ -9,6 +9,7 @@ import Doctor from './components/profile-doctor/doctor';
 import Map from './components/map/map';
 import Registration from './components/registration/registration';
 import Login from './components/login/login';
+import Specialties from './components/specialties/specialties';
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
         <Route
           exact path = "/login"
           component = {Login}
+        />
+        <Route
+          exact path = "/specialties"
+          component = {Specialties}
         />
       </Switch>
     </div>

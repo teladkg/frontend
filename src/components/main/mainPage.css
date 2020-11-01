@@ -1,8 +1,11 @@
 .search {
   width: 100%;
-  height: 100%;
-  background-color: #32495e;
-  padding: 120px 80px 120px;
+  height: 100vh;
+  background: url("../../content/images/main/Rectangle_87.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 35px 80px 120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,6 +14,87 @@
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: 'Roboto', sans-serif;
+}
+
+.search .header {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-bottom: 185px;
+}
+
+.search .header .header_nav {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search .header ul {
+  list-style: none;
+}
+
+.search .header .nav_bar .nav_items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 20px;
+}
+
+.search .header .nav_bar .nav_items li {
+  margin: 0 42.5px;
+  color: #fff;
+}
+
+.search .header .nav_bar .nav_items li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #fff;
+          text-decoration-color: #fff;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 8px;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.search .header .nav_bar .nav_items li a {
+  color: #fff;
+}
+
+.search .header .icon_group #icon_group_first {
+  margin-right: 40px;
+}
+
+.search .header .icon_group svg:hover {
+  cursor: pointer;
 }
 
 .search #search_title1 {
@@ -56,7 +140,7 @@
 }
 
 .search .search_group .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-  border-color: #0059DE;
+  border-color: #00AFCA;
 }
 
 .search .search_group #search_button {
@@ -64,8 +148,8 @@
   height: 100%;
   padding: auto 36px;
   color: #fff;
-  background: #0059DE;
-  border: 1px solid #0059DE;
+  background: #00AFCA;
+  border: 1px solid #00AFCA;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
@@ -86,7 +170,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 80px;
+  padding: 0 55px 0 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,6 +206,7 @@
   font-weight: 500;
   font-size: 22px;
   color: #2B2B2B;
+  padding-right: 35px;
 }
 
 .specialties .specialties_titles #specialties_titles_link:hover {
@@ -142,20 +227,20 @@
   height: auto;
   padding: 30px;
   color: #fff;
-  background-color: #4FBABA;
+  background-color: #F5864D;
   border-radius: 5px;
   margin: 0 25px 25px 0;
   text-align: start;
 }
 
 .specialties #specialties_slide:hover {
+  cursor: pointer;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .specialties #specialties_slide:hover #specialties_slide_content_right {
-  cursor: pointer;
-  stroke: #0059DE;
+  stroke: #00AFCA;
   -webkit-transition: .3s all ease-in-out;
   transition: .3s all ease-in-out;
 }
@@ -212,15 +297,15 @@
 
 .specialties .specialties_button_group svg:hover {
   cursor: pointer;
-  fill: #0059DE;
-  stroke: #0059DE;
+  fill: #00AFCA;
+  stroke: #00AFCA;
 }
 
 .clinics {
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 80px;
+  padding: 0 55px 0 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -260,6 +345,7 @@
   font-weight: 500;
   font-size: 22px;
   color: #2B2B2B;
+  padding-right: 35px;
 }
 
 .clinics .clinics_titles #clinics_titles_link:hover {
@@ -288,6 +374,8 @@
   cursor: pointer;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .clinics #clinics_slide #clinics_slide_image {
@@ -413,15 +501,15 @@
 
 .clinics .clinics_button_group svg:hover {
   cursor: pointer;
-  fill: #0059DE;
-  stroke: #0059DE;
+  fill: #00AFCA;
+  stroke: #00AFCA;
 }
 
 .doctors {
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 80px;
+  padding: 0 55px 0 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -461,6 +549,7 @@
   font-weight: 500;
   font-size: 22px;
   color: #2B2B2B;
+  padding-right: 35px;
 }
 
 .doctors .doctors_titles #doctors_titles_link:hover {
@@ -489,6 +578,8 @@
   cursor: pointer;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
 }
 
 .doctors #doctors_slide #doctors_slide_image {
@@ -629,7 +720,7 @@
 
 .doctors .doctors_button_group svg:hover {
   cursor: pointer;
-  fill: #0059DE;
-  stroke: #0059DE;
+  fill: #00AFCA;
+  stroke: #00AFCA;
 }
 /*# sourceMappingURL=mainPage.css.map */

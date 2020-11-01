@@ -1,11 +1,69 @@
 .search {
   width: 100%;
-  height: 100%;
-  background-color: #32495e;
-  padding: 120px 80px 120px;
+  height: 100vh;
+  background: url('../../content/images/main/Rectangle_87.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 35px 80px 120px;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
+  .header {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-bottom: 185px;
+  
+    .header_nav {
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    ul {
+      list-style: none;
+    }
+  
+    .nav_bar {
+      .nav_items {
+        display: flex;
+        flex-direction: row;
+        font-size: 20px;      
+        li {
+          margin: 0 42.5px;
+          color: #fff;
+          &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+            text-decoration-color: #fff;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 8px;
+            transition: all .3s ease-in-out;
+          }
+        }
+        li a {
+          color: #fff;
+        }
+      }
+    }
+  
+    .icon_group {
+      #icon_group_first {
+        margin-right: 40px;
+      }
+      svg:hover {
+        cursor: pointer;
+      }
+    }
+  }
   #search_title1 {
     font-size: 45px;
     font-weight: 500;
@@ -35,15 +93,15 @@
       border-color: #fff;
     }
     .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border-color: #0059DE;
+      border-color: #00AFCA;
     }
     #search_button {
       width: 200px;
       height: 100%;
       padding: auto 36px;
       color: #fff;
-      background: #0059DE;
-      border: 1px solid #0059DE;
+      background: #00AFCA;
+      border: 1px solid #00AFCA;
       border-radius: 5px;
       font-family: 'Roboto', sans-serif;
       font-size: 18px;
@@ -65,7 +123,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 80px;
+  padding: 0 55px 0 80px;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
@@ -85,6 +143,7 @@
       font-weight: 500;
       font-size: 22px;
       color: #2B2B2B;
+      padding-right: 35px;
       &:hover {
         cursor: pointer;
         text-decoration: underline;
@@ -99,15 +158,15 @@
     height: auto;
     padding: 30px;
     color: #fff;
-    background-color: #4FBABA;
+    background-color: #F5864D;
     border-radius: 5px;
     margin: 0 25px 25px 0;
     text-align: start;
     &:hover {
+      cursor: pointer;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
       #specialties_slide_content_right {
-        cursor: pointer;
-        stroke: #0059DE;
+        stroke: #00AFCA;
         transition: .3s all ease-in-out;
       }
     }
@@ -143,8 +202,8 @@
     }
     svg:hover {
       cursor: pointer;
-      fill: #0059DE;
-      stroke: #0059DE;
+      fill: #00AFCA;
+      stroke: #00AFCA;
     }
   }
 }
@@ -154,7 +213,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 80px;
+  padding: 0 55px 0 80px;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
@@ -175,6 +234,7 @@
       font-weight: 500;
       font-size: 22px;
       color: #2B2B2B;
+      padding-right: 35px;
       &:hover {
         cursor: pointer;
         text-decoration: underline;
@@ -194,6 +254,7 @@
     &:hover {
       cursor: pointer;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+      transition: all .2s ease-in-out
     }
     #clinics_slide_image {
       width: 100%;
@@ -275,8 +336,8 @@
     }
     svg:hover {
       cursor: pointer;
-      fill: #0059DE;
-      stroke: #0059DE;
+      fill: #00AFCA;
+      stroke: #00AFCA;
     }
   }
 }
@@ -286,7 +347,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 80px;
+  padding: 0 55px 0 80px;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
@@ -307,6 +368,7 @@
       font-weight: 500;
       font-size: 22px;
       color: #2B2B2B;
+      padding-right: 35px;
       &:hover {
         cursor: pointer;
         text-decoration: underline;
@@ -326,6 +388,7 @@
     &:hover {
       cursor: pointer;
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+      transition: all .2s ease-in-out
     }
     #doctors_slide_image {
       width: 100%;
@@ -420,8 +483,8 @@
     }
     svg:hover {
       cursor: pointer;
-      fill: #0059DE;
-      stroke: #0059DE;
+      fill: #00AFCA;
+      stroke: #00AFCA;
     }
   }
 }
