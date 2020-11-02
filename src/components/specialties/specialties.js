@@ -11,6 +11,8 @@ import LinkMaterial from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
+import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+
 const Specialties = () => {
 
 
@@ -257,6 +259,8 @@ const Specialties = () => {
             </svg>
           </div>
         </div>
+
+        <ScrollUpButton ShowAtPosition={350}/>
 
       </section>
       

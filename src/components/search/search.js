@@ -27,6 +27,7 @@ import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const Search = (props) => {
 
@@ -420,6 +421,8 @@ const Search = (props) => {
           </div>
         </div>
       
+        <ScrollUpButton ShowAtPosition={350}/>
+
       </section>
         
       <Footer />

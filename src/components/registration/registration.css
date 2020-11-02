@@ -93,16 +93,24 @@
   margin-bottom: 30px;
 }
 
-.registration_page .registration_page_container form .MuiFormLabel-root, .registration_page .registration_page_container form .MuiInputBase-input, .registration_page .registration_page_container form .MuiIconButton-root {
-  color: #2B2B2B;
+.registration_page .registration_page_container form .MuiFormLabel-root {
+  color: #BDBDBD;
 }
 
 .registration_page .registration_page_container form .MuiOutlinedInput-notchedOutline, .registration_page .registration_page_container form .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-  border-color: #C4C4C4;
+  border-color: #BDBDBD;
 }
 
 .registration_page .registration_page_container form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #00AFCA;
+}
+
+.registration_page .registration_page_container form .MuiFormLabel-root.Mui-focused {
+  color: #00AFCA;
+}
+
+.registration_page .registration_page_container form .MuiIconButton-root {
+  color: #BDBDBD;
 }
 
 .registration_page .registration_page_container form p {

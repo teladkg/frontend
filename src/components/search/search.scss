@@ -63,14 +63,20 @@
     div[role=combobox]:first-child {
       margin-left: 0;
     }
-    .MuiFormLabel-root, .MuiInputBase-input, .MuiIconButton-root {
-      color: #2B2B2B;
+    .MuiFormLabel-root {
+      color: #BDBDBD;
     }
     .MuiOutlinedInput-notchedOutline, .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
       border-color: #BDBDBD;
     }
     .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
       border-color: #00AFCA;
+    }
+    .MuiFormLabel-root.Mui-focused {
+      color: #00AFCA;
+    }
+    .MuiIconButton-root {
+      color: #BDBDBD;
     }
     #search_page_search_button {
       width: 200px;
@@ -277,4 +283,18 @@
   }
 
 
+  aside[data-testid="react-scroll-up-button"] {
+    background-color: #00AFCA !important;
+    border: 2px solid #00AFCA !important; 
+    width: 60px !important;
+    height: 60px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 50%;
+      fill: #fff !important;
+      stroke: none;
+    }
+  }
 }

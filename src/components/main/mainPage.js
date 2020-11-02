@@ -18,6 +18,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+
 const MainPage = () => {
 
   /* FOR AUTOCOMPLETE */
@@ -899,6 +901,8 @@ const MainPage = () => {
           </button>
         </div>
       </section>
+
+      <ScrollUpButton ShowAtPosition={350}/>
 
       <Footer />
     </>

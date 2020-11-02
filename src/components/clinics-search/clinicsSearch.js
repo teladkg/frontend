@@ -13,6 +13,7 @@ import LinkMaterial from '@material-ui/core/Link';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const ClinicsSearch = (props) => {
 
@@ -222,6 +223,8 @@ const ClinicsSearch = (props) => {
           </div>
         </div>
       
+        <ScrollUpButton ShowAtPosition={350}/>
+
       </section>
         
       <Footer />

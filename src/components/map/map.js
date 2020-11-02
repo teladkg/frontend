@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from '../header/header';
@@ -11,9 +11,11 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import LinkMaterial from '@material-ui/core/Link';
 
-import { load } from '@2gis/mapgl';
+import { GoogleMap, Marker, useLoadScript, InfoWindow } from '@react-google-maps/api'
+import Geocode from "react-geocode";
 
 import './map.css';
+
 
 const Map = () => {
 
@@ -37,30 +39,17 @@ const Map = () => {
   };
 
 
-  useEffect(() => {
-    let map;
-    load().then((mapglAPI) => {
-        // container — id of the div element in your html
-        map = new mapglAPI.Map('map-container', {
-            center: [74.59968, 42.85888],
-            zoom: 13,
-            key: 'ca6b71bc-b872-45c6-bec0-ebb977a1eaa4',
-        });
-    });
+  /* GOOGLE MAPS */
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "AIzaSyCLhoRTvmMAP14kkJuL1BW9K03HuLpBytU"
+  })
+  Geocode.setApiKey("AIzaSyCLhoRTvmMAP14kkJuL1BW9K03HuLpBytU");
+  Geocode.setLanguage("ru");
+  Geocode.setRegion("ky-KG");
+  Geocode.enableDebug();
+  if (loadError) return "Error";
+  if (!isLoaded) return "Loading...";
 
-    // Destroy the map on unmounted
-    return () => map && map.destroy();
-  }, []);
-
-
-  /* 2GIS MAP */
-  const MapWrapper = React.memo(
-    () => {
-        return <div id="map-container" style={{ width: '100%', height: '100%'}}></div>;
-    },
-    () => true,
-  );
-  const [mapInstance, setMapInstance] = useState();
 
   return (
     <>
@@ -106,9 +95,15 @@ const Map = () => {
           />
         </div>
 
-        <div id="map-cont" style={{ width: '100%', height: '600px', padding: "0 85px 50px"}}>
-          <MapWrapper />
+        <div id="map-container">
+          <GoogleMap
+            id="map"
+            center={{lat: 42.867695, lng: 74.610897}}
+            zoom={12}
+          >
+          </GoogleMap>
         </div>
+        
 
       </section>
       
@@ -144,3 +139,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
 }));
+
+
+/* FOR GOOGLE MAPS */

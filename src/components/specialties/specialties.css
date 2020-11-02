@@ -79,7 +79,7 @@
   margin-left: 0;
 }
 
-.specialties_page .specialties_page_search_group .MuiFormLabel-root, .specialties_page .specialties_page_search_group .MuiInputBase-input, .specialties_page .specialties_page_search_group .MuiIconButton-root {
+.specialties_page .specialties_page_search_group .MuiFormLabel-root {
   color: #BDBDBD;
 }
 
@@ -89,6 +89,14 @@
 
 .specialties_page .specialties_page_search_group .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #00AFCA;
+}
+
+.specialties_page .specialties_page_search_group .MuiFormLabel-root.Mui-focused {
+  color: #00AFCA;
+}
+
+.specialties_page .specialties_page_search_group .MuiIconButton-root {
+  color: #BDBDBD;
 }
 
 .specialties_page .specialties_page_search_group #specialties_page_search_button {
@@ -191,5 +199,27 @@
 .specialties_page .specialties_page_specialties #specialties_page_specialties_slide #specialties_page_specialties_slide_left p {
   font-size: 20px;
   margin-right: 2px;
+}
+
+.specialties_page aside[data-testid="react-scroll-up-button"] {
+  background-color: #00AFCA !important;
+  border: 2px solid #00AFCA !important;
+  width: 60px !important;
+  height: 60px !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.specialties_page aside[data-testid="react-scroll-up-button"] svg {
+  width: 50%;
+  fill: #fff !important;
+  stroke: none;
 }
 /*# sourceMappingURL=specialties.css.map */

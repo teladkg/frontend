@@ -16,7 +16,8 @@ import Chip from '@material-ui/core/Chip';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { load } from '@2gis/mapgl';
+import { GoogleMap, Marker, useLoadScript, InfoWindow } from '@react-google-maps/api'
+import Geocode from "react-geocode";
 
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -32,32 +33,19 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+
 
 const Doctor = () => {
 
-  // useEffect(() => {
-  //   let map;
-  //   load().then((mapglAPI) => {
-  //       // container — id of the div element in your html
-  //       map = new mapglAPI.Map('map-container-doctor', {
-  //           center: [74.59968, 42.85888],
-  //           zoom: 13,
-  //           key: 'ca6b71bc-b872-45c6-bec0-ebb977a1eaa4',
-  //       });
-  //   });
-
-  //   // Destroy the map on unmounted
-  //   return () => map && map.destroy();
-  // }, []);
-  
-  /* FOR MAP */
-  const MapWrapper = React.memo(
-    () => {
-        return <div id="map-container-doctor" style={{ width: '100%', height: '100%' }}></div>;
-    },
-    () => true,
-  );
-  const [mapInstance, setMapInstance] = useState();
+  /* GOOGLE MAPS */
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "AIzaSyCLhoRTvmMAP14kkJuL1BW9K03HuLpBytU"
+  })
+  Geocode.setApiKey("AIzaSyCLhoRTvmMAP14kkJuL1BW9K03HuLpBytU");
+  Geocode.setLanguage("ru");
+  Geocode.setRegion("ky-KG");
+  Geocode.enableDebug();
 
 
   /* FOR DOCTORS SHOW MORE BUTTON */
@@ -109,10 +97,6 @@ const Doctor = () => {
       <Header />
 
       <section className="doctor_page">
-
-        {/* <div style={{ width: '40%', height: '500px' }}>
-          <MapWrapper />
-        </div> */}
 
         <Breadcrumbs aria-label="breadcrumb">
           <LinkMaterial color="inherit" onClick={handleClick}>
@@ -203,10 +187,14 @@ const Doctor = () => {
                   </div>                 
                 </TabPanel>
                 <TabPanel value={value} index={1}>                  
-                  {/* <div style={{ width: '100%', height: '500px' }}>
-                    <MapWrapper />
-                  </div> */}
-                  Map
+                  <div id="doctor_page_tabs_map-container">
+                    <GoogleMap
+                      id="map"
+                      center={{lat: 42.867695, lng: 74.610897}}
+                      zoom={12}
+                    >
+                    </GoogleMap>
+                  </div>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                   <div className="doctor_page_tabs_reception">
@@ -540,6 +528,8 @@ const Doctor = () => {
             </button>
           </div>
         </div>
+
+        <ScrollUpButton ShowAtPosition={350}/>
 
       </section>
 

@@ -94,16 +94,24 @@
   margin-bottom: 30px;
 }
 
-.login_page .login_page_container form .MuiFormLabel-root, .login_page .login_page_container form .MuiInputBase-input, .login_page .login_page_container form .MuiIconButton-root {
-  color: #2B2B2B;
+.login_page .login_page_container form .MuiFormLabel-root {
+  color: #BDBDBD;
 }
 
 .login_page .login_page_container form .MuiOutlinedInput-notchedOutline, .login_page .login_page_container form .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-  border-color: #C4C4C4;
+  border-color: #BDBDBD;
 }
 
 .login_page .login_page_container form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #00AFCA;
+}
+
+.login_page .login_page_container form .MuiFormLabel-root.Mui-focused {
+  color: #00AFCA;
+}
+
+.login_page .login_page_container form .MuiIconButton-root {
+  color: #BDBDBD;
 }
 
 .login_page .login_page_container form p {
