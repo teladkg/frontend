@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+
+import { connect } from 'react-redux';
+import { userActions } from '../../redux/auth/_actions'
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -11,7 +15,21 @@ import TextField from '@material-ui/core/TextField';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import LinkMaterial from '@material-ui/core/Link';
 
-const Registration = () => {
+const Registration = (props) => {
+
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  });
+
+
+  const { register, handleSubmit } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+    props.registration(data);
+    alert("Пользователь успешно создан");
+    props.history.push('/');
+  };
+
 
   const classes = useStyles();
 
@@ -37,16 +55,16 @@ const Registration = () => {
 
         <div className="registration_page_container">
           <h1>Регистрация</h1>
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="outlined-basic" label="Фамилия" variant="outlined" />
-            <TextField id="outlined-basic" label="Имя" variant="outlined" />
-            <TextField id="outlined-basic" label="Email" variant="outlined" />
-            <TextField id="outlined-basic" label="Пароль" variant="outlined" />
+          <form onSubmit={handleSubmit(onSubmit)} className={classes.root} noValidate autoComplete="off">
+            <TextField type="text" id="outlined-lastname" label="Фамилия" variant="outlined" name="lastname" inputRef={register({required: true, maxLength: 100})}/>
+            <TextField type="text" id="outlined-firstname" label="Имя" variant="outlined" name="firstname" inputRef={register({required: true, maxLength: 80})}/>
+            {/* <TextField type="text" id="outlined-patronymic" label="Отчество" variant="outlined" name="patronymic" inputRef={register({maxLength: 100})}/> */}
             <button id="registration_page_attachbutton">Прикрепить документ</button>
             <p>*Загрузите скан или фото документа профильный диплом, 
             свидетельство или лицензию на оказываемые услуги</p>
-            <button id="registration_page_button">Зарегистрироваться</button>
+            <button  type="submit" id="registration_page_button">Зарегистрироваться</button>
           </form>
+
           <Link to="/login"><button id="registration_page_login_button">Войти</button></Link>
         </div>
       
@@ -57,7 +75,19 @@ const Registration = () => {
   )
 }
 
-export default Registration;
+
+const mapStateToProps = state => {
+  const { registering, registered } = state.registration;
+  return { registering, registered }
+}
+
+
+const mapDispatchToProps = {
+  registration: userActions.registration,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
 
 
 /* FOR BREADCRUMBS */

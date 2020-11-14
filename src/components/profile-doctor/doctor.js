@@ -38,6 +38,11 @@ import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const Doctor = () => {
 
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  });
+  
+
   /* GOOGLE MAPS */
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCLhoRTvmMAP14kkJuL1BW9K03HuLpBytU"

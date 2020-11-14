@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from '../header/header';
@@ -30,6 +30,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const Search = (props) => {
+
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  });
 
 
   /* FOR AUTOCOMPLETE GROUP */

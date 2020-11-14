@@ -19,6 +19,10 @@ import './map.css';
 
 const Map = () => {
 
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  });
+
 
   /* FOR AUTOCOMPLETE GROUP */
   const search_options = top100Films.map((option) => {

@@ -42,7 +42,26 @@
       font-size: 35px;
       color: #2B2B2B;
     }
-
+    #status_title {
+      font-family: 'Roboto', sans-serif;
+      font-size: 25px;
+      color: #2B2B2B;
+    }
+    .MuiFormGroup-root {
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-between;
+      margin: 30px 0;
+    }
+    .MuiRadio-colorSecondary.Mui-checked {
+      color: #00AFCA; 
+    }
+    .MuiRadio-colorSecondary.Mui-checked:hover {
+      background-color: #00afca18;
+    }
+    .MuiIconButton-colorSecondary:hover {
+      background-color: #00afca18;
+    }
     form {
       width: 35%;
       display: flex;

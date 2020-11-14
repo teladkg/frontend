@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from '../header/header';
@@ -14,6 +14,10 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const Specialties = () => {
+
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  });
 
 
   /* FOR AUTOCOMPLETE GROUP */

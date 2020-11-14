@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Footer from '../footer/footer';
@@ -21,6 +21,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const MainPage = () => {
+
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  });
+
 
   /* FOR AUTOCOMPLETE */
   const search_options = top100Films.map((option) => {

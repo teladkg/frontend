@@ -1,4 +1,4 @@
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import Header from '../header/header';
@@ -17,6 +17,10 @@ import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 const ClinicsSearch = (props) => {
 
+  useEffect(() => {
+    // window.scrollTo(0, 0)
+  });
+  
 
   /* FOR AUTOCOMPLETE GROUP */
   const search_options = top100Films.map((option) => {
