@@ -63,6 +63,37 @@
   color: #2B2B2B;
 }
 
+.phone-auth_page .phone-auth_page_container #status_title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  color: #2B2B2B;
+}
+
+.phone-auth_page .phone-auth_page_container .MuiFormGroup-root {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 30px 0;
+}
+
+.phone-auth_page .phone-auth_page_container .MuiRadio-colorSecondary.Mui-checked {
+  color: #00AFCA;
+}
+
+.phone-auth_page .phone-auth_page_container .MuiRadio-colorSecondary.Mui-checked:hover {
+  background-color: #00afca18;
+}
+
+.phone-auth_page .phone-auth_page_container .MuiIconButton-colorSecondary:hover {
+  background-color: #00afca18;
+}
+
 .phone-auth_page .phone-auth_page_container form {
   width: 35%;
   display: -webkit-box;
@@ -158,18 +189,18 @@
   background-color: #00AFCA;
 }
 
-.phone-auth_page .phone-auth_page_container form #phone-auth_page_button :active:hover {
-  cursor: pointer;
-  color: #00AFCA;
-  background-color: transparent;
-  -webkit-transition: .3s all ease-in-out;
-  transition: .3s all ease-in-out;
-}
-
 .phone-auth_page .phone-auth_page_container form #phone-auth_page_button:disabled {
   color: #828282;
   background-color: transparent;
   border-color: #828282;
+}
+
+.phone-auth_page .phone-auth_page_container form #phone-auth_page_button:hover:not([disabled]) {
+  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #00c8e7;
+  -webkit-transition: .3s all ease-in-out;
+  transition: .3s all ease-in-out;
 }
 
 .phone-auth_page .phone-auth_page_container #verificationform {

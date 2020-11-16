@@ -23,73 +23,20 @@ const ValidateOtp = (props) => {
 
   useEffect(() => {
     // window.scrollTo(0, 0)
-    firebase.auth().currentUser.getIdToken()
+    // firebase.auth().currentUser.getIdToken()
   });
 
 
-  /* FOR PHONE INPUT */
-  const [number, setNumber] = useState('');
-  const handleNumber = (e) => {
-    setNumber(e.target.value)
-  }
   /* FOR OTP INPUT */
   const [otp, setOtp] = useState('');
   const handleOtp = (e) => {
     setOtp(e.target.value);
+    console.log(otp);
   }
 
 
   /* SOME STYLES */
   const classes = useStyles();
-
-
-  /* FOR RECAPTCHA */
-//   const setUpRecaptcha = () => {
-//     window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-//       'size': 'invisible',
-//       'callback': function(response) {
-//         console.log("Captcha Resolved");
-//         onSignInSubmit();
-//       },
-//       defaultCountry: "KGZ"
-//     }
-//     );
-//   }
-
-
-//   /* FOR FORM SUBMIT */
-//   const onSignInSubmit = (e) => {
-//     e.preventDefault();
-//     setUpRecaptcha();
-//     let phoneNumber = number;
-//     let appVerifier = window.recaptchaVerifier;
-//     firebase
-//       .auth()
-//       .signInWithPhoneNumber(phoneNumber, appVerifier)
-//       .then(function (confirmationResult) {
-//         // SMS sent. Prompt user to type the code from the message, then sign the
-//         // user in with confirmationResult.confirm(code).
-//         window.confirmationResult = confirmationResult;
-//         alert("OTP is SENT!")
-
-//         // let code = window.prompt("Enter OTP");
-//         // confirmationResult
-//         //   .confirm(code)
-//         //   .then(function (result) {
-//         //     // User signed in successfully.
-//         //     let user = result.user;
-//         //     // ...
-//         //     console.log("User is signed in");
-//         //   }).catch(function (error) {
-//         //   // User couldn't sign in (bad verification code?)
-//         //   // ...
-//         //   });
-//       })
-//       .catch(function (error) {
-//         // Error; SMS not sent
-//         // ...
-//       });
-//   }
 
 
   /* FOR OTP VERIFICATION */
@@ -100,42 +47,53 @@ const ValidateOtp = (props) => {
     // console.log(codee);
     otpConfirm
       .confirm(otpInput)
-      .then(function (result) {
+      .then((result) => {
         // User signed in successfully.
-        alert("Пользователь успешно вошел в систему!")
+        alert("Код подтвержден!")
         // console.log("Result" + result.verificationID);
         let user = result.user;
-        // console.log(firebase.auth().currentUser.uid);
-        // toast.success('OTP Confirmed', {
-        //   position: "top-right",
-        //   autoClose: 5000,
-        //   hideProgressBar: false,
-        //   closeOnClick: true,
-        //   pauseOnHover: true,
-        //   draggable: true,
-        //   progress: undefined,
-        // });
       })
-      .then(function () {
+      .then(() => {
         firebase.auth().currentUser.getIdToken()
         .then((idtoken) => {
           localStorage.setItem('fireToken', idtoken);
+          let clientType = localStorage.getItem('clientType');
+          console.log(clientType);
+          // localStorage.removeItem('userToken');
           props.checkToken(idtoken);
-          console.log(localStorage.getItem('userToken'));
-          console.log(localStorage.getItem('fireToken'));
-          props.history.push('/registration');
+          if (clientType === "client") {
+            if(localStorage.getItem('userToken') === 'false') {
+              props.registrateclient(idtoken);
+              alert('Клиент успешно зарегистрировался в системе');
+              // props.history.push('/');
+            } else {
+              alert('Клиент успешно вошел в систему')
+              // props.history.push('/');
+            }
+          } 
+          
+          else if (clientType === "doctor") {
+            if(localStorage.getItem('userToken') === 'false') {
+              console.log(localStorage.getItem('userToken'));
+              console.log(localStorage.getItem('fireToken'));
+              props.history.push('/registration');
+            }
+            else {
+              alert('Доктор успешно вошел в систему');
+              // props.history.push('/');
+            }            
+          }
         })
         .catch((error) => {
           console.log("Firetoken error")
         });
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
-        // alert("Неправильный код!");
+        alert("Неправильный код!");
       });
   };
 
-  // const { fireToken } = firebase.auth().currentUser.uid;
 
   return (
     <>
@@ -157,36 +115,34 @@ const ValidateOtp = (props) => {
         </Breadcrumbs>
 
         <div className="phone-auth_page_container">
-          <h1>Подтвердить СМС</h1>
-
-          {/* <form onSubmit={onSignInSubmit} className={classes.root} noValidate autoComplete="off">
-            <div id="recaptcha-container"></div>
-            <InputLabel htmlFor="formatted-text-mask-input">Номер телефона</InputLabel>
-            <Input
-              value={number}
-              onChange={handleNumber}
-              name="textmask"
-              id="formatted-text-mask-input"
-              inputComponent={TextMaskCustom}
-            />
-            <button id="phone-auth_page_button">Получить код</button>
-          </form> */}
-
+          <h1>Введите код из смс </h1>
+          <p>Код подтверждения отправлен на указанный Вами номер </p>
+          <h2>+996 777 77 77</h2>
+          <Link to="/phone-auth">Изменить номер</Link>
           <form id="verificationform" onSubmit={onSubmitOtp} className={classes.root} noValidate autoComplete="off">
             <div id="recaptcha-container"></div>
-            {/* <TextField onChange={handleOtp} id="outlined-password" label="Код подтверждения" variant="outlined" /> */}
-            <InputLabel htmlFor="formatted-text-mask-input">СМС</InputLabel>
+            {/* <InputLabel htmlFor="formatted-text-mask-input">СМС</InputLabel>
             <Input
               value={otp}
               onChange={handleOtp}
               name="textmask"
               id="formatted-text-mask-input"  
               inputComponent={TextMaskCustom}
+              placeholder="XXXXXX"
+            /> */}
+            <TextField 
+              value={otp}
+              onChange={handleOtp} 
+              id="outlined-password"
+              label="Код подтверждения"
+              variant="outlined"   
+              inputProps={{ minLength:6, maxLength:6 }}
+              placeholder="XXXXXX"
             />
-            <button id="phone-auth_page_button1">Подтвердить</button>
+            <button disabled={otp.length<6} id="phone-auth_page_button">Подтвердить</button>
           </form>
 
-          <Link to="/registration"><button id="phone-auth_page_registration_button">Зарегистрироваться</button></Link>
+          <Link to="/phone-auth"><button id="phone-auth_page_registration_button">СМС не пришло</button></Link>
         </div>
 
       </section>
@@ -198,11 +154,14 @@ const ValidateOtp = (props) => {
 
 const mapStateToProps = state => {
   const { checking, checked } = state.checkToken;
-  return { checking, checked }
+  const { registering, registered } = state.registrateclient;
+  return { checking, checked, registering, registered }
 }
 
 const mapDispatchToProps = {
-  checkToken: userActions.checkToken
+  checkToken: userActions.checkToken,
+  registrateclient: userActions.registrateclient
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ValidateOtp);
@@ -225,7 +184,7 @@ function TextMaskCustom(props) {
         inputRef(ref ? ref.inputElement : null);
       }}
       mask={[/\d/, /\d/, /\d/, /\d/, /\d/, /\d/]}
-      // placeholderChar={'_'}
+      placeholderChar={'_'}
       showMask
     />
   );

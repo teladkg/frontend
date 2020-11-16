@@ -26,7 +26,7 @@ const Registration = (props) => {
   const onSubmit = data => {
     console.log(data);
     props.registration(data);
-    alert("Пользователь успешно создан");
+    alert("Ваш запрос отправлен администратору сайта. Одобрение будет Вам отправлено на почту в течении х дней");
     props.history.push('/');
   };
 

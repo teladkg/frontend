@@ -8,13 +8,17 @@ import Footer from '../footer/footer';
 import './phoneAuth.css';
 
 import { makeStyles } from '@material-ui/core/styles';
-// import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import LinkMaterial from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 const PhoneAuth = (props) => {
 
@@ -24,8 +28,21 @@ const PhoneAuth = (props) => {
   });
 
 
+  /* FOR RADIO BUTTONS */
+  const [value, setValue] = React.useState('doctor');
+  const handleChange = (event) => {
+    setValue(event.target.value);
+    localStorage.setItem('clientType', value);
+    // localStorage.removeItem('fireToken');
+    // localStorage.removeItem('user');
+    // localStorage.removeItem('userToken');
+    console.log(localStorage);
+    console.log(value);
+  };
+
+
   /* FOR PHONE INPUT */
-  const [number, setNumber] = useState('');
+  const [number, setNumber] = useState('+996');
   const handleNumber = (e) => {
     setNumber(e.target.value);
     console.log(number);
@@ -64,8 +81,8 @@ const PhoneAuth = (props) => {
         // SMS sent. Prompt user to type the code from the message, then sign the
         // user in with confirmationResult.confirm(code).
         window.confirmationResult = confirmationResult;
-        alert("СМС ОТПРАВЛЕНО!")
-        props.history.push('/validate-otp')
+        alert("СМС ОТПРАВЛЕНО!");
+        props.history.push('/validate-otp');
 
         // let code = window.prompt("Enter OTP");
         // confirmationResult
@@ -102,16 +119,22 @@ const PhoneAuth = (props) => {
             onClick={handleClick}
             aria-current="page"
           >
-            <Link id="phone-auth_page_breadcrumb_active" to="/phone-auth">Регистрация через телефон</Link>
+            <Link id="phone-auth_page_breadcrumb_active" to="/phone-auth">Войти</Link>
           </LinkMaterial>
         </Breadcrumbs>
 
         <div className="phone-auth_page_container">
-          <h1>Войти через телефон</h1>
-
+          <h1>Войти</h1>
+          <p id="status_title">Ваш статус на сайте:</p>
+          <FormControl component="fieldset">
+            <RadioGroup aria-label="client_type" name="client_type1" value={value} onChange={handleChange}>
+              <FormControlLabel value="doctor" control={<Radio />} label="Гость" />
+              <FormControlLabel value="client" control={<Radio />} label="Врач" />
+            </RadioGroup>
+          </FormControl>
           <form onSubmit={onSignInSubmit} className={classes.root} noValidate autoComplete="off">
             <div id="recaptcha-container"></div>
-            <InputLabel htmlFor="formatted-text-mask-input">Номер телефона</InputLabel>
+            {/* <InputLabel htmlFor="formatted-text-mask-input">Номер телефона</InputLabel>
             <Input
               placeholder="Enter your phone number"
               value={number}
@@ -119,11 +142,20 @@ const PhoneAuth = (props) => {
               name="textmask"
               id="formatted-text-mask-input"
               inputComponent={TextMaskCustom}
-              custo
+              
+            /> */}
+            <TextField 
+              value={number}
+              onChange={handleNumber}
+              id="outlined-phone" 
+              label="Номер" 
+              variant="outlined" 
+              inputProps={{ maxLength: 13 }}
+              placeholder="+996(xxx)xxx-xxx"
             />
-            <button disabled={number.length<15} id="phone-auth_page_button">Получить код</button>
+            <button disabled={number.length<13} id="phone-auth_page_button">Войти</button>
           </form>
-          <Link to="/registration"><button id="phone-auth_page_registration_button">Зарегистрироваться</button></Link>
+          {/* <Link to="/registration"><button id="phone-auth_page_registration_button">Зарегистрироваться</button></Link> */}
         </div>
 
       </section>

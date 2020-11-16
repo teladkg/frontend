@@ -4,7 +4,8 @@ import { alertActions } from './';
 
 export const userActions = {
     checkToken,
-    registration
+    registration,
+    registrateclient
 };
 
 
@@ -48,7 +49,30 @@ function registration(data) {
       );
   };
     
-  function request(data) { return { type: userConstants.REGISTER_REQUEST, data } }
-  function success(data) { return { type: userConstants.REGISTER_SUCCESS, data } }
-  function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+  function request(data) { return { type: userConstants.DOCTOR_REGISTER_REQUEST, data } }
+  function success(data) { return { type: userConstants.DOCTOR_REGISTER_SUCCESS, data } }
+  function failure(error) { return { type: userConstants.DOCTOR_REGISTER_FAILURE, error } }
+}
+
+
+function registrateclient(data) {
+  return dispatch => {
+    dispatch(request(data));
+
+    userService.registrateclient(data)
+      .then(
+        data => { 
+          dispatch(success(data));
+          dispatch(alertActions.success('Client registered successfully'));
+        },
+        error => {
+          dispatch(failure(error));
+          dispatch(alertActions.error(error));
+        }
+      );
+  };
+    
+  function request(data) { return { type: userConstants.CLIENT_REGISTER_REQUEST, data } }
+  function success(data) { return { type: userConstants.CLIENT_REGISTER_SUCCESS, data } }
+  function failure(error) { return { type: userConstants.CLIENT_REGISTER_FAILURE, error } }
 }
