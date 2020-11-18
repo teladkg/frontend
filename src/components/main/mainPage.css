@@ -148,8 +148,8 @@
   height: 100%;
   padding: auto 36px;
   color: #fff;
-  background: #00AFCA;
-  border: 1px solid #00AFCA;
+  background: #0059DE;
+  border: 2px solid #0059DE;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
@@ -160,7 +160,7 @@
 .search .search_group #search_button:hover {
   cursor: pointer;
   color: #fff;
-  border-color: #fff;
+  border-color: #0059DE;
   background: transparent;
   -webkit-transition: all .3s ease-in-out;
   transition: all .3s ease-in-out;

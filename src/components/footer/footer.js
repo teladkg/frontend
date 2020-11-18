@@ -33,9 +33,9 @@ const Footer = () => {
           <div className={styles.footer_third_col}>
             <p id={styles.footer_third_col_title}>Врачу</p>
             <ul className={styles.third_col_links}>
-              <Link to="/login"><li>Личный кабинет</li></Link>
-              <Link to="/registration"><li>Регистрация</li></Link>
-              <Link to="/login"><li>Войти</li></Link>
+              {localStorage.getItem('userToken') ? <li><Link to="/pc-doctor">Мой кабинет</Link></li> : ''}
+              <Link to="/phone-auth"><li>Регистрация</li></Link>
+              <Link to="/phone-auth"><li>Войти</li></Link>
             </ul>
           </div>
 

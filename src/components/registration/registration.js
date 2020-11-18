@@ -65,7 +65,7 @@ const Registration = (props) => {
             <button  type="submit" id="registration_page_button">Зарегистрироваться</button>
           </form>
 
-          <Link to="/login"><button id="registration_page_login_button">Войти</button></Link>
+          {/* <Link to="/login"><button id="registration_page_login_button">Войти</button></Link> */}
         </div>
       
       </section>

@@ -58,29 +58,33 @@ const ValidateOtp = (props) => {
         .then((idtoken) => {
           localStorage.setItem('fireToken', idtoken);
           let clientType = localStorage.getItem('clientType');
+          
           console.log(clientType);
           // localStorage.removeItem('userToken');
           props.checkToken(idtoken);
-          if (clientType === "client") {
-            if(localStorage.getItem('userToken') === 'false') {
+          
+          let userToken = localStorage.getItem('userToken');
+
+          if (userToken && clientType === "client") {
+            if(userToken === 'false') {
               props.registrateclient(idtoken);
               alert('Клиент успешно зарегистрировался в системе');
-              // props.history.push('/');
+              props.history.push('/');
             } else {
-              alert('Клиент успешно вошел в систему')
-              // props.history.push('/');
+              alert('Клиент успешно вошел в систему');
+              props.history.push('/');
             }
           } 
           
-          else if (clientType === "doctor") {
-            if(localStorage.getItem('userToken') === 'false') {
-              console.log(localStorage.getItem('userToken'));
-              console.log(localStorage.getItem('fireToken'));
+          else if (userToken && clientType === "doctor") {
+            if(userToken === 'false') {
+              // console.log(localStorage.getItem('userToken'));
+              // console.log(localStorage.getItem('fireToken'));
               props.history.push('/registration');
             }
             else {
               alert('Доктор успешно вошел в систему');
-              // props.history.push('/');
+              props.history.push('/');
             }            
           }
         })
@@ -161,7 +165,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   checkToken: userActions.checkToken,
   registrateclient: userActions.registrateclient
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ValidateOtp);

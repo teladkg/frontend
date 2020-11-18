@@ -43,10 +43,11 @@ const registrateclient = async(data) => {
 }
 
 
-// function logout() {
-//     // remove user from local storage to log user out
-//     localStorage.removeItem('user');
-// }
+const logout = () => {
+    // remove user from local storage to log user out
+    localStorage.removeItem('fireToken');
+    localStorage.removeItem('userToken');
+}
 
 
 // function handleResponse(response) {
@@ -70,5 +71,6 @@ const registrateclient = async(data) => {
 export const userService = {
     checkToken,
     registration,
-    registrateclient
+    registrateclient,
+    logout
 };

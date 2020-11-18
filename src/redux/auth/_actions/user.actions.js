@@ -3,9 +3,10 @@ import { userService } from '../_services/user.service';
 import { alertActions } from './';
 
 export const userActions = {
-    checkToken,
-    registration,
-    registrateclient
+  checkToken,
+  registration,
+  registrateclient,
+  logout
 };
 
 
@@ -75,4 +76,10 @@ function registrateclient(data) {
   function request(data) { return { type: userConstants.CLIENT_REGISTER_REQUEST, data } }
   function success(data) { return { type: userConstants.CLIENT_REGISTER_SUCCESS, data } }
   function failure(error) { return { type: userConstants.CLIENT_REGISTER_FAILURE, error } }
+}
+
+
+function logout() {
+  userService.logout();
+  return { type: userConstants.LOGOUT };
 }

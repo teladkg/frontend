@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { userActions } from '../../../redux/auth/_actions';
 
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
@@ -36,7 +38,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 
-const PCDoctor = () => {
+const PCDoctor = (props) => {
 
   useEffect(() => {
     // window.scrollTo(0, 0)
@@ -95,6 +97,12 @@ const PCDoctor = () => {
     slidesToScroll: 3,
     arrows: false
   };
+
+
+  const handleLogout = () => {
+    userActions.logout();
+    props.history.push('/');
+  }
 
 
   return (
@@ -161,7 +169,8 @@ const PCDoctor = () => {
                     <p>3.5</p>
                   </div>
                 </div>     
-                <button id="doctor_page_doctors_data_button">Позвонить</button>       
+                <button id="doctor_page_doctors_data_button">Позвонить</button>    
+                <button onClick={handleLogout} id="doctor_page_doctors_data_button">Выйти</button>   
               </div>
             </div>
           </div>
@@ -256,6 +265,7 @@ const PCDoctor = () => {
     </>
   )
 }
+
 
 export default PCDoctor;
 

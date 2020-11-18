@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './redux/auth/_helpers/PrivateRoute'
 
 import MainPage from './components/main/mainPage';
 
@@ -65,8 +66,11 @@ function App() {
           component = {ValidateOtp}
         />
 
-        <Route path = "/pc-doctor"
+        {/* <Route path = "/pc-doctor"
           component = {PCDoctor}
+        /> */}
+        <PrivateRoute path="/pc-doctor" 
+          component={PCDoctor} 
         />
         {/* <Route path = "/pc-clinic"
           component = {PCClinic}
