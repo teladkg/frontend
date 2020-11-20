@@ -72,11 +72,32 @@
   color: #fff;
 }
 
-.header .icon_group #icon_group_first {
-  margin-right: 40px;
+.header .icon_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 10%;
 }
 
 .header .icon_group svg:hover {
+  cursor: pointer;
+}
+
+.header .icon_group img {
+  width: 23px;
+  height: 23px;
+}
+
+.header .icon_group #logout-button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.header .icon_group #logout-button:hover {
   cursor: pointer;
 }
 /*# sourceMappingURL=header.module.css.map */

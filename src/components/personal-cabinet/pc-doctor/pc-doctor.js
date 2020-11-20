@@ -10,6 +10,7 @@ import './pc-doctor.css';
 
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import LinkMaterial from '@material-ui/core/Link';
+import TextField from '@material-ui/core/TextField';
 import Collapse from '@material-ui/core/Collapse';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
@@ -38,11 +39,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 
+
 const PCDoctor = (props) => {
 
   useEffect(() => {
     // window.scrollTo(0, 0)
-  });
+    props.getPCDoctor();
+  }, []);
   
 
   /* GOOGLE MAPS */
@@ -104,158 +107,149 @@ const PCDoctor = (props) => {
     props.history.push('/');
   }
 
+  const userData = props.data;
 
   return (
     <>
       <Header />
 
-      <section className="doctor_page">
+      <section className="personal_doctor_page">
 
         <Breadcrumbs aria-label="breadcrumb">
           <LinkMaterial color="inherit" onClick={handleClick}>
-            <Link id="doctor_page_breadcrumb_passive" to="/">Главная</Link>
-          </LinkMaterial>
-          <LinkMaterial color="inherit" onClick={handleClick}>
-            <Link id="doctor_page_breadcrumb_passive" to="/search">Врачи</Link>
+            <Link id="personal_doctor_page_breadcrumb_passive" to="/">Главная</Link>
           </LinkMaterial>
           <LinkMaterial
             color="textPrimary"
             onClick={handleClick}
             aria-current="page"
           >
-            <Link id="doctor_page_breadcrumb_active" to="/doctor">Макеев Макей Макеевич</Link>
+            <Link id="personal_doctor_page_breadcrumb_active" to="/pc-doctor">Мой кабинет</Link>
           </LinkMaterial>
         </Breadcrumbs>
 
-        <div className="doctor_page_main">
-          <div className="doctor_page_main_left">
-            <div id="doctor_page_doctors_data">
-              <img id="doctor_page_doctors_data_image" src={require('../../../content/images/main/image_10.png')} alt="clinic pic"/>
-              <div id="doctor_page_doctors_data_info">
-                <Link to="/doctor"><h3>Макеев Макей Макеевич</h3></Link>
-                <div className="doctor_page_doctors_data_info_chipgroup">
-                  <Chip label="Психолог"/>
-                  <Chip label="Психолог"/>
-                  <Chip label="Психолог"/>
-                  <IconButton
-                    className={clsx(classes.expand, {
-                      [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                  >
-                    <ExpandMoreIcon />
-                  </IconButton>
-                  <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <Chip label="Психолог"/>
-                    <Chip label="Психолог"/>
-                    <Chip label="Психолог"/>
-                  </Collapse>
-                </div>             
-                <p id="doctor_page_doctors_data_info_experience">Стаж: 20 лет</p>
-                <p id="doctor_page_doctors_data_info_address">Городская больница №6, Чуй 127</p>
-                <div id="doctor_page_doctors_data_info_lastblock">
-                  <div id="doctor_page_doctors_data_info_phonegroup">
-                    <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13.2812 23.9375C11.263 23.9375 9.36686 23.4492 7.59277 22.4727L0 25.5L3.02734 17.9072C2.05078 16.1331 1.5625 14.237 1.5625 12.2188C1.5625 10.6237 1.87174 9.10596 2.49023 7.66553C3.10872 6.2251 3.94287 4.97998 4.99268 3.93018C6.04248 2.88037 7.2876 2.04622 8.72803 1.42773C10.1685 0.809245 11.6862 0.5 13.2812 0.5C14.8763 0.5 16.394 0.809245 17.8345 1.42773C19.2749 2.04622 20.52 2.88037 21.5698 3.93018C22.6196 4.97998 23.4538 6.2251 24.0723 7.66553C24.6908 9.10596 25 10.6237 25 12.2188C25 13.8138 24.6908 15.3315 24.0723 16.772C23.4538 18.2124 22.6196 19.4575 21.5698 20.5073C20.52 21.5571 19.2749 22.3913 17.8345 23.0098C16.394 23.6283 14.8763 23.9375 13.2812 23.9375ZM17.1875 14.5625H15.625L14.7461 15.3438C14.0137 15.1484 13.1144 14.5177 12.0483 13.4517C10.9823 12.3856 10.3516 11.4863 10.1562 10.7539L10.9375 9.875V8.3125C10.9375 8.03581 10.8398 7.75911 10.6445 7.48242C10.4492 7.20573 10.2336 7.00635 9.99756 6.88428C9.76156 6.76221 9.59473 6.75 9.49707 6.84766L8.34961 7.99512C7.71484 8.62988 7.62126 9.61865 8.06885 10.9614C8.51644 12.3042 9.37093 13.6063 10.6323 14.8677C11.8937 16.1291 13.1958 16.9836 14.5386 17.4312C15.8813 17.8787 16.8701 17.7852 17.5049 17.1504L18.6523 16.0029C18.75 15.9053 18.7378 15.7384 18.6157 15.5024C18.4937 15.2664 18.2943 15.0508 18.0176 14.8555C17.7409 14.6602 17.4642 14.5625 17.1875 14.5625Z" fill="#18C661"/>
-                    </svg>
-                    <p>+996 777 77 77</p>
+        <h1 id="personal_doctor_page_title">Мой кабинет</h1>
+        {
+          userData && userData.user &&
+          <div className="personal_doctor_page_main">
+            <div className="personal_doctor_page_main_left">
+              <div id="personal_doctor_page_doctors_data">
+                <div className="personal_doctor_page_doctors_data_imagegroup">
+                  <img id="personal_doctor_page_doctors_data_image" src={require('../../../content/images/main/image_10.png')} alt="clinic pic"/>
+                  <div className="personal_doctor_page_doctors_data_image_buttongroup">
+                    <button id="personal_doctor_page_doctors_data_image_deletebutton">
+                      <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.4375 2.3125H5.25C5.35313 2.3125 5.4375 2.22812 5.4375 2.125V2.3125H12.5625V2.125C12.5625 2.22812 12.6469 2.3125 12.75 2.3125H12.5625V4H14.25V2.125C14.25 1.29766 13.5773 0.625 12.75 0.625H5.25C4.42266 0.625 3.75 1.29766 3.75 2.125V4H5.4375V2.3125ZM17.25 4H0.75C0.335156 4 0 4.33516 0 4.75V5.5C0 5.60313 0.084375 5.6875 0.1875 5.6875H1.60312L2.18203 17.9453C2.21953 18.7445 2.88047 19.375 3.67969 19.375H14.3203C15.1219 19.375 15.7805 18.7469 15.818 17.9453L16.3969 5.6875H17.8125C17.9156 5.6875 18 5.60313 18 5.5V4.75C18 4.33516 17.6648 4 17.25 4ZM14.1398 17.6875H3.86016L3.29297 5.6875H14.707L14.1398 17.6875Z" fill="#00AFCA"/>
+                      </svg>
+                    </button>
+                    <button id="personal_doctor_page_doctors_data_image_editbutton">
+                      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.5795 4.54667L17.6662 0.613334C17.4076 0.356044 17.0577 0.211609 16.6929 0.211609C16.3281 0.211609 15.9781 0.356044 15.7196 0.613334L1.84622 14.4667L0.57955 19.9333C0.535854 20.1332 0.537352 20.3402 0.583934 20.5394C0.630516 20.7386 0.721005 20.9249 0.848792 21.0846C0.976578 21.2443 1.13843 21.3735 1.32253 21.4627C1.50663 21.5518 1.70833 21.5988 1.91288 21.6C2.0082 21.6096 2.10424 21.6096 2.19955 21.6L7.72622 20.3333L21.5795 6.49333C21.8368 6.23474 21.9813 5.88479 21.9813 5.52C21.9813 5.15521 21.8368 4.80526 21.5795 4.54667ZM7.05955 19.1333L1.87955 20.22L3.05955 15.14L13.4396 4.8L17.4396 8.8L7.05955 19.1333ZM18.3329 7.83333L14.3329 3.83333L16.6529 1.52667L20.5862 5.52667L18.3329 7.83333Z" fill="#00AFCA"/>
+                      </svg>
+                    </button>
                   </div>
-                  <div id="doctor_page_doctors_data_info_stargroup">
-                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12.003 18.9828C12.3109 18.8065 12.6891 18.8065 12.997 18.9828L18.1996 21.9624C18.9626 22.3994 19.8776 21.7097 19.6676 20.8559L18.3254 15.3975C18.2335 15.0238 18.3642 14.6305 18.6615 14.3861L23.0883 10.748C23.7831 10.1771 23.4299 9.05073 22.5335 8.97868L16.6045 8.50208C16.2401 8.4728 15.9208 8.24707 15.7717 7.91339L13.4129 2.63679C13.0601 1.84758 11.9398 1.84759 11.587 2.63679L9.22835 7.91339C9.07919 8.24707 8.75986 8.4728 8.39553 8.50208L2.46649 8.97868C1.57013 9.05073 1.21695 10.1771 1.91169 10.748L6.33849 14.3861C6.63582 14.6305 6.76653 15.0238 6.67463 15.3975L5.33239 20.8559C5.12242 21.7097 6.03741 22.3994 6.80044 21.9624L12.003 18.9828Z" fill="#F2C94C"/>
-                    </svg>
-                    <p>3.5</p>
-                  </div>
-                </div>     
-                <button id="doctor_page_doctors_data_button">Позвонить</button>    
-                <button onClick={handleLogout} id="doctor_page_doctors_data_button">Выйти</button>   
+                </div>
+                <div id="personal_doctor_page_doctors_data_info">
+                  <TextField value={userData.user.first_name} id="personal_doctor_page_doctors_data_info_lastname" label="Фамилия" variant="outlined" /> 
+                  <TextField value={userData.user.last_name} id="personal_doctor_page_doctors_data_info_firstname" label="Имя" variant="outlined" />
+                  <TextField value={userData.user.patronymic} id="personal_doctor_page_doctors_data_info_patronymic" label="Отчество" variant="outlined" /> 
+                  <div className="personal_doctor_page_doctors_data_info_chipgroup">
+                    <Chip label="Психолог"/>
+                    <Chip label="Психолог"/>
+                    <Chip label="Психолог"/>
+                  </div>                         
+                  <TextField value={'20 лет'} id="personal_doctor_page_doctors_data_info_experience" label="Стаж" variant="outlined" /> 
+                  <TextField value={userData.user.phone} id="personal_doctor_page_doctors_data_info_phone" label="Номер телефона" variant="outlined" /> 
+                  {/* <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>     */}
+                  <button id="personal_doctor_page_doctors_data_editbutton">Редактировать</button>
+                  {/* <button onClick={handleLogout} id="personal_doctor_page_doctors_data_logoutbutton">Выйти</button>    */}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="doctor_page_main_right">
-            <div className="doctor_page_tabs_container">
-              <div className={classes.root}>
-                <AppBar position="static">
-                  <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                    <Tab label="О враче" {...a11yProps(0)} />
-                    <Tab label="Карта" {...a11yProps(1)} />
-                    <Tab label="Прием" {...a11yProps(2)} />
-                  </Tabs>
-                </AppBar>
-                <TabPanel value={value} index={0}>
-                  <div id="doctor_page_tabs_about">
-                    <span>Занимается диагностикой и лечением бронхиальной астмы, 
-                    хронической обструктивной болезни лёгких (ХОБЛ), 
-                    пневмонии, острого и хронического бронхита, апноэ, дыхательной
-                    недостаточности и других болезней дыхательных путей.</span>
-                    <span>Занимается диагностикой и лечением бронхиальной астмы, 
-                    хронической обструктивной болезни лёгких (ХОБЛ), 
-                    пневмонии, острого и хронического бронхита, апноэ, дыхательной
-                    недостаточности и других болезней дыхательных путей.</span>
-                    <span>Занимается диагностикой и лечением бронхиальной астмы, 
-                    хронической обструктивной болезни лёгких (ХОБЛ), 
-                    пневмонии, острого и хронического бронхита, апноэ, дыхательной
-                    недостаточности и других болезней дыхательных путей.</span>
-                  </div>                 
-                </TabPanel>
-                <TabPanel value={value} index={1}>                  
-                  <div id="doctor_page_tabs_map-container">
-                    <GoogleMap
-                      id="map"
-                      center={{lat: 42.867695, lng: 74.610897}}
-                      zoom={12}
-                    >
-                    </GoogleMap>
-                  </div>
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                  <div className="doctor_page_tabs_reception">
-                    <div className="doctor_page_tabs_reception_type">
-                      <p id="doctor_page_tabs_reception_type_title">Тип приема</p>
-                      <div className="doctor_page_tabs_reception_type_cells">
-                        <div id="doctor_page_tabs_reception_type_cells_titles">
-                          <p id="doctor_page_tabs_reception_type_cells_titles_1">В клинике</p>
-                          <p id="doctor_page_tabs_reception_type_cells_titles_2">На дому</p>
-                          <p id="doctor_page_tabs_reception_type_cells_titles_3">Онлайн</p>
+            <div className="personal_doctor_page_main_right">
+              <div className="personal_doctor_page_tabs_container">
+                <div className={classes.root}>
+                  <AppBar position="static">
+                    <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+                      <Tab label="О враче" {...a11yProps(0)} />
+                      <Tab label="Карта" {...a11yProps(1)} />
+                      <Tab label="Прием" {...a11yProps(2)} />
+                    </Tabs>
+                  </AppBar>
+                  <TabPanel value={value} index={0}>
+                    <div id="personal_doctor_page_tabs_about">
+                      <span>Занимается диагностикой и лечением бронхиальной астмы, 
+                      хронической обструктивной болезни лёгких (ХОБЛ), 
+                      пневмонии, острого и хронического бронхита, апноэ, дыхательной
+                      недостаточности и других болезней дыхательных путей.</span>
+                      <span>Занимается диагностикой и лечением бронхиальной астмы, 
+                      хронической обструктивной болезни лёгких (ХОБЛ), 
+                      пневмонии, острого и хронического бронхита, апноэ, дыхательной
+                      недостаточности и других болезней дыхательных путей.</span>
+                      <span>Занимается диагностикой и лечением бронхиальной астмы, 
+                      хронической обструктивной болезни лёгких (ХОБЛ), 
+                      пневмонии, острого и хронического бронхита, апноэ, дыхательной
+                      недостаточности и других болезней дыхательных путей.</span>
+                    </div>                 
+                  </TabPanel>
+                  <TabPanel value={value} index={1}>                  
+                    <div id="personal_doctor_page_tabs_map-container">
+                      <GoogleMap
+                        id="map"
+                        center={{lat: 42.867695, lng: 74.610897}}
+                        zoom={12}
+                      >
+                      </GoogleMap>
+                    </div>
+                  </TabPanel>
+                  <TabPanel value={value} index={2}>
+                    <div className="personal_doctor_page_tabs_reception">
+                      <div className="personal_doctor_page_tabs_reception_type">
+                        <p id="personal_doctor_page_tabs_reception_type_title">Тип приема</p>
+                        <div className="personal_doctor_page_tabs_reception_type_cells">
+                          <div id="personal_doctor_page_tabs_reception_type_cells_titles">
+                            <p id="personal_doctor_page_tabs_reception_type_cells_titles_1">В клинике</p>
+                            <p id="personal_doctor_page_tabs_reception_type_cells_titles_2">На дому</p>
+                            <p id="personal_doctor_page_tabs_reception_type_cells_titles_3">Онлайн</p>
+                          </div>
+                          <div id="personal_doctor_page_tabs_reception_type_cells_cost">
+                            <p id="personal_doctor_page_tabs_reception_type_cells_cost_1">500 сом</p>
+                            <p id="personal_doctor_page_tabs_reception_type_cells_cost_2">500 сом</p>
+                            <p id="personal_doctor_page_tabs_reception_type_cells_cost_3">500 сом</p>
+                          </div>
                         </div>
-                        <div id="doctor_page_tabs_reception_type_cells_cost">
-                          <p id="doctor_page_tabs_reception_type_cells_cost_1">500 сом</p>
-                          <p id="doctor_page_tabs_reception_type_cells_cost_2">500 сом</p>
-                          <p id="doctor_page_tabs_reception_type_cells_cost_3">500 сом</p>
+                      </div>
+                      <div className="personal_doctor_page_tabs_reception_schedule">
+                        <p id="personal_doctor_page_tabs_reception_schedule_title">График работы</p>
+                        <div className="personal_doctor_page_tabs_reception_schedule_cells">
+                          <div id="personal_doctor_page_tabs_reception_schedule_cells_titles">
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_3">СР</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_6">СБ</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</p>
+                          </div>
+                          <div id="personal_doctor_page_tabs_reception_schedule_cells_cost">
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_1">В клинике</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_2">В клинике</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_3">В клинике</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_4">В клинике</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_5">В клинике</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_6">В клинике</p>
+                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_7">В клинике</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="doctor_page_tabs_reception_schedule">
-                      <p id="doctor_page_tabs_reception_schedule_title">График работы</p>
-                      <div className="doctor_page_tabs_reception_schedule_cells">
-                        <div id="doctor_page_tabs_reception_schedule_cells_titles">
-                          <p id="doctor_page_tabs_reception_schedule_cells_titles_1">ПН</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_titles_3">СР</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_titles_6">СБ</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_titles_7">ВС</p>
-                        </div>
-                        <div id="doctor_page_tabs_reception_schedule_cells_cost">
-                          <p id="doctor_page_tabs_reception_schedule_cells_cost_1">В клинике</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_cost_2">В клинике</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_cost_3">В клинике</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_cost_4">В клинике</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_cost_5">В клинике</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_cost_6">В клинике</p>
-                          <p id="doctor_page_tabs_reception_schedule_cells_cost_7">В клинике</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </TabPanel>
+                  </TabPanel>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        }
+        
 
         <ScrollUpButton ShowAtPosition={350}/>
 
@@ -267,7 +261,21 @@ const PCDoctor = (props) => {
 }
 
 
-export default PCDoctor;
+const mapStateToProps = state => {
+  const { loggingIn, loggedIn } = state.getPCDoctor;
+  return { 
+    loggingIn, 
+    loggedIn, 
+    data: state.getPCDoctor.data
+  }
+}
+
+const mapDispatchToProps = {
+  getPCDoctor: userActions.getPCDoctor,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PCDoctor);
 
 
 /* FOR TABS */

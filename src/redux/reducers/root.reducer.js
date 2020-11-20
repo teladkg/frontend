@@ -4,6 +4,7 @@ import { combineReducers } from "redux";
 import checkToken from '../auth/_reducers/checkToken.reducer';
 import registration from '../auth/_reducers/registration.reducer';
 import registrateclient from '../auth/_reducers/registrateclient.reducer';
+import getPCDoctor from '../auth/_reducers/getPCDoctor.reducer';
 
 import getDoctors from '../reducers/getDoctors.reducer';
 
@@ -12,6 +13,7 @@ export const rootReducer = combineReducers({
     checkToken: checkToken,
     registration: registration,
     registrateclient: registrateclient,
-
-    getDoctors,
+    getPCDoctor: getPCDoctor,
+    
+    getDoctors: getDoctors,
 })

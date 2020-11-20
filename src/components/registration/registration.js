@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { connect } from 'react-redux';
@@ -20,6 +20,7 @@ const Registration = (props) => {
   useEffect(() => {
     // window.scrollTo(0, 0)
   });
+  let history = useHistory();
 
 
   const { register, handleSubmit } = useForm();
@@ -27,7 +28,7 @@ const Registration = (props) => {
     console.log(data);
     props.registration(data);
     alert("Ваш запрос отправлен администратору сайта. Одобрение будет Вам отправлено на почту в течении х дней");
-    props.history.push('/');
+    history.push('/');
   };
 
 

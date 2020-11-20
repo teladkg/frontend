@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import firebase from '../../redux/auth/_services/firebase';
 
 import Header from '../header/header';
@@ -26,6 +26,7 @@ const PhoneAuth = (props) => {
     // window.scrollTo(0, 0)
     // console.log(props);
   });
+  let history = useHistory();
 
 
   /* FOR RADIO BUTTONS */
@@ -36,6 +37,8 @@ const PhoneAuth = (props) => {
     // localStorage.removeItem('fireToken');
     // localStorage.removeItem('user');
     // localStorage.removeItem('userToken');
+    let token = localStorage.getItem('userToken');
+    console.log({'Authorization' : 'Token ' + token});
     console.log(localStorage);
     console.log(value);
   };
@@ -82,7 +85,7 @@ const PhoneAuth = (props) => {
         // user in with confirmationResult.confirm(code).
         window.confirmationResult = confirmationResult;
         alert("СМС ОТПРАВЛЕНО!");
-        props.history.push('/validate-otp');
+        history.push('/validate-otp');
 
         // let code = window.prompt("Enter OTP");
         // confirmationResult
@@ -97,9 +100,11 @@ const PhoneAuth = (props) => {
         //   // ...
         //   });
       })
-      .catch(function (error) {
+      .catch((error) => {
         // Error; SMS not sent
         // ...
+        console.error(error);
+        alert('Попробуйте заново');
       });
   }
 

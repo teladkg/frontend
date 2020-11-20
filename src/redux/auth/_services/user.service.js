@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from '../_helpers/auth-header';
 
 
 const checkToken = async(idtoken) => { 
@@ -43,6 +44,17 @@ const registrateclient = async(data) => {
 }
 
 
+// const getPCDoctor = async() => {
+//     let token = localStorage.getItem('userToken');
+//     const data = await axios.get('http://167.172.109.15:8000/userinfo/editdoctor/', {
+//         headers: {
+//             "Authorization": "Token " + token
+//         }
+//     }).then((res)=> res.data)
+//     console.log(data);
+// }
+
+
 const logout = () => {
     // remove user from local storage to log user out
     localStorage.removeItem('fireToken');
@@ -72,5 +84,6 @@ export const userService = {
     checkToken,
     registration,
     registrateclient,
-    logout
+    logout,
+    // getPCDoctor
 };

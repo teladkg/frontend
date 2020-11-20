@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import firebase from '../../redux/auth/_services/firebase';
 import { connect } from 'react-redux';
 import { userActions } from '../../redux/auth/_actions'
@@ -25,6 +25,7 @@ const ValidateOtp = (props) => {
     // window.scrollTo(0, 0)
     // firebase.auth().currentUser.getIdToken()
   });
+  let history = useHistory();
 
 
   /* FOR OTP INPUT */
@@ -51,7 +52,8 @@ const ValidateOtp = (props) => {
         // User signed in successfully.
         alert("Код подтвержден!")
         // console.log("Result" + result.verificationID);
-        let user = result.user;
+        // let user = result.user;
+        // console.log(user);
       })
       .then(() => {
         firebase.auth().currentUser.getIdToken()
@@ -63,40 +65,46 @@ const ValidateOtp = (props) => {
           // localStorage.removeItem('userToken');
           props.checkToken(idtoken);
           
-          let userToken = localStorage.getItem('userToken');
-
-          if (userToken && clientType === "client") {
-            if(userToken === 'false') {
-              props.registrateclient(idtoken);
-              alert('Клиент успешно зарегистрировался в системе');
-              props.history.push('/');
-            } else {
-              alert('Клиент успешно вошел в систему');
-              props.history.push('/');
+          if(localStorage.getItem('userToken') && props.checkToken.checked) {
+            let userToken = localStorage.getItem('userToken');
+            if (userToken && clientType === "client") {
+              if(userToken === 'false') {
+                props.registrateclient(idtoken);
+                alert('Клиент успешно зарегистрировался в системе');
+                history.push('/');
+              } else {
+                alert('Клиент успешно вошел в систему');
+                history.push('/');
+              }
+            } 
+            
+            else if (userToken && clientType === "doctor") {
+              if(userToken === 'false') {
+                // console.log(localStorage.getItem('userToken'));
+                // console.log(localStorage.getItem('fireToken'));
+                history.push('/registration');
+              }
+              else {
+                alert('Доктор успешно вошел в систему');
+                history.push('/pc-doctorww');
+              }            
             }
-          } 
-          
-          else if (userToken && clientType === "doctor") {
-            if(userToken === 'false') {
-              // console.log(localStorage.getItem('userToken'));
-              // console.log(localStorage.getItem('fireToken'));
-              props.history.push('/registration');
-            }
-            else {
-              alert('Доктор успешно вошел в систему');
-              props.history.push('/');
-            }            
           }
         })
         .catch((error) => {
-          console.log("Firetoken error")
+          console.error(error);
+          alert("Неправильный FireToken");
         });
       })
       .catch((error) => {
-        console.log(error);
-        alert("Неправильный код!");
-      });
-  };
+        console.error(error);
+        alert("Не получилось получить данные с Firebase");
+      })
+    .catch((error) => {
+      console.error(error);
+      alert("Неправильный код!");
+    })
+  }
 
 
   return (

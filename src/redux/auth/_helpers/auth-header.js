@@ -1,10 +1,12 @@
-export function authHeader() {
+function authHeader() {
     // return authorization header with jwt token
-    let token = JSON.parse(localStorage.getItem('userToken'));
+    let token = localStorage.getItem('userToken');
 
     if (token) {
-        return { 'Authorization': 'Token ' + token };
+        return { 'Authorization': 'Token ' + token, };
     } else {
         return {};
     }
 }
+
+export default authHeader;

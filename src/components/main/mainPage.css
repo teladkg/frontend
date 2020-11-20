@@ -89,11 +89,32 @@
   color: #fff;
 }
 
-.search .header .icon_group #icon_group_first {
-  margin-right: 40px;
+.search .header .icon_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 10%;
 }
 
 .search .header .icon_group svg:hover {
+  cursor: pointer;
+}
+
+.search .header .icon_group img {
+  width: 23px;
+  height: 23px;
+}
+
+.search .header .icon_group #logout-button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.search .header .icon_group #logout-button:hover {
   cursor: pointer;
 }
 

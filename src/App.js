@@ -56,9 +56,9 @@ function App() {
         <Route path = "/registration"
           component = {Registration}
         />
-        <Route path = "/login"
+        {/* <Route path = "/login"
           component = {Login}
-        />
+        /> */}
         <Route path = "/phone-auth"
           component = {PhoneAuth}
         />

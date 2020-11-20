@@ -1,12 +1,16 @@
+import { responsiveFontSizes } from '@material-ui/core';
 import { userConstants } from '../_constants';
 import { userService } from '../_services/user.service';
 import { alertActions } from './';
+import axios from 'axios'
+import authHeader from '../_helpers/auth-header';
 
 export const userActions = {
   checkToken,
   registration,
   registrateclient,
-  logout
+  logout,
+  getPCDoctor
 };
 
 
@@ -83,3 +87,24 @@ function logout() {
   userService.logout();
   return { type: userConstants.LOGOUT };
 }
+
+
+function getPCDoctor() {
+  return async dispatch => {
+    dispatch(request());
+
+      // let token = localStorage.getItem('userToken');
+      await axios.get('http://167.172.109.15:8000/userinfo/editdoctor/', {
+        headers: authHeader()
+      })
+      .then(
+        res => dispatch(success(res.data)),
+        error => dispatch(failure(error))
+      );
+  };
+
+  function request() { return { type: userConstants.GET_PCDOCTOR_REQUEST } }
+  function success(data) { return { type: userConstants.GET_PCDOCTOR_SUCCESS, data } }
+  function failure(error) { return { type: userConstants.GET_PCDOCTOR_FAILURE, error } }
+}
+

@@ -46,11 +46,23 @@
   }
 
   .icon_group {
-    #icon_group_first {
-      margin-right: 40px;
-    }
+    display: flex;
+    justify-content: space-between;
+    width: 10%;
     svg:hover {
       cursor: pointer;
+    }
+    img {
+      width: 23px;
+      height: 23px;
+    }
+    #logout-button {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

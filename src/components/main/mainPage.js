@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { userActions } from '../../redux/auth/_actions';
 
 import Footer from '../footer/footer';
 
@@ -20,11 +21,13 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
-const MainPage = () => {
+const MainPage = (props) => {
 
   useEffect(() => {
     // window.scrollTo(0, 0)
   });
+
+  let history = useHistory();
 
 
   /* FOR AUTOCOMPLETE */
@@ -111,6 +114,12 @@ const MainPage = () => {
   };
 
 
+  const handleLogout = () => {
+    userActions.logout();
+    history.push('/');
+  }
+
+
   return (
     <>
       <section className="search">
@@ -148,6 +157,11 @@ const MainPage = () => {
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M20.25 22C20.25 22 22 22 22 20.25C22 18.5 20.25 13.25 11.5 13.25C2.75 13.25 1 18.5 1 20.25C1 22 2.75 22 2.75 22H20.25ZM2.7885 20.25H20.2115C20.2197 20.249 20.2279 20.2479 20.236 20.2465L20.25 20.243C20.2483 19.8125 19.9805 18.5175 18.794 17.331C17.653 16.19 15.5057 15 11.5 15C7.4925 15 5.347 16.19 4.206 17.331C3.0195 18.5175 2.7535 19.8125 2.75 20.243C2.76281 20.2455 2.77564 20.2478 2.7885 20.25ZM11.5 9.75C12.4283 9.75 13.3185 9.38125 13.9749 8.72487C14.6313 8.0685 15 7.17826 15 6.25C15 5.32174 14.6313 4.4315 13.9749 3.77513C13.3185 3.11875 12.4283 2.75 11.5 2.75C10.5717 2.75 9.6815 3.11875 9.02513 3.77513C8.36875 4.4315 8 5.32174 8 6.25C8 7.17826 8.36875 8.0685 9.02513 8.72487C9.6815 9.38125 10.5717 9.75 11.5 9.75ZM16.75 6.25C16.75 7.64239 16.1969 8.97774 15.2123 9.96231C14.2277 10.9469 12.8924 11.5 11.5 11.5C10.1076 11.5 8.77226 10.9469 7.78769 9.96231C6.80312 8.97774 6.25 7.64239 6.25 6.25C6.25 4.85761 6.80312 3.52226 7.78769 2.53769C8.77226 1.55312 10.1076 1 11.5 1C12.8924 1 14.2277 1.55312 15.2123 2.53769C16.1969 3.52226 16.75 4.85761 16.75 6.25Z" fill="white"/>
                 </svg>
               </Link>
+              {localStorage.getItem('userToken')
+              ? <button id="logout-button" title="Выйти" onClick={handleLogout}>
+                  <img id="logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/>
+                </button>
+              : '' }
             </div>
           </div>
           

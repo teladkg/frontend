@@ -1,10 +1,11 @@
-.doctor_page {
+.personal_doctor_page {
   width: 100%;
   height: 100%;
   background-color: transparent;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
+
 
   .MuiBreadcrumbs-root {
     padding: 60px 80px 0;
@@ -13,18 +14,27 @@
       font-size: 14px;
       color: #898F97;
     }
-    #doctor_page_breadcrumb_passive {
+    #personal_doctor_page_breadcrumb_passive {
       font-size: 14px;
       color: #898F97;
     }
-    #doctor_page_breadcrumb_active {
+    #personal_doctor_page_breadcrumb_active {
       font-size: 14px;
       color: #00AFCA;
     }
   }
 
 
-  .doctor_page_main {
+  #personal_doctor_page_title {
+    font-weight: bold;
+    font-size: 64px;
+    color: #000000;
+    padding: 0 80px;
+    margin-top: 30px;
+  }
+
+
+  .personal_doctor_page_main {
     width: 100%;
     height: 100%;
     display: flex;
@@ -32,9 +42,9 @@
     justify-content: space-between;
     padding: 0 80px;
     margin-top: 60px;
-    .doctor_page_main_left {
+    .personal_doctor_page_main_left {
       width: 31%;
-      #doctor_page_doctors_data {
+      #personal_doctor_page_doctors_data {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -48,12 +58,41 @@
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
           transition: all .2s ease-in-out
         }
-        #doctor_page_doctors_data_image {
-          width: 100%;
-          margin-bottom: 16px;
-          border-radius: 5px;
+        .personal_doctor_page_doctors_data_imagegroup {
+          position: relative;
+          #personal_doctor_page_doctors_data_image {
+            width: 100%;
+            margin-bottom: 16px;
+            border-radius: 5px;
+            position: relative;
+          }
+          .personal_doctor_page_doctors_data_image_buttongroup {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            right: 5%;
+            top: 75%;
+            button {
+              outline: none;
+              border: none;
+              background-color: #fff;
+              border-radius: 100%;
+              text-align: center;
+              &:hover {
+                cursor: pointer;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+              }
+            }
+            #personal_doctor_page_doctors_data_image_deletebutton {
+              padding: 6px 9px;
+              margin-right: 20px;
+            }
+            #personal_doctor_page_doctors_data_image_editbutton {
+              padding: 7px;
+            }
+          }
         }
-        #doctor_page_doctors_data_info {
+        #personal_doctor_page_doctors_data_info {
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -70,9 +109,32 @@
               transition: all .3s ease-in-out;
             }
           }
-          .doctor_page_doctors_data_info_chipgroup {
+          .MuiFormControl-root {
+            margin-top: 30px;
+          }
+          .MuiFormLabel-root {
+            color: #BDBDBD;
+            margin-bottom: 10px;
+          }
+          .MuiOutlinedInput-notchedOutline, .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+            border-color: #BDBDBD;
+          }
+          .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+            border-color: #00AFCA;
+          }
+          .MuiFormLabel-root.Mui-focused {
+            color: #00AFCA;
+          }
+          .MuiIconButton-root {
+            color: #BDBDBD;
+          }
+          .personal_doctor_page_doctors_data_info_chipgroup {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
             width: 100%;
             padding-bottom: 16px;
+            margin-top: 20px;
             .MuiChip-root {
               color: #fff;
               background: #4BC6C6;
@@ -88,47 +150,19 @@
               padding: 0;
             }
           }
-          #doctor_page_doctors_data_info_experience {
+          #personal_doctor_page_doctors_data_info_experience {
             font-weight: bold;
             font-size: 16px;
             color: #4F4F4F;
             padding-bottom: 16px;
           }
-          #doctor_page_doctors_data_info_address {
+          #personal_doctor_page_doctors_data_info_address {
             font-weight: 500;
             font-size: 17px;
             color: #4F4F4F;
             padding-bottom: 16px;
           }
-          #doctor_page_doctors_data_info_lastblock {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            #doctor_page_doctors_data_info_phonegroup {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              font-weight: bold;
-              font-size: 18px;
-              color: #828282;
-              svg {
-                margin-right: 8px;
-              }
-            }
-            #doctor_page_doctors_data_info_stargroup {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              font-weight: bold;
-              font-size: 18px;
-              color: #828282;
-              svg {
-                margin-right: 8px;
-              }
-            }
-          }
-          #doctor_page_doctors_data_button {
+          #personal_doctor_page_doctors_data_editbutton, #personal_doctor_page_doctors_data_logoutbutton {
             background: #00AFCA;
             border-radius: 5px;
             font-weight: 500;
@@ -145,12 +179,29 @@
               transition: all .3s ease-in-out;
             }
           }
+          #personal_doctor_page_doctors_data_addbutton {
+            background: transparent;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 18px;
+            color: #828282;
+            padding: 13px 0;
+            margin-top: 30px;
+            text-align: center;
+            border: 2px solid #828282;
+            &:hover {
+              cursor: pointer;
+              background: #828282;
+              color: #fff;
+              transition: all .3s ease-in-out;
+            }
+          }
         }
       }
     }
-    .doctor_page_main_right {
+    .personal_doctor_page_main_right {
       width: 67%;
-      .doctor_page_tabs_container {
+      .personal_doctor_page_tabs_container {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -175,11 +226,12 @@
           box-shadow: none;
           border-bottom: 2px solid #D3D3D3;
         }
-        .PrivateTabIndicator-colorSecondary-7 {
+        .PrivateTabIndicator-colorSecondary-11 {
           background-color: #00AFCA;
         }
         .MuiTab-textColorInherit.Mui-selected {
           color: #2B2B2B;
+          font-weight: 500;
         }
         .MuiTab-root {
           font-family: 'Roboto';
@@ -187,7 +239,7 @@
           color: #828282;
           text-transform: none;
         }
-        #doctor_page_tabs_about {
+        #personal_doctor_page_tabs_about {
           display: flex;
           flex-direction: column;
           span {
@@ -197,32 +249,32 @@
             color: #000000;
           }
         }
-        #doctor_page_tabs_map-container {
+        #personal_doctor_page_tabs_map-container {
           #map {
             width: 100%;
             height: 400px;
             border-radius: 5px;
           }
         }
-        .doctor_page_tabs_reception {
+        .personal_doctor_page_tabs_reception {
           width: 100%;
           height: 100%;
           display: flex;
           flex-direction: column;
-          .doctor_page_tabs_reception_type {
+          .personal_doctor_page_tabs_reception_type {
             display: flex;
             flex-direction: column;
-            #doctor_page_tabs_reception_type_title {
+            #personal_doctor_page_tabs_reception_type_title {
               font-family: 'Roboto';
               font-weight: 500;
               font-size: 20px;
               color: #000000;
               margin-bottom: 18px;
             }
-            .doctor_page_tabs_reception_type_cells {
+            .personal_doctor_page_tabs_reception_type_cells {
               display: flex;
               flex-direction: column;
-              #doctor_page_tabs_reception_type_cells_titles {
+              #personal_doctor_page_tabs_reception_type_cells_titles {
                 display: flex;
                 flex-direction: row;
                 // flex-wrap: wrap;
@@ -240,7 +292,7 @@
                   margin: 0 5px 5px 0;
                 }
               }
-              #doctor_page_tabs_reception_type_cells_cost {
+              #personal_doctor_page_tabs_reception_type_cells_cost {
                 display: flex;
                 flex-direction: row;
                 // flex-wrap: wrap;
@@ -260,21 +312,21 @@
               }
             }             
           }
-          .doctor_page_tabs_reception_schedule {
+          .personal_doctor_page_tabs_reception_schedule {
             display: flex;
             flex-direction: column;
             margin-top: 50px;
-            #doctor_page_tabs_reception_schedule_title {
+            #personal_doctor_page_tabs_reception_schedule_title {
               font-family: 'Roboto';
               font-weight: 500;
               font-size: 20px;
               color: #000000;
               margin-bottom: 18px;
             }
-            .doctor_page_tabs_reception_schedule_cells {
+            .personal_doctor_page_tabs_reception_schedule_cells {
               display: flex;
               flex-direction: column;
-              #doctor_page_tabs_reception_schedule_cells_titles {
+              #personal_doctor_page_tabs_reception_schedule_cells_titles {
                 display: flex;
                 flex-direction: row;
                 // flex-wrap: wrap;
@@ -292,7 +344,7 @@
                   margin: 0 5px 5px 0;
                 }
               }
-              #doctor_page_tabs_reception_schedule_cells_cost {
+              #personal_doctor_page_tabs_reception_schedule_cells_cost {
                 display: flex;
                 flex-direction: row;
                 // flex-wrap: wrap;
@@ -313,169 +365,6 @@
             }             
           }
         }
-      }
-    }
-  }
-
-
-  #doctor_page_rating_title {
-    font-family: 'Roboto';
-    font-weight: 500;
-    font-size: 45px;
-    color: #2B2B2B;
-    padding: 0 80px;
-    margin-top: 50px;    
-  }
-
-
-  .doctor_page_rating {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    padding: 0 80px;
-    #doctor_page_rating_p {
-      text-align: center;
-      font-family: 'Roboto';
-      font-size: 35px;
-      color: #4F4F4F;
-    }
-    .MuiRating-sizeLarge {
-      font-size: 50px;
-    }
-  }
-
-
-  #doctor_page_doctors_title {
-    padding: 0 80px;
-    font-family: 'Roboto';
-    font-weight: 500;
-    font-size: 45px;
-    color: #2B2B2B;
-    margin-top: 100px;
-  }
-
-
-  .doctor_page_doctors {
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    padding: 0 55px 0 80px;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Roboto', sans-serif;
-    margin-top: 50px;
-    margin-bottom: 120px;
-    #doctor_page_doctors_slide {
-      display: inline-flex;
-      flex-direction: row;
-      width: auto !important;
-      height: auto;
-      background-color:#FCFCFC;
-      border-radius: 5px;
-      margin: 0 25px 25px 0;
-      padding: 25px;
-      &:hover {
-        cursor: pointer;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-        transition: all .2s ease-in-out
-      }
-      #doctor_page_doctors_slide_image {
-        width: 100%;
-        margin-bottom: 16px;
-        border-radius: 5px;
-      }
-      #doctor_page_doctors_slide_info {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        h3 {
-          font-weight: bold;
-          font-size: 24px;
-          color: #2B2B2B;
-          padding-bottom: 18px;
-          &:hover {
-            cursor: pointer;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            transition: all .3s ease-in-out;
-          }
-        }
-        .doctor_page_doctors_slide_info_chipgroup {
-          width: 100%;
-          padding-bottom: 16px;
-          .MuiChip-root {
-            color: #fff;
-            background: #4BC6C6;
-            border-radius: 5px;
-            margin-right: 8px;    
-            margin-bottom: 5px;     
-            padding: 4px 6px;
-            font-size: 16px;
-            font-weight: 500;
-            text-align: center;
-          }
-          .MuiIconButton-root {
-            padding: 0;
-          }
-        }
-        #doctor_page_doctors_slide_info_experience {
-          font-weight: bold;
-          font-size: 16px;
-          color: #4F4F4F;
-          padding-bottom: 16px;
-        }
-        #doctor_page_doctors_slide_info_address {
-          font-weight: 500;
-          font-size: 17px;
-          color: #4F4F4F;
-          padding-bottom: 16px;
-        }
-        #doctor_page_doctors_slide_info_lastblock {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-          #doctor_page_doctors_slide_info_phonegroup {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            font-weight: bold;
-            font-size: 18px;
-            color: #828282;
-            svg {
-              margin-right: 8px;
-            }
-          }
-          #doctor_page_doctors_slide_info_stargroup {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            font-weight: bold;
-            font-size: 18px;
-            color: #828282;
-            svg {
-              margin-right: 8px;
-            }
-          }
-        }
-      }
-    }
-    .doctor_page_doctors_button_group {
-      button {
-        background-color: transparent;
-        outline: none;
-        border: none;
-        &:first-child {
-          margin-right: 40px;
-        }
-      }
-      svg:hover {
-        cursor: pointer;
-        fill: #00AFCA;
-        stroke: #00AFCA;
       }
     }
   }
