@@ -37,8 +37,8 @@ const PhoneAuth = (props) => {
     // localStorage.removeItem('fireToken');
     // localStorage.removeItem('user');
     // localStorage.removeItem('userToken');
-    let token = localStorage.getItem('userToken');
-    console.log({'Authorization' : 'Token ' + token});
+    // let token = localStorage.getItem('userToken');
+    // console.log(token);
     console.log(localStorage);
     console.log(value);
   };
@@ -85,24 +85,11 @@ const PhoneAuth = (props) => {
         // user in with confirmationResult.confirm(code).
         window.confirmationResult = confirmationResult;
         alert("СМС ОТПРАВЛЕНО!");
+        // return (<Redirect to="/validate-otp"/>);
         history.push('/validate-otp');
-
-        // let code = window.prompt("Enter OTP");
-        // confirmationResult
-        //   .confirm(code)
-        //   .then(function (result) {
-        //     // User signed in successfully.
-        //     let user = result.user;
-        //     // ...
-        //     console.log("User is signed in");
-        //   }).catch(function (error) {
-        //   // User couldn't sign in (bad verification code?)
-        //   // ...
-        //   });
       })
       .catch((error) => {
         // Error; SMS not sent
-        // ...
         console.error(error);
         alert('Попробуйте заново');
       });

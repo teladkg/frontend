@@ -11,11 +11,13 @@ import './pc-doctor.css';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import LinkMaterial from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
+import FormLabel from '@material-ui/core/FormLabel';
 import Collapse from '@material-ui/core/Collapse';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Chip from '@material-ui/core/Chip';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -102,10 +104,7 @@ const PCDoctor = (props) => {
   };
 
 
-  const handleLogout = () => {
-    userActions.logout();
-    props.history.push('/');
-  }
+
 
   const userData = props.data;
 
@@ -150,17 +149,34 @@ const PCDoctor = (props) => {
                   </div>
                 </div>
                 <div id="personal_doctor_page_doctors_data_info">
-                  <TextField value={userData.user.first_name} id="personal_doctor_page_doctors_data_info_lastname" label="Фамилия" variant="outlined" /> 
-                  <TextField value={userData.user.last_name} id="personal_doctor_page_doctors_data_info_firstname" label="Имя" variant="outlined" />
+                  {/* <FormLabel component="legend">Фамилия</FormLabel> */}
+                  <TextField value={userData.user.last_name} id="personal_doctor_page_doctors_data_info_lastname" label="Фамилия" variant="outlined" /> 
+                  <TextField value={userData.user.first_name} id="personal_doctor_page_doctors_data_info_firstname" label="Имя" variant="outlined" />
                   <TextField value={userData.user.patronymic} id="personal_doctor_page_doctors_data_info_patronymic" label="Отчество" variant="outlined" /> 
+                  <Autocomplete
+                    multiple
+                    id="tags-outlined"
+                    options={specialties}
+                    getOptionLabel={(option) => option.title}
+                    defaultValue={[specialties[0]]}
+                    filterSelectedOptions
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="outlined"
+                        label="Специальность"
+                        placeholder="Поиск"
+                      />
+                    )}
+                  />
                   <div className="personal_doctor_page_doctors_data_info_chipgroup">
+                    {/* <Chip label="Психолог"/>
                     <Chip label="Психолог"/>
-                    <Chip label="Психолог"/>
-                    <Chip label="Психолог"/>
+                    <Chip label="Психолог"/> */}
                   </div>                         
                   <TextField value={'20 лет'} id="personal_doctor_page_doctors_data_info_experience" label="Стаж" variant="outlined" /> 
                   <TextField value={userData.user.phone} id="personal_doctor_page_doctors_data_info_phone" label="Номер телефона" variant="outlined" /> 
-                  {/* <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>     */}
+                  <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>    
                   <button id="personal_doctor_page_doctors_data_editbutton">Редактировать</button>
                   {/* <button onClick={handleLogout} id="personal_doctor_page_doctors_data_logoutbutton">Выйти</button>    */}
                 </div>
@@ -316,3 +332,10 @@ function handleClick(event) {
   event.preventDefault();
   console.info('You clicked a breadcrumb.');
 }
+
+
+const specialties = [
+  { title: 'Психолог', val: 1 },
+  { title: 'Эндокринолог', val: 2 },
+  { title: 'Терапевт', val: 3 },
+];

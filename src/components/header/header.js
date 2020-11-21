@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { userActions } from '../../redux/auth/_actions';
 
-import styles from './header.module.css'
+import './header.css'
 
 
 const Header = (props) => {
@@ -16,8 +16,8 @@ const Header = (props) => {
 
   return (
     <>
-      <header className={styles.header}>
-        <div className={styles.header_nav}>
+      <header className="header">
+        <div className="header_nav">
           <Link to="/">
             <svg width="101" height="28" viewBox="0 0 101 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.56 6.15995H0V1.19995H21.56V6.15995H14V26.96H7.56V6.15995Z" fill="white"/>
@@ -28,35 +28,49 @@ const Header = (props) => {
             </svg>
           </Link> 
 
-          <div className={styles.nav_bar}>
-            <ul className={styles.nav_items}>
-              {localStorage.getItem('userToken') ? <li><Link to="/pc-doctor">Мой кабинет</Link></li> : ''}
+          <div className="nav_bar">
+            <ul className="nav_items">
+              {localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
+              ? <li><Link to="/pc-doctor">Мой кабинет</Link></li> 
+              : ''}
               <li><Link to="/search">Врачи</Link></li>
               <li><Link to="/clinics-search">Клиники</Link></li>
               <li><Link to="/map">Карта</Link></li>
             </ul>
           </div>
 
-          <div className={styles.icon_group}>
+          <div className="icon_group">
             <Link to="/search">
-              <svg id={styles.icon_group_first} width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg id="icon_group_first" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </Link>
-            <Link to="/phone-auth">
-              <svg id={styles.icon_group_second} width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.25 22C20.25 22 22 22 22 20.25C22 18.5 20.25 13.25 11.5 13.25C2.75 13.25 1 18.5 1 20.25C1 22 2.75 22 2.75 22H20.25ZM2.7885 20.25H20.2115C20.2197 20.249 20.2279 20.2479 20.236 20.2465L20.25 20.243C20.2483 19.8125 19.9805 18.5175 18.794 17.331C17.653 16.19 15.5057 15 11.5 15C7.4925 15 5.347 16.19 4.206 17.331C3.0195 18.5175 2.7535 19.8125 2.75 20.243C2.76281 20.2455 2.77564 20.2478 2.7885 20.25ZM11.5 9.75C12.4283 9.75 13.3185 9.38125 13.9749 8.72487C14.6313 8.0685 15 7.17826 15 6.25C15 5.32174 14.6313 4.4315 13.9749 3.77513C13.3185 3.11875 12.4283 2.75 11.5 2.75C10.5717 2.75 9.6815 3.11875 9.02513 3.77513C8.36875 4.4315 8 5.32174 8 6.25C8 7.17826 8.36875 8.0685 9.02513 8.72487C9.6815 9.38125 10.5717 9.75 11.5 9.75ZM16.75 6.25C16.75 7.64239 16.1969 8.97774 15.2123 9.96231C14.2277 10.9469 12.8924 11.5 11.5 11.5C10.1076 11.5 8.77226 10.9469 7.78769 9.96231C6.80312 8.97774 6.25 7.64239 6.25 6.25C6.25 4.85761 6.80312 3.52226 7.78769 2.53769C8.77226 1.55312 10.1076 1 11.5 1C12.8924 1 14.2277 1.55312 15.2123 2.53769C16.1969 3.52226 16.75 4.85761 16.75 6.25Z" fill="white"/>
-              </svg>
-            </Link>
-            {localStorage.getItem('userToken') 
+            { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
+            ? <Link to="/phone-auth" title="Войти">
+                {/* <svg id="icon_group_second" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M20.25 22C20.25 22 22 22 22 20.25C22 18.5 20.25 13.25 11.5 13.25C2.75 13.25 1 18.5 1 20.25C1 22 2.75 22 2.75 22H20.25ZM2.7885 20.25H20.2115C20.2197 20.249 20.2279 20.2479 20.236 20.2465L20.25 20.243C20.2483 19.8125 19.9805 18.5175 18.794 17.331C17.653 16.19 15.5057 15 11.5 15C7.4925 15 5.347 16.19 4.206 17.331C3.0195 18.5175 2.7535 19.8125 2.75 20.243C2.76281 20.2455 2.77564 20.2478 2.7885 20.25ZM11.5 9.75C12.4283 9.75 13.3185 9.38125 13.9749 8.72487C14.6313 8.0685 15 7.17826 15 6.25C15 5.32174 14.6313 4.4315 13.9749 3.77513C13.3185 3.11875 12.4283 2.75 11.5 2.75C10.5717 2.75 9.6815 3.11875 9.02513 3.77513C8.36875 4.4315 8 5.32174 8 6.25C8 7.17826 8.36875 8.0685 9.02513 8.72487C9.6815 9.38125 10.5717 9.75 11.5 9.75ZM16.75 6.25C16.75 7.64239 16.1969 8.97774 15.2123 9.96231C14.2277 10.9469 12.8924 11.5 11.5 11.5C10.1076 11.5 8.77226 10.9469 7.78769 9.96231C6.80312 8.97774 6.25 7.64239 6.25 6.25C6.25 4.85761 6.80312 3.52226 7.78769 2.53769C8.77226 1.55312 10.1076 1 11.5 1C12.8924 1 14.2277 1.55312 15.2123 2.53769C16.1969 3.52226 16.75 4.85761 16.75 6.25Z" fill="white"/>
+                </svg> */}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M16 17L11 12L16 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M11 12H23" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </Link>
+            : '' }
+            
+            { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
             ? <button id="logout-button" title="Выйти" onClick={handleLogout}>
-                <img id="logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/>
+                {/* <img id="logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 17L3 12L8 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 12H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </button>
-            : ''}
+            : '' }
           </div>
         </div>
-        
       </header>
       
     </>

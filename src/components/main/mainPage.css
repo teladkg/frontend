@@ -16,7 +16,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.search .header {
+.search .main_header {
   width: 100%;
   height: auto;
   display: -webkit-box;
@@ -36,7 +36,7 @@
   margin-bottom: 185px;
 }
 
-.search .header .header_nav {
+.search .main_header .main_header_nav {
   width: 100%;
   height: auto;
   display: -webkit-box;
@@ -54,11 +54,11 @@
           align-items: center;
 }
 
-.search .header ul {
+.search .main_header ul {
   list-style: none;
 }
 
-.search .header .nav_bar .nav_items {
+.search .main_header .main_header_nav_bar .main_header_nav_items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -69,12 +69,12 @@
   font-size: 20px;
 }
 
-.search .header .nav_bar .nav_items li {
+.search .main_header .main_header_nav_bar .main_header_nav_items li {
   margin: 0 42.5px;
   color: #fff;
 }
 
-.search .header .nav_bar .nav_items li:hover {
+.search .main_header .main_header_nav_bar .main_header_nav_items li:hover {
   cursor: pointer;
   text-decoration: underline;
   -webkit-text-decoration-color: #fff;
@@ -85,36 +85,36 @@
   transition: all .3s ease-in-out;
 }
 
-.search .header .nav_bar .nav_items li a {
+.search .main_header .main_header_nav_bar .main_header_nav_items li a {
   color: #fff;
 }
 
-.search .header .icon_group {
+.search .main_header .main_header_icon_group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   width: 10%;
 }
 
-.search .header .icon_group svg:hover {
+.search .main_header .main_header_icon_group svg:hover {
   cursor: pointer;
 }
 
-.search .header .icon_group img {
+.search .main_header .main_header_icon_group img {
   width: 23px;
   height: 23px;
 }
 
-.search .header .icon_group #logout-button {
+.search .main_header .main_header_icon_group #main_header_logout-button {
   outline: none;
   border: none;
   background-color: transparent;
 }
 
-.search .header .icon_group #logout-button:hover {
+.search .main_header .main_header_icon_group #main_header_logout-button:hover {
   cursor: pointer;
 }
 

@@ -185,6 +185,18 @@
   color: #BDBDBD;
 }
 
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info .MuiChip-root {
+  color: #fff;
+  background: #4BC6C6;
+  border-radius: 5px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  padding: 4px 6px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
 .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info .personal_doctor_page_doctors_data_info_chipgroup {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -314,8 +326,9 @@
   border-bottom: 2px solid #D3D3D3;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .PrivateTabIndicator-colorSecondary-11 {
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .MuiTabs-indicator {
   background-color: #00AFCA;
+  height: 3px;
 }
 
 .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .MuiTab-textColorInherit.Mui-selected {

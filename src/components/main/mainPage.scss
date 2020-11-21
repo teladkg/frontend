@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
-  .header {
+  .main_header {
     width: 100%;
     height: auto;
     display: flex;
@@ -19,7 +19,7 @@
     font-family: 'Source Sans Pro', sans-serif;
     margin-bottom: 185px;
   
-    .header_nav {
+    .main_header_nav {
       width: 100%;
       height: auto;
       display: flex;
@@ -32,8 +32,8 @@
       list-style: none;
     }
   
-    .nav_bar {
-      .nav_items {
+    .main_header_nav_bar {
+      .main_header_nav_items {
         display: flex;
         flex-direction: row;
         font-size: 20px;      
@@ -55,9 +55,9 @@
       }
     }
   
-    .icon_group {
+    .main_header_icon_group {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-evenly;
       width: 10%;
       svg:hover {
         cursor: pointer;
@@ -66,7 +66,7 @@
         width: 23px;
         height: 23px;
       }
-      #logout-button {
+      #main_header_logout-button {
         outline: none;
         border: none;
         background-color: transparent;

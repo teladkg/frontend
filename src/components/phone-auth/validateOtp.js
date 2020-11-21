@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, Redirect, useHistory, withRouter } from 'react-router-dom';
 import firebase from '../../redux/auth/_services/firebase';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { userActions } from '../../redux/auth/_actions'
 
 import Header from '../header/header';
@@ -48,13 +49,13 @@ const ValidateOtp = (props) => {
     // console.log(codee);
     otpConfirm
       .confirm(otpInput)
-      .then((result) => {
-        // User signed in successfully.
-        alert("Код подтвержден!")
-        // console.log("Result" + result.verificationID);
-        // let user = result.user;
-        // console.log(user);
-      })
+      // .then((result) => {
+      //   // User signed in successfully.
+      //   // alert("Код подтвержден!")
+      //   // console.log("Result" + result.verificationID);
+      //   let user = result.user;
+      //   // console.log(user);
+      // })
       .then(() => {
         firebase.auth().currentUser.getIdToken()
         .then((idtoken) => {
@@ -65,10 +66,11 @@ const ValidateOtp = (props) => {
           // localStorage.removeItem('userToken');
           props.checkToken(idtoken);
           
-          if(localStorage.getItem('userToken') && props.checkToken.checked) {
+          if((localStorage.getItem('userToken')) && (props.checkToken.checked)) {
             let userToken = localStorage.getItem('userToken');
-            if (userToken && clientType === "client") {
-              if(userToken === 'false') {
+
+            if (userToken && (clientType === "client")) {
+              if(userToken === false) {
                 props.registrateclient(idtoken);
                 alert('Клиент успешно зарегистрировался в системе');
                 history.push('/');
@@ -78,15 +80,13 @@ const ValidateOtp = (props) => {
               }
             } 
             
-            else if (userToken && clientType === "doctor") {
-              if(userToken === 'false') {
-                // console.log(localStorage.getItem('userToken'));
-                // console.log(localStorage.getItem('fireToken'));
+            else if (userToken && (clientType === "doctor")) {
+              if(userToken === false) {
                 history.push('/registration');
               }
               else {
                 alert('Доктор успешно вошел в систему');
-                history.push('/pc-doctorww');
+                history.push('/pc-doctor');
               }            
             }
           }
@@ -96,10 +96,10 @@ const ValidateOtp = (props) => {
           alert("Неправильный FireToken");
         });
       })
-      .catch((error) => {
-        console.error(error);
-        alert("Не получилось получить данные с Firebase");
-      })
+      // .catch((error) => {
+      //   console.error(error);
+      //   alert("Не получилось получить данные с Firebase");
+      // })
     .catch((error) => {
       console.error(error);
       alert("Неправильный код!");
@@ -175,7 +175,8 @@ const mapDispatchToProps = {
   registrateclient: userActions.registrateclient
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ValidateOtp);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ValidateOtp));
+  
 
 
 /* FOR BREADCRUMBS */
