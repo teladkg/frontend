@@ -1,15 +1,16 @@
 .search {
   width: 100%;
-  height: 100vh;
-  background: url('../../content/images/main/Rectangle_87.png');
+  height: 100%;
+  background: url('../../content/images/main/image16.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 35px 80px 120px;
+  padding: 0 0 120px;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
   .main_header {
+    // background: rgba(0, 0, 0, 0.301);
     width: 100%;
     height: auto;
     display: flex;
@@ -18,6 +19,8 @@
     align-items: center;
     font-family: 'Source Sans Pro', sans-serif;
     margin-bottom: 185px;
+    padding: 28px 80px 24px;
+    border-bottom: 0.8px solid #FFFFFF;
   
     .main_header_nav {
       width: 100%;
@@ -89,6 +92,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 50px;
+    padding: 0 80px;
     div[role=combobox] {
       margin: 0 15px;
       border-radius: 5px;
@@ -170,7 +174,7 @@
     height: auto;
     padding: 30px;
     color: #fff;
-    background-color: #F5864D;
+    background-color: #87C672;
     border-radius: 5px;
     margin: 0 25px 25px 0;
     text-align: start;

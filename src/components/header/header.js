@@ -31,7 +31,7 @@ const Header = (props) => {
           <div className="nav_bar">
             <ul className="nav_items">
               {localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
-              ? <li><Link to="/pc-doctor">Мой кабинет</Link></li> 
+              ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
               : ''}
               <li><Link to="/search">Врачи</Link></li>
               <li><Link to="/clinics-search">Клиники</Link></li>

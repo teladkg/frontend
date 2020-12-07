@@ -34,11 +34,8 @@ const PhoneAuth = (props) => {
   const handleChange = (event) => {
     setValue(event.target.value);
     localStorage.setItem('clientType', value);
-    // localStorage.removeItem('fireToken');
-    // localStorage.removeItem('user');
-    // localStorage.removeItem('userToken');
-    // let token = localStorage.getItem('userToken');
-    // console.log(token);
+    localStorage.removeItem('fireToken');
+    localStorage.removeItem('userToken');
     console.log(localStorage);
     console.log(value);
   };
@@ -86,7 +83,7 @@ const PhoneAuth = (props) => {
         window.confirmationResult = confirmationResult;
         alert("СМС ОТПРАВЛЕНО!");
         // return (<Redirect to="/validate-otp"/>);
-        history.push('/validate-otp');
+        history.push({pathname: '/validate-otp', state: { detail: phoneNumber }});
       })
       .catch((error) => {
         // Error; SMS not sent

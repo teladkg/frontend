@@ -26,7 +26,6 @@ const ValidateOtp = (props) => {
     // window.scrollTo(0, 0)
     // firebase.auth().currentUser.getIdToken()
   });
-  let history = useHistory();
 
 
   /* FOR OTP INPUT */
@@ -62,44 +61,46 @@ const ValidateOtp = (props) => {
           localStorage.setItem('fireToken', idtoken);
           let clientType = localStorage.getItem('clientType');
           
-          console.log(clientType);
-          // localStorage.removeItem('userToken');
-          props.checkToken(idtoken);
-          
-          if((localStorage.getItem('userToken')) && (props.checkToken.checked)) {
+          props.checkToken(idtoken)
+          .then(()=> {
             let userToken = localStorage.getItem('userToken');
 
-            if (userToken && (clientType === "client")) {
-              if(userToken === false) {
+            // console.log(typeof userToken);
+            // console.log(userToken);
+
+            if (clientType === 'client') {
+              if(userToken === 'false') {
                 props.registrateclient(idtoken);
                 alert('Клиент успешно зарегистрировался в системе');
-                history.push('/');
+                props.history.push('/');
               } else {
                 alert('Клиент успешно вошел в систему');
-                history.push('/');
+                props.history.push('/pc-client');
               }
             } 
             
-            else if (userToken && (clientType === "doctor")) {
-              if(userToken === false) {
-                history.push('/registration');
+            else if (clientType === 'doctor') {
+              if(userToken === 'false') {
+                props.history.push('/registration');
               }
               else {
                 alert('Доктор успешно вошел в систему');
-                history.push('/pc-doctor');
+                props.history.push('/pc-doctor/info');
               }            
             }
-          }
+
+            // console.log(typeof userToken);
+            // console.log(userToken);
+          })
+          .catch((error) => {
+            console.error(error);
+          })
         })
         .catch((error) => {
           console.error(error);
           alert("Неправильный FireToken");
         });
       })
-      // .catch((error) => {
-      //   console.error(error);
-      //   alert("Не получилось получить данные с Firebase");
-      // })
     .catch((error) => {
       console.error(error);
       alert("Неправильный код!");
@@ -127,12 +128,11 @@ const ValidateOtp = (props) => {
         </Breadcrumbs>
 
         <div className="phone-auth_page_container">
-          <h1>Введите код из смс </h1>
-          <p>Код подтверждения отправлен на указанный Вами номер </p>
-          <h2>+996 777 77 77</h2>
-          <Link to="/phone-auth">Изменить номер</Link>
+          <h1 id="validate-title">Введите код из смс </h1>
+          <p id="validate-article">Код подтверждения отправлен на указанный Вами номер </p>
+          <h2 id="validate-number">{props.location.state.detail}</h2>
+          <Link to="/phone-auth" id="validate-link">Изменить номер</Link>
           <form id="verificationform" onSubmit={onSubmitOtp} className={classes.root} noValidate autoComplete="off">
-            <div id="recaptcha-container"></div>
             {/* <InputLabel htmlFor="formatted-text-mask-input">СМС</InputLabel>
             <Input
               value={otp}

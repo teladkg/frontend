@@ -3,36 +3,39 @@ import authHeader from '../_helpers/auth-header';
 
 
 const checkToken = async(idtoken) => { 
-    try {
-        const response = await axios.post('http://167.172.109.15:8000/users/gettoken/', {
-            idtoken: idtoken
-        });
-        // localStorage.setItem('userToken', response.data.token);
-        if (response.data.token) {
-            localStorage.setItem('userToken', response.data.token);
-        } else if (response.data.tokenState === false) {
-            localStorage.setItem('userToken', response.data.tokenState);
-        }
-        console.log(response.data);
-        // console.log(response.data.token);
-        // console.log(localStorage.getItem('user'));
-        // console.log(localStorage.getItem('user'));
-    } catch (err) {
-        console.error(err);
+    const response = await axios.post('http://167.172.109.15:8000/users/gettoken/', {
+        idtoken: idtoken
+    });
+
+    if (response.data.tokenState === false) {
+        localStorage.setItem('userToken', response.data.tokenState);
     }
+    else {
+        localStorage.setItem('userToken', response.data.token);
+    } 
+    console.log(response.data);
 };
 
 
 const registration = async(data) => { 
-    const idtoken = localStorage.getItem('fireToken');
-    const response = await axios.post('http://167.172.109.15:8000/users/application/', {
-        idtoken: idtoken,
-        first_name: data.firstname,
-        last_name: data.lastname,
-        reference: null
-    });
+    console.log(data);
+    // const idtoken = localStorage.getItem('fireToken');
+    const response = await axios.post('http://167.172.109.15:8000/users/application/', data, 
+    {   
+        "Content-Type": "multipart/form-data"
+    }
+    );
     console.log(response);
 };
+
+
+const editPCDoctor = async(data) => {
+    console.log(data);
+    const response = await axios.patch('http://167.172.109.15:8000/userinfo/editdoctor/', data, {
+        headers: authHeader()
+    })
+    console.log(response);
+}
 
 
 const registrateclient = async(data) => {
@@ -85,5 +88,6 @@ export const userService = {
     registration,
     registrateclient,
     logout,
+    editPCDoctor
     // getPCDoctor
 };

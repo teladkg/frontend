@@ -5,6 +5,7 @@ import { userActions } from '../../../redux/auth/_actions';
 
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
+import PCDoctorEdit from './pc-doctor-edit';
 
 import './pc-doctor.css';
 
@@ -123,7 +124,7 @@ const PCDoctor = (props) => {
             onClick={handleClick}
             aria-current="page"
           >
-            <Link id="personal_doctor_page_breadcrumb_active" to="/pc-doctor">Мой кабинет</Link>
+            <Link id="personal_doctor_page_breadcrumb_active" to="/pc-doctor/info">Мой кабинет</Link>
           </LinkMaterial>
         </Breadcrumbs>
 
@@ -134,7 +135,7 @@ const PCDoctor = (props) => {
             <div className="personal_doctor_page_main_left">
               <div id="personal_doctor_page_doctors_data">
                 <div className="personal_doctor_page_doctors_data_imagegroup">
-                  <img id="personal_doctor_page_doctors_data_image" src={require('../../../content/images/main/image_10.png')} alt="clinic pic"/>
+                  <img id="personal_doctor_page_doctors_data_image" src={userData.user.avatar == null ? require('../../../content/images/main/image_10.png') : userData.user.avatar} alt="clinic pic"/>
                   <div className="personal_doctor_page_doctors_data_image_buttongroup">
                     <button id="personal_doctor_page_doctors_data_image_deletebutton">
                       <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -150,9 +151,9 @@ const PCDoctor = (props) => {
                 </div>
                 <div id="personal_doctor_page_doctors_data_info">
                   {/* <FormLabel component="legend">Фамилия</FormLabel> */}
-                  <TextField value={userData.user.last_name} id="personal_doctor_page_doctors_data_info_lastname" label="Фамилия" variant="outlined" /> 
-                  <TextField value={userData.user.first_name} id="personal_doctor_page_doctors_data_info_firstname" label="Имя" variant="outlined" />
-                  <TextField value={userData.user.patronymic} id="personal_doctor_page_doctors_data_info_patronymic" label="Отчество" variant="outlined" /> 
+                  <TextField value={userData.user.last_name} id="personal_doctor_page_doctors_data_info_lastname" label="Фамилия" variant="outlined" InputProps={{readOnly: true}}/> 
+                  <TextField value={userData.user.first_name} id="personal_doctor_page_doctors_data_info_firstname" label="Имя" variant="outlined" InputProps={{readOnly: true}}/>
+                  <TextField value={userData.user.patronymic} id="personal_doctor_page_doctors_data_info_patronymic" label="Отчество" variant="outlined" InputProps={{readOnly: true}}/> 
                   <Autocomplete
                     multiple
                     id="tags-outlined"
@@ -166,6 +167,7 @@ const PCDoctor = (props) => {
                         variant="outlined"
                         label="Специальность"
                         placeholder="Поиск"
+                        // InputProps={{readOnly: true}}
                       />
                     )}
                   />
@@ -174,11 +176,10 @@ const PCDoctor = (props) => {
                     <Chip label="Психолог"/>
                     <Chip label="Психолог"/> */}
                   </div>                         
-                  <TextField value={'20 лет'} id="personal_doctor_page_doctors_data_info_experience" label="Стаж" variant="outlined" /> 
-                  <TextField value={userData.user.phone} id="personal_doctor_page_doctors_data_info_phone" label="Номер телефона" variant="outlined" /> 
+                  <TextField value={userData.started_working} id="personal_doctor_page_doctors_data_info_experience" label="Год начала работы" variant="outlined" InputProps={{readOnly: true}}/> 
+                  <TextField value={userData.user.extra_phones[0]} id="personal_doctor_page_doctors_data_info_phone" label="Дополнительный номер телефона" variant="outlined" InputProps={{readOnly: true}}/> 
                   <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>    
-                  <button id="personal_doctor_page_doctors_data_editbutton">Редактировать</button>
-                  {/* <button onClick={handleLogout} id="personal_doctor_page_doctors_data_logoutbutton">Выйти</button>    */}
+                  <Link id="edit_link_button" to="/pc-doctor/edit"><button id="personal_doctor_page_doctors_data_editbutton">Редактировать</button></Link>
                 </div>
               </div>
             </div>
@@ -194,18 +195,7 @@ const PCDoctor = (props) => {
                   </AppBar>
                   <TabPanel value={value} index={0}>
                     <div id="personal_doctor_page_tabs_about">
-                      <span>Занимается диагностикой и лечением бронхиальной астмы, 
-                      хронической обструктивной болезни лёгких (ХОБЛ), 
-                      пневмонии, острого и хронического бронхита, апноэ, дыхательной
-                      недостаточности и других болезней дыхательных путей.</span>
-                      <span>Занимается диагностикой и лечением бронхиальной астмы, 
-                      хронической обструктивной болезни лёгких (ХОБЛ), 
-                      пневмонии, острого и хронического бронхита, апноэ, дыхательной
-                      недостаточности и других болезней дыхательных путей.</span>
-                      <span>Занимается диагностикой и лечением бронхиальной астмы, 
-                      хронической обструктивной болезни лёгких (ХОБЛ), 
-                      пневмонии, острого и хронического бронхита, апноэ, дыхательной
-                      недостаточности и других болезней дыхательных путей.</span>
+                      {userData.description===null ? <p>Информация отсутствует...</p> : userData.description}
                     </div>                 
                   </TabPanel>
                   <TabPanel value={value} index={1}>                  

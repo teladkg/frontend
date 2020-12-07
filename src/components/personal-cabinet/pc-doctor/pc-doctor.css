@@ -241,19 +241,51 @@
   padding-bottom: 16px;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #personal_doctor_page_doctors_data_editbutton, .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #personal_doctor_page_doctors_data_logoutbutton {
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #edit_link_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #edit_link_button #personal_doctor_page_doctors_data_editbutton {
+  width: 100%;
   background: #00AFCA;
   border-radius: 5px;
   font-weight: 500;
   font-size: 18px;
   color: #FFFFFF;
-  padding: 13px 0;
+  padding: 13px 10px;
   margin-top: 30px;
   text-align: center;
   border: 2px solid #00AFCA;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #personal_doctor_page_doctors_data_editbutton:hover, .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #personal_doctor_page_doctors_data_logoutbutton:hover {
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #edit_link_button #personal_doctor_page_doctors_data_editbutton:hover {
+  cursor: pointer;
+  background: transparent;
+  color: #00AFCA;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #personal_doctor_page_doctors_data_savebutton {
+  width: 100%;
+  background: #00AFCA;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #FFFFFF;
+  padding: 13px 10px;
+  margin-top: 30px;
+  text-align: center;
+  border: 2px solid #00AFCA;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #personal_doctor_page_doctors_data_savebutton:hover {
   cursor: pointer;
   background: transparent;
   color: #00AFCA;

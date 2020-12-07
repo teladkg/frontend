@@ -166,4 +166,38 @@
       }
   
     }
+
+
+    #validate-title {
+      font-family: 'Roboto', sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 35px;
+      color: #2B2B2B;
+    }
+    #validate-article {
+      font-family: 'Roboto', sans-serif;
+      font-weight: normal;
+      font-size: 16px;
+      text-align: center;
+      color: #2B2B2B;
+      width: 18%;
+      margin-bottom: 24px;
+    }
+    #validate-number {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      font-size: 32px;
+      color: #2B2B2B;
+      margin-bottom: 5px;
+    }
+    #validate-link {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      color: #2B2B2B;
+      &:hover {
+        color: #00AFCA;
+        transition: all .2s ease-in-out;
+      }
+    }
   }

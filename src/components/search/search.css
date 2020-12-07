@@ -225,9 +225,9 @@
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   font-family: 'Roboto', sans-serif;
   padding: 0 55px 0 80px;
   margin-bottom: 100px;
@@ -259,6 +259,8 @@
 
 .search_page .search_page_doctors_list #search_page_doctors_slide #search_page_doctors_slide_image {
   width: 100%;
+  max-height: 280px;
+  background-position: center;
   margin-bottom: 16px;
   border-radius: 5px;
 }

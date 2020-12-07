@@ -33,7 +33,21 @@ const MainPage = (props) => {
 
 
   /* FOR AUTOCOMPLETE */
-  const search_options = top100Films.map((option) => {
+  const search_options1 = specialties.map((option) => {
+    const firstLetter = option.title[0].toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
+  const search_options2 = cities.map((option) => {
+    const firstLetter = option.title[0].toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
+  const search_options3 = radius.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
     return {
       firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
@@ -139,9 +153,14 @@ const MainPage = (props) => {
 
             <div className="main_header_nav_bar">
               <ul className="main_header_nav_items">
+                {/* { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
+                  ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
+                  : '' 
+                } */}
                 { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
-                ? <li><Link to="/pc-doctor">Мой кабинет</Link></li> 
-                : '' }
+                  ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
+                  : '' 
+                }
                 <li><Link to="/search">Врачи</Link></li>
                 <li><Link to="/clinics-search">Клиники</Link></li>
                 <li><Link to="/map">Карта</Link></li>
@@ -156,7 +175,8 @@ const MainPage = (props) => {
                 </svg>
               </Link>
               { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
-              ? <Link to="/phone-auth">
+              ? 
+                <Link to="/phone-auth" title="Войти">
                   <svg id="main_header_icon_group_second" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M16 17L11 12L16 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -165,7 +185,8 @@ const MainPage = (props) => {
                 </Link>
               : '' }
               {localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false'
-              ? <button id="main_header_logout-button" title="Выйти" onClick={handleLogout}>
+              ? 
+                <button id="main_header_logout-button" title="Выйти" onClick={handleLogout}>
                   {/* <img id="main_header_logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13 19H17C17.5304 19 18.0391 18.7893 18.4142 18.4142C18.7893 18.0391 19 17.5304 19 17V3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -182,7 +203,7 @@ const MainPage = (props) => {
         <div className="search_group">
           <Autocomplete
             id="grouped-demo"
-            options={search_options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            options={search_options1.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
             groupBy={(option) => option.firstLetter}
             getOptionLabel={(option) => option.title}
             style={{ width: "26%" }}
@@ -190,7 +211,7 @@ const MainPage = (props) => {
           />
           <Autocomplete
             id="grouped-demo"
-            options={search_options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            options={search_options2.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
             groupBy={(option) => option.firstLetter}
             getOptionLabel={(option) => option.title}
             style={{ width: "26%" }}
@@ -198,7 +219,7 @@ const MainPage = (props) => {
           />
           <Autocomplete
             id="grouped-demo"
-            options={search_options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            options={search_options3.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
             groupBy={(option) => option.firstLetter}
             getOptionLabel={(option) => option.title}
             style={{ width: "26%" }}
@@ -943,106 +964,26 @@ const MainPage = (props) => {
 export default withRouter(MainPage)
 
 
-/* FOR AUTOCOMPLETE */
-const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
-  { title: '12 Angry Men', year: 1957 },
-  { title: "Schindler's List", year: 1993 },
-  { title: 'Pulp Fiction', year: 1994 },
-  { title: 'The Lord of the Rings: The Return of the King', year: 2003 },
-  { title: 'The Good, the Bad and the Ugly', year: 1966 },
-  { title: 'Fight Club', year: 1999 },
-  { title: 'The Lord of the Rings: The Fellowship of the Ring', year: 2001 },
-  { title: 'Star Wars: Episode V - The Empire Strikes Back', year: 1980 },
-  { title: 'Forrest Gump', year: 1994 },
-  { title: 'Inception', year: 2010 },
-  { title: 'The Lord of the Rings: The Two Towers', year: 2002 },
-  { title: "One Flew Over the Cuckoo's Nest", year: 1975 },
-  { title: 'Goodfellas', year: 1990 },
-  { title: 'The Matrix', year: 1999 },
-  { title: 'Seven Samurai', year: 1954 },
-  { title: 'Star Wars: Episode IV - A New Hope', year: 1977 },
-  { title: 'City of God', year: 2002 },
-  { title: 'Se7en', year: 1995 },
-  { title: 'The Silence of the Lambs', year: 1991 },
-  { title: "It's a Wonderful Life", year: 1946 },
-  { title: 'Life Is Beautiful', year: 1997 },
-  { title: 'The Usual Suspects', year: 1995 },
-  { title: 'Léon: The Professional', year: 1994 },
-  { title: 'Spirited Away', year: 2001 },
-  { title: 'Saving Private Ryan', year: 1998 },
-  { title: 'Once Upon a Time in the West', year: 1968 },
-  { title: 'American History X', year: 1998 },
-  { title: 'Interstellar', year: 2014 },
-  { title: 'Casablanca', year: 1942 },
-  { title: 'City Lights', year: 1931 },
-  { title: 'Psycho', year: 1960 },
-  { title: 'The Green Mile', year: 1999 },
-  { title: 'The Intouchables', year: 2011 },
-  { title: 'Modern Times', year: 1936 },
-  { title: 'Raiders of the Lost Ark', year: 1981 },
-  { title: 'Rear Window', year: 1954 },
-  { title: 'The Pianist', year: 2002 },
-  { title: 'The Departed', year: 2006 },
-  { title: 'Terminator 2: Judgment Day', year: 1991 },
-  { title: 'Back to the Future', year: 1985 },
-  { title: 'Whiplash', year: 2014 },
-  { title: 'Gladiator', year: 2000 },
-  { title: 'Memento', year: 2000 },
-  { title: 'The Prestige', year: 2006 },
-  { title: 'The Lion King', year: 1994 },
-  { title: 'Apocalypse Now', year: 1979 },
-  { title: 'Alien', year: 1979 },
-  { title: 'Sunset Boulevard', year: 1950 },
-  { title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb', year: 1964 },
-  { title: 'The Great Dictator', year: 1940 },
-  { title: 'Cinema Paradiso', year: 1988 },
-  { title: 'The Lives of Others', year: 2006 },
-  { title: 'Grave of the Fireflies', year: 1988 },
-  { title: 'Paths of Glory', year: 1957 },
-  { title: 'Django Unchained', year: 2012 },
-  { title: 'The Shining', year: 1980 },
-  { title: 'WALL·E', year: 2008 },
-  { title: 'American Beauty', year: 1999 },
-  { title: 'The Dark Knight Rises', year: 2012 },
-  { title: 'Princess Mononoke', year: 1997 },
-  { title: 'Aliens', year: 1986 },
-  { title: 'Oldboy', year: 2003 },
-  { title: 'Once Upon a Time in America', year: 1984 },
-  { title: 'Witness for the Prosecution', year: 1957 },
-  { title: 'Das Boot', year: 1981 },
-  { title: 'Citizen Kane', year: 1941 },
-  { title: 'North by Northwest', year: 1959 },
-  { title: 'Vertigo', year: 1958 },
-  { title: 'Star Wars: Episode VI - Return of the Jedi', year: 1983 },
-  { title: 'Reservoir Dogs', year: 1992 },
-  { title: 'Braveheart', year: 1995 },
-  { title: 'M', year: 1931 },
-  { title: 'Requiem for a Dream', year: 2000 },
-  { title: 'Amélie', year: 2001 },
-  { title: 'A Clockwork Orange', year: 1971 },
-  { title: 'Like Stars on Earth', year: 2007 },
-  { title: 'Taxi Driver', year: 1976 },
-  { title: 'Lawrence of Arabia', year: 1962 },
-  { title: 'Double Indemnity', year: 1944 },
-  { title: 'Eternal Sunshine of the Spotless Mind', year: 2004 },
-  { title: 'Amadeus', year: 1984 },
-  { title: 'To Kill a Mockingbird', year: 1962 },
-  { title: 'Toy Story 3', year: 2010 },
-  { title: 'Logan', year: 2017 },
-  { title: 'Full Metal Jacket', year: 1987 },
-  { title: 'Dangal', year: 2016 },
-  { title: 'The Sting', year: 1973 },
-  { title: '2001: A Space Odyssey', year: 1968 },
-  { title: "Singin' in the Rain", year: 1952 },
-  { title: 'Toy Story', year: 1995 },
-  { title: 'Bicycle Thieves', year: 1948 },
-  { title: 'The Kid', year: 1921 },
-  { title: 'Inglourious Basterds', year: 2009 },
-  { title: 'Snatch', year: 2000 },
-  { title: '3 Idiots', year: 2009 },
-  { title: 'Monty Python and the Holy Grail', year: 1975 },
+/* DATA FOR AUTOCOMPLETE */
+const specialties = [
+  { title: 'Кардиолог', id: 1 },
+  { title: 'Психолог', id: 2 },
+  { title: 'Акушер', id: 3 },
+  { title: 'Терапевт', id: 4 },
+];
+const cities = [
+  { title: 'Бишкек', id: 1 },
+  { title: 'Ош', id: 2 },
+  { title: 'Чуй', id: 3 },
+  { title: 'Нарын', id: 4 },
+  { title: 'Джалал-Абад', id: 5 },
+  { title: 'Баткен', id: 6 },
+  { title: 'Иссык-Куль', id: 7 },
+];
+const radius = [
+  { title: '500 м', id: 1 },
+  { title: '1 км', id: 2 },
+  { title: '3 км', id: 3 },
+  { title: '5 км', id: 4 },
+  { title: '10 км', id: 5 },
 ];

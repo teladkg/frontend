@@ -33,7 +33,7 @@ const Footer = () => {
           <div className={styles.footer_third_col}>
             <p id={styles.footer_third_col_title}>Врачу</p>
             <ul className={styles.third_col_links}>
-              {localStorage.getItem('userToken') ? <li><Link to="/pc-doctor">Мой кабинет</Link></li> : ''}
+              {localStorage.getItem('userToken') ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> : ''}
               <Link to="/phone-auth"><li>Регистрация</li></Link>
               <Link to="/phone-auth"><li>Войти</li></Link>
             </ul>

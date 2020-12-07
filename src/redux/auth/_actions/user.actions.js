@@ -10,15 +10,16 @@ export const userActions = {
   registration,
   registrateclient,
   logout,
-  getPCDoctor
+  getPCDoctor,
+  editPCDoctor
 };
 
 
 function checkToken(idtoken) {
-  return dispatch => {
+  return async dispatch => {
     dispatch(request(idtoken));
 
-    userService.checkToken(idtoken)
+    await userService.checkToken(idtoken)
       .then(
         idtoken => { 
           dispatch(success());
@@ -60,6 +61,46 @@ function registration(data) {
 }
 
 
+function getPCDoctor() {
+  return async dispatch => {
+    dispatch(request());
+    await axios.get('http://167.172.109.15:8000/userinfo/editdoctor/', {
+      headers: authHeader()
+    })
+    .then(
+      res => dispatch(success(res.data)),
+      error => dispatch(failure(error))
+    );
+  };
+
+  function request() { return { type: userConstants.GET_PCDOCTOR_REQUEST } }
+  function success(data) { return { type: userConstants.GET_PCDOCTOR_SUCCESS, data } }
+  function failure(error) { return { type: userConstants.GET_PCDOCTOR_FAILURE, error } }
+}
+
+
+function editPCDoctor(data) {
+  return async dispatch => {
+    dispatch(request(data));
+    userService.editPCDoctor(data)
+      .then(
+        data => {
+          dispatch(success());
+          dispatch(alertActions.success('Doctor edited successfully'));
+        },
+        error => {
+          dispatch(failure(error));
+          dispatch(alertActions.error(error));
+        }
+      );
+  };
+
+  function request(data) { return { type: userConstants.EDIT_PCDOCTOR_REQUEST, data } }
+  function success() { return { type: userConstants.EDIT_PCDOCTOR_SUCCESS } }
+  function failure(error) { return { type: userConstants.EDIT_PCDOCTOR_FAILURE, error } }
+}
+
+
 function registrateclient(data) {
   return dispatch => {
     dispatch(request(data));
@@ -87,24 +128,3 @@ function logout() {
   userService.logout();
   return { type: userConstants.LOGOUT };
 }
-
-
-function getPCDoctor() {
-  return async dispatch => {
-    dispatch(request());
-
-      // let token = localStorage.getItem('userToken');
-      await axios.get('http://167.172.109.15:8000/userinfo/editdoctor/', {
-        headers: authHeader()
-      })
-      .then(
-        res => dispatch(success(res.data)),
-        error => dispatch(failure(error))
-      );
-  };
-
-  function request() { return { type: userConstants.GET_PCDOCTOR_REQUEST } }
-  function success(data) { return { type: userConstants.GET_PCDOCTOR_SUCCESS, data } }
-  function failure(error) { return { type: userConstants.GET_PCDOCTOR_FAILURE, error } }
-}
-

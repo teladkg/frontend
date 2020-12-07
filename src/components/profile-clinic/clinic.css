@@ -231,7 +231,7 @@
   border-bottom: 2px solid #D3D3D3;
 }
 
-.clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container .PrivateTabIndicator-colorSecondary-7 {
+.clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container .MuiTabs-indicator {
   background-color: #00AFCA;
 }
 

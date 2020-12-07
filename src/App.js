@@ -19,7 +19,9 @@ import PhoneAuth from './components/phone-auth/phoneAuth';
 import ValidateOtp from './components/phone-auth/validateOtp';
 
 import PCDoctor from './components/personal-cabinet/pc-doctor/pc-doctor';
+import PCDoctorEdit from './components/personal-cabinet/pc-doctor/pc-doctor-edit';
 import PCClinic from './components/personal-cabinet/pc-clinic/pc-clinic';
+import PCClient from './components/personal-cabinet/pc-client/pc-client';
 
 
 function App() {
@@ -45,7 +47,7 @@ function App() {
         <Route path = "/clinic"
           component = {Clinic}
         />
-        <Route path = "/doctor"
+        <Route path = {"/doctor/:id"}
           component = {Doctor}
         />
 
@@ -69,8 +71,14 @@ function App() {
         {/* <Route path = "/pc-doctor"
           component = {PCDoctor}
         /> */}
-        <PrivateRoute path="/pc-doctor" 
+        <PrivateRoute path="/pc-doctor/info" 
           component={PCDoctor} 
+        />
+        <PrivateRoute path="/pc-doctor/edit"
+          component={PCDoctorEdit} 
+        />
+        <PrivateRoute path="/pc-client" 
+          component={PCClient} 
         />
         {/* <Route path = "/pc-clinic"
           component = {PCClinic}
