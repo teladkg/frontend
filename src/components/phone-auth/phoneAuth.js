@@ -117,7 +117,7 @@ const PhoneAuth = (props) => {
           <p id="status_title">Ваш статус на сайте:</p>
           <FormControl component="fieldset">
             <RadioGroup aria-label="client_type" name="client_type1" value={value} onChange={handleChange}>
-              <FormControlLabel value="doctor" control={<Radio />} label="Гость" />
+              <FormControlLabel value="doctor" control={<Radio />} label="Пациент" />
               <FormControlLabel value="client" control={<Radio />} label="Врач" />
             </RadioGroup>
           </FormControl>

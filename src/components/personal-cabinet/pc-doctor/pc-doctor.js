@@ -105,6 +105,7 @@ const PCDoctor = (props) => {
   };
 
 
+  const [selected, setSelected] = useState(null);
 
 
   const userData = props.data;
@@ -205,6 +206,27 @@ const PCDoctor = (props) => {
                         center={{lat: 42.867695, lng: 74.610897}}
                         zoom={12}
                       >
+                        <Marker 
+                          key={`${userData.locations[0].latitude}-${userData.locations[0].longitude}`} 
+                          position={{ lat: userData.locations[0].latitude, lng: userData.locations[0].longitude }} 
+                          onClick={() => {
+                            setSelected({lat: userData.locations[0].latitude, lng: userData.locations[0].longitude});
+                          }}
+                        />
+                          {selected ? (
+                            <InfoWindow 
+                              position={{lat: selected.lat, lng: selected.lng}}
+                              onCloseClick={() => {
+                                setSelected(null);
+                              }}
+                            >
+                              <div>
+                                {/* <p>lat: {selected.lat}</p>
+                                <p>lng: {selected.lng}</p> */}
+                                <p>Адрес: {userData.locations[0].address}</p>
+                              </div>
+                            </InfoWindow>) : null
+                          }
                       </GoogleMap>
                     </div>
                   </TabPanel>

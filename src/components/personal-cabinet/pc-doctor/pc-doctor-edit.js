@@ -104,23 +104,51 @@ const PCDoctorEdit = (props) => {
       // formData.append('user.id', editState.user.id);
       // formData.append('email', editState.user.email);
       // formData.append('phone', editState.user.phone);
-      formData.append('user.first_name', data.firstname);
-      formData.append('user.last_name', data.lastname);
-      formData.append('user.patronymic', data.patronymic);
+
+      // formData.append('user.first_name', data.firstname);
+      // formData.append('user.last_name', data.lastname);
+      // formData.append('user.patronymic', data.patronymic);
+
       // formData.append('avatar', editState.user.id);
-      formData.append('user.extra_phones', data.extra_phone);
-    formData.append('description', data.description);
+
+    //   formData.append('user.extra_phones', data.extra_phone);
+    // formData.append('description', data.description);
+
     // formData.append('skills', editState.skills);
-    formData.append('started_working', data.started_working);
+
+    // formData.append('started_working', data.started_working);
+
     // formData.append('experience', editState.experience);
     // formData.append('specialty', editState.specialty);
     // formData.append('rate', editState.rate);
-    // formData.append('locations', editState.locations);
+
+    // formData.append('locations[0].latitude', editState.locations[0].latitude);
+    // formData.append('locations[0].longitude', editState.locations[0].longitude);
+    // formData.append('locations[0].address', editState.locations[0].address);
+
     // formData.append('schedules', editState.schedules);
     // formData.append('prices', editState.prices);
     // formData.append('certificate', editState.certificate);
 
-    props.editPCDoctor(formData);
+    let patchData = {
+      user: {
+        first_name: data.firstname,
+        last_name: data.lastname,
+        patronymic: data.patronymic,
+        extra_phones: [data.extra_phone]
+      },
+      description: data.description,
+      started_working: data.started_working,
+      locations: [
+        {
+          latitude: editState.locations[0].latitude,
+          longitude: editState.locations[0].longitude,
+          address: editState.locations[0].address
+        }
+      ]
+    }
+
+    props.editPCDoctor(patchData);
 
     for (let [key, value] of formData.entries()) {
       console.log(`${key}: ${value}`);
@@ -151,29 +179,33 @@ const PCDoctorEdit = (props) => {
     toggleAddress(event.latLng.lat(), event.latLng.lng())
   };
   const handleMarker = marker => {
-    setEditState({
-      locations: ({
+    setEditState({...editState, 
+      locations: [{
+        ...editState.locations[0],
         latitude: marker.lat,
         longitude: marker.lng,
-      })
+      }]
     })
-    console.log(marker)
+    console.log(marker);
   }
-  const toggleAddress = () => {
-    Geocode.fromLatLng(editState.locations.latitude, editState.locations.longitude)
+  const toggleAddress = (e) => {
+    console.log(marker);
+    Geocode.fromLatLng(marker.lat, marker.lng)
     .then(
       response => {
         const mapAddress = response.results[0].formatted_address;
-        setEditState({
-          locations: ({
-            address: mapAddress
-          })
+        setEditState({...editState, 
+          locations: [{
+            ...editState.locations[0],
+            address: mapAddress,
+          }]
         })
       },
       error => {
         console.error(error);
       }
     );
+    console.log(editState);
   }
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
@@ -318,11 +350,11 @@ const PCDoctorEdit = (props) => {
                         />
                       )}
                     />
-                    <div className="personal_doctor_page_doctors_data_info_chipgroup">
-                      {/* <Chip label="Психолог"/>
+                    {/* <div className="personal_doctor_page_doctors_data_info_chipgroup">
                       <Chip label="Психолог"/>
-                      <Chip label="Психолог"/> */}
-                    </div>                         
+                      <Chip label="Психолог"/>
+                      <Chip label="Психолог"/>
+                    </div>                          */}
                     <TextField defaultValue={editState.started_working} id="personal_doctor_page_doctors_data_info_experience" 
                                 label="Год начала работы" variant="outlined" name="started_working" 
                                 inputRef={register({maxLength: 4})} inputProps={{maxLength:4}}
@@ -530,7 +562,8 @@ function Locate({ panTo }) {
         );
       }}
     >
-      Click{/* <img id="image-compass-button" src={require(`../../../content/images/addRental/compass.svg`)} alt="compass" /> */}
+      {/* <img id="image-compass-button" src={require(`../../../content/images/addRental/compass.svg`)} alt="compass" /> */}
+      Click
     </button>
   );
 }

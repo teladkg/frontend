@@ -120,6 +120,12 @@
   cursor: pointer;
 }
 
+.search .main_header .main_header_icon_group a {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .search #search_title1 {
   font-size: 45px;
   font-weight: 500;

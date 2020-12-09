@@ -100,4 +100,10 @@
 .header .icon_group #logout-button:hover {
   cursor: pointer;
 }
+
+.header .icon_group a {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
 /*# sourceMappingURL=header.css.map */

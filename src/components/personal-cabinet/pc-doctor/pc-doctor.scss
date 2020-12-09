@@ -420,4 +420,24 @@
       stroke: none;
     }
   }
+
+  .sixth-search {
+    width: 100%;
+    height: auto;
+    font-family: 'Roboto', sans-serif;
+    div[data-reach-combobox] {
+      width: 100%;
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #BDBDBD;
+        border-radius: 5px;
+        &:focus {
+          border: 2px solid #00AFCA;
+        }
+      }
+    }
+  }
+  
 }

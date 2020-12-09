@@ -583,4 +583,26 @@
   fill: #fff !important;
   stroke: none;
 }
+
+.personal_doctor_page .sixth-search {
+  width: 100%;
+  height: auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.personal_doctor_page .sixth-search div[data-reach-combobox] {
+  width: 100%;
+}
+
+.personal_doctor_page .sixth-search div[data-reach-combobox] input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #BDBDBD;
+  border-radius: 5px;
+}
+
+.personal_doctor_page .sixth-search div[data-reach-combobox] input:focus {
+  border: 2px solid #00AFCA;
+}
 /*# sourceMappingURL=pc-doctor.css.map */
