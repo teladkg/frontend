@@ -201,9 +201,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
@@ -313,6 +313,37 @@
   transition: all .3s ease-in-out;
 }
 
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #cancel_link_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #cancel_link_button #personal_doctor_page_doctors_data_cancelbutton {
+  width: 100%;
+  background: transparent;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #828282;
+  padding: 13px 10px;
+  margin-top: 30px;
+  text-align: center;
+  border: 2px solid #828282;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info #cancel_link_button #personal_doctor_page_doctors_data_cancelbutton:hover {
+  cursor: pointer;
+  background: #828282;
+  color: #fff;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
 .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right {
   width: 67%;
 }
@@ -396,6 +427,7 @@
   width: 100%;
   height: 400px;
   border-radius: 5px;
+  position: relative;
 }
 
 .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception {
@@ -448,8 +480,8 @@
           flex-direction: row;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_type .personal_doctor_page_tabs_reception_type_cells #personal_doctor_page_tabs_reception_type_cells_titles p {
-  width: 32%;
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_type .personal_doctor_page_tabs_reception_type_cells #personal_doctor_page_tabs_reception_type_cells_titles th {
+  width: 100%;
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 18px;
@@ -472,8 +504,8 @@
           flex-direction: row;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_type .personal_doctor_page_tabs_reception_type_cells #personal_doctor_page_tabs_reception_type_cells_cost p {
-  width: 32%;
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_type .personal_doctor_page_tabs_reception_type_cells #personal_doctor_page_tabs_reception_type_cells_cost td {
+  width: 100%;
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 18px;
@@ -525,8 +557,8 @@
           flex-direction: row;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_titles p {
-  width: 13.4%;
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_titles th {
+  width: 100%;
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 18px;
@@ -549,16 +581,17 @@
           flex-direction: row;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost p {
-  width: 13.4%;
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td {
+  width: 100%;
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 18px;
   color: #000000;
   padding: 19px 0;
   text-align: center;
-  background: #EFF4F5;
+  background: #E3EFF4;
   border-radius: 5px;
+  border: 1px solid #E3EFF4;
   margin: 0 5px 5px 0;
 }
 
@@ -604,5 +637,22 @@
 
 .personal_doctor_page .sixth-search div[data-reach-combobox] input:focus {
   border: 2px solid #00AFCA;
+}
+
+.personal_doctor_page .locate {
+  border: none;
+  outline: none;
+  background: transparent;
+  position: absolute;
+  right: 8%;
+  top: 3%;
+}
+
+.personal_doctor_page .locate:hover {
+  cursor: pointer;
+}
+
+.personal_doctor_page .locate #image-compass-button {
+  width: 40px;
 }
 /*# sourceMappingURL=pc-doctor.css.map */

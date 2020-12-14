@@ -315,6 +315,12 @@
   padding: 0;
 }
 
+.search_page .search_page_doctors_list #search_page_doctors_slide #search_page_doctors_slide_info .search_page_doctors_slide_info_chipgroup #search_page_doctors_slide_info_specialties {
+  font-weight: bold;
+  font-size: 16px;
+  color: #4F4F4F;
+}
+
 .search_page .search_page_doctors_list #search_page_doctors_slide #search_page_doctors_slide_info #search_page_doctors_slide_info_experience {
   font-weight: bold;
   font-size: 16px;

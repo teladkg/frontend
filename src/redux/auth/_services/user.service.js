@@ -3,7 +3,7 @@ import authHeader from '../_helpers/auth-header';
 
 
 const checkToken = async(idtoken) => { 
-    const response = await axios.post('http://167.172.109.15:8000/users/gettoken/', {
+    const response = await axios.post('http://167.172.109.15/users/gettoken/', {
         idtoken: idtoken
     });
 
@@ -20,7 +20,7 @@ const checkToken = async(idtoken) => {
 const registration = async(data) => { 
     console.log(data);
     // const idtoken = localStorage.getItem('fireToken');
-    const response = await axios.post('http://167.172.109.15:8000/users/application/', data, 
+    const response = await axios.post('http://167.172.109.15/users/application/', data, 
     {   
         "Content-Type": "multipart/form-data"
     }
@@ -31,7 +31,7 @@ const registration = async(data) => {
 
 const editPCDoctor = async(data) => {
     console.log(data);
-    const response = await axios.patch('http://167.172.109.15:8000/userinfo/editdoctor/', data, {
+    const response = await axios.patch('http://167.172.109.15/userinfo/editdoctor/', data, {
         headers: authHeader()
     })
     console.log(response);
@@ -40,7 +40,7 @@ const editPCDoctor = async(data) => {
 
 const registrateclient = async(data) => {
     const idtoken = localStorage.getItem('fireToken');
-    const response = await axios.post('http://167.172.109.15:8000/users/createclient/', {
+    const response = await axios.post('http://167.172.109.15/users/createclient/', {
         idtoken: idtoken,
     });
     console.log(response.data);
@@ -49,7 +49,7 @@ const registrateclient = async(data) => {
 
 // const getPCDoctor = async() => {
 //     let token = localStorage.getItem('userToken');
-//     const data = await axios.get('http://167.172.109.15:8000/userinfo/editdoctor/', {
+//     const data = await axios.get('http://167.172.109.15/userinfo/editdoctor/', {
 //         headers: {
 //             "Authorization": "Token " + token
 //         }

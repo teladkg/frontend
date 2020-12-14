@@ -44,9 +44,10 @@ import ReactWhatsapp from 'react-whatsapp';
 const Doctor = (props) => {
 
   const [userData, updateUserData] = useState({});
+  const [selected, setSelected] = useState(null);
 
   const getDoctorById = (id) => {
-    axios.get(`http://167.172.109.15:8000/userinfo/doctor/${id}`)
+    axios.get(`http://167.172.109.15/userinfo/doctor/${id}`)
     .then((res) => {
       updateUserData(res.data);
     })
@@ -145,27 +146,47 @@ const Doctor = (props) => {
                 <div id="doctor_page_doctors_data_info">
                   <h3>{userData.user.last_name} {userData.user.first_name} {userData.user.patronymic}</h3>
                   <div className="doctor_page_doctors_data_info_chipgroup">
-                    <Chip label="Психолог"/>
-                    <Chip label="Психолог"/>
-                    <Chip label="Психолог"/>
-                    <IconButton
-                      className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                      })}
-                      onClick={handleExpandClick}
-                      aria-expanded={expanded}
-                      aria-label="show more"
-                    >
-                      <ExpandMoreIcon />
-                    </IconButton>
-                    <Collapse in={expanded} timeout="auto" unmountOnExit>
-                      <Chip label="Психолог"/>
-                      <Chip label="Психолог"/>
-                      <Chip label="Психолог"/>
-                    </Collapse>
+                    {
+                      userData.specialty.length === 0
+                      ? <p id="doctor_page_doctors_data_info_specialties">Специализация: отсутствует</p>
+                      // : userData.specialty.length > 2 
+                      //   ? userData.specialty.map(spec => {
+                      //     return(
+                      //       <>
+                      //         <Chip label={spec.name} />
+                      //         <IconButton
+                      //           className={clsx(classes.expand, {
+                      //             [classes.expandOpen]: expanded,
+                      //           })}
+                      //           onClick={handleExpandClick}
+                      //           aria-expanded={expanded}
+                      //           aria-label="show more"
+                      //         >
+                      //           <ExpandMoreIcon />
+                      //         </IconButton>
+                      //         <Collapse in={expanded} timeout="auto" unmountOnExit>
+                      //           <Chip label="Психолог" />
+                      //           <Chip label="Психолог" />
+                      //           <Chip label="Психолог" />
+                      //         </Collapse>
+                      //       </>
+                      //     )
+                      //   })
+                      : userData.specialty.map(spec => {
+                        return(
+                          <Chip label={spec.name} />
+                        )
+                      })
+                    }
                   </div>             
-                  <p id="doctor_page_doctors_data_info_experience">Стаж: {userData.experince} лет</p>
-                  <p id="doctor_page_doctors_data_info_address">Городская больница №6, Чуй 127</p>
+                  {userData.experience !== null 
+                    ? <p id="doctor_page_doctors_data_info_experience">Стаж: {userData.experience} лет</p>
+                    : <p id="doctor_page_doctors_data_info_experience">Стаж: отсутствует</p>
+                  }
+                  {userData.locations.length !== 0 && userData.locations[0].address 
+                    ? <p id="doctor_page_doctors_data_info_address">{userData.locations[0].address}</p>
+                    : <p id="doctor_page_doctors_data_info_address">Адрес отсутствует</p>
+                  }
                   <div id="doctor_page_doctors_data_info_lastblock">
                     <div id="doctor_page_doctors_data_info_phonegroup">
                       <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -206,6 +227,33 @@ const Doctor = (props) => {
                         center={{lat: 42.867695, lng: 74.610897}}
                         zoom={12}
                       >
+                        {userData.locations.map(elem => {
+                          return(
+                            <>
+                              <Marker 
+                                key={`${elem.latitude}-${elem.longitude}`} 
+                                position={{ lat: elem.latitude, lng: elem.longitude }} 
+                                onClick={() => {
+                                  setSelected({lat: elem.latitude, lng: elem.longitude});
+                                }}
+                              />
+                                {selected ? (
+                                  <InfoWindow 
+                                    position={{lat: selected.lat, lng: selected.lng}}
+                                    onCloseClick={() => {
+                                      setSelected(null);
+                                    }}
+                                  >
+                                    <div>
+                                      {/* <p>lat: {selected.lat}</p>
+                                      <p>lng: {selected.lng}</p> */}
+                                      <p>Адрес: {elem.address}</p>
+                                    </div>
+                                  </InfoWindow>) : null
+                                }
+                            </>
+                          )
+                        })}
                       </GoogleMap>
                     </div>
                   </TabPanel>

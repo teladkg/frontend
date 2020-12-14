@@ -5,7 +5,6 @@ import { userActions } from '../../../redux/auth/_actions';
 
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
-import PCDoctorEdit from './pc-doctor-edit';
 
 import './pc-doctor.css';
 
@@ -32,21 +31,13 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import Rating from '@material-ui/lab/Rating';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
-
 
 
 const PCDoctor = (props) => {
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
     props.getPCDoctor();
   }, []);
   
@@ -131,7 +122,7 @@ const PCDoctor = (props) => {
 
         <h1 id="personal_doctor_page_title">Мой кабинет</h1>
         {
-          userData && userData.user &&
+          userData && userData.user && 
           <div className="personal_doctor_page_main">
             <div className="personal_doctor_page_main_left">
               <div id="personal_doctor_page_doctors_data">
@@ -155,31 +146,20 @@ const PCDoctor = (props) => {
                   <TextField value={userData.user.last_name} id="personal_doctor_page_doctors_data_info_lastname" label="Фамилия" variant="outlined" InputProps={{readOnly: true}}/> 
                   <TextField value={userData.user.first_name} id="personal_doctor_page_doctors_data_info_firstname" label="Имя" variant="outlined" InputProps={{readOnly: true}}/>
                   <TextField value={userData.user.patronymic} id="personal_doctor_page_doctors_data_info_patronymic" label="Отчество" variant="outlined" InputProps={{readOnly: true}}/> 
-                  <Autocomplete
-                    multiple
-                    id="tags-outlined"
-                    options={specialties}
-                    getOptionLabel={(option) => option.title}
-                    defaultValue={[specialties[0]]}
-                    filterSelectedOptions
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="outlined"
-                        label="Специальность"
-                        placeholder="Поиск"
-                        // InputProps={{readOnly: true}}
-                      />
-                    )}
-                  />
+                
                   <div className="personal_doctor_page_doctors_data_info_chipgroup">
-                    {/* <Chip label="Психолог"/>
-                    <Chip label="Психолог"/>
-                    <Chip label="Психолог"/> */}
-                  </div>                         
+                    {
+                      userData.specialty && userData.specialty.map(spec => {
+                        return(
+                          <Chip label={spec.name}/>
+                        )
+                      })
+                    }
+                  </div>                 
+                  
                   <TextField value={userData.started_working} id="personal_doctor_page_doctors_data_info_experience" label="Год начала работы" variant="outlined" InputProps={{readOnly: true}}/> 
                   <TextField value={userData.user.extra_phones[0]} id="personal_doctor_page_doctors_data_info_phone" label="Дополнительный номер телефона" variant="outlined" InputProps={{readOnly: true}}/> 
-                  <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>    
+                  {/* <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>     */}
                   <Link id="edit_link_button" to="/pc-doctor/edit"><button id="personal_doctor_page_doctors_data_editbutton">Редактировать</button></Link>
                 </div>
               </div>
@@ -206,27 +186,33 @@ const PCDoctor = (props) => {
                         center={{lat: 42.867695, lng: 74.610897}}
                         zoom={12}
                       >
-                        <Marker 
-                          key={`${userData.locations[0].latitude}-${userData.locations[0].longitude}`} 
-                          position={{ lat: userData.locations[0].latitude, lng: userData.locations[0].longitude }} 
-                          onClick={() => {
-                            setSelected({lat: userData.locations[0].latitude, lng: userData.locations[0].longitude});
-                          }}
-                        />
-                          {selected ? (
-                            <InfoWindow 
-                              position={{lat: selected.lat, lng: selected.lng}}
-                              onCloseClick={() => {
-                                setSelected(null);
-                              }}
-                            >
-                              <div>
-                                {/* <p>lat: {selected.lat}</p>
-                                <p>lng: {selected.lng}</p> */}
-                                <p>Адрес: {userData.locations[0].address}</p>
-                              </div>
-                            </InfoWindow>) : null
-                          }
+                        {userData.locations.map(elem => {
+                          return(
+                            <>
+                              <Marker 
+                                key={`${elem.latitude}-${elem.longitude}`} 
+                                position={{ lat: elem.latitude, lng: elem.longitude }} 
+                                onClick={() => {
+                                  setSelected({lat: elem.latitude, lng: elem.longitude});
+                                }}
+                              />
+                                {selected ? (
+                                  <InfoWindow 
+                                    position={{lat: selected.lat, lng: selected.lng}}
+                                    onCloseClick={() => {
+                                      setSelected(null);
+                                    }}
+                                  >
+                                    <div>
+                                      {/* <p>lat: {selected.lat}</p>
+                                      <p>lng: {selected.lng}</p> */}
+                                      <p>Адрес: {elem.address}</p>
+                                    </div>
+                                  </InfoWindow>) : null
+                                }
+                            </>
+                          )
+                        })}
                       </GoogleMap>
                     </div>
                   </TabPanel>
@@ -234,41 +220,59 @@ const PCDoctor = (props) => {
                     <div className="personal_doctor_page_tabs_reception">
                       <div className="personal_doctor_page_tabs_reception_type">
                         <p id="personal_doctor_page_tabs_reception_type_title">Тип приема</p>
-                        <div className="personal_doctor_page_tabs_reception_type_cells">
-                          <div id="personal_doctor_page_tabs_reception_type_cells_titles">
-                            <p id="personal_doctor_page_tabs_reception_type_cells_titles_1">В клинике</p>
-                            <p id="personal_doctor_page_tabs_reception_type_cells_titles_2">На дому</p>
-                            <p id="personal_doctor_page_tabs_reception_type_cells_titles_3">Онлайн</p>
-                          </div>
-                          <div id="personal_doctor_page_tabs_reception_type_cells_cost">
-                            <p id="personal_doctor_page_tabs_reception_type_cells_cost_1">500 сом</p>
-                            <p id="personal_doctor_page_tabs_reception_type_cells_cost_2">500 сом</p>
-                            <p id="personal_doctor_page_tabs_reception_type_cells_cost_3">500 сом</p>
-                          </div>
-                        </div>
+                        <table className="personal_doctor_page_tabs_reception_type_cells">
+                          <tr id="personal_doctor_page_tabs_reception_type_cells_titles">
+                            <th>В клинике</th>
+                            <th>На дому</th>
+                            <th>Онлайн</th>
+                          </tr>
+                          <tr id="personal_doctor_page_tabs_reception_type_cells_cost">
+                            <td>500 сом</td>
+                            <td>500 сом</td>
+                            <td>500 сом</td>
+                          </tr>
+                        </table>
                       </div>
                       <div className="personal_doctor_page_tabs_reception_schedule">
                         <p id="personal_doctor_page_tabs_reception_schedule_title">График работы</p>
-                        <div className="personal_doctor_page_tabs_reception_schedule_cells">
-                          <div id="personal_doctor_page_tabs_reception_schedule_cells_titles">
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_3">СР</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_6">СБ</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</p>
-                          </div>
-                          <div id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_1">В клинике</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_2">В клинике</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_3">В клинике</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_4">В клинике</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_5">В клинике</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_6">В клинике</p>
-                            <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_7">В клинике</p>
-                          </div>
-                        </div>
+                        <table className="personal_doctor_page_tabs_reception_schedule_cells">
+                          <tr id="personal_doctor_page_tabs_reception_schedule_cells_titles">
+                            <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</th>
+                            <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</th>
+                            <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_3">СР</th>
+                            <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</th>
+                            <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</th>
+                            <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_6">СБ</th>
+                            <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</th>
+                          </tr>
+                          <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
+                            <td>В клинике</td>
+                            <td>В клинике</td>
+                            <td>В клинике</td>
+                            <td>В клинике</td>
+                            <td>В клинике</td>
+                            <td>В клинике</td>
+                            <td>В клинике</td>
+                          </tr>
+                          <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
+                            <td>На выезд</td>
+                            <td>На выезд</td>
+                            <td>На выезд</td>
+                            <td>На выезд</td>
+                            <td>На выезд</td>
+                            <td>На выезд</td>
+                            <td>На выезд</td>
+                          </tr>
+                          <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
+                            <td>Онлайн</td>
+                            <td>Онлайн</td>
+                            <td>Онлайн</td>
+                            <td>Онлайн</td>
+                            <td>Онлайн</td>
+                            <td>Онлайн</td>
+                            <td>Онлайн</td>
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </TabPanel>
@@ -277,7 +281,6 @@ const PCDoctor = (props) => {
             </div>
           </div>
         }
-        
 
         <ScrollUpButton ShowAtPosition={350}/>
 
@@ -294,7 +297,7 @@ const mapStateToProps = state => {
   return { 
     loggingIn, 
     loggedIn, 
-    data: state.getPCDoctor.data
+    data: state.getPCDoctor.data,
   }
 }
 
@@ -344,10 +347,3 @@ function handleClick(event) {
   event.preventDefault();
   console.info('You clicked a breadcrumb.');
 }
-
-
-const specialties = [
-  { title: 'Психолог', val: 1 },
-  { title: 'Эндокринолог', val: 2 },
-  { title: 'Терапевт', val: 3 },
-];

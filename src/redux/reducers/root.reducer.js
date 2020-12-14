@@ -9,6 +9,7 @@ import editPCDoctor from '../auth/_reducers/editPCDoctor.reducer';
 
 import getDoctors from '../reducers/getDoctors.reducer';
 import getDoctorById from '../reducers/getDoctorById.reducer';
+import getSpecialties from '../reducers/getSpecialties.reducer';
 
 export const rootReducer = combineReducers({
     // authReducer: authReducer,
@@ -20,4 +21,5 @@ export const rootReducer = combineReducers({
     
     getDoctors: getDoctors,
     getDoctorById: getDoctorById,
+    getSpecialties: getSpecialties
 })

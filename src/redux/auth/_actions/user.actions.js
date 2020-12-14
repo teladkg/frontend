@@ -1,9 +1,9 @@
-import { responsiveFontSizes } from '@material-ui/core';
 import { userConstants } from '../_constants';
 import { userService } from '../_services/user.service';
 import { alertActions } from './';
 import axios from 'axios'
 import authHeader from '../_helpers/auth-header';
+import { toast } from "react-toastify";
 
 export const userActions = {
   checkToken,
@@ -64,7 +64,7 @@ function registration(data) {
 function getPCDoctor() {
   return async dispatch => {
     dispatch(request());
-    await axios.get('http://167.172.109.15:8000/userinfo/editdoctor/', {
+    await axios.get('http://167.172.109.15/userinfo/editdoctor/', {
       headers: authHeader()
     })
     .then(
@@ -86,10 +86,28 @@ function editPCDoctor(data) {
       .then(
         data => {
           dispatch(success());
+          toast.success('Изменения сохранены', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           dispatch(alertActions.success('Doctor edited successfully'));
         },
         error => {
           dispatch(failure(error));
+          toast.error('Ошибка!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
           dispatch(alertActions.error(error));
         }
       );

@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { userActions } from '../../../redux/auth/_actions';
+import { getSpecialties } from '../../../redux/actions/actions'
 
 import Header from '../../header/header';
 import Footer from '../../footer/footer';
@@ -57,23 +58,17 @@ const libraries = ["places"];
 
 const PCDoctorEdit = (props) => {
 
-  const notify = () => {
-    toast.success('Изменения сохранены', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }
 
   const [editState, setEditState] = useState({});
+  const [inputValue, setInputValue] = useState("");
+  const [locationsState, setLocationsState] = useState([]);
+
   useEffect(() => {
     // window.scrollTo(0, 0)
     props.getPCDoctor();
+    props.getSpecialties();
   }, []);
+
   useEffect(() => {
     // window.scrollTo(0, 0)
     setEditState(props.data);
@@ -97,38 +92,18 @@ const PCDoctorEdit = (props) => {
 
 
   let formData = new FormData();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, control, setValue } = useForm();
+
+  useEffect(() => {
+    props.data.specialty &&
+    setValue("specialties", props.data.specialty);
+  }, [setValue]);
 
   const onSubmit = (data, event) => {
-    // formData.append('id', editState.id);
-      // formData.append('user.id', editState.user.id);
-      // formData.append('email', editState.user.email);
-      // formData.append('phone', editState.user.phone);
 
-      // formData.append('user.first_name', data.firstname);
-      // formData.append('user.last_name', data.lastname);
-      // formData.append('user.patronymic', data.patronymic);
-
-      // formData.append('avatar', editState.user.id);
-
-    //   formData.append('user.extra_phones', data.extra_phone);
-    // formData.append('description', data.description);
-
-    // formData.append('skills', editState.skills);
-
-    // formData.append('started_working', data.started_working);
-
-    // formData.append('experience', editState.experience);
-    // formData.append('specialty', editState.specialty);
-    // formData.append('rate', editState.rate);
-
-    // formData.append('locations[0].latitude', editState.locations[0].latitude);
-    // formData.append('locations[0].longitude', editState.locations[0].longitude);
-    // formData.append('locations[0].address', editState.locations[0].address);
-
-    // formData.append('schedules', editState.schedules);
-    // formData.append('prices', editState.prices);
-    // formData.append('certificate', editState.certificate);
+    const specialtiesIds = data.specialties.map((e)=> {
+      return { id: e.id }
+    })
 
     let patchData = {
       user: {
@@ -139,22 +114,33 @@ const PCDoctorEdit = (props) => {
       },
       description: data.description,
       started_working: data.started_working,
-      locations: [
-        {
+      locations: [ 
+        editState.locations[0].latitude === locationsState.latitude &&
+        editState.locations[0].longitude === locationsState.longitude 
+        ? {
+          id: editState.locations[0].id,
+          latitude: locationsState.latitude,
+          longitude: locationsState.longitude,
+          address: locationsState.address
+        }
+        : locationsState.length === 0 ? {
+          id: editState.locations[0].id,
           latitude: editState.locations[0].latitude,
           longitude: editState.locations[0].longitude,
           address: editState.locations[0].address
+        } : {
+          latitude: locationsState.latitude,
+          longitude: locationsState.longitude,
+          address: locationsState.address
         }
-      ]
+      ],
+      specialty: specialtiesIds
     }
-
+    // console.log(data.specialties);
     props.editPCDoctor(patchData);
-
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}: ${value}`);
-    }
+    // console.log(patchData);
   }
-  
+
 
   /* GOOGLE MAPS */
   const { isLoaded, loadError } = useLoadScript({
@@ -179,12 +165,16 @@ const PCDoctorEdit = (props) => {
     toggleAddress(event.latLng.lat(), event.latLng.lng())
   };
   const handleMarker = marker => {
-    setEditState({...editState, 
-      locations: [{
-        ...editState.locations[0],
-        latitude: marker.lat,
-        longitude: marker.lng,
-      }]
+    // setEditState({...editState, 
+    //   locations: [{
+    //     ...editState.locations[0],
+    //     latitude: marker.lat,
+    //     longitude: marker.lng,
+    //   }]
+    // })
+    setLocationsState({...locationsState,
+      latitude: marker.lat,
+      longitude: marker.lng
     })
     console.log(marker);
   }
@@ -194,11 +184,14 @@ const PCDoctorEdit = (props) => {
     .then(
       response => {
         const mapAddress = response.results[0].formatted_address;
-        setEditState({...editState, 
-          locations: [{
-            ...editState.locations[0],
-            address: mapAddress,
-          }]
+        // setEditState({...editState, 
+        //   locations: [{
+        //     ...editState.locations[0],
+        //     address: mapAddress,
+        //   }]
+        // })
+        setLocationsState({...locationsState,
+          address: mapAddress
         })
       },
       error => {
@@ -215,8 +208,6 @@ const PCDoctorEdit = (props) => {
     mapRef.current.panTo({ lat, lng });
     mapRef.current.setZoom(18);
   }, []);
-  // if (loadError) return "Error";
-  // if (!isLoaded) return "Loading...";
 
 
   /* FOR DOCTORS SHOW MORE BUTTON */
@@ -240,9 +231,9 @@ const PCDoctorEdit = (props) => {
 
 
   /* FOR TABS */
-  const [value, setValue] = React.useState(0);
+  const [tabValue, setTabValue] = React.useState(0);
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setTabValue(newValue);
   };
 
 
@@ -266,6 +257,9 @@ const PCDoctorEdit = (props) => {
   const userData = props.data;
   // console.log(avatar);
   console.log(editState);
+
+  const specialtiesData = props.specialties.results;
+  console.log(locationsState);
   
   return (
     <>
@@ -301,7 +295,7 @@ const PCDoctorEdit = (props) => {
 
         <h1 id="personal_doctor_page_title">Мой кабинет</h1>
         {
-          editState && editState.user &&
+          editState && editState.user && specialtiesData &&
           <form onSubmit={handleSubmit(onSubmit)} className={classes.root}>
             <div className="personal_doctor_page_main">
               <div className="personal_doctor_page_main_left">
@@ -334,21 +328,38 @@ const PCDoctorEdit = (props) => {
                                 label="Отчество" variant="outlined" name="patronymic" 
                                 inputRef={register({maxLength: 30})}
                     /> 
-                    <Autocomplete
-                      multiple
-                      id="tags-outlined"
-                      options={specialties}
-                      getOptionLabel={(option) => option.title}
-                      defaultValue={[specialties[0]]}
-                      filterSelectedOptions
-                      renderInput={(params) => (
-                        <TextField
-                          {...params}
-                          variant="outlined"
-                          label="Специальность"
-                          placeholder="Поиск"
+                    <Controller
+                      render={props => (
+                        <Autocomplete
+                          id="tags-outlined"
+                          multiple
+                          options={specialtiesData}
+                          getOptionLabel={option => option.name}
+                          getOptionSelected={(option, value) => option.name === value.name }
+                          filterSelectedOptions
+                          value={props.value}
+                          onChange={(e, values) => setValue("specialties", values)}
+                          inputValue={inputValue}
+                          onInputChange={(event, newInputValue) => {
+                            setInputValue(newInputValue);
+                          }}
+                          renderInput={params => (
+                            <TextField
+                              {...params}
+                              label="Специальность"
+                              name="specialties"
+                              placeholder="Поиск"
+                              variant="outlined"
+                            />
+                          )}
                         />
                       )}
+                      // onChange={([event, data]) => {
+                      //   return data;
+                      // }}
+                      control={control}
+                      name="specialties"                     
+                      defaultValue={editState.specialty}
                     />
                     {/* <div className="personal_doctor_page_doctors_data_info_chipgroup">
                       <Chip label="Психолог"/>
@@ -363,8 +374,9 @@ const PCDoctorEdit = (props) => {
                                 label="Дополнительный номер телефона" variant="outlined" name="extra_phone" 
                                 inputRef={register({maxLength: 13})} inputProps={{maxLength:13}}
                     /> 
-                    <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>    
-                    <button onClick={notify} type="submit" id="personal_doctor_page_doctors_data_savebutton">Сохранить</button>
+                    {/* <button id="personal_doctor_page_doctors_data_addbutton">Добавить номер</button>   */}
+                    <Link id="cancel_link_button" to="/pc-doctor/info"><button id="personal_doctor_page_doctors_data_cancelbutton">Отмена</button></Link> 
+                    <button type="submit" id="personal_doctor_page_doctors_data_savebutton">Сохранить</button>
                   </div>
                 </div>
               </div>
@@ -372,13 +384,13 @@ const PCDoctorEdit = (props) => {
                 <div className="personal_doctor_page_tabs_container">
                   <div className={classes.root}>
                     <AppBar position="static">
-                      <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+                      <Tabs value={tabValue} onChange={handleChange} aria-label="simple tabs example">
                         <Tab label="О враче" {...a11yProps(0)} />
                         <Tab label="Карта" {...a11yProps(1)} />
                         <Tab label="Прием" {...a11yProps(2)} />
                       </Tabs>
                     </AppBar>
-                    <TabPanel value={value} index={0}>
+                    <TabPanel value={tabValue} index={0}>
                       <div id="personal_doctor_page_tabs_about">
                         <TextField multiline defaultValue={editState.description} id="personal_doctor_page_tabs_about_info" 
                                     variant="outlined" name="description" 
@@ -386,7 +398,7 @@ const PCDoctorEdit = (props) => {
                         />
                       </div>                 
                     </TabPanel>
-                    <TabPanel value={value} index={1}>                  
+                    <TabPanel value={tabValue} index={1}>                  
                       <div id="personal_doctor_page_tabs_map-container">
                         <Search panTo={panTo}/>
                         <GoogleMap
@@ -396,6 +408,7 @@ const PCDoctorEdit = (props) => {
                           onClick={onMapCLick}
                           onLoad={onMapLoad}
                         >
+                          {/* <Locate panTo={panTo} /> */}
                           <Marker 
                             key={`${marker.lat}-${marker.lng}`} 
                             position={{ lat: marker.lat, lng: marker.lng }} 
@@ -418,48 +431,73 @@ const PCDoctorEdit = (props) => {
                             </InfoWindow>) : null
                           }
                         </GoogleMap>
-                        <Locate panTo={panTo} />
+                        
                       </div>
                     </TabPanel>
-                    <TabPanel value={value} index={2}>
+                    <TabPanel value={tabValue} index={2}>
                       <div className="personal_doctor_page_tabs_reception">
                         <div className="personal_doctor_page_tabs_reception_type">
                           <p id="personal_doctor_page_tabs_reception_type_title">Тип приема</p>
-                          <div className="personal_doctor_page_tabs_reception_type_cells">
-                            <div id="personal_doctor_page_tabs_reception_type_cells_titles">
-                              <p id="personal_doctor_page_tabs_reception_type_cells_titles_1">В клинике</p>
-                              <p id="personal_doctor_page_tabs_reception_type_cells_titles_2">На дому</p>
-                              <p id="personal_doctor_page_tabs_reception_type_cells_titles_3">Онлайн</p>
-                            </div>
-                            <div id="personal_doctor_page_tabs_reception_type_cells_cost">
-                              <p id="personal_doctor_page_tabs_reception_type_cells_cost_1">500 сом</p>
-                              <p id="personal_doctor_page_tabs_reception_type_cells_cost_2">500 сом</p>
-                              <p id="personal_doctor_page_tabs_reception_type_cells_cost_3">500 сом</p>
-                            </div>
-                          </div>
+                          <table className="personal_doctor_page_tabs_reception_type_cells">
+                            <tr id="personal_doctor_page_tabs_reception_type_cells_titles">
+                              <th>В клинике</th>
+                              <th>На дому</th>
+                              <th>Онлайн</th>
+                            </tr>
+                            <tr id="personal_doctor_page_tabs_reception_type_cells_cost">
+                              <td>
+                                {/* <TextField defaultValue={editState.prices===null && editState.prices.home===null ? editState.prices.home===500 : editState.prices.home} id="personal_doctor_page_tabs_reception_type_cells_cost_home" 
+                                  variant="outlined" name="prices1" 
+                                  inputRef={register({minLength: 0, maxLength: 9})}
+                                  inputProps={{maxLength: 9}}
+                                /> */}
+                                500 сом
+                              </td>
+                              <td>500 сом</td>
+                              <td>500 сом</td>
+                            </tr>
+                          </table>
                         </div>
                         <div className="personal_doctor_page_tabs_reception_schedule">
                           <p id="personal_doctor_page_tabs_reception_schedule_title">График работы</p>
-                          <div className="personal_doctor_page_tabs_reception_schedule_cells">
-                            <div id="personal_doctor_page_tabs_reception_schedule_cells_titles">
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_3">СР</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_6">СБ</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</p>
-                            </div>
-                            <div id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_1">В клинике</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_2">В клинике</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_3">В клинике</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_4">В клинике</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_5">В клинике</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_6">В клинике</p>
-                              <p id="personal_doctor_page_tabs_reception_schedule_cells_cost_7">В клинике</p>
-                            </div>
-                          </div>
+                          <table className="personal_doctor_page_tabs_reception_schedule_cells">
+                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_titles">
+                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</th>
+                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</th>
+                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_3">СР</th>
+                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</th>
+                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</th>
+                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_6">СБ</th>
+                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</th>
+                            </tr>
+                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
+                              <td>В клинике</td>
+                              <td>В клинике</td>
+                              <td>В клинике</td>
+                              <td>В клинике</td>
+                              <td>В клинике</td>
+                              <td>В клинике</td>
+                              <td>В клинике</td>
+                            </tr>
+                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
+                              <td>На выезд</td>
+                              <td>На выезд</td>
+                              <td>На выезд</td>
+                              <td>На выезд</td>
+                              <td>На выезд</td>
+                              <td>На выезд</td>
+                              <td>На выезд</td>
+                            </tr>
+                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
+                              <td>Онлайн</td>
+                              <td>Онлайн</td>
+                              <td>Онлайн</td>
+                              <td>Онлайн</td>
+                              <td>Онлайн</td>
+                              <td>Онлайн</td>
+                              <td>Онлайн</td>
+                            </tr>
+                          </table>
                         </div>
                       </div>
                     </TabPanel>
@@ -486,13 +524,15 @@ const mapStateToProps = state => {
   return { 
     loggingIn, loggedIn, 
     data: state.getPCDoctor.data,
-    editing, edited
+    editing, edited,
+    specialties: state.getSpecialties.specialties
   }
 }
 
 const mapDispatchToProps = {
   getPCDoctor: userActions.getPCDoctor,
-  editPCDoctor: userActions.editPCDoctor
+  editPCDoctor: userActions.editPCDoctor,
+  getSpecialties
 }
 
 
@@ -539,13 +579,6 @@ function handleClick(event) {
 }
 
 
-const specialties = [
-  { title: 'Психолог', val: 1 },
-  { title: 'Эндокринолог', val: 2 },
-  { title: 'Терапевт', val: 3 },
-];
-
-
 function Locate({ panTo }) {
   return (
     <button
@@ -562,8 +595,7 @@ function Locate({ panTo }) {
         );
       }}
     >
-      {/* <img id="image-compass-button" src={require(`../../../content/images/addRental/compass.svg`)} alt="compass" /> */}
-      Click
+      <img id="image-compass-button" src={require(`../../../content/images/edit/gps.svg`)} alt="compass" />
     </button>
   );
 }

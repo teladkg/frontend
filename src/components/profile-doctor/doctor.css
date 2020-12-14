@@ -134,6 +134,12 @@
   padding: 0;
 }
 
+.doctor_page .doctor_page_main .doctor_page_main_left #doctor_page_doctors_data #doctor_page_doctors_data_info .doctor_page_doctors_data_info_chipgroup #doctor_page_doctors_data_info_specialties {
+  font-weight: bold;
+  font-size: 16px;
+  color: #4F4F4F;
+}
+
 .doctor_page .doctor_page_main .doctor_page_main_left #doctor_page_doctors_data #doctor_page_doctors_data_info #doctor_page_doctors_data_info_experience {
   font-weight: bold;
   font-size: 16px;

@@ -36,7 +36,7 @@ const Search = (props) => {
 
   useEffect(() => {
     // window.scrollTo(0, 0)
-    props.getDoctorsData();
+    props.getDoctors();
     // props.getDoctorById(props.match.params.id);
   }, []);
 
@@ -192,7 +192,6 @@ const Search = (props) => {
         </div>
         
         <div className="search_page_doctors_list">
-
           { doctors &&
             doctors.map(elem => {
               return(
@@ -201,27 +200,47 @@ const Search = (props) => {
                   <div id="search_page_doctors_slide_info">
                     <Link to={`/doctor/${elem.id}`}><h3>{elem.user.last_name} {elem.user.first_name} {elem.user.patronymic}</h3></Link>
                     <div className="search_page_doctors_slide_info_chipgroup">
-                      <Chip label="Психолог"/>
-                      <Chip label="Психолог"/>
-                      <Chip label="Психолог"/>
-                      <IconButton
-                        className={clsx(classes.expand, {
-                          [classes.expandOpen]: expanded,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                      >
-                        <ExpandMoreIcon />
-                      </IconButton>
-                      <Collapse in={expanded} timeout="auto" unmountOnExit>
-                        <Chip label="Психолог"/>
-                        <Chip label="Психолог"/>
-                        <Chip label="Психолог"/>
-                      </Collapse>
+                      {
+                        elem.specialty.length === 0
+                        ? <p id="search_page_doctors_slide_info_specialties">Специализация: отсутствует</p>
+                        // : elem.specialty.length > 2 
+                        //   ? elem.specialty.map(spec => {
+                        //     return(
+                        //       <>
+                        //         <Chip label={spec.name}/>
+                        //         <IconButton
+                        //           className={clsx(classes.expand, {
+                        //             [classes.expandOpen]: expanded,
+                        //           })}
+                        //           onClick={handleExpandClick}
+                        //           aria-expanded={expanded}
+                        //           aria-label="show more"
+                        //         >
+                        //           <ExpandMoreIcon />
+                        //         </IconButton>
+                        //         <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        //           <Chip label="Психолог"/>
+                        //           <Chip label="Психолог"/>
+                        //           <Chip label="Психолог"/>
+                        //         </Collapse>
+                        //       </>
+                        //     )
+                        //   })
+                          : elem.specialty.map(spec => {
+                            return(
+                              <Chip label={spec.name}/>
+                            )
+                          })
+                      }
                     </div>             
-                    <p id="search_page_doctors_slide_info_experience">Стаж: {elem.experience} лет</p>
-                    <p id="search_page_doctors_slide_info_address">Городская больница №6, Чуй 127</p>
+                    {elem.experience !== null
+                      ? <p id="search_page_doctors_slide_info_experience">Стаж: {elem.experience} лет</p>
+                      : <p id="search_page_doctors_slide_info_experience">Стаж: отсутствует</p>
+                    }
+                    {elem.locations.length !== 0 && elem.locations[0].address
+                      ? <p id="search_page_doctors_slide_info_address">{elem.locations[0].address}</p>
+                      : <p id="search_page_doctors_slide_info_address">Адрес отсутствует</p>
+                    }
                     <div id="search_page_doctors_slide_info_lastblock">
                       <div id="search_page_doctors_slide_info_phonegroup">
                         <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -241,7 +260,6 @@ const Search = (props) => {
               )
             }) 
           }
-
         </div>
       
         <ScrollUpButton ShowAtPosition={350}/>
@@ -260,11 +278,9 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getDoctorsData: () => dispatch(getDoctors()),
-    getDoctorById
-  }
+const mapDispatchToProps = {
+  getDoctors,
+  getDoctorById
 } 
 
 

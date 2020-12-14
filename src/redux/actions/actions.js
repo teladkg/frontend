@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_DOCTORS, GET_DOCTOR_BY_ID } from './constants';
+import { GET_DOCTORS, GET_DOCTOR_BY_ID, GET_SPECIALTIES } from './constants';
 
 
 /* ДЛЯ ОБЩЕГО GET-ЗАПРОСА ДЛЯ ДОКТОРОВ */
@@ -12,7 +12,7 @@ const getDoctorsSuccess = (json) => {
 const getDoctors = () => {
   return async dispatch => {
     // dispatch(showLoader())
-    await axios.get('http://167.172.109.15:8000/userinfo/doctor/')
+    await axios.get('http://167.172.109.15/userinfo/doctor/')
     .then(res => {
       dispatch(getDoctorsSuccess(res.data))
       // dispatch(hideLoader())
@@ -21,9 +21,10 @@ const getDoctors = () => {
 }
 
 
+/* ДЛЯ ДОКТОРА ПО АЙДИ */
 const getDoctorById = (id) => {
   return async dispatch => {
-    await axios.get(`http://167.172.109.15:8000/userinfo/doctor/${id}`)
+    await axios.get(`http://167.172.109.15/userinfo/doctor/${id}`)
     .then(json => {
       dispatch({ type: GET_DOCTOR_BY_ID, payload: json })
     })
@@ -31,7 +32,25 @@ const getDoctorById = (id) => {
 }
 
 
+/* ДЛЯ СПЕЦИАЛЬНОСТЕЙ */
+const getSpecialtiesSuccess = (json) => {
+  return {
+    type: GET_SPECIALTIES,
+    payload: json
+  }
+}
+const getSpecialties = () => {
+  return async dispatch => {
+    await axios.get('http://167.172.109.15/userinfo/specialty/')
+    .then(res => {
+      dispatch(getSpecialtiesSuccess(res.data))
+    })
+  }
+}
+
+
 export {
   getDoctors,
-  getDoctorById
+  getDoctorById,
+  getSpecialties
 }
