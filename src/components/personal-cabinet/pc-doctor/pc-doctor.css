@@ -122,13 +122,58 @@
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_deletebutton {
-  padding: 6px 9px;
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_deletebutton_label {
   margin-right: 20px;
 }
 
-.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_editbutton {
-  padding: 7px;
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_deletebutton_label #personal_doctor_page_doctors_data_image_deletebutton {
+  padding: 12px 20px;
+  border-radius: 100%;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_deletebutton_label #personal_doctor_page_doctors_data_image_deletebutton:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_deletebutton_label svg {
+  position: absolute;
+  bottom: 27%;
+  right: 72%;
+  text-align: center;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_deletebutton_label svg:hover {
+  cursor: pointer;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_editbutton_label #personal_doctor_page_doctors_data_image_editbutton {
+  padding: 12px 20px;
+  border-radius: 100%;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_editbutton_label #personal_doctor_page_doctors_data_image_editbutton:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_editbutton_label svg {
+  position: absolute;
+  bottom: 27%;
+  right: 10%;
+  text-align: center;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data .personal_doctor_page_doctors_data_imagegroup .personal_doctor_page_doctors_data_image_buttongroup #personal_doctor_page_doctors_data_image_editbutton_label svg:hover {
+  cursor: pointer;
 }
 
 .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_left #personal_doctor_page_doctors_data #personal_doctor_page_doctors_data_info {
@@ -582,17 +627,52 @@
 }
 
 .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
-  font-family: 'Roboto';
+  margin: 0 5px 5px 0;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 18px;
-  color: #000000;
-  padding: 19px 0;
+  font-size: 13px;
+  line-height: 16px;
+  color: #2B2B2B;
+  padding: 12px 0;
   text-align: center;
   background: #E3EFF4;
   border-radius: 5px;
   border: 1px solid #E3EFF4;
-  margin: 0 5px 5px 0;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td #onClinic, .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td #onHome, .personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td #onLine {
+  width: 75%;
+  border-radius: 5px;
+  padding: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 10px;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td #onClinic {
+  background: #00C6DD;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td #onHome {
+  background: #82D965;
+}
+
+.personal_doctor_page .personal_doctor_page_main .personal_doctor_page_main_right .personal_doctor_page_tabs_container .personal_doctor_page_tabs_reception .personal_doctor_page_tabs_reception_schedule .personal_doctor_page_tabs_reception_schedule_cells #personal_doctor_page_tabs_reception_schedule_cells_cost td #onLine {
+  background: #DEA2F6;
 }
 
 .personal_doctor_page aside[data-testid="react-scroll-up-button"] {
@@ -654,5 +734,94 @@
 
 .personal_doctor_page .locate #image-compass-button {
   width: 40px;
+}
+
+.personal_doctor_page .custom-editor {
+  white-space: nowrap;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.personal_doctor_page .custom-editor .custom-editor-button {
+  margin-left: 5px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  margin-left: 10px;
+}
+
+.personal_doctor_page .custom-editor .custom-editor-button.custom-editor-button-save {
+  background: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.personal_doctor_page .custom-editor .custom-editor-button.custom-editor-button-save:hover {
+  background-color: #4CAF50;
+  -webkit-transition: .3s all ease-in-out;
+  transition: .3s all ease-in-out;
+}
+
+.personal_doctor_page .custom-editor .custom-editor-button.custom-editor-button-cancel {
+  background: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.personal_doctor_page .custom-editor .custom-editor-button.custom-editor-button-cancel:hover {
+  background-color: #F44336;
+  -webkit-transition: .3s all ease-in-out;
+  transition: .3s all ease-in-out;
+}
+
+.personal_doctor_page .custom-editor input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 100px;
+}
+
+.personal_doctor_page .ka-thead-cell {
+  width: 14%;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
+  padding: 19px 0;
+  text-align: center;
+  background: rgba(48, 159, 176, 0.15);
+  border-radius: 5px;
+  border: 1px solid #E0E0E0;
+  margin: 0 5px 5px 0;
+}
+
+.personal_doctor_page .ka-cell {
+  margin: 0 5px 5px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #000000;
+  padding: 19px;
+  text-align: center;
+  background: #E3EFF4;
+  border-radius: 5px;
+  border: 1px solid #E3EFF4;
+}
+
+.personal_doctor_page .delete-row-column-button {
+  cursor: pointer;
+  opacity: 0.75;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.personal_doctor_page .delete-row-column-button:hover {
+  opacity: 1;
 }
 /*# sourceMappingURL=pc-doctor.css.map */

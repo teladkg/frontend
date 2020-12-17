@@ -83,12 +83,50 @@
                 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
               }
             }
-            #personal_doctor_page_doctors_data_image_deletebutton {
-              padding: 6px 9px;
+            #personal_doctor_page_doctors_data_image_deletebutton_label {
               margin-right: 20px;
+              #personal_doctor_page_doctors_data_image_deletebutton {
+                padding: 12px 20px;
+                border-radius: 100%;
+                text-align: center;
+                outline: none;
+                border: none;
+                &:hover {
+                  cursor: pointer;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                }
+              }
+              svg {
+                position: absolute;
+                bottom: 27%;
+                right: 72%;
+                text-align: center;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
             }
-            #personal_doctor_page_doctors_data_image_editbutton {
-              padding: 7px;
+            #personal_doctor_page_doctors_data_image_editbutton_label {
+              #personal_doctor_page_doctors_data_image_editbutton {
+                padding: 12px 20px;
+                border-radius: 100%;
+                text-align: center;
+                outline: none;
+                border: none;
+                &:hover {
+                  cursor: pointer;
+                  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                }
+              }
+              svg {
+                position: absolute;
+                bottom: 27%;
+                right: 10%;
+                text-align: center;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
             }
           }
         }
@@ -354,7 +392,6 @@
               #personal_doctor_page_tabs_reception_type_cells_cost {
                 display: flex;
                 flex-direction: row;
-                // flex-wrap: wrap;
                 td {
                   width: 100%;
                   font-family: 'Roboto';
@@ -406,17 +443,41 @@
                 display: flex;
                 flex-direction: row;
                 td {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
                   width: 100%;
-                  font-family: 'Roboto';
+                  margin: 0 5px 5px 0;
+                  font-family: 'Inter', sans-serif;
                   font-weight: 500;
-                  font-size: 18px;
-                  color: #000000;
-                  padding: 19px 0;
+                  font-size: 13px;
+                  line-height: 16px;
+                  color: #2B2B2B;
+                  padding: 12px 0;
                   text-align: center;
                   background: #E3EFF4;
                   border-radius: 5px;
                   border: 1px solid #E3EFF4;
-                  margin: 0 5px 5px 0;
+                  #onClinic, #onHome, #onLine {
+                    width: 75%;
+                    border-radius: 5px;
+                    padding: 2px;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 500;
+                    font-size: 12px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    margin-top: 10px;
+                  }
+                  #onClinic {
+                    background: #00C6DD;
+                  }
+                  #onHome {
+                    background: #82D965;
+                  }
+                  #onLine {
+                    background: #DEA2F6;
+                  }
                 }
               }
             }             
@@ -473,6 +534,85 @@
     }
     #image-compass-button {
       width: 40px;
+    }
+  }
+
+  .custom-editor-demo-table{
+    
+  }
+  .custom-editor{
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    .custom-editor-button{
+      margin-left: 5px;
+      outline: none;
+      cursor: pointer;
+      border: none;
+      margin-left: 10px;
+      &.custom-editor-button-save{
+        background: none;
+        border-radius: 5px;
+        // color: #FFFFFF;
+        padding: 5px;
+        &:hover {
+          background-color: #4CAF50;
+          transition: .3s all ease-in-out;
+        }
+      }
+      &.custom-editor-button-cancel{
+        background: none;
+        border-radius: 5px;
+        // color: #FFFFFF;
+        padding: 5px;
+        &:hover {
+          background-color: #F44336;
+          transition: .3s all ease-in-out;
+        }
+      }
+    }
+    input {
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      max-width: 100px;
+    }
+  }
+
+  .ka-thead-cell {
+    width: 14%;
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 18px;
+    color: #000000;
+    padding: 19px 0;
+    text-align: center;
+    background: rgba(48, 159, 176, 0.15);
+    border-radius: 5px;
+    border: 1px solid #E0E0E0;
+    margin: 0 5px 5px 0;
+  }
+  .ka-cell {
+    margin: 0 5px 5px 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+    padding: 19px;
+    text-align: center;
+    background: #E3EFF4;
+    border-radius: 5px;
+    border: 1px solid #E3EFF4;
+  }
+  .delete-row-column-button {
+    cursor: pointer;
+    opacity: 0.75;
+    display: inline-block;
+    vertical-align: middle;
+    &:hover{
+      opacity: 1;
     }
   }
 }

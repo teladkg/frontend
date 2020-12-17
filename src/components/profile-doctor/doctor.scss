@@ -231,9 +231,8 @@
               #doctor_page_tabs_reception_type_cells_titles {
                 display: flex;
                 flex-direction: row;
-                // flex-wrap: wrap;
-                p {
-                  width: 32%;
+                th {
+                  width: 100%;
                   font-family: 'Roboto';
                   font-weight: 500;
                   font-size: 18px;
@@ -249,9 +248,8 @@
               #doctor_page_tabs_reception_type_cells_cost {
                 display: flex;
                 flex-direction: row;
-                // flex-wrap: wrap;
-                p {
-                  width: 32%;
+                td {
+                  width: 100%;
                   font-family: 'Roboto';
                   font-weight: 500;
                   font-size: 18px;
@@ -283,9 +281,8 @@
               #doctor_page_tabs_reception_schedule_cells_titles {
                 display: flex;
                 flex-direction: row;
-                // flex-wrap: wrap;
-                p {
-                  width: 13.4%;
+                th {
+                  width: 100%;
                   font-family: 'Roboto';
                   font-weight: 500;
                   font-size: 18px;
@@ -301,19 +298,42 @@
               #doctor_page_tabs_reception_schedule_cells_cost {
                 display: flex;
                 flex-direction: row;
-                // flex-wrap: wrap;
-                p {
-                  width: 13.4%;
-                  font-family: 'Roboto';
-                  font-weight: 500;
-                  font-size: 18px;
-                  color: #000000;
-                  padding: 19px 0;
-                  text-align: center;
-                  background: #EFF4F5;
-                  border-radius: 5px;
-                  // border: 2px solid #E0F1F3;
+                td {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  width: 100%;
                   margin: 0 5px 5px 0;
+                  font-family: 'Inter', sans-serif;
+                  font-weight: 500;
+                  font-size: 13px;
+                  line-height: 16px;
+                  color: #2B2B2B;
+                  padding: 12px 0;
+                  text-align: center;
+                  background: #E3EFF4;
+                  border-radius: 5px;
+                  border: 1px solid #E3EFF4;
+                  #onClinic, #onHome, #onLine {
+                    width: 75%;
+                    border-radius: 5px;
+                    padding: 2px;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 500;
+                    font-size: 12px;
+                    text-align: center;
+                    color: #FFFFFF;
+                    margin-top: 10px;
+                  }
+                  #onClinic {
+                    background: #00C6DD;
+                  }
+                  #onHome {
+                    background: #82D965;
+                  }
+                  #onLine {
+                    background: #DEA2F6;
+                  }
                 }
               }
             }             

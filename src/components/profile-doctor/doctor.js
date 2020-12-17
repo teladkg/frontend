@@ -261,41 +261,63 @@ const Doctor = (props) => {
                     <div className="doctor_page_tabs_reception">
                       <div className="doctor_page_tabs_reception_type">
                         <p id="doctor_page_tabs_reception_type_title">Тип приема</p>
-                        <div className="doctor_page_tabs_reception_type_cells">
-                          <div id="doctor_page_tabs_reception_type_cells_titles">
-                            <p id="doctor_page_tabs_reception_type_cells_titles_1">В клинике</p>
-                            <p id="doctor_page_tabs_reception_type_cells_titles_2">На дому</p>
-                            <p id="doctor_page_tabs_reception_type_cells_titles_3">Онлайн</p>
-                          </div>
-                          <div id="doctor_page_tabs_reception_type_cells_cost">
-                            <p id="doctor_page_tabs_reception_type_cells_cost_1">500 сом</p>
-                            <p id="doctor_page_tabs_reception_type_cells_cost_2">500 сом</p>
-                            <p id="doctor_page_tabs_reception_type_cells_cost_3">500 сом</p>
-                          </div>
-                        </div>
+                        <tbody className="doctor_page_tabs_reception_type_cells">
+                          <tr id="doctor_page_tabs_reception_type_cells_titles">
+                            <th id="doctor_page_tabs_reception_type_cells_titles_1">В клинике</th>
+                            <th id="doctor_page_tabs_reception_type_cells_titles_2">На дому</th>
+                            <th id="doctor_page_tabs_reception_type_cells_titles_3">Онлайн</th>
+                          </tr>
+                          <tr id="doctor_page_tabs_reception_type_cells_cost">
+                            <td id="doctor_page_tabs_reception_type_cells_cost_1">500 сом</td>
+                            <td id="doctor_page_tabs_reception_type_cells_cost_2">500 сом</td>
+                            <td id="doctor_page_tabs_reception_type_cells_cost_3">500 сом</td>
+                          </tr>
+                        </tbody>
                       </div>
                       <div className="doctor_page_tabs_reception_schedule">
                         <p id="doctor_page_tabs_reception_schedule_title">График работы</p>
-                        <div className="doctor_page_tabs_reception_schedule_cells">
-                          <div id="doctor_page_tabs_reception_schedule_cells_titles">
-                            <p id="doctor_page_tabs_reception_schedule_cells_titles_1">ПН</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_titles_3">СР</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_titles_6">СБ</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_titles_7">ВС</p>
-                          </div>
-                          <div id="doctor_page_tabs_reception_schedule_cells_cost">
-                            <p id="doctor_page_tabs_reception_schedule_cells_cost_1">В клинике</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_cost_2">В клинике</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_cost_3">В клинике</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_cost_4">В клинике</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_cost_5">В клинике</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_cost_6">В клинике</p>
-                            <p id="doctor_page_tabs_reception_schedule_cells_cost_7">В клинике</p>
-                          </div>
-                        </div>
+                        { 
+                          userData.schedules && userData.schedules[0] && userData.schedules[1] && userData.schedules[2] ?
+                          <tbody className="doctor_page_tabs_reception_schedule_cells">
+                            <tr id="doctor_page_tabs_reception_schedule_cells_titles">
+                              <th id="doctor_page_tabs_reception_schedule_cells_titles_1">ПН</th>
+                              <th id="doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</th>
+                              <th id="doctor_page_tabs_reception_schedule_cells_titles_3">СР</th>
+                              <th id="doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</th>
+                              <th id="doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</th>
+                              <th id="doctor_page_tabs_reception_schedule_cells_titles_6">СБ</th>
+                              <th id="doctor_page_tabs_reception_schedule_cells_titles_7">ВС</th>
+                            </tr>
+                            <tr id="doctor_page_tabs_reception_schedule_cells_cost">
+                              <td><p>{userData.schedules[0].monday ? userData.schedules[0].monday : "Нет данных"}</p>{userData.schedules[0].monday && userData.schedules[0].monday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[0].tuesday ? userData.schedules[0].tuesday : "Нет данных"}</p>{userData.schedules[0].tuesday && userData.schedules[0].tuesday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[0].wednesday ? userData.schedules[0].wednesday : "Нет данных"}</p>{userData.schedules[0].wednesday && userData.schedules[0].wednesday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[0].thursday ? userData.schedules[0].thursday : "Нет данных"}</p>{userData.schedules[0].thursday && userData.schedules[0].thursday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[0].friday ? userData.schedules[0].friday : "Нет данных"}</p>{userData.schedules[0].friday && userData.schedules[0].friday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[0].saturday ? userData.schedules[0].saturday : "Нет данных"}</p>{userData.schedules[0].saturday && userData.schedules[0].saturday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[0].sunday ? userData.schedules[0].sunday : "Нет данных"}</p>{userData.schedules[0].sunday && userData.schedules[0].sunday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            </tr>
+                            <tr id="doctor_page_tabs_reception_schedule_cells_cost">
+                              <td><p>{userData.schedules[1].monday ? userData.schedules[1].monday : "Нет данных"}</p>{userData.schedules[1].monday && userData.schedules[1].monday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[1].tuesday ? userData.schedules[1].tuesday : "Нет данных"}</p>{userData.schedules[1].tuesday && userData.schedules[1].tuesday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[1].wednesday ? userData.schedules[1].wednesday : "Нет данных"}</p>{userData.schedules[1].wednesday && userData.schedules[1].wednesday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[1].thursday ? userData.schedules[1].thursday : "Нет данных"}</p>{userData.schedules[1].thursday && userData.schedules[1].thursday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[1].friday ? userData.schedules[1].friday : "Нет данных"}</p>{userData.schedules[1].friday && userData.schedules[1].friday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[1].saturday ? userData.schedules[1].saturday : "Нет данных"}</p>{userData.schedules[1].saturday && userData.schedules[1].saturday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[1].sunday ? userData.schedules[1].sunday : "Нет данных"}</p>{userData.schedules[1].sunday && userData.schedules[1].sunday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            </tr>
+                            <tr id="doctor_page_tabs_reception_schedule_cells_cost">
+                              <td><p>{userData.schedules[2].monday ? userData.schedules[2].monday : "Нет данных"}</p>{userData.schedules[2].monday && userData.schedules[2].monday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[2].tuesday ? userData.schedules[2].tuesday : "Нет данных"}</p>{userData.schedules[2].tuesday && userData.schedules[2].tuesday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[2].wednesday ? userData.schedules[2].wednesday : "Нет данных"}</p>{userData.schedules[2].wednesday && userData.schedules[2].wednesday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[2].thursday ? userData.schedules[2].thursday : "Нет данных"}</p>{userData.schedules[2].thursday && userData.schedules[2].thursday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[2].friday ? userData.schedules[2].friday : "Нет данных"}</p>{userData.schedules[2].friday && userData.schedules[2].friday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[2].saturday ? userData.schedules[2].saturday : "Нет данных"}</p>{userData.schedules[2].saturday && userData.schedules[2].saturday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                              <td><p>{userData.schedules[2].sunday ? userData.schedules[2].sunday : "Нет данных"}</p>{userData.schedules[2].sunday && userData.schedules[2].sunday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            </tr>
+                          </tbody>
+                          : <p>Информация отсутствует</p>
+                        }
                       </div>
                     </div>
                   </TabPanel>

@@ -13,12 +13,6 @@ import './pc-doctor.css';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import LinkMaterial from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
-import FormLabel from '@material-ui/core/FormLabel';
-import Collapse from '@material-ui/core/Collapse';
-import clsx from 'clsx';
-import IconButton from '@material-ui/core/IconButton';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,17 +30,16 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import Rating from '@material-ui/lab/Rating';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import { kaReducer, Table } from 'ka-table';
+import { closeEditor, updateCellValue } from 'ka-table/actionCreators';
+import { DataType, EditingMode } from 'ka-table/enums';
+import DoneIcon from '@material-ui/icons/Done';
+import CloseSharpIcon from '@material-ui/icons/CloseSharp';
 
 
 const center = {
@@ -58,10 +51,19 @@ const libraries = ["places"];
 
 const PCDoctorEdit = (props) => {
 
-
+  /* FOR FETCH-DATA TO COMPONENT STATE */
   const [editState, setEditState] = useState({});
+
+  /* FOR SPECIALTIES TO COMPONENT STATE */
   const [inputValue, setInputValue] = useState("");
+
+  /* FOR GOOGLEMAP LOCALSTATE ONCHANGE */
   const [locationsState, setLocationsState] = useState([]);
+
+  /* FOR TABLE LOCAL STATE */
+  const [tableProps, changeTableProps] = useState({});
+  /* FOR IF TABLE CAME EMPTY FROM FETCH */
+  const [tableArr, setTableArr] = useState();
 
   useEffect(() => {
     // window.scrollTo(0, 0)
@@ -90,17 +92,9 @@ const PCDoctorEdit = (props) => {
   //   }
   // }
 
-
-  let formData = new FormData();
+  // let formData = new FormData();
   const { register, handleSubmit, control, setValue } = useForm();
-
-  useEffect(() => {
-    props.data.specialty &&
-    setValue("specialties", props.data.specialty);
-  }, [setValue]);
-
   const onSubmit = (data, event) => {
-
     const specialtiesIds = data.specialties.map((e)=> {
       return { id: e.id }
     })
@@ -115,6 +109,7 @@ const PCDoctorEdit = (props) => {
       description: data.description,
       started_working: data.started_working,
       locations: [ 
+        editState.locations[0] &&
         editState.locations[0].latitude === locationsState.latitude &&
         editState.locations[0].longitude === locationsState.longitude 
         ? {
@@ -134,12 +129,141 @@ const PCDoctorEdit = (props) => {
           address: locationsState.address
         }
       ],
-      specialty: specialtiesIds
+      specialty: specialtiesIds,
+      schedules: tableProps.data
+      // .map((item) => {
+      //   delete item.id;
+      //   return item;
+      // })
     }
     // console.log(data.specialties);
     props.editPCDoctor(patchData);
     // console.log(patchData);
   }
+  console.log(tableProps.data);
+
+
+    // const dataArray = [
+  //   { id: 1, A: '10:10-14:00', B:'', C:'', D:'', E:'', F:'', G:'', appointment: "CLINIC" },
+  //   { id: 2, A: '10:10-14:00', B:'', C:'', D:'', E:'', F:'', G:'', appointment: "HOME" },
+  //   { id: 3, A: '10:10-14:00', B:'', C:'', D:'', E:'', F:'', G:'', appointment: "ONLINE" },
+  // ];
+  // {
+  //   appointment: "CLINIC",
+  //   monday: "10:10-20:10",
+  //   tuesday: "",
+  //   wednesday: "",
+  //   thursday: "10:10-20:10",
+  //   friday: "",
+  //   saturday: "",
+  //   sunday: "",
+  // }
+
+  // const dataArray = editState && editState.schedules;
+  // console.log(dataArray);
+
+  const CustomLookupEditor = ({
+    column, dispatch, rowKeyValue, value,
+  }) => {
+    const close = () => {
+      dispatch(closeEditor(rowKeyValue, column.key));
+    };
+    const [editorValue, setValue] = useState(value);
+    return (
+      <div>
+        <select
+          className='form-control'
+          autoFocus={true}
+          defaultValue={editorValue}
+          onBlur={() => {
+            dispatch(updateCellValue(rowKeyValue, column.key, editorValue));
+            close();
+          }}
+          onChange={(event) => {
+            setValue(event.currentTarget.value);
+          }}
+        >
+          <option value="">Выберите тип приема</option>
+          <option value={'В клинике'}>В клинике</option>
+          <option value={'На выезд'}>На выезд</option>
+          <option value={'Онлайн'}>Онлайн</option>
+        </select>
+      </div >
+    );
+  };
+  const CustomEditor = ({
+    column, rowKeyValue, dispatch, value,
+  }) => {
+    const close = () => {
+      dispatch(closeEditor(rowKeyValue, column.key));
+    };
+    const [editorValue, setValue] = useState(value);
+    return (
+      <div className='custom-editor'>
+        <input
+          className='form-control'
+          type='text'
+          value={editorValue}
+          onChange={(event) => setValue(event.currentTarget.value)}/>
+        <button className='custom-editor-button custom-editor-button-save'
+          onClick={() => {
+            dispatch(updateCellValue(rowKeyValue, column.key, editorValue));
+            close();
+          }}>
+            <DoneIcon />
+          </button>
+        <button className='custom-editor-button custom-editor-button-cancel' onClick={close}><CloseSharpIcon /></button>
+      </div>
+    );
+  };
+  // const tablePropsInit = {
+  //   columns: [
+  //     { dataType: DataType.String, key: 'monday', title: 'ПН' },
+  //     { dataType: DataType.String, key: 'tuesday', title: 'ВТ' },
+  //     { dataType: DataType.String, key: 'wednesday', title: 'СР' },
+  //     { dataType: DataType.String, key: 'thursday', title: 'ЧТ' },
+  //     { dataType: DataType.String, key: 'friday', title: 'ПТ' },
+  //     { dataType: DataType.String, key: 'saturday', title: 'СБ' },
+  //     { dataType: DataType.String, key: 'sunday', title: 'ВС' },
+  //   ],
+  //   data: editState && editState.schedules,
+  //   editableCells: [],
+  //   editingMode: EditingMode.Cell,
+  //   rowKeyField: 'id',
+  // };
+
+  
+  useEffect(()=> {
+    setTableArr([
+      { appointment: 1, monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: "", sunday: "" },
+      { appointment: 2, monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: "", sunday: "" },
+      { appointment: 3, monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: "", sunday: "" }
+    ])
+    changeTableProps({
+      columns: [
+        { dataType: DataType.String, key: 'monday', title: 'ПН' },
+        { dataType: DataType.String, key: 'tuesday', title: 'ВТ' },
+        { dataType: DataType.String, key: 'wednesday', title: 'СР' },
+        { dataType: DataType.String, key: 'thursday', title: 'ЧТ' },
+        { dataType: DataType.String, key: 'friday', title: 'ПТ' },
+        { dataType: DataType.String, key: 'saturday', title: 'СБ' },
+        { dataType: DataType.String, key: 'sunday', title: 'ВС' },
+      ],
+      data: (editState && editState.schedules && editState.schedules.length!==0) ? editState.schedules : tableArr,
+      editableCells: [],
+      editingMode: EditingMode.Cell,
+      rowKeyField: 'appointment',
+    })
+  },[editState]);
+  const dispatch = (action) => {
+    changeTableProps((prevState) => kaReducer(prevState, action));
+  };
+
+
+  useEffect(() => {
+    props.data.specialty &&
+    setValue("specialties", props.data.specialty);
+  }, [setValue]);
 
 
   /* GOOGLE MAPS */
@@ -236,23 +360,6 @@ const PCDoctorEdit = (props) => {
     setTabValue(newValue);
   };
 
-
-  /* FOR DOCTORS SLIDER */
-  const customDoctorSlider = useRef();
-  const doctorNext = () => {
-    customDoctorSlider.current.slickNext();
-  }
-  const doctorPrevious = () => {
-    customDoctorSlider.current.slickPrev();
-  }
-  const doctors_slider = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    arrows: false
-  };
-  
   
   const userData = props.data;
   // console.log(avatar);
@@ -260,6 +367,7 @@ const PCDoctorEdit = (props) => {
 
   const specialtiesData = props.specialties.results;
   console.log(locationsState);
+
   
   return (
     <>
@@ -303,16 +411,18 @@ const PCDoctorEdit = (props) => {
                   <div className="personal_doctor_page_doctors_data_imagegroup">
                     <img id="personal_doctor_page_doctors_data_image" src={editState.user.avatar == null ? require('../../../content/images/main/image_10.png') : editState.user.avatar} alt="clinic pic"/>
                     <div className="personal_doctor_page_doctors_data_image_buttongroup">
-                      <button id="personal_doctor_page_doctors_data_image_deletebutton">
+                      <label id="personal_doctor_page_doctors_data_image_deletebutton_label">
+                        <input type="button" id="personal_doctor_page_doctors_data_image_deletebutton" />
                         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M5.4375 2.3125H5.25C5.35313 2.3125 5.4375 2.22812 5.4375 2.125V2.3125H12.5625V2.125C12.5625 2.22812 12.6469 2.3125 12.75 2.3125H12.5625V4H14.25V2.125C14.25 1.29766 13.5773 0.625 12.75 0.625H5.25C4.42266 0.625 3.75 1.29766 3.75 2.125V4H5.4375V2.3125ZM17.25 4H0.75C0.335156 4 0 4.33516 0 4.75V5.5C0 5.60313 0.084375 5.6875 0.1875 5.6875H1.60312L2.18203 17.9453C2.21953 18.7445 2.88047 19.375 3.67969 19.375H14.3203C15.1219 19.375 15.7805 18.7469 15.818 17.9453L16.3969 5.6875H17.8125C17.9156 5.6875 18 5.60313 18 5.5V4.75C18 4.33516 17.6648 4 17.25 4ZM14.1398 17.6875H3.86016L3.29297 5.6875H14.707L14.1398 17.6875Z" fill="#00AFCA"/>
                         </svg>
-                      </button>
-                      <button id="personal_doctor_page_doctors_data_image_editbutton">
+                      </label>
+                      <label id="personal_doctor_page_doctors_data_image_editbutton_label">
+                        <input type="button" id="personal_doctor_page_doctors_data_image_editbutton" />
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M21.5795 4.54667L17.6662 0.613334C17.4076 0.356044 17.0577 0.211609 16.6929 0.211609C16.3281 0.211609 15.9781 0.356044 15.7196 0.613334L1.84622 14.4667L0.57955 19.9333C0.535854 20.1332 0.537352 20.3402 0.583934 20.5394C0.630516 20.7386 0.721005 20.9249 0.848792 21.0846C0.976578 21.2443 1.13843 21.3735 1.32253 21.4627C1.50663 21.5518 1.70833 21.5988 1.91288 21.6C2.0082 21.6096 2.10424 21.6096 2.19955 21.6L7.72622 20.3333L21.5795 6.49333C21.8368 6.23474 21.9813 5.88479 21.9813 5.52C21.9813 5.15521 21.8368 4.80526 21.5795 4.54667ZM7.05955 19.1333L1.87955 20.22L3.05955 15.14L13.4396 4.8L17.4396 8.8L7.05955 19.1333ZM18.3329 7.83333L14.3329 3.83333L16.6529 1.52667L20.5862 5.52667L18.3329 7.83333Z" fill="#00AFCA"/>
                         </svg>
-                      </button>
+                      </label>
                     </div>
                   </div>
                   <div id="personal_doctor_page_doctors_data_info">
@@ -445,22 +555,16 @@ const PCDoctorEdit = (props) => {
                               <th>Онлайн</th>
                             </tr>
                             <tr id="personal_doctor_page_tabs_reception_type_cells_cost">
-                              <td>
-                                {/* <TextField defaultValue={editState.prices===null && editState.prices.home===null ? editState.prices.home===500 : editState.prices.home} id="personal_doctor_page_tabs_reception_type_cells_cost_home" 
-                                  variant="outlined" name="prices1" 
-                                  inputRef={register({minLength: 0, maxLength: 9})}
-                                  inputProps={{maxLength: 9}}
-                                /> */}
-                                500 сом
-                              </td>
+                              <td>500 сом</td>
                               <td>500 сом</td>
                               <td>500 сом</td>
                             </tr>
                           </table>
                         </div>
+                        
                         <div className="personal_doctor_page_tabs_reception_schedule">
                           <p id="personal_doctor_page_tabs_reception_schedule_title">График работы</p>
-                          <table className="personal_doctor_page_tabs_reception_schedule_cells">
+                          {/* <table className="personal_doctor_page_tabs_reception_schedule_cells">
                             <tr id="personal_doctor_page_tabs_reception_schedule_cells_titles">
                               <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</th>
                               <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</th>
@@ -471,33 +575,57 @@ const PCDoctorEdit = (props) => {
                               <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</th>
                             </tr>
                             <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                              <td>В клинике</td>
-                              <td>В клинике</td>
-                              <td>В клинике</td>
-                              <td>В клинике</td>
-                              <td>В клинике</td>
-                              <td>В клинике</td>
-                              <td>В клинике</td>
+                              {
+                                editState.schedules.length!==0 ? 
+                                editState.schedules.map((elem) => {
+                                  return(
+                                    <td id="personal_doctor_page_tabs_reception_schedule_cells_cost_addbutton_label">
+                                      <p>{elem.appointment}</p>
+                                      <p>{elem.time}</p>
+                                    </td>
+                                  )
+                                })
+                                : editState.schedules.map(() => {
+                                  return(
+                                    <td id="personal_doctor_page_tabs_reception_schedule_cells_cost_addbutton_label">
+                                      <input type="button" id="personal_doctor_page_tabs_reception_schedule_cells_cost_addbutton" />
+                                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 0.46875C7.7072 0.46875 7.90591 0.55106 8.05243 0.697573C8.19894 0.844086 8.28125 1.0428 8.28125 1.25V7.5C8.28125 7.7072 8.19894 7.90591 8.05243 8.05243C7.90591 8.19894 7.7072 8.28125 7.5 8.28125H1.25C1.0428 8.28125 0.844086 8.19894 0.697573 8.05243C0.55106 7.90591 0.46875 7.7072 0.46875 7.5C0.46875 7.2928 0.55106 7.09409 0.697573 6.94757C0.844086 6.80106 1.0428 6.71875 1.25 6.71875H6.71875V1.25C6.71875 1.0428 6.80106 0.844086 6.94757 0.697573C7.09409 0.55106 7.2928 0.46875 7.5 0.46875Z" fill="#00AFCA"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.71875 7.5C6.71875 7.2928 6.80106 7.09409 6.94757 6.94757C7.09409 6.80106 7.2928 6.71875 7.5 6.71875H13.75C13.9572 6.71875 14.1559 6.80106 14.3024 6.94757C14.4489 7.09409 14.5312 7.2928 14.5312 7.5C14.5312 7.7072 14.4489 7.90592 14.3024 8.05243C14.1559 8.19894 13.9572 8.28125 13.75 8.28125H8.28125V13.75C8.28125 13.9572 8.19894 14.1559 8.05243 14.3024C7.90592 14.4489 7.7072 14.5312 7.5 14.5312C7.2928 14.5312 7.09409 14.4489 6.94757 14.3024C6.80106 14.1559 6.71875 13.9572 6.71875 13.75V7.5Z" fill="#00AFCA"/>
+                                      </svg>
+                                    </td>
+                                  )
+                                })
+                              }
                             </tr>
-                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                              <td>На выезд</td>
-                              <td>На выезд</td>
-                              <td>На выезд</td>
-                              <td>На выезд</td>
-                              <td>На выезд</td>
-                              <td>На выезд</td>
-                              <td>На выезд</td>
-                            </tr>
-                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                              <td>Онлайн</td>
-                              <td>Онлайн</td>
-                              <td>Онлайн</td>
-                              <td>Онлайн</td>
-                              <td>Онлайн</td>
-                              <td>Онлайн</td>
-                              <td>Онлайн</td>
-                            </tr>
-                          </table>
+                          </table> */}
+                          <Table
+                            {...tableProps}
+                            dispatch={dispatch}
+                            childComponents={{
+                              table: {
+                                elementAttributes: () => ({
+                                  className: 'custom-editor-demo-table'
+                                })
+                              },
+                              cellEditor: {
+                                content: (props) => {
+                                  switch (props.column.key) {
+                                    // case 'type': return <CustomLookupEditor {...props}/>;
+                                    case 'monday':
+                                    case 'tuesday':
+                                    case 'wednesday':
+                                    case 'thursday':
+                                    case 'friday':
+                                    case 'saturday': 
+                                    case 'sunday': 
+                                      return <CustomEditor {...props}/>;
+                                    default: return;
+                                  }
+                                }
+                              }
+                            }}
+                          />
                         </div>
                       </div>
                     </TabPanel>

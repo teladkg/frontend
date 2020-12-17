@@ -129,16 +129,18 @@ const PCDoctor = (props) => {
                 <div className="personal_doctor_page_doctors_data_imagegroup">
                   <img id="personal_doctor_page_doctors_data_image" src={userData.user.avatar == null ? require('../../../content/images/main/image_10.png') : userData.user.avatar} alt="clinic pic"/>
                   <div className="personal_doctor_page_doctors_data_image_buttongroup">
-                    <button id="personal_doctor_page_doctors_data_image_deletebutton">
+                    <label id="personal_doctor_page_doctors_data_image_deletebutton_label">
+                      <input type="button" id="personal_doctor_page_doctors_data_image_deletebutton" />
                       <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5.4375 2.3125H5.25C5.35313 2.3125 5.4375 2.22812 5.4375 2.125V2.3125H12.5625V2.125C12.5625 2.22812 12.6469 2.3125 12.75 2.3125H12.5625V4H14.25V2.125C14.25 1.29766 13.5773 0.625 12.75 0.625H5.25C4.42266 0.625 3.75 1.29766 3.75 2.125V4H5.4375V2.3125ZM17.25 4H0.75C0.335156 4 0 4.33516 0 4.75V5.5C0 5.60313 0.084375 5.6875 0.1875 5.6875H1.60312L2.18203 17.9453C2.21953 18.7445 2.88047 19.375 3.67969 19.375H14.3203C15.1219 19.375 15.7805 18.7469 15.818 17.9453L16.3969 5.6875H17.8125C17.9156 5.6875 18 5.60313 18 5.5V4.75C18 4.33516 17.6648 4 17.25 4ZM14.1398 17.6875H3.86016L3.29297 5.6875H14.707L14.1398 17.6875Z" fill="#00AFCA"/>
                       </svg>
-                    </button>
-                    <button id="personal_doctor_page_doctors_data_image_editbutton">
+                    </label>
+                    <label id="personal_doctor_page_doctors_data_image_editbutton_label">
+                      <input type="button" id="personal_doctor_page_doctors_data_image_editbutton" />
                       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21.5795 4.54667L17.6662 0.613334C17.4076 0.356044 17.0577 0.211609 16.6929 0.211609C16.3281 0.211609 15.9781 0.356044 15.7196 0.613334L1.84622 14.4667L0.57955 19.9333C0.535854 20.1332 0.537352 20.3402 0.583934 20.5394C0.630516 20.7386 0.721005 20.9249 0.848792 21.0846C0.976578 21.2443 1.13843 21.3735 1.32253 21.4627C1.50663 21.5518 1.70833 21.5988 1.91288 21.6C2.0082 21.6096 2.10424 21.6096 2.19955 21.6L7.72622 20.3333L21.5795 6.49333C21.8368 6.23474 21.9813 5.88479 21.9813 5.52C21.9813 5.15521 21.8368 4.80526 21.5795 4.54667ZM7.05955 19.1333L1.87955 20.22L3.05955 15.14L13.4396 4.8L17.4396 8.8L7.05955 19.1333ZM18.3329 7.83333L14.3329 3.83333L16.6529 1.52667L20.5862 5.52667L18.3329 7.83333Z" fill="#00AFCA"/>
                       </svg>
-                    </button>
+                    </label>
                   </div>
                 </div>
                 <div id="personal_doctor_page_doctors_data_info">
@@ -220,7 +222,7 @@ const PCDoctor = (props) => {
                     <div className="personal_doctor_page_tabs_reception">
                       <div className="personal_doctor_page_tabs_reception_type">
                         <p id="personal_doctor_page_tabs_reception_type_title">Тип приема</p>
-                        <table className="personal_doctor_page_tabs_reception_type_cells">
+                        <tbody className="personal_doctor_page_tabs_reception_type_cells">
                           <tr id="personal_doctor_page_tabs_reception_type_cells_titles">
                             <th>В клинике</th>
                             <th>На дому</th>
@@ -231,11 +233,11 @@ const PCDoctor = (props) => {
                             <td>500 сом</td>
                             <td>500 сом</td>
                           </tr>
-                        </table>
+                        </tbody>
                       </div>
                       <div className="personal_doctor_page_tabs_reception_schedule">
                         <p id="personal_doctor_page_tabs_reception_schedule_title">График работы</p>
-                        <table className="personal_doctor_page_tabs_reception_schedule_cells">
+                        <tbody className="personal_doctor_page_tabs_reception_schedule_cells">
                           <tr id="personal_doctor_page_tabs_reception_schedule_cells_titles">
                             <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</th>
                             <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</th>
@@ -246,33 +248,33 @@ const PCDoctor = (props) => {
                             <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</th>
                           </tr>
                           <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                            <td>В клинике</td>
-                            <td>В клинике</td>
-                            <td>В клинике</td>
-                            <td>В клинике</td>
-                            <td>В клинике</td>
-                            <td>В клинике</td>
-                            <td>В клинике</td>
+                            <td><p>{userData.schedules[0].monday}</p>{userData.schedules[0].monday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[0].tuesday}</p>{userData.schedules[0].tuesday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[0].wednesday}</p>{userData.schedules[0].wednesday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[0].thursday}</p>{userData.schedules[0].thursday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[0].friday}</p>{userData.schedules[0].friday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[0].saturday}</p>{userData.schedules[0].saturday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[0].sunday}</p>{userData.schedules[0].sunday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
                           </tr>
                           <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                            <td>На выезд</td>
-                            <td>На выезд</td>
-                            <td>На выезд</td>
-                            <td>На выезд</td>
-                            <td>На выезд</td>
-                            <td>На выезд</td>
-                            <td>На выезд</td>
+                            <td><p>{userData.schedules[1].monday}</p>{userData.schedules[1].monday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[1].tuesday}</p>{userData.schedules[1].tuesday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[1].wednesday}</p>{userData.schedules[1].wednesday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[1].thursday}</p>{userData.schedules[1].thursday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[1].friday}</p>{userData.schedules[1].friday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[1].saturday}</p>{userData.schedules[1].saturday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[1].sunday}</p>{userData.schedules[1].sunday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
                           </tr>
                           <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                            <td>Онлайн</td>
-                            <td>Онлайн</td>
-                            <td>Онлайн</td>
-                            <td>Онлайн</td>
-                            <td>Онлайн</td>
-                            <td>Онлайн</td>
-                            <td>Онлайн</td>
+                            <td><p>{userData.schedules[2].monday}</p>{userData.schedules[2].monday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[2].tuesday}</p>{userData.schedules[2].tuesday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[2].wednesday}</p>{userData.schedules[2].wednesday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[2].thursday}</p>{userData.schedules[2].thursday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[2].friday}</p>{userData.schedules[2].friday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[2].saturday}</p>{userData.schedules[2].saturday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td><p>{userData.schedules[2].sunday}</p>{userData.schedules[2].sunday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
                           </tr>
-                        </table>
+                        </tbody>
                       </div>
                     </div>
                   </TabPanel>
