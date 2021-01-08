@@ -164,5 +164,44 @@
       stroke: none;
     }
   }
+
+  .as-items--navigator {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: inherit;
+    // left: 0;
+    .as-items__list {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      .as-item--navigator {
+        
+        .as-item__navigator {
+          position: inherit !important;
+          font-weight: bold;
+          font-size: 22px;
+          line-height: 26px;
+          color: #00AFCA;
+          margin-bottom: 16px;
+          left: 0;
+        }
+      }
+    }
+  }
+  .as-items  {
+    padding: 0 80px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 120px;
+    .as-item {
+      margin: 0 0 40px;
+      width: 20%;
+    }
+  }
+  .as-items--navigator .as-items__list, .as-items--navigator .as-items__chunk {
+    padding: 0;
+  }
 }
 

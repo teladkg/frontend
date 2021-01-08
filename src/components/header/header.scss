@@ -67,5 +67,24 @@
     a {
       align-self: center;
     }
+    .MuiPaper-root {
+      .MuiList-padding {
+        padding: 15px 15px 8px;
+      }
+      .MuiListItem-button {
+        border-radius: 3px;
+        border: 1px solid #919191;
+        text-transform: uppercase;
+      }
+      .MuiListItem-button {
+        margin-bottom: 10px;
+      }
+      .MuiListItem-button:hover {
+        background-color: #00AFCA;
+        transition: .1s all ease-in-out;
+        color: #fff;
+        border-color: #00AFCA;
+      }
+    }
   }
 }

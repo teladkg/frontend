@@ -66,13 +66,12 @@ const PCDoctorEdit = (props) => {
   const [tableArr, setTableArr] = useState();
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
     props.getPCDoctor();
     props.getSpecialties();
   }, []);
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
     setEditState(props.data);
   }, [props]);
 
@@ -136,31 +135,11 @@ const PCDoctorEdit = (props) => {
       //   return item;
       // })
     }
-    // console.log(data.specialties);
     props.editPCDoctor(patchData);
     // console.log(patchData);
   }
   console.log(tableProps.data);
 
-
-    // const dataArray = [
-  //   { id: 1, A: '10:10-14:00', B:'', C:'', D:'', E:'', F:'', G:'', appointment: "CLINIC" },
-  //   { id: 2, A: '10:10-14:00', B:'', C:'', D:'', E:'', F:'', G:'', appointment: "HOME" },
-  //   { id: 3, A: '10:10-14:00', B:'', C:'', D:'', E:'', F:'', G:'', appointment: "ONLINE" },
-  // ];
-  // {
-  //   appointment: "CLINIC",
-  //   monday: "10:10-20:10",
-  //   tuesday: "",
-  //   wednesday: "",
-  //   thursday: "10:10-20:10",
-  //   friday: "",
-  //   saturday: "",
-  //   sunday: "",
-  // }
-
-  // const dataArray = editState && editState.schedules;
-  // console.log(dataArray);
 
   const CustomLookupEditor = ({
     column, dispatch, rowKeyValue, value,
@@ -198,40 +177,25 @@ const PCDoctorEdit = (props) => {
       dispatch(closeEditor(rowKeyValue, column.key));
     };
     const [editorValue, setValue] = useState(value);
-    return (
+    return(
       <div className='custom-editor'>
         <input
           className='form-control'
           type='text'
           value={editorValue}
-          onChange={(event) => setValue(event.currentTarget.value)}/>
+          onChange={(event) => setValue(event.currentTarget.value)}
+        />
         <button className='custom-editor-button custom-editor-button-save'
           onClick={() => {
             dispatch(updateCellValue(rowKeyValue, column.key, editorValue));
             close();
           }}>
             <DoneIcon />
-          </button>
+        </button>
         <button className='custom-editor-button custom-editor-button-cancel' onClick={close}><CloseSharpIcon /></button>
       </div>
     );
   };
-  // const tablePropsInit = {
-  //   columns: [
-  //     { dataType: DataType.String, key: 'monday', title: 'ПН' },
-  //     { dataType: DataType.String, key: 'tuesday', title: 'ВТ' },
-  //     { dataType: DataType.String, key: 'wednesday', title: 'СР' },
-  //     { dataType: DataType.String, key: 'thursday', title: 'ЧТ' },
-  //     { dataType: DataType.String, key: 'friday', title: 'ПТ' },
-  //     { dataType: DataType.String, key: 'saturday', title: 'СБ' },
-  //     { dataType: DataType.String, key: 'sunday', title: 'ВС' },
-  //   ],
-  //   data: editState && editState.schedules,
-  //   editableCells: [],
-  //   editingMode: EditingMode.Cell,
-  //   rowKeyField: 'id',
-  // };
-
   
   useEffect(()=> {
     setTableArr([
@@ -564,41 +528,6 @@ const PCDoctorEdit = (props) => {
                         
                         <div className="personal_doctor_page_tabs_reception_schedule">
                           <p id="personal_doctor_page_tabs_reception_schedule_title">График работы</p>
-                          {/* <table className="personal_doctor_page_tabs_reception_schedule_cells">
-                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_titles">
-                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_1">ПН</th>
-                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_2">ВТ</th>
-                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_3">СР</th>
-                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_4">ЧТ</th>
-                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_5">ПТ</th>
-                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_6">СБ</th>
-                              <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</th>
-                            </tr>
-                            <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                              {
-                                editState.schedules.length!==0 ? 
-                                editState.schedules.map((elem) => {
-                                  return(
-                                    <td id="personal_doctor_page_tabs_reception_schedule_cells_cost_addbutton_label">
-                                      <p>{elem.appointment}</p>
-                                      <p>{elem.time}</p>
-                                    </td>
-                                  )
-                                })
-                                : editState.schedules.map(() => {
-                                  return(
-                                    <td id="personal_doctor_page_tabs_reception_schedule_cells_cost_addbutton_label">
-                                      <input type="button" id="personal_doctor_page_tabs_reception_schedule_cells_cost_addbutton" />
-                                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 0.46875C7.7072 0.46875 7.90591 0.55106 8.05243 0.697573C8.19894 0.844086 8.28125 1.0428 8.28125 1.25V7.5C8.28125 7.7072 8.19894 7.90591 8.05243 8.05243C7.90591 8.19894 7.7072 8.28125 7.5 8.28125H1.25C1.0428 8.28125 0.844086 8.19894 0.697573 8.05243C0.55106 7.90591 0.46875 7.7072 0.46875 7.5C0.46875 7.2928 0.55106 7.09409 0.697573 6.94757C0.844086 6.80106 1.0428 6.71875 1.25 6.71875H6.71875V1.25C6.71875 1.0428 6.80106 0.844086 6.94757 0.697573C7.09409 0.55106 7.2928 0.46875 7.5 0.46875Z" fill="#00AFCA"/>
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.71875 7.5C6.71875 7.2928 6.80106 7.09409 6.94757 6.94757C7.09409 6.80106 7.2928 6.71875 7.5 6.71875H13.75C13.9572 6.71875 14.1559 6.80106 14.3024 6.94757C14.4489 7.09409 14.5312 7.2928 14.5312 7.5C14.5312 7.7072 14.4489 7.90592 14.3024 8.05243C14.1559 8.19894 13.9572 8.28125 13.75 8.28125H8.28125V13.75C8.28125 13.9572 8.19894 14.1559 8.05243 14.3024C7.90592 14.4489 7.7072 14.5312 7.5 14.5312C7.2928 14.5312 7.09409 14.4489 6.94757 14.3024C6.80106 14.1559 6.71875 13.9572 6.71875 13.75V7.5Z" fill="#00AFCA"/>
-                                      </svg>
-                                    </td>
-                                  )
-                                })
-                              }
-                            </tr>
-                          </table> */}
                           <Table
                             {...tableProps}
                             dispatch={dispatch}

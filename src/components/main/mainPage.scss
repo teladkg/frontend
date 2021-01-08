@@ -80,6 +80,25 @@
       a {
         align-self: center;
       }
+      .MuiPaper-root {
+        .MuiList-padding {
+          padding: 15px 15px 8px;
+        }
+        .MuiListItem-button {
+          border-radius: 3px;
+          border: 1px solid #919191;
+          text-transform: uppercase;
+        }
+        .MuiListItem-button {
+          margin-bottom: 10px;
+        }
+        .MuiListItem-button:hover {
+          background-color: #00AFCA;
+          transition: .1s all ease-in-out;
+          color: #fff;
+          border-color: #00AFCA;
+        }
+      }
     }
   }
   #search_title1 {
@@ -170,10 +189,14 @@
       }
     }
   }
-  #specialties_slide {
+  .slick-slider {
+    white-space: nowrap;
+  }
+  #specialties_slide-link {
     display: inline-flex;
     flex-direction: row;
-    width: 23.1% !important;
+    // width: 23.1% !important;
+    width: 300px !important;
     height: auto;
     padding: 30px;
     color: #fff;
@@ -521,5 +544,19 @@ aside[data-testid="react-scroll-up-button"] {
     width: 50%;
     fill: #fff !important;
     stroke: none;
+  }
+}
+
+
+.slick-track {
+  float: left;
+}
+
+
+@media only screen and (max-width: 1468px) {
+  .specialties {
+    .slick-list {
+      overflow-x: auto !important;
+    }
   }
 }

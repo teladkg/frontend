@@ -19,12 +19,7 @@ const checkToken = async(idtoken) => {
 
 const registration = async(data) => { 
     console.log(data);
-    // const idtoken = localStorage.getItem('fireToken');
-    const response = await axios.post('http://167.172.109.15/users/application/', data, 
-    {   
-        "Content-Type": "multipart/form-data"
-    }
-    );
+    const response = await axios.post('http://167.172.109.15/users/application/', data, {"Content-Type": "multipart/form-data"});
     console.log(response);
 };
 
@@ -47,6 +42,24 @@ const registrateclient = async(data) => {
 }
 
 
+const postFeedback = async(data) => {
+    console.log(data);
+    const response = await axios.post('http://167.172.109.15​/userinfo/feedback/', data, {
+        headers: authHeader() 
+    })
+    console.log(response);
+}
+
+
+const postClinicFeedback = async(data) => {
+    console.log(data);
+    const response = await axios.post('http://167.172.109.15​​/userinfo/clinicfeedback/', data, {
+        headers: authHeader() 
+    })
+    console.log(response);
+}
+
+
 // const getPCDoctor = async() => {
 //     let token = localStorage.getItem('userToken');
 //     const data = await axios.get('http://167.172.109.15/userinfo/editdoctor/', {
@@ -65,29 +78,13 @@ const logout = () => {
 }
 
 
-// function handleResponse(response) {
-//     return response.text().then(text => {
-//         const data = text && JSON.parse(text);
-//         if (!response.ok) {
-//             if (response.status === 401) {
-//                 // auto logout if 401 response returned from api
-//                 // logout();
-//                 // window.location.reload(true);
-//                 console.log("error 401")
-//             }
-
-//             const error = (data && data.message) || response.statusText;
-//             return Promise.reject(error);
-//         }
-//         return data;
-//     });
-// }
-
 export const userService = {
     checkToken,
     registration,
     registrateclient,
     logout,
-    editPCDoctor
+    editPCDoctor,
+    postFeedback,
+    postClinicFeedback
     // getPCDoctor
 };

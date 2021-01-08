@@ -722,4 +722,8 @@
   fill: #fff !important;
   stroke: none;
 }
+
+.clinic_page .slick-track {
+  float: left;
+}
 /*# sourceMappingURL=clinic.css.map */

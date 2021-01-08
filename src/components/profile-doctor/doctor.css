@@ -764,4 +764,8 @@
   fill: #fff !important;
   stroke: none;
 }
+
+.doctor_page .slick-track {
+  float: left;
+}
 /*# sourceMappingURL=doctor.css.map */

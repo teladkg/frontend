@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getDoctors, getDoctorById } from '../../redux/actions/actions';
+import { getDoctors, getDoctorById, getSpecialties, getCities, getFilterData, setFilterItems } from '../../redux/actions/actions';
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
@@ -31,26 +31,30 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
+import setFilterItem from '../../redux/reducers/filterItems.reducer';
 
 const Search = (props) => {
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     props.getDoctors();
+    props.getSpecialties();
+    props.getCities();
+    props.getFilterData();
     // props.getDoctorById(props.match.params.id);
   }, []);
 
 
   /* FOR AUTOCOMPLETE GROUP */
-  const search_options1 = specialties.map((option) => {
-    const firstLetter = option.title[0].toUpperCase();
+  const search_options1 = props.specialties.results && props.specialties.results.map((option) => {
+    const firstLetter = option.name[0].toUpperCase();
     return {
       firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
       ...option,
     };
   });
-  const search_options2 = cities.map((option) => {
-    const firstLetter = option.title[0].toUpperCase();
+  const search_options2 = props.cities && props.cities.map((option) => {
+    const firstLetter = option.name[0].toUpperCase();
     return {
       firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
       ...option,
@@ -65,14 +69,80 @@ const Search = (props) => {
   });
 
 
+  // const items = useRef('');
+  const [itemss, setItemss] = useState('');
   /* FOR RADIO BUTTON GROUP */
-  const [value, setValue] = React.useState('Home');
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const [receptionState, setReceptionState] = useState('');
+  const [receptionNum, setReceptionNum] = useState(null);
+  // const handleReception = (event) => {
+  //   setReceptionState(event.target.value);
+  //   if (receptionNum && receptionNum !== '') {
+  //     items+='schedules__appointment='+receptionNum+'&';
+  //     props.setFilterItems(items);
+  //     console.log(items);
+  //   }
+  //   console.log(receptionState);
+  // };
+
+  /* FILTER */ 
+  const [spec, setSpec] = useState('');
+  const res1 = props.specialties.results && props.specialties.results.find(param => param.name === spec);
+  
+  const setFilter = (event) => {
+    setSpec(event.target.textContent);
+    setReceptionState(event.target.value);
+    // let array = document.getElementById('specsfilter');
+    // let items = '';
+    // console.log(array.value);
+    // if(array.value !== '') {
+    //   items+='specialty='+array.value+'&';
+    // }
+    // console.log('items:',items);
+    // props.setFilterItems(items);
+    // console.log(res1);
   };
 
+  useEffect(()=> {
+    if (receptionState === 'Home') {
+      setReceptionNum(2);
+    }
+    else if(receptionState === 'onClinic') {
+      setReceptionNum(1);
+    }
+    else if(receptionState === 'onLine') {
+      setReceptionNum(3);
+    }
+    console.log('receptionstate: ', receptionState);
+    console.log('receptionNum: ', receptionNum);
 
-  // const classes = useStyles();
+    if (res1 && res1 !== '') {
+      setItemss('specialty='+res1.id+'&');
+      // items.current+='specialty='+res1.id+'&';
+      props.setFilterItems(itemss);
+      console.log(itemss);
+    }
+    if (receptionNum && receptionNum !== '') {
+      setItemss('schedules__appointment='+receptionNum+'&');
+      // items.current+='schedules__appointment='+receptionNum+'&';
+      props.setFilterItems(itemss);
+      console.log(itemss);
+    }
+    if (res1 && res1 !== '' && receptionNum && receptionNum !== '') {
+      setItemss('specialty='+res1.id+'&schedules__appointment='+receptionNum+'&');
+      // items.current+='specialty='+res1.id+'&';
+      props.setFilterItems(itemss);
+      console.log(itemss);
+    }
+  }, [receptionState, receptionNum, itemss, res1])
+
+  const getData = () => {
+    if (itemss && itemss !== '') {
+      props.getFilterData(itemss);
+    }
+    // if (props.items && props.items !== '') {
+    //   console.log(props.items);
+    // }
+  };
 
 
   /* SORT BY DATE */
@@ -84,7 +154,11 @@ const Search = (props) => {
 
   /* RESET BUTTON */
   const handleDelete = () => {
-    console.info('You clicked the delete icon.');
+    setItemss('');
+    setReceptionState('');
+    setSpec('');
+    setReceptionNum();
+    props.getFilterData();
   };
 
 
@@ -107,8 +181,10 @@ const Search = (props) => {
     setExpanded(!expanded);
   };
 
-  const doctors = props.data.results;
-  console.log(doctors);
+
+  const doctors = props.filterData.results;
+  // console.log(props.filterData);
+  // console.log(doctors);
 
   return (
     <>
@@ -135,39 +211,42 @@ const Search = (props) => {
 
         <div className="search_page_search_group">
           <Autocomplete
-            id="grouped-demo"
-            options={search_options1.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            id="specsfilter"
+            options={search_options1 && search_options1.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
             groupBy={(option) => option.firstLetter}
-            getOptionLabel={(option) => option.title}
+            getOptionLabel={(option) => option.name}
             style={{ width: "26%" }}
             renderInput={(params) => <TextField {...params} label="Врач, специальность" variant="outlined" />}
+            onChange={setFilter}
           />
           <Autocomplete
-            id="grouped-demo"
-            options={search_options2.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            id="citiesfilter"
+            options={search_options2 && search_options2.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
             groupBy={(option) => option.firstLetter}
-            getOptionLabel={(option) => option.title}
+            getOptionLabel={(option) => option.name}
             style={{ width: "26%" }}
             renderInput={(params) => <TextField {...params} label="Город" variant="outlined" />}
+            onChange={setFilterItems}
           />
           <Autocomplete
-            id="grouped-demo"
-            options={search_options3.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+            id="mapfilter"
+            options={search_options3 && search_options3.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
             groupBy={(option) => option.firstLetter}
             getOptionLabel={(option) => option.title}
             style={{ width: "26%" }}
             renderInput={(params) => <TextField {...params} label="Радиус" variant="outlined" />}
+            onChange={setFilterItems}
           />
-          <Link to="/search"><button id="search_page_search_button">Найти</button></Link>
+          <Link to="/search"><button onClick={getData} id="search_page_search_button">Найти</button></Link>
         </div>
 
         <div className="search_page_sort_group">
           <FormControl component="fieldset">
             <FormLabel component="legend"></FormLabel>
-            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-              <FormControlLabel value="female" control={<Radio />} label="На дому" />
-              <FormControlLabel value="male" control={<Radio />} label="В клинике" />
-              <FormControlLabel value="other" control={<Radio />} label="Онлайн" />
+            <RadioGroup aria-label="reception" name="reception1" value={receptionState} onChange={setFilter}>
+              <FormControlLabel value="Home" control={<Radio />} label="На дому" />
+              <FormControlLabel value="onClinic" control={<Radio />} label="В клинике" />
+              <FormControlLabel value="onLine" control={<Radio />} label="Онлайн" />
             </RadioGroup>
           </FormControl>
 
@@ -192,7 +271,8 @@ const Search = (props) => {
         </div>
         
         <div className="search_page_doctors_list">
-          { doctors &&
+          { 
+            doctors===undefined ? <p>Loading...</p> :
             doctors.map(elem => {
               return(
                 <div id="search_page_doctors_slide" key={elem.id}>
@@ -252,13 +332,18 @@ const Search = (props) => {
                         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12.003 18.9828C12.3109 18.8065 12.6891 18.8065 12.997 18.9828L18.1996 21.9624C18.9626 22.3994 19.8776 21.7097 19.6676 20.8559L18.3254 15.3975C18.2335 15.0238 18.3642 14.6305 18.6615 14.3861L23.0883 10.748C23.7831 10.1771 23.4299 9.05073 22.5335 8.97868L16.6045 8.50208C16.2401 8.4728 15.9208 8.24707 15.7717 7.91339L13.4129 2.63679C13.0601 1.84758 11.9398 1.84759 11.587 2.63679L9.22835 7.91339C9.07919 8.24707 8.75986 8.4728 8.39553 8.50208L2.46649 8.97868C1.57013 9.05073 1.21695 10.1771 1.91169 10.748L6.33849 14.3861C6.63582 14.6305 6.76653 15.0238 6.67463 15.3975L5.33239 20.8559C5.12242 21.7097 6.03741 22.3994 6.80044 21.9624L12.003 18.9828Z" fill="#F2C94C"/>
                         </svg>
-                        <p>3.5</p>
+                        <p>{elem.rate ? elem.rate/2 : elem.rate}</p>
                       </div>
                     </div>            
                   </div>
                 </div>
               )
             }) 
+          }
+          {
+            doctors && doctors.length===0
+            ? <span>Нет подходящих врачей</span> 
+            : ''
           }
         </div>
       
@@ -274,13 +359,23 @@ const Search = (props) => {
 
 const mapStateToProps = state => {
   return {
-    data: state.getDoctors.data
+    data: state.getDoctors.data,
+    specialties: state.getSpecialties.specialties,
+    cities: state.getCities.cities,
+    
+    filterData: state.getFilterData.filterData,
+    items: state.filter,
   }
 }
 
 const mapDispatchToProps = {
   getDoctors,
-  getDoctorById
+  getDoctorById,
+  getSpecialties,
+  getCities,
+
+  setFilterItems,
+  getFilterData,
 } 
 
 
@@ -294,22 +389,7 @@ function handleClick(event) {
 }
 
 
-/* DATA FOR AUTOCOMPLETE */
-const specialties = [
-  { title: 'Кардиолог', id: 1 },
-  { title: 'Психолог', id: 2 },
-  { title: 'Акушер', id: 3 },
-  { title: 'Терапевт', id: 4 },
-];
-const cities = [
-  { title: 'Бишкек', id: 1 },
-  { title: 'Ош', id: 2 },
-  { title: 'Чуй', id: 3 },
-  { title: 'Нарын', id: 4 },
-  { title: 'Джалал-Абад', id: 5 },
-  { title: 'Баткен', id: 6 },
-  { title: 'Иссык-Куль', id: 7 },
-];
+/* FOR MAP AUTOCOMPLETE */
 const radius = [
   { title: '500 м', id: 1 },
   { title: '1 км', id: 2 },

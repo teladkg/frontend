@@ -82,6 +82,51 @@
       margin-bottom: 70px;
       border-radius: 5px;
     }
+
+    .doctor-infowindow-container {
+      #doctor-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      #doctor-address {
+        color: #2B2B2B;
+        margin-bottom: 5px;
+      }
+      #doctor-link {
+        color: #00AFCA;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      #doctor_info_stargroup {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    }
+    .clinic-infowindow-container {
+      #clinic-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      #clinic-address {
+        color: #2B2B2B;
+        margin-bottom: 5px;
+      }
+      #clinic-link {
+        color: #00AFCA;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      #clinic_info_stargroup {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    }
   }
   
   

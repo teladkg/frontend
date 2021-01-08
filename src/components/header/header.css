@@ -106,4 +106,26 @@
       -ms-grid-row-align: center;
       align-self: center;
 }
+
+.header .icon_group .MuiPaper-root .MuiList-padding {
+  padding: 15px 15px 8px;
+}
+
+.header .icon_group .MuiPaper-root .MuiListItem-button {
+  border-radius: 3px;
+  border: 1px solid #919191;
+  text-transform: uppercase;
+}
+
+.header .icon_group .MuiPaper-root .MuiListItem-button {
+  margin-bottom: 10px;
+}
+
+.header .icon_group .MuiPaper-root .MuiListItem-button:hover {
+  background-color: #00AFCA;
+  -webkit-transition: .1s all ease-in-out;
+  transition: .1s all ease-in-out;
+  color: #fff;
+  border-color: #00AFCA;
+}
 /*# sourceMappingURL=header.css.map */

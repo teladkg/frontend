@@ -102,4 +102,68 @@
   margin-bottom: 70px;
   border-radius: 5px;
 }
+
+.map_page #map-container .doctor-infowindow-container #doctor-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.map_page #map-container .doctor-infowindow-container #doctor-address {
+  color: #2B2B2B;
+  margin-bottom: 5px;
+}
+
+.map_page #map-container .doctor-infowindow-container #doctor-link {
+  color: #00AFCA;
+}
+
+.map_page #map-container .doctor-infowindow-container #doctor-link:hover {
+  text-decoration: underline;
+}
+
+.map_page #map-container .doctor-infowindow-container #doctor_info_stargroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.map_page #map-container .clinic-infowindow-container #clinic-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.map_page #map-container .clinic-infowindow-container #clinic-address {
+  color: #2B2B2B;
+  margin-bottom: 5px;
+}
+
+.map_page #map-container .clinic-infowindow-container #clinic-link {
+  color: #00AFCA;
+}
+
+.map_page #map-container .clinic-infowindow-container #clinic-link:hover {
+  text-decoration: underline;
+}
+
+.map_page #map-container .clinic-infowindow-container #clinic_info_stargroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
 /*# sourceMappingURL=map.css.map */

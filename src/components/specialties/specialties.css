@@ -222,4 +222,50 @@
   fill: #fff !important;
   stroke: none;
 }
+
+.specialties_page .as-items--navigator {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: inherit;
+}
+
+.specialties_page .as-items--navigator .as-items__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.specialties_page .as-items--navigator .as-items__list .as-item--navigator .as-item__navigator {
+  position: inherit !important;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 26px;
+  color: #00AFCA;
+  margin-bottom: 16px;
+  left: 0;
+}
+
+.specialties_page .as-items {
+  padding: 0 80px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+  margin-bottom: 120px;
+}
+
+.specialties_page .as-items .as-item {
+  margin: 0 0 40px;
+  width: 20%;
+}
+
+.specialties_page .as-items--navigator .as-items__list, .specialties_page .as-items--navigator .as-items__chunk {
+  padding: 0;
+}
 /*# sourceMappingURL=specialties.css.map */

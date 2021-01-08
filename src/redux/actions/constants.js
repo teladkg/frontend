@@ -1,3 +1,9 @@
 export const GET_DOCTORS = 'GET_DOCTORS';
 export const GET_DOCTOR_BY_ID = 'GET_DOCTOR_BY_ID';
+export const GET_CLINICS = 'GET_CLINICS';
+export const GET_CLINIC_BY_ID = 'GET_CLINIC_BY_ID';
 export const GET_SPECIALTIES = 'GET_SPECIALTIES';
+export const GET_CITIES = 'GET_CITIES';
+
+export const GET_FILTER_RESULT = 'GET_FILTER_RESULT';
+export const ADD_FILTER_CHARECTER = 'ADD_FILTER_CHARECTER';

@@ -44,7 +44,7 @@ function App() {
           component = {Specialties}
         />
 
-        <Route path = "/clinic"
+        <Route path = {"/clinic/:id"}
           component = {Clinic}
         />
         <Route path = {"/doctor/:id"}
