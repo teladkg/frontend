@@ -30,6 +30,20 @@ const Specialties = (props) => {
 
   const [selected, setSelected] = useState({});
   const [navigator, setNavigator] = useState(true);
+  const [specsState, setSpecsState] = useState(null);
+
+  useEffect(()=> {
+    setSpecsState(props.specialties.results)
+  }, [props.specialties.results])
+  console.log(specsState);
+  // useEffect(()=> {
+  //   if(specsState!== null && specsState!== undefined) {
+  //     specsState.forEach(() => {
+  //       setSpecsState(state => ({...state, href: '/search'}))
+  //     })
+  //   }
+  // }, [specsState])
+
   const toggleNavigator = () => {
     setNavigator({ navigator: !navigator })
   }
@@ -122,14 +136,6 @@ const Specialties = (props) => {
             value={ selected.single_search && selected.single_search[0] }
             onChange={ (selected) => handleSelect('single_search', selected) }
           />
-          {/* <Select
-            clearable={ false }
-            options={ specs }
-            value={ selected.single_search && selected.single_search[0] }
-            onChange={ (selected) => handleSelect('single_search', selected) }
-            valueKey="id"
-            labelKey="name"
-          /> */}
           <Autocomplete
             id="grouped-demo"
             options={search_options2 && search_options2.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
@@ -185,18 +191,19 @@ const Specialties = (props) => {
           type="radio"
           handleCheck={ (selected) => handleSorter('single_search', selected) }
         /> */}
-        <AlpabetSorter
-          asGroup={ specs }
-          asName="link"
-          valueKey="id"
-          labelKey="name"
-          navigator={ navigator }
-          type="link"
-          Link="https://ok.ru"
-          itemOptions={{target: 'checkbox'}}
-        >
-          <Link to="/search"></Link>
-        </AlpabetSorter>
+        {
+          specsState && 
+          <AlpabetSorter
+            asGroup={ specsState }
+            asName="link"
+            valueKey="id"
+            labelKey="name"
+            navigator={ navigator }
+            type="link"
+            itemOptions={{target: 'checkbox'}}
+          />
+        }
+        
 
         <ScrollUpButton ShowAtPosition={350}/>
 

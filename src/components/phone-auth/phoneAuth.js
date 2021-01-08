@@ -30,15 +30,20 @@ const PhoneAuth = (props) => {
 
 
   /* FOR RADIO BUTTONS */
-  const [value, setValue] = React.useState('doctor');
+  const [value, setValue] = useState(null);
   const handleChange = (event) => {
     setValue(event.target.value);
-    localStorage.setItem('clientType', value);
-    localStorage.removeItem('fireToken');
-    localStorage.removeItem('userToken');
-    console.log(localStorage);
     console.log(value);
   };
+  useEffect(()=> {
+    if(value === 'client' || value === 'doctor') {
+      localStorage.setItem('clientType', value);
+      localStorage.removeItem('fireToken');
+      localStorage.removeItem('userToken');
+      console.log(localStorage);
+      console.log(value);
+    }
+  }, [value])
 
 
   /* FOR PHONE INPUT */
@@ -117,8 +122,8 @@ const PhoneAuth = (props) => {
           <p id="status_title">Ваш статус на сайте:</p>
           <FormControl component="fieldset">
             <RadioGroup aria-label="client_type" name="client_type1" value={value} onChange={handleChange}>
-              <FormControlLabel value="doctor" control={<Radio />} label="Пациент" />
-              <FormControlLabel value="client" control={<Radio />} label="Врач" />
+              <FormControlLabel value="client" control={<Radio />} label="Пациент" />
+              <FormControlLabel value="doctor" control={<Radio />} label="Врач" />
             </RadioGroup>
           </FormControl>
           <form onSubmit={onSignInSubmit} className={classes.root} noValidate autoComplete="off">
