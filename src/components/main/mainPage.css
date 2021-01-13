@@ -223,7 +223,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 55px 0 80px;
+  padding: 0 80px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -280,7 +280,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: 300px !important;
+  width: 309px !important;
   height: auto;
   padding: 30px;
   color: #fff;
@@ -362,7 +362,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 55px 0 80px;
+  padding: 0 80px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -411,7 +411,7 @@
   text-underline-offset: 4px;
 }
 
-.clinics #clinics_slide {
+.clinics .clinics_slide {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -419,15 +419,17 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: auto !important;
+  width: 406px !important;
   height: auto;
   background-color: #FCFCFC;
   border-radius: 5px;
   margin: 0 25px 25px 0;
   padding: 25px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
-.clinics #clinics_slide:hover {
+.clinics .clinics_slide:hover {
   cursor: pointer;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
@@ -435,12 +437,12 @@
   transition: all .2s ease-in-out;
 }
 
-.clinics #clinics_slide #clinics_slide_image {
+.clinics .clinics_slide #clinics_slide_image {
   width: 100%;
   margin-bottom: 16px;
 }
 
-.clinics #clinics_slide #clinics_slide_info {
+.clinics .clinics_slide #clinics_slide_info {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -454,14 +456,14 @@
           justify-content: space-evenly;
 }
 
-.clinics #clinics_slide #clinics_slide_info h3 {
+.clinics .clinics_slide #clinics_slide_info h3 {
   font-weight: bold;
   font-size: 24px;
   color: #2B2B2B;
   padding-bottom: 16px;
 }
 
-.clinics #clinics_slide #clinics_slide_info h3:hover {
+.clinics .clinics_slide #clinics_slide_info h3:hover {
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 6px;
@@ -469,20 +471,20 @@
   transition: all .3s ease-in-out;
 }
 
-.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_typeofclinic {
+.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_typeofclinic {
   font-weight: bold;
   font-size: 17px;
   color: #4F4F4F;
   padding-bottom: 16px;
 }
 
-.clinics #clinics_slide #clinics_slide_info_article {
+.clinics .clinics_slide #clinics_slide_info_article {
   font-size: 15px;
   color: #464646;
   padding-bottom: 17px;
 }
 
-.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_address {
+.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_address {
   font-weight: 600;
   font-size: 17px;
   color: #333333;
@@ -490,7 +492,7 @@
   padding-bottom: 16px;
 }
 
-.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock {
+.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -506,7 +508,7 @@
           justify-content: space-between;
 }
 
-.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup {
+.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -522,11 +524,11 @@
   color: #828282;
 }
 
-.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup svg {
+.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup svg {
   margin-right: 8px;
 }
 
-.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup {
+.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -542,7 +544,7 @@
   color: #828282;
 }
 
-.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup svg {
+.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup svg {
   margin-right: 8px;
 }
 
@@ -566,7 +568,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 55px 0 80px;
+  padding: 0 80px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -616,19 +618,14 @@
 }
 
 .doctors #doctors_slide {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: auto !important;
+  width: 406px !important;
   height: auto;
   background-color: #FCFCFC;
   border-radius: 5px;
   margin: 0 25px 25px 0;
   padding: 25px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 .doctors #doctors_slide:hover {
@@ -804,12 +801,21 @@ aside[data-testid="react-scroll-up-button"] svg {
 }
 
 .slick-track {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
   float: left;
 }
 
-@media only screen and (max-width: 1468px) {
-  .specialties .slick-list {
-    overflow-x: auto !important;
+@media only screen and (max-width: 1024px) {
+  .specialties {
+    padding: 0 45px 0;
+  }
+  .clinics {
+    padding: 0 45px 0;
+  }
+  .doctors {
+    padding: 0 45px 0;
   }
 }
 /*# sourceMappingURL=mainPage.css.map */

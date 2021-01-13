@@ -28,15 +28,19 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
+  width: 40%;
   height: 250px;
 }
 
-.footer .footer_left_col svg {
+.footer .footer_left_col #footer_left_logo {
+  font-family: 'Kanit', sans-serif;
+  font-size: 100px;
+  color: #00AFCA;
+  line-height: 90px;
   margin-bottom: 30px;
 }
 
-.footer .footer_left_col svg:hover {
+.footer .footer_left_col #footer_left_logo:hover {
   cursor: pointer;
 }
 
@@ -120,5 +124,74 @@
   font-weight: 500;
   font-size: 16px;
   color: #828282;
+}
+
+@media only screen and (max-width: 1024px) {
+  .footer {
+    padding: 50px 45px 0;
+  }
+  .footer .footer_left_col {
+    width: 30%;
+    height: 200px;
+  }
+  .footer .footer_left_col #footer_left_logo {
+    font-size: 80px;
+    line-height: 70px;
+  }
+  .footer .footer_left_col #footer_left_col_title {
+    font-size: 18px;
+  }
+  .footer .footer_right_col {
+    width: 60%;
+  }
+  .footer .footer_right_col .footer_second_col ul li, .footer .footer_right_col .footer_second_col ul li a, .footer .footer_right_col .footer_third_col ul li, .footer .footer_right_col .footer_third_col ul li a, .footer .footer_right_col .footer_fourth_col ul li, .footer .footer_right_col .footer_fourth_col ul li a {
+    padding-bottom: 27px;
+    font-size: 16px;
+  }
+  .footer .footer_right_col #footer_second_col_title, .footer .footer_right_col #footer_third_col_title, .footer .footer_right_col #footer_fourth_col_title {
+    font-size: 20px;
+  }
+  .extra_footer {
+    padding: 30px 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding: 40px;
+  }
+  .footer .footer_left_col {
+    height: 100px;
+  }
+  .footer .footer_left_col #footer_left_logo {
+    font-size: 50px;
+    line-height: 40px;
+  }
+  .footer .footer_left_col #footer_left_col_title {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .footer .footer_right_col .footer_second_col ul li, .footer .footer_right_col .footer_second_col ul li a, .footer .footer_right_col .footer_third_col ul li, .footer .footer_right_col .footer_third_col ul li a, .footer .footer_right_col .footer_fourth_col ul li, .footer .footer_right_col .footer_fourth_col ul li a {
+    font-size: 14px;
+  }
+  .footer .footer_right_col #footer_second_col_title, .footer .footer_right_col #footer_third_col_title, .footer .footer_right_col #footer_fourth_col_title {
+    font-size: 16px;
+  }
+  .extra_footer {
+    padding: 30px 40px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .footer {
+    padding: 16px;
+  }
+  .footer .footer_left_col #footer_left_logo {
+    font-size: 30px;
+    line-height: 20px;
+  }
+  .extra_footer {
+    padding: 30px 16px;
+  }
 }
 /*# sourceMappingURL=footer.module.css.map */

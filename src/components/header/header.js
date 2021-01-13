@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import { userActions } from '../../redux/auth/_actions';
 
@@ -14,6 +14,7 @@ import './header.css'
 
 
 const Header = (props) => {
+
 
   let history = useHistory();
 
@@ -67,9 +68,12 @@ const Header = (props) => {
 
           <div className="nav_bar">
             <ul className="nav_items">
-              {localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
-              ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
-              : ''}
+              { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
+                ? localStorage.getItem('clientType') === 'doctor' 
+                  ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
+                  : <li><Link to="/pc-client">Мой кабинет</Link></li> 
+                : ''
+              }
               <li><Link to="/search">Врачи</Link></li>
               <li><Link to="/clinics-search">Клиники</Link></li>
               <li><Link to="/map">Карта</Link></li>
@@ -84,51 +88,53 @@ const Header = (props) => {
               </svg>
             </Link>
             { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
-            ? 
-              <div>
-                <Button
-                  ref={anchorRef}
-                  aria-controls={open ? 'menu-list-grow' : undefined}
-                  aria-haspopup="true"
-                  onClick={handleToggle}
-                  title="Авторизация"
-                >
-                  <svg id="main_header_icon_group_second" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16 17L11 12L16 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M11 12H23" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </Button>
-                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                  {({ TransitionProps, placement }) => (
-                    <Grow
-                      {...TransitionProps}
-                      style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-                    >
-                      <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                          <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                            <Link to="/phone-auth" title="Зарегистрироваться"><MenuItem onClick={handleClose}>Зарегистрироваться</MenuItem></Link>
-                            <Link to="/phone-auth" title="Войти"><MenuItem onClick={handleClose}>Войти</MenuItem></Link>
-                          </MenuList>
-                        </ClickAwayListener>
-                      </Paper>
-                    </Grow>
-                  )}
-                </Popper>
-              </div>
-            : '' }
-            
+              ? 
+                <div>
+                  <Button
+                    ref={anchorRef}
+                    aria-controls={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggle}
+                    title="Авторизация"
+                  >
+                    <svg id="main_header_icon_group_second" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16 17L11 12L16 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M11 12H23" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </Button>
+                  <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                    {({ TransitionProps, placement }) => (
+                      <Grow
+                        {...TransitionProps}
+                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                      >
+                        <Paper>
+                          <ClickAwayListener onClickAway={handleClose}>
+                            <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                              <Link to="/phone-auth" title="Зарегистрироваться"><MenuItem onClick={handleClose}>Зарегистрироваться</MenuItem></Link>
+                              <Link to="/phone-auth" title="Войти"><MenuItem onClick={handleClose}>Войти</MenuItem></Link>
+                            </MenuList>
+                          </ClickAwayListener>
+                        </Paper>
+                      </Grow>
+                    )}
+                  </Popper>
+                </div>
+              : '' 
+            }
+    
             { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
-            ? <button id="logout-button" title="Выйти" onClick={handleLogout}>
-                {/* <img id="logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M8 17L3 12L8 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M3 12H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            : '' }
+              ? <button id="logout-button" title="Выйти" onClick={handleLogout}>
+                  {/* <img id="logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 21H19C19.5304 21 20.0391 20.7893 20.4142 20.4142C20.7893 20.0391 21 19.5304 21 19V5C21 4.46957 20.7893 3.96086 20.4142 3.58579C20.0391 3.21071 19.5304 3 19 3H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 17L3 12L8 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 12H15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              : '' 
+            }
           </div>
         </div>
       </header>

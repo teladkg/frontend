@@ -30,6 +30,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
+import sanitizeHtml from 'sanitize-html';
+
 const MainPage = (props) => {
 
   useEffect(() => {
@@ -106,11 +108,32 @@ const MainPage = (props) => {
   const specialties_slider = {
     rows: 2,
     slidesPerRow: 4,
-    // dots: true,
     arrows: false,
-    infinite: props.specialties.results > 8,
+    // infinite: props.specialties.results > 8,
+    infinite: false,
     speed: 500,
     slidesToShow: 1,
+    variableWidth: true,
+    responsive: [
+      {
+        breakpoint: 1470,
+        settings: {
+          slidesPerRow: 3,
+        }
+      },
+      {
+        breakpoint: 1135,
+        settings: {
+          slidesPerRow: 2,
+        }
+      },
+      {
+        breakpoint: 730,
+        settings: {
+          slidesPerRow: 1,
+        }
+      },
+    ]
   };
 
 
@@ -124,11 +147,50 @@ const MainPage = (props) => {
   }
   const clinics_slider = {
     // dots: true,
-    infinite: props.clinics.results && props.clinics.results > 3,
+    // infinite: props.clinics.results && props.clinics.results > 3,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    arrows: false
+    arrows: false,
+    variableWidth: true,
+    // adaptiveHeight: true
+    responsive: [
+      {
+        breakpoint: 1430,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          // dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          // dots: true
+        }
+      },
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: false,
+          // initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
 
@@ -141,11 +203,51 @@ const MainPage = (props) => {
     customDoctorSlider.current.slickPrev();
   }
   const doctors_slider = {
-    infinite: props.data.results && props.data.results.length > 3,
+    // infinite: props.data.results && props.data.results.length > 3,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    arrows: false
+    arrows: false,
+    variableWidth: true, 
+    // swipeToSlide: true,
+    // adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1430,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          // dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          // dots: true
+        }
+      },
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: false,
+          // initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
 
@@ -201,8 +303,10 @@ const MainPage = (props) => {
             <div className="main_header_nav_bar">
               <ul className="main_header_nav_items">
                 { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
-                  ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
-                  : '' 
+                  ? localStorage.getItem('clientType') === 'doctor'
+                    ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
+                    : <li><Link to="/pc-client">Мой кабинет</Link></li>  
+                  : ''
                 }
                 <li><Link to="/search">Врачи</Link></li>
                 <li><Link to="/clinics-search">Клиники</Link></li>
@@ -330,8 +434,8 @@ const MainPage = (props) => {
             })
           }
         </Slider>
-        {
-          specialties && specialties.length > 8 &&
+        {/* {
+          specialties && specialties.length > 8 && */}
           <div className="specialties_button_group">
             <button id="specialties_button_group_prev" onClick={specPrevious}>
               <svg width="50" height="50" viewBox="0 0 50 50" fill="black" xmlns="http://www.w3.org/2000/svg">
@@ -344,7 +448,7 @@ const MainPage = (props) => {
               </svg>
             </button>
           </div>
-        }
+        {/* } */}
       </section>
 
       <section className="clinics">
@@ -352,17 +456,18 @@ const MainPage = (props) => {
           <p id="clinics_titles_1">Лучшие клиники</p>
           <Link to="/clinics-search"><p id="clinics_titles_link">Все клиники</p></Link>
         </div>      
+        {/* <div id="doctors_slider_container"> */}
         <Slider ref={customClinicSlider} {...clinics_slider}>
           {
             clinics &&
             clinics.map(clinic => {
               return( 
-                <div id="clinics_slide">
+                <div className="clinics_slide">
                   <img id="clinics_slide_image" src={require('../../content/images/main/Frame_67.png')} alt="clinic pic"/>
                   <div id="clinics_slide_info">
                     <Link to={`/clinic/${clinic.id}`}><h3>{clinic.name}</h3></Link>
                     <p id="clinics_slide_info_typeofclinic">Детская клиника</p>
-                    <p id="clinics_slide_info_article">{clinic.description}</p>
+                    <p id="clinics_slide_info_article">{sanitizeHtml(clinic.description)}</p>
                     <p id="clinics_slide_info_address">{clinic.address}</p>
                     <div id="clinics_slide_info_lastblock">
                       <div id="clinics_slide_info_phonegroup">
@@ -384,8 +489,9 @@ const MainPage = (props) => {
             })
           }
         </Slider>
-        {
-          clinics && clinics.length > 3 &&
+        {/* </div> */}
+        {/* {
+          clinics && clinics.length > 3 && */}
           <div className="clinics_button_group">
             <button id="clinics_button_group_prev" onClick={clinicPrevious}>
               <svg width="50" height="50" viewBox="0 0 50 50" fill="black" xmlns="http://www.w3.org/2000/svg">
@@ -398,7 +504,7 @@ const MainPage = (props) => {
               </svg>
             </button>
           </div>
-        }
+        {/* } */}
       </section>
 
       <section className="doctors">
@@ -406,74 +512,77 @@ const MainPage = (props) => {
           <p id="doctors_titles_1">Лучшие врачи</p>
           <Link to="/search"><p id="doctors_titles_link">Все врачи</p></Link>
         </div>
-        <Slider ref={customDoctorSlider} {...doctors_slider}>
-          {
-            doctors &&
-            doctors.map(elem => {
-              return(
-                <div id="doctors_slide">
-                  <img id="doctors_slide_image" src={elem.user.avatar == null ? require('../../content/images/main/image_10.png') : elem.user.avatar} alt="clinic pic"/>
-                  <div id="doctors_slide_info">
-                    <Link to={`/doctor/${elem.id}`}><h3>{elem.user.last_name} {elem.user.first_name} {elem.user.patronymic}</h3></Link>
-                    <div className="doctors_slide_info_chipgroup">
-                      {/* <Chip label="Психолог"/>
-                      <Chip label="Психолог"/>
-                      <Chip label="Психолог"/>
-                      <IconButton
-                        className={clsx(classes.expand, {
-                          [classes.expandOpen]: expanded,
-                        })}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                      >
-                        <ExpandMoreIcon />
-                      </IconButton>
-                      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        {/* <div id="doctors_slider_container"> */}
+          <Slider ref={customDoctorSlider} {...doctors_slider}>
+            {
+              doctors &&
+              doctors.map(elem => {
+                return(
+                  <div id="doctors_slide">
+                    <img id="doctors_slide_image" src={elem.user.avatar == null ? require('../../content/images/main/image_10.png') : elem.user.avatar} alt="clinic pic"/>
+                    <div id="doctors_slide_info">
+                      <Link to={`/doctor/${elem.id}`}><h3>{elem.user.last_name} {elem.user.first_name} {elem.user.patronymic}</h3></Link>
+                      <div className="doctors_slide_info_chipgroup">
+                        {/* <Chip label="Психолог"/>
                         <Chip label="Психолог"/>
                         <Chip label="Психолог"/>
-                        <Chip label="Психолог"/>
-                      </Collapse> */}
-                      {
-                        elem.specialty.length === 0
-                        ? <p id="search_page_doctors_slide_info_specialties">Специализация: отсутствует</p>
-                          : elem.specialty.map(spec => {
-                            return(
-                              <Chip label={spec.name}/>
-                            )
-                          })
+                        <IconButton
+                          className={clsx(classes.expand, {
+                            [classes.expandOpen]: expanded,
+                          })}
+                          onClick={handleExpandClick}
+                          aria-expanded={expanded}
+                          aria-label="show more"
+                        >
+                          <ExpandMoreIcon />
+                        </IconButton>
+                        <Collapse in={expanded} timeout="auto" unmountOnExit>
+                          <Chip label="Психолог"/>
+                          <Chip label="Психолог"/>
+                          <Chip label="Психолог"/>
+                        </Collapse> */}
+                        {
+                          elem.specialty.length === 0
+                          ? <p id="search_page_doctors_slide_info_specialties">Специализация: отсутствует</p>
+                            : elem.specialty.map(spec => {
+                              return(
+                                <Chip label={spec.name}/>
+                              )
+                            })
+                        }
+                      </div>         
+                      {elem.experience !== null    
+                        ? <p id="doctors_slide_info_experience">Стаж: {elem.experience} лет</p>
+                        : <p id="doctors_slide_info_experience">Стаж: отсутствует</p>
                       }
-                    </div>         
-                    {elem.experience !== null    
-                      ? <p id="doctors_slide_info_experience">Стаж: {elem.experience} лет</p>
-                      : <p id="doctors_slide_info_experience">Стаж: отсутствует</p>
-                    }
-                    {elem.locations.length !== 0 && elem.locations[0].address
-                      ? <p id="doctors_slide_info_address">{elem.locations[0].address}</p>
-                      : <p id="doctors_slide_info_address">Адрес отсутствует</p>
-                    }
-                    <div id="doctors_slide_info_lastblock">
-                      <div id="doctors_slide_info_phonegroup">
-                        <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M13.2812 23.9375C11.263 23.9375 9.36686 23.4492 7.59277 22.4727L0 25.5L3.02734 17.9072C2.05078 16.1331 1.5625 14.237 1.5625 12.2188C1.5625 10.6237 1.87174 9.10596 2.49023 7.66553C3.10872 6.2251 3.94287 4.97998 4.99268 3.93018C6.04248 2.88037 7.2876 2.04622 8.72803 1.42773C10.1685 0.809245 11.6862 0.5 13.2812 0.5C14.8763 0.5 16.394 0.809245 17.8345 1.42773C19.2749 2.04622 20.52 2.88037 21.5698 3.93018C22.6196 4.97998 23.4538 6.2251 24.0723 7.66553C24.6908 9.10596 25 10.6237 25 12.2188C25 13.8138 24.6908 15.3315 24.0723 16.772C23.4538 18.2124 22.6196 19.4575 21.5698 20.5073C20.52 21.5571 19.2749 22.3913 17.8345 23.0098C16.394 23.6283 14.8763 23.9375 13.2812 23.9375ZM17.1875 14.5625H15.625L14.7461 15.3438C14.0137 15.1484 13.1144 14.5177 12.0483 13.4517C10.9823 12.3856 10.3516 11.4863 10.1562 10.7539L10.9375 9.875V8.3125C10.9375 8.03581 10.8398 7.75911 10.6445 7.48242C10.4492 7.20573 10.2336 7.00635 9.99756 6.88428C9.76156 6.76221 9.59473 6.75 9.49707 6.84766L8.34961 7.99512C7.71484 8.62988 7.62126 9.61865 8.06885 10.9614C8.51644 12.3042 9.37093 13.6063 10.6323 14.8677C11.8937 16.1291 13.1958 16.9836 14.5386 17.4312C15.8813 17.8787 16.8701 17.7852 17.5049 17.1504L18.6523 16.0029C18.75 15.9053 18.7378 15.7384 18.6157 15.5024C18.4937 15.2664 18.2943 15.0508 18.0176 14.8555C17.7409 14.6602 17.4642 14.5625 17.1875 14.5625Z" fill="#18C661"/>
-                        </svg>
-                        <p>{elem.user.phone}</p>
-                      </div>
-                      <div id="doctors_slide_info_stargroup">
-                        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12.003 18.9828C12.3109 18.8065 12.6891 18.8065 12.997 18.9828L18.1996 21.9624C18.9626 22.3994 19.8776 21.7097 19.6676 20.8559L18.3254 15.3975C18.2335 15.0238 18.3642 14.6305 18.6615 14.3861L23.0883 10.748C23.7831 10.1771 23.4299 9.05073 22.5335 8.97868L16.6045 8.50208C16.2401 8.4728 15.9208 8.24707 15.7717 7.91339L13.4129 2.63679C13.0601 1.84758 11.9398 1.84759 11.587 2.63679L9.22835 7.91339C9.07919 8.24707 8.75986 8.4728 8.39553 8.50208L2.46649 8.97868C1.57013 9.05073 1.21695 10.1771 1.91169 10.748L6.33849 14.3861C6.63582 14.6305 6.76653 15.0238 6.67463 15.3975L5.33239 20.8559C5.12242 21.7097 6.03741 22.3994 6.80044 21.9624L12.003 18.9828Z" fill="#F2C94C"/>
-                        </svg>
-                        <p>{elem.rate ? elem.rate/2 : elem.rate}</p>
-                      </div>
-                    </div>            
+                      {elem.locations.length !== 0 && elem.locations[0].address
+                        ? <p id="doctors_slide_info_address">{elem.locations[0].address}</p>
+                        : <p id="doctors_slide_info_address">Адрес отсутствует</p>
+                      }
+                      <div id="doctors_slide_info_lastblock">
+                        <div id="doctors_slide_info_phonegroup">
+                          <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.2812 23.9375C11.263 23.9375 9.36686 23.4492 7.59277 22.4727L0 25.5L3.02734 17.9072C2.05078 16.1331 1.5625 14.237 1.5625 12.2188C1.5625 10.6237 1.87174 9.10596 2.49023 7.66553C3.10872 6.2251 3.94287 4.97998 4.99268 3.93018C6.04248 2.88037 7.2876 2.04622 8.72803 1.42773C10.1685 0.809245 11.6862 0.5 13.2812 0.5C14.8763 0.5 16.394 0.809245 17.8345 1.42773C19.2749 2.04622 20.52 2.88037 21.5698 3.93018C22.6196 4.97998 23.4538 6.2251 24.0723 7.66553C24.6908 9.10596 25 10.6237 25 12.2188C25 13.8138 24.6908 15.3315 24.0723 16.772C23.4538 18.2124 22.6196 19.4575 21.5698 20.5073C20.52 21.5571 19.2749 22.3913 17.8345 23.0098C16.394 23.6283 14.8763 23.9375 13.2812 23.9375ZM17.1875 14.5625H15.625L14.7461 15.3438C14.0137 15.1484 13.1144 14.5177 12.0483 13.4517C10.9823 12.3856 10.3516 11.4863 10.1562 10.7539L10.9375 9.875V8.3125C10.9375 8.03581 10.8398 7.75911 10.6445 7.48242C10.4492 7.20573 10.2336 7.00635 9.99756 6.88428C9.76156 6.76221 9.59473 6.75 9.49707 6.84766L8.34961 7.99512C7.71484 8.62988 7.62126 9.61865 8.06885 10.9614C8.51644 12.3042 9.37093 13.6063 10.6323 14.8677C11.8937 16.1291 13.1958 16.9836 14.5386 17.4312C15.8813 17.8787 16.8701 17.7852 17.5049 17.1504L18.6523 16.0029C18.75 15.9053 18.7378 15.7384 18.6157 15.5024C18.4937 15.2664 18.2943 15.0508 18.0176 14.8555C17.7409 14.6602 17.4642 14.5625 17.1875 14.5625Z" fill="#18C661"/>
+                          </svg>
+                          <p>{elem.user.phone}</p>
+                        </div>
+                        <div id="doctors_slide_info_stargroup">
+                          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12.003 18.9828C12.3109 18.8065 12.6891 18.8065 12.997 18.9828L18.1996 21.9624C18.9626 22.3994 19.8776 21.7097 19.6676 20.8559L18.3254 15.3975C18.2335 15.0238 18.3642 14.6305 18.6615 14.3861L23.0883 10.748C23.7831 10.1771 23.4299 9.05073 22.5335 8.97868L16.6045 8.50208C16.2401 8.4728 15.9208 8.24707 15.7717 7.91339L13.4129 2.63679C13.0601 1.84758 11.9398 1.84759 11.587 2.63679L9.22835 7.91339C9.07919 8.24707 8.75986 8.4728 8.39553 8.50208L2.46649 8.97868C1.57013 9.05073 1.21695 10.1771 1.91169 10.748L6.33849 14.3861C6.63582 14.6305 6.76653 15.0238 6.67463 15.3975L5.33239 20.8559C5.12242 21.7097 6.03741 22.3994 6.80044 21.9624L12.003 18.9828Z" fill="#F2C94C"/>
+                          </svg>
+                          <p>{elem.rate ? elem.rate/2 : elem.rate}</p>
+                        </div>
+                      </div>            
+                    </div>
                   </div>
-                </div>
-              )
-            })
-          }
-        </Slider>
-        {
-          doctors && doctors.length > 3 &&
+                )
+              })
+            }
+          </Slider>
+        {/* </div> */}
+        
+        {/* {
+          doctors && doctors.length > 3 && */}
           <div className="doctors_button_group">
             <button id="doctors_button_group_prev" onClick={doctorPrevious}>
               <svg width="50" height="50" viewBox="0 0 50 50" fill="black" xmlns="http://www.w3.org/2000/svg">
@@ -486,7 +595,7 @@ const MainPage = (props) => {
               </svg>
             </button>
           </div>
-        }
+        {/* } */}
         
       </section>
 

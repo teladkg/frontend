@@ -130,9 +130,13 @@
                   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 }
               }
-              #search_page_doctors_slide_image_deletebutton {
+              #search_page_doctors_slide_image_likebutton {
                 padding: 12px 10px 7px;
-                // margin-right: 20px;
+                svg {
+                  // stroke: #FB6C6F;
+                  fill: transparent;
+                  fill: #FB6C6F;
+                }
               }
             }
           }
@@ -269,9 +273,13 @@
                   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 }
               }
-              #clinics_page_clinics_slide_image_deletebutton {
+              #clinics_page_clinics_slide_image_likebutton {
                 padding: 12px 10px 7px;
-                // margin-right: 20px;
+                svg {
+                  // stroke: #FB6C6F;
+                  fill: transparent;
+                  fill: #FB6C6F;
+                }
               }
             }
           }

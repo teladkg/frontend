@@ -13,9 +13,13 @@
   .footer_left_col {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
     height: 250px;
-    svg {
+    #footer_left_logo {
+      font-family: 'Kanit', sans-serif;
+      font-size: 100px;
+      color: #00AFCA;
+      line-height: 90px;
       margin-bottom: 30px;
       &:hover {
         cursor: pointer;
@@ -84,5 +88,92 @@
     font-weight: 500;
     font-size: 16px;
     color: #828282;
+  }
+}
+
+
+@media only screen and (max-width: 1024px) {
+  .footer {
+    padding: 50px 45px 0;
+    .footer_left_col {
+      width: 30%;
+      height: 200px;
+      #footer_left_logo {
+        font-size: 80px;
+        line-height: 70px;
+      }
+      #footer_left_col_title {
+        font-size: 18px;
+      }
+    }
+    .footer_right_col {
+      width: 60%;
+      .footer_second_col, .footer_third_col, .footer_fourth_col {
+        ul {
+          li, li a {
+            padding-bottom: 27px;
+            font-size: 16px;
+          }
+        }
+      }
+      #footer_second_col_title, #footer_third_col_title, #footer_fourth_col_title {
+        // margin-bottom: 27px;
+        // font-weight: bold;
+        font-size: 20px;
+      }
+    }
+  }
+  .extra_footer {
+    padding: 30px 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding: 40px;
+    .footer_left_col {
+      height: 100px;
+      #footer_left_logo {
+        font-size: 50px;
+        line-height: 40px;
+      }
+      #footer_left_col_title {
+        font-weight: 500;
+        font-size: 16px;
+      }
+    }
+    .footer_right_col {
+      .footer_second_col, .footer_third_col, .footer_fourth_col {
+        ul {
+          li, li a {
+            font-size: 14px;
+          }
+        }
+      }
+      #footer_second_col_title, #footer_third_col_title, #footer_fourth_col_title {
+        // margin-bottom: 27px;
+        // font-weight: bold;
+        font-size: 16px;
+      }
+    }
+  }
+  .extra_footer {
+    padding: 30px 40px;
+  }
+}
+
+
+@media only screen and (max-width: 375px) {
+  .footer {
+    padding: 16px;
+    .footer_left_col {
+      #footer_left_logo {
+        font-size: 30px;
+        line-height: 20px;
+      }
+    }
+  }
+  .extra_footer {
+    padding: 30px 16px;
   }
 }

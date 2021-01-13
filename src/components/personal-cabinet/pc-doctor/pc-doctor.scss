@@ -537,14 +537,42 @@
     }
   }
 
-  .custom-editor-demo-table{
-    
+  .custom-editor-demo-table2 {
+    width: 100%;
+    .ka-thead-cell {
+      width: 32%;
+      font-family: 'Roboto';
+      font-weight: 500;
+      font-size: 18px;
+      color: #000000;
+      padding: 19px 0;
+      text-align: center;
+      background: rgba(48, 159, 176, 0.15);
+      border-radius: 5px;
+      border: 1px solid #E0E0E0;
+      margin: 0 5px 5px 0;
+    }
+    .ka-cell {
+      margin: 0 5px 5px 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 16px;
+      color: #000000;
+      padding: 19px;
+      text-align: center;
+      background: transparent;
+      border-radius: 5px;
+      border: 2px solid #E3EFF4;
+    }
   }
-  .custom-editor{
+  
+  .custom-editor {
     white-space: nowrap;
     overflow: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
     .custom-editor-button{
       margin-left: 5px;
       outline: none;
@@ -577,42 +605,46 @@
       border-radius: 5px;
       padding: 10px;
       max-width: 100px;
+      border: 1px solid #E3EFF4;
     }
   }
 
-  .ka-thead-cell {
-    width: 14%;
-    font-family: 'Roboto';
-    font-weight: 500;
-    font-size: 18px;
-    color: #000000;
-    padding: 19px 0;
-    text-align: center;
-    background: rgba(48, 159, 176, 0.15);
-    border-radius: 5px;
-    border: 1px solid #E0E0E0;
-    margin: 0 5px 5px 0;
-  }
-  .ka-cell {
-    margin: 0 5px 5px 0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 16px;
-    color: #000000;
-    padding: 19px;
-    text-align: center;
-    background: #E3EFF4;
-    border-radius: 5px;
-    border: 1px solid #E3EFF4;
-  }
-  .delete-row-column-button {
-    cursor: pointer;
-    opacity: 0.75;
-    display: inline-block;
-    vertical-align: middle;
-    &:hover{
-      opacity: 1;
+  .custom-editor-demo-table {
+    width: 100%;
+    .ka-thead-cell {
+      width: 14%;
+      font-family: 'Roboto';
+      font-weight: 500;
+      font-size: 18px;
+      color: #000000;
+      padding: 19px 0;
+      text-align: center;
+      background: rgba(48, 159, 176, 0.15);
+      border-radius: 5px;
+      border: 1px solid #E0E0E0;
+      margin: 0 5px 5px 0;
+    }
+    .ka-cell {
+      margin: 0 5px 5px 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      color: #000000;
+      padding: 19px;
+      text-align: center;
+      background: #E3EFF4;
+      border-radius: 5px;
+      border: 1px solid #E3EFF4;
     }
   }
+  // .delete-row-column-button {
+  //   cursor: pointer;
+  //   opacity: 0.75;
+  //   display: inline-block;
+  //   vertical-align: middle;
+  //   &:hover{
+  //     opacity: 1;
+  //   }
+  // }
 }

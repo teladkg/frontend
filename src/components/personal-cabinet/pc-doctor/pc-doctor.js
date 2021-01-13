@@ -248,31 +248,37 @@ const PCDoctor = (props) => {
                             <th id="personal_doctor_page_tabs_reception_schedule_cells_titles_7">ВС</th>
                           </tr>
                           <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                            <td><p>{userData.schedules[0].monday}</p>{userData.schedules[0].monday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[0].tuesday}</p>{userData.schedules[0].tuesday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[0].wednesday}</p>{userData.schedules[0].wednesday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[0].thursday}</p>{userData.schedules[0].thursday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[0].friday}</p>{userData.schedules[0].friday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[0].saturday}</p>{userData.schedules[0].saturday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[0].sunday}</p>{userData.schedules[0].sunday!=="" ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                            {
+                              userData.schedules[0] &&
+                              <>
+                                <td>{(userData.schedules[0].monday!=="" || userData.schedules[0].monday === undefined) ? <p>{userData.schedules[0].monday}</p> : <p></p>}{(userData.schedules[0].monday!=="" || userData.schedules[0].monday === undefined) ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td>{(userData.schedules[0].tuesday!=="" || userData.schedules[0].tuesday === undefined) ? <p>{userData.schedules[0].tuesday}</p> : <p></p>}{(userData.schedules[0].tuesday!=="" || userData.schedules[0].tuesday === undefined) ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td>{(userData.schedules[0].wednesday!=="" || userData.schedules[0].wednesday === undefined) ? <p>{userData.schedules[0].wednesday}</p> : <p></p>}{(userData.schedules[0].wednesday!=="" || userData.schedules[0].wednesday === undefined) ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td>{(userData.schedules[0].thursday!=="" || userData.schedules[0].thursday === undefined) ? <p>{userData.schedules[0].thursday}</p> : <p></p>}{(userData.schedules[0].thursday!=="" || userData.schedules[0].thursday === undefined) ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td>{(userData.schedules[0].friday!=="" || userData.schedules[0].friday === undefined) ? <p>{userData.schedules[0].friday}</p> : <p></p>}{(userData.schedules[0].friday!=="" || userData.schedules[0].friday === undefined) ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td>{(userData.schedules[0].saturday!=="" || userData.schedules[0].saturday === undefined) ? <p>{userData.schedules[0].saturday}</p> : <p></p>}{(userData.schedules[0].saturday!=="" || userData.schedules[0].saturday === undefined) ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              <td>{(userData.schedules[0].sunday!=="" || userData.schedules[0].sunday === undefined) ? <p>{userData.schedules[0].sunday}</p> : <p></p>}{(userData.schedules[0].sunday!=="" || userData.schedules[0].sunday === undefined) ? <label id="onClinic">В клинике</label> : <p></p>}</td>
+                              </>
+                            }
+                            
                           </tr>
                           <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                            <td><p>{userData.schedules[1].monday}</p>{userData.schedules[1].monday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[1].tuesday}</p>{userData.schedules[1].tuesday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[1].wednesday}</p>{userData.schedules[1].wednesday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[1].thursday}</p>{userData.schedules[1].thursday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[1].friday}</p>{userData.schedules[1].friday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[1].saturday}</p>{userData.schedules[1].saturday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[1].sunday}</p>{userData.schedules[1].sunday!=="" ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td>{(userData.schedules[1].monday!=="" || userData.schedules[1].monday === undefined) ? <p>{userData.schedules[1].monday}</p> : <p></p>}{(userData.schedules[1].monday!=="" || userData.schedules[1].monday === undefined) ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td>{(userData.schedules[1].tuesday!=="" || userData.schedules[1].tuesday === undefined) ? <p>{userData.schedules[1].tuesday}</p> : <p></p>}{(userData.schedules[1].tuesday!=="" || userData.schedules[1].tuesday === undefined) ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td>{(userData.schedules[1].wednesday!=="" || userData.schedules[1].wednesday === undefined) ? <p>{userData.schedules[1].wednesday}</p> : <p></p>}{(userData.schedules[1].wednesday!=="" || userData.schedules[1].wednesday === undefined) ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td>{(userData.schedules[1].thursday!=="" || userData.schedules[1].thursday === undefined) ? <p>{userData.schedules[1].thursday}</p> : <p></p>}{(userData.schedules[1].thursday!=="" || userData.schedules[1].thursday === undefined) ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td>{(userData.schedules[1].friday!=="" || userData.schedules[1].friday === undefined) ? <p>{userData.schedules[1].friday}</p> : <p></p>}{(userData.schedules[1].friday!=="" || userData.schedules[1].friday === undefined) ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td>{(userData.schedules[1].saturday!=="" || userData.schedules[1].saturday === undefined) ? <p>{userData.schedules[1].saturday}</p> : <p></p>}{(userData.schedules[1].saturday!=="" || userData.schedules[1].saturday === undefined) ? <label id="onHome">На выезд</label> : <p></p>}</td>
+                            <td>{(userData.schedules[1].sunday!=="" || userData.schedules[1].sunday === undefined) ? <p>{userData.schedules[1].sunday}</p> : <p></p>}{(userData.schedules[1].sunday!=="" || userData.schedules[1].sunday === undefined) ? <label id="onHome">На выезд</label> : <p></p>}</td>
                           </tr>
                           <tr id="personal_doctor_page_tabs_reception_schedule_cells_cost">
-                            <td><p>{userData.schedules[2].monday}</p>{userData.schedules[2].monday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[2].tuesday}</p>{userData.schedules[2].tuesday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[2].wednesday}</p>{userData.schedules[2].wednesday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[2].thursday}</p>{userData.schedules[2].thursday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[2].friday}</p>{userData.schedules[2].friday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[2].saturday}</p>{userData.schedules[2].saturday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
-                            <td><p>{userData.schedules[2].sunday}</p>{userData.schedules[2].sunday!=="" ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td>{(userData.schedules[2].monday!=="" || userData.schedules[2].monday === undefined) ? <p>{userData.schedules[2].monday}</p> : <p></p>}{(userData.schedules[2].monday!=="" || userData.schedules[2].monday === undefined) ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td>{(userData.schedules[2].tuesday!=="" || userData.schedules[2].tuesday === undefined) ? <p>{userData.schedules[2].tuesday}</p> : <p></p>}{(userData.schedules[2].tuesday!=="" || userData.schedules[2].tuesday === undefined) ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td>{(userData.schedules[2].wednesday!=="" || userData.schedules[2].wednesday === undefined) ? <p>{userData.schedules[2].wednesday}</p> : <p></p>}{(userData.schedules[2].wednesday!=="" || userData.schedules[2].wednesday === undefined) ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td>{(userData.schedules[2].thursday!=="" || userData.schedules[2].thursday === undefined) ? <p>{userData.schedules[2].thursday}</p> : <p></p>}{(userData.schedules[2].thursday!=="" || userData.schedules[2].thursday === undefined) ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td>{(userData.schedules[2].friday!=="" || userData.schedules[2].friday === undefined) ? <p>{userData.schedules[2].friday}</p> : <p></p>}{(userData.schedules[2].friday!=="" || userData.schedules[2].friday === undefined) ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td>{(userData.schedules[2].saturday!=="" || userData.schedules[2].saturday === undefined) ? <p>{userData.schedules[2].saturday}</p> : <p></p>}{(userData.schedules[2].saturday!=="" || userData.schedules[2].saturday === undefined) ? <label id="onLine">Онлайн</label> : <p></p>}</td>
+                            <td>{(userData.schedules[2].sunday!=="" || userData.schedules[2].sunday === undefined) ? <p>{userData.schedules[2].sunday}</p> : <p></p>}{(userData.schedules[2].sunday!=="" || userData.schedules[2].sunday === undefined) ? <label id="onLine">Онлайн</label> : <p></p>}</td>
                           </tr>
                         </tbody>
                       </div>

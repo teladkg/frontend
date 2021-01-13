@@ -736,6 +736,38 @@
   width: 40px;
 }
 
+.personal_doctor_page .custom-editor-demo-table2 {
+  width: 100%;
+}
+
+.personal_doctor_page .custom-editor-demo-table2 .ka-thead-cell {
+  width: 32%;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
+  padding: 19px 0;
+  text-align: center;
+  background: rgba(48, 159, 176, 0.15);
+  border-radius: 5px;
+  border: 1px solid #E0E0E0;
+  margin: 0 5px 5px 0;
+}
+
+.personal_doctor_page .custom-editor-demo-table2 .ka-cell {
+  margin: 0 5px 5px 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 16px;
+  color: #000000;
+  padding: 19px;
+  text-align: center;
+  background: transparent;
+  border-radius: 5px;
+  border: 2px solid #E3EFF4;
+}
+
 .personal_doctor_page .custom-editor {
   white-space: nowrap;
   overflow: hidden;
@@ -745,6 +777,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .personal_doctor_page .custom-editor .custom-editor-button {
@@ -784,9 +819,14 @@
   border-radius: 5px;
   padding: 10px;
   max-width: 100px;
+  border: 1px solid #E3EFF4;
 }
 
-.personal_doctor_page .ka-thead-cell {
+.personal_doctor_page .custom-editor-demo-table {
+  width: 100%;
+}
+
+.personal_doctor_page .custom-editor-demo-table .ka-thead-cell {
   width: 14%;
   font-family: 'Roboto';
   font-weight: 500;
@@ -800,7 +840,7 @@
   margin: 0 5px 5px 0;
 }
 
-.personal_doctor_page .ka-cell {
+.personal_doctor_page .custom-editor-demo-table .ka-cell {
   margin: 0 5px 5px 0;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
@@ -812,16 +852,5 @@
   background: #E3EFF4;
   border-radius: 5px;
   border: 1px solid #E3EFF4;
-}
-
-.personal_doctor_page .delete-row-column-button {
-  cursor: pointer;
-  opacity: 0.75;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.personal_doctor_page .delete-row-column-button:hover {
-  opacity: 1;
 }
 /*# sourceMappingURL=pc-doctor.css.map */

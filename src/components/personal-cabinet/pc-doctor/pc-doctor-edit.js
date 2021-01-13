@@ -65,6 +65,11 @@ const PCDoctorEdit = (props) => {
   /* FOR IF TABLE CAME EMPTY FROM FETCH */
   const [tableArr, setTableArr] = useState();
 
+  /* FOR TABLE COST LOCAL STATE */
+  const [tableProps2, changeTableProps2] = useState({});
+  /* FOR IF TABLE COST CAME EMPTY FROM FETCH */
+  const [tableArr2, setTableArr2] = useState();
+
   useEffect(() => {
     window.scrollTo(0, 0)
     props.getPCDoctor();
@@ -92,6 +97,21 @@ const PCDoctorEdit = (props) => {
   // }
 
   // let formData = new FormData();
+
+
+  function convertIntObj(obj) {
+    const res = {}
+    for (const key in obj) {
+      res[key] = {};
+      for (const prop in obj[key]) {
+        const parsed = parseInt(obj[key][prop], 10);
+        res[key][prop] = isNaN(parsed) ? obj[key][prop] : parsed;
+      }
+    }
+    return res;
+  }
+
+
   const { register, handleSubmit, control, setValue } = useForm();
   const onSubmit = (data, event) => {
     const specialtiesIds = data.specialties.map((e)=> {
@@ -129,7 +149,8 @@ const PCDoctorEdit = (props) => {
         }
       ],
       specialty: specialtiesIds,
-      schedules: tableProps.data
+      schedules: tableProps.data,
+      prices: convertIntObj(tableProps2.data)[0]
       // .map((item) => {
       //   delete item.id;
       //   return item;
@@ -196,6 +217,32 @@ const PCDoctorEdit = (props) => {
       </div>
     );
   };
+  const CustomEditor2 = ({
+    column, rowKeyValue, dispatch, value,
+  }) => {
+    const close = () => {
+      dispatch(closeEditor(rowKeyValue, column.key));
+    };
+    const [editorValue, setValue] = useState(value);
+    return(
+      <div className='custom-editor'>
+        <input
+          className='form-control'
+          type='text'
+          value={editorValue}
+          onChange={(event) => setValue(event.currentTarget.value)}
+        />
+        <button className='custom-editor-button custom-editor-button-save'
+          onClick={() => {
+            dispatch(updateCellValue(rowKeyValue, column.key, editorValue));
+            close();
+          }}>
+            <DoneIcon />
+        </button>
+        <button className='custom-editor-button custom-editor-button-cancel' onClick={close}><CloseSharpIcon /></button>
+      </div>
+    );
+  };
   
   useEffect(()=> {
     setTableArr([
@@ -219,8 +266,27 @@ const PCDoctorEdit = (props) => {
       rowKeyField: 'appointment',
     })
   },[editState]);
+  useEffect(()=> {
+    setTableArr2([
+      { clinic: 0, home: 0, online: 0 }
+    ])
+    changeTableProps2({
+      columns: [
+        { dataType: DataType.String, key: 'clinic', title: 'В клинике' },
+        { dataType: DataType.String, key: 'home', title: 'На дому' },
+        { dataType: DataType.String, key: 'online', title: 'Онлайн' }
+      ],
+      data: (editState && editState.prices && editState.prices!==null) ? [editState.prices] : tableArr2,
+      editableCells: [],
+      editingMode: EditingMode.Cell,
+      rowKeyField: 'key',
+    })
+  }, [editState])
   const dispatch = (action) => {
     changeTableProps((prevState) => kaReducer(prevState, action));
+  };
+  const dispatch2 = (action) => {
+    changeTableProps2((prevState) => kaReducer(prevState, action));
   };
 
 
@@ -512,7 +578,7 @@ const PCDoctorEdit = (props) => {
                       <div className="personal_doctor_page_tabs_reception">
                         <div className="personal_doctor_page_tabs_reception_type">
                           <p id="personal_doctor_page_tabs_reception_type_title">Тип приема</p>
-                          <table className="personal_doctor_page_tabs_reception_type_cells">
+                          {/* <table className="personal_doctor_page_tabs_reception_type_cells">
                             <tr id="personal_doctor_page_tabs_reception_type_cells_titles">
                               <th>В клинике</th>
                               <th>На дому</th>
@@ -523,7 +589,29 @@ const PCDoctorEdit = (props) => {
                               <td>500 сом</td>
                               <td>500 сом</td>
                             </tr>
-                          </table>
+                          </table> */}
+                          <Table
+                            {...tableProps2}
+                            dispatch={dispatch2}
+                            childComponents={{
+                              table: {
+                                elementAttributes: () => ({
+                                  className: 'custom-editor-demo-table2'
+                                })
+                              },
+                              cellEditor: {
+                                content: (props) => {
+                                  switch (props.column.key) {
+                                    case 'clinic':
+                                    case 'home':
+                                    case 'online':
+                                      return <CustomEditor2 {...props}/>;
+                                    default: return;
+                                  }
+                                }
+                              }
+                            }}
+                          />
                         </div>
                         
                         <div className="personal_doctor_page_tabs_reception_schedule">
