@@ -14,13 +14,13 @@ import Clinic from './components/profile-clinic/clinic';
 import Map from './components/map/map';
 
 import Registration from './components/registration/registration';
-import Login from './components/login/login';
+// import Login from './components/login/login';
 import PhoneAuth from './components/phone-auth/phoneAuth';
 import ValidateOtp from './components/phone-auth/validateOtp';
 
 import PCDoctor from './components/personal-cabinet/pc-doctor/pc-doctor';
 import PCDoctorEdit from './components/personal-cabinet/pc-doctor/pc-doctor-edit';
-import PCClinic from './components/personal-cabinet/pc-clinic/pc-clinic';
+// import PCClinic from './components/personal-cabinet/pc-clinic/pc-clinic';
 import PCClient from './components/personal-cabinet/pc-client/pc-client';
 
 
