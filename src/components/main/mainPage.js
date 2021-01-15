@@ -373,7 +373,7 @@ const MainPage = (props) => {
         </div>
         <p id="search_title1">Найдите проверенного врача и запишитесь на приём</p>
         <div className="search_group">
-        <Autocomplete
+          <Autocomplete
             id="grouped-demo"
             options={search_options1 && search_options1.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
             groupBy={(option) => option.firstLetter}
@@ -399,6 +399,34 @@ const MainPage = (props) => {
           />
           <Link to="/search"><button id="search_button">Найти</button></Link>
         </div>
+      </section>
+
+      <section className="search_group_mobile">
+        <Autocomplete
+          id="grouped-demo"
+          options={search_options1 && search_options1.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+          groupBy={(option) => option.firstLetter}
+          getOptionLabel={(option) => option.name}
+          style={{ width: "26%" }}
+          renderInput={(params) => <TextField {...params} label="Врач, специальность" variant="outlined" />}
+        />
+        <Autocomplete
+          id="grouped-demo"
+          options={search_options2 && search_options2.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+          groupBy={(option) => option.firstLetter}
+          getOptionLabel={(option) => option.name}
+          style={{ width: "26%" }}
+          renderInput={(params) => <TextField {...params} label="Город" variant="outlined" />}
+        />
+        <Autocomplete
+          id="grouped-demo"
+          options={search_options3 && search_options3.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+          groupBy={(option) => option.firstLetter}
+          getOptionLabel={(option) => option.title}
+          style={{ width: "26%" }}
+          renderInput={(params) => <TextField {...params} label="Радиус" variant="outlined" />}
+        />
+        <Link id="search_group_mobile_button_link" to="/search"><button id="search_group_mobile_button">Найти</button></Link>
       </section>
 
       <section className="specialties">

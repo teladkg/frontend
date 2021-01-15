@@ -216,7 +216,7 @@ const Search = (props) => {
             groupBy={(option) => option.firstLetter}
             getOptionLabel={(option) => option.name}
             style={{ width: "26%" }}
-            renderInput={(params) => <TextField {...params} label="Врач, специальность" variant="outlined" />}
+            renderInput={(params) => <TextField {...params} label="Специальность" variant="outlined" />}
             onChange={setFilter}
           />
           <Autocomplete
@@ -237,7 +237,7 @@ const Search = (props) => {
             renderInput={(params) => <TextField {...params} label="Радиус" variant="outlined" />}
             onChange={setFilterItems}
           />
-          <Link to="/search"><button onClick={getData} id="search_page_search_button">Найти</button></Link>
+          <button onClick={getData} id="search_page_search_button">Найти</button>
         </div>
 
         <div className="search_page_sort_group">
@@ -272,7 +272,7 @@ const Search = (props) => {
         
         <div className="search_page_doctors_list">
           { 
-            doctors===undefined ? <p>Loading...</p> :
+            doctors===undefined ? <p>Загрузка...</p> :
             doctors.map(elem => {
               return(
                 <div id="search_page_doctors_slide" key={elem.id}>
@@ -283,7 +283,7 @@ const Search = (props) => {
                       {
                         elem.specialty.length === 0
                         ? <p id="search_page_doctors_slide_info_specialties">Специализация: отсутствует</p>
-                        // : elem.specialty.length > 2 
+                        // : elem.specialty.length > 3 
                         //   ? elem.specialty.map(spec => {
                         //     return(
                         //       <>
@@ -298,19 +298,15 @@ const Search = (props) => {
                         //         >
                         //           <ExpandMoreIcon />
                         //         </IconButton>
-                        //         <Collapse in={expanded} timeout="auto" unmountOnExit>
-                        //           <Chip label="Психолог"/>
-                        //           <Chip label="Психолог"/>
-                        //           <Chip label="Психолог"/>
-                        //         </Collapse>
+                                
                         //       </>
                         //     )
                         //   })
-                          : elem.specialty.map(spec => {
-                            return(
-                              <Chip label={spec.name}/>
-                            )
-                          })
+                        : elem.specialty.map(spec => {
+                          return(
+                            <Chip label={spec.name}/>
+                          )
+                        })
                       }
                     </div>             
                     {elem.experience !== null

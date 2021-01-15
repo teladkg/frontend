@@ -79,9 +79,9 @@
       color: #BDBDBD;
     }
     #search_page_search_button {
-      width: 200px;
+      width: 145px;
       height: 100%;
-      padding: auto 36px;
+      padding: 13px 36px;
       color: #fff;
       background: #00AFCA;
       border: 2px solid #00AFCA;
@@ -145,7 +145,7 @@
       // }
     }
     #search_page_sort_group_date {
-      width: 15%;
+      // width: 165px;
       .MuiOutlinedInput-root {
         border-radius: 5px;
         background-color: #E3EFF4;
@@ -153,15 +153,19 @@
       .MuiInputBase-root {
         color: #2B2B2B;
         font-size: 18px;
+        width: 155px;
       }
       .MuiOutlinedInput-input {
-        padding: 8px 12px;
+        padding: 8px 0 8px 12px;
       }
       .MuiOutlinedInput-notchedOutline {
         border-color: #E3EFF4;
       }
       .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
         border-color: #00AFCA;
+      }
+      .MuiIconButton-root {
+        padding: 2px;
       }
     }
     #search_page_sort_group_reset {
@@ -183,14 +187,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     font-family: 'Roboto', sans-serif;
-    padding: 0 55px 0 80px;
+    padding: 0 80px 0;
     margin-bottom: 100px;
     #search_page_doctors_slide {
       display: flex;
       flex-direction: column;
-      width: 31%;
+      width: 406px;
       height: auto;
       background-color:#FCFCFC;
       border-radius: 5px;
@@ -199,7 +203,7 @@
       &:hover {
         cursor: pointer;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
-        transition: all .2s ease-in-out
+        transition: all .2s ease-in-out;
       }
       #search_page_doctors_slide_image {
         width: 100%;
@@ -305,6 +309,110 @@
       width: 50%;
       fill: #fff !important;
       stroke: none;
+    }
+  }
+
+
+  /* MEDIA QUERIES */
+  @media only screen and (max-width: 1024px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 45px 0;
+    }
+    #search_page_article1 {
+      padding: 0 45px;
+      font-size: 50px;
+    }
+    #search_page_article2 {
+      padding: 0 45px;
+    }
+    .search_page_search_group {
+      padding: 0 45px 0;
+    }
+    .search_page_sort_group {
+      padding: 0 45px 0;
+    }
+    .search_page_doctors_list {
+      padding: 0 45px 0;
+    }
+  }
+
+  @media only screen and (max-width: 960px) {
+    .search_page_search_group {
+      flex-direction: column;
+      margin: 30px 0;
+      div[role="combobox"] {
+        margin: 10px 0;
+      }
+      div[role=combobox]:first-child {
+        margin-left: 0;
+      }
+      .MuiAutocomplete-root {
+        width: 100% !important;
+      }
+      #search_page_search_button {
+        padding: 13px;
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+    .search_page_sort_group {
+      flex-wrap: wrap;
+      #search_page_sort_group_date {
+        .MuiFormControl-root {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 39px 0;
+    }
+    #search_page_article1 {
+      padding: 0 39px;
+      font-size: 40px;
+    }
+    #search_page_article2 {
+      padding: 0 39px;
+    }
+    .search_page_search_group {
+      padding: 0 39px 0;
+    }
+    .search_page_sort_group {
+      padding: 0 39px 0;
+    }
+    .search_page_doctors_list {
+      padding: 0 39px 0;
+      #search_page_doctors_slide {
+        margin: 0 0 25px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 16px 0;
+    }
+    #search_page_article1 {
+      padding: 0 16px;
+      font-size: 40px;
+    }
+    #search_page_article2 {
+      padding: 0 16px;
+      display: none;
+    }
+    .search_page_search_group {
+      padding: 0 16px 0;
+    }
+    .search_page_sort_group {
+      padding: 0 16px 0;
+    }
+    .search_page_doctors_list {
+      padding: 0 16px 0;
+      #search_page_doctors_slide {
+        padding: 10px;
+      }
     }
   }
 }

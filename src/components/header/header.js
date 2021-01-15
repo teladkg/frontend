@@ -52,9 +52,15 @@ const Header = (props) => {
     history.push('/');
   }
 
+
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+
   return (
     <>
       <header className="header">
+
         <div className="header_nav">
           <Link to="/">
             <svg width="101" height="28" viewBox="0 0 101 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,21 +73,36 @@ const Header = (props) => {
           </Link> 
 
           <div className="nav_bar">
-            <ul className="nav_items">
+            <ul className={click ? "nav_items_mobile" : "nav_items"}>
               { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
                 ? localStorage.getItem('clientType') === 'doctor' 
-                  ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
-                  : <li><Link to="/pc-client">Мой кабинет</Link></li> 
+                  ? <li onClick={closeMobileMenu}><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
+                  : <li onClick={closeMobileMenu}><Link to="/pc-client">Мой кабинет</Link></li> 
                 : ''
               }
-              <li><Link to="/search">Врачи</Link></li>
-              <li><Link to="/clinics-search">Клиники</Link></li>
-              <li><Link to="/map">Карта</Link></li>
+              <li onClick={closeMobileMenu}><Link to="/search">Врачи</Link></li>
+              <li onClick={closeMobileMenu}><Link to="/clinics-search">Клиники</Link></li>
+              <li onClick={closeMobileMenu}><Link to="/map">Карта</Link></li>
+              <div className="log-buttons-mobile">
+                { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
+                  ? 
+                    <div id="login-reg-mobile">
+                      <Link id="reg-mobile" to="/phone-auth" title="Зарегистрироваться">Зарегистрироваться</Link>
+                      <Link id="login-mobile" to="/phone-auth" title="Войти">Войти</Link>
+                    </div>
+                  : '' 
+                }
+                { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
+                  ? <button id="logout-mobile" title="Выйти" onClick={handleLogout}>Выйти</button>
+                  : '' 
+                }
+              </div>
+              
             </ul>
           </div>
 
           <div className="icon_group">
-            <Link to="/search">
+            <Link to="/search" onClick={closeMobileMenu}>
               <svg id="icon_group_first" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -123,7 +144,6 @@ const Header = (props) => {
                 </div>
               : '' 
             }
-    
             { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
               ? <button id="logout-button" title="Выйти" onClick={handleLogout}>
                   {/* <img id="logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
@@ -136,7 +156,20 @@ const Header = (props) => {
               : '' 
             }
           </div>
+
+          <div className="mobile-menu" onClick={handleClick}>
+            {click ? (
+              <svg id="x-mark" className="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black">
+                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            ) : (
+              <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            )}
+          </div>
         </div>
+
       </header>
       
     </>

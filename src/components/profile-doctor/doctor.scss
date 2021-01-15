@@ -525,4 +525,35 @@
   .slick-track {
     float: left;
   }
+
+  // @media only screen and (max-width: 1400px) {
+  //   .MuiBreadcrumbs-root {
+  //     padding: 60px 45px;
+  //   }
+  //   #doctor_page_title {
+  //     padding: 0 45px;
+  //     font-size: 50px;
+  //   }
+  //   .doctor_page_main {
+  //     padding: 0 45px;
+  //     flex-direction: column;
+  //     margin-bottom: 100px;
+  //     .doctor_page_main_left {
+  //       width: 100%;
+  //       #doctor_page_doctors_data {
+  //         flex-direction: row;
+  //         justify-content: space-between;
+  //         #doctor_page_doctors_data_image {
+  //           width: 37%;
+  //         }
+  //         #doctor_page_doctors_data_info {
+  //           width: 60%;
+  //         }
+  //       }
+  //     }
+  //     .doctor_page_main_right {
+  //       width: 100%;
+  //     }
+  //   }
+  // }
 }

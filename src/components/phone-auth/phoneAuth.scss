@@ -63,7 +63,7 @@
         background-color: #00afca18;
       }
       form {
-        width: 35%;
+        width: 500px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -168,36 +168,72 @@
     }
 
 
+  #validate-title {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    color: #2B2B2B;
+  }
+  #validate-article {
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    text-align: center;
+    color: #2B2B2B;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+  #validate-number {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 32px;
+    color: #2B2B2B;
+    margin-bottom: 5px;
+  }
+  #validate-link {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #2B2B2B;
+    &:hover {
+      color: #00AFCA;
+      transition: all .2s ease-in-out;
+    }
+  }
+
+
+  @media only screen and (max-width: 1024px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 45px;
+    }
+    .phone-auth_page_container {
+      padding: 0 45px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .MuiBreadcrumbs-root {
+      padding: 40px 39px;
+    }
+    .phone-auth_page_container {
+      padding: 0 39px;
+    }
     #validate-title {
-      font-family: 'Roboto', sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 35px;
-      color: #2B2B2B;
+      font-size: 28px;
     }
-    #validate-article {
-      font-family: 'Roboto', sans-serif;
-      font-weight: normal;
-      font-size: 16px;
-      text-align: center;
-      color: #2B2B2B;
-      width: 18%;
-      margin-bottom: 24px;
-    }
-    #validate-number {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-      font-size: 32px;
-      color: #2B2B2B;
-      margin-bottom: 5px;
-    }
-    #validate-link {
-      font-family: 'Roboto', sans-serif;
-      font-size: 18px;
-      color: #2B2B2B;
-      &:hover {
-        color: #00AFCA;
-        transition: all .2s ease-in-out;
+  }
+  @media only screen and (max-width: 600px) {
+    .phone-auth_page_container {
+      form {
+        width: 100%;
       }
     }
   }
+  @media only screen and (max-width: 375px) {
+    .MuiBreadcrumbs-root {
+      padding: 40px 16px;
+    }
+    .phone-auth_page_container {
+      padding: 0 16px;
+    }
+  }
+}

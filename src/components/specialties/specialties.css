@@ -9,6 +9,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  /* MEDIA QUERIES */
 }
 
 .specialties_page .MuiBreadcrumbs-root {
@@ -126,7 +127,7 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  padding: 0 55px 0 80px;
+  padding: 0 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,6 +241,7 @@
           flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  height: 800px;
 }
 
 .specialties_page .as-items--navigator .as-items__list .as-item--navigator .as-item__navigator {
@@ -248,8 +250,12 @@
   font-size: 22px;
   line-height: 26px;
   color: #00AFCA;
-  margin-bottom: 16px;
+  margin: 40px 0 16px;
   left: 0;
+}
+
+.specialties_page .as-items--navigator .as-items__list .as-item__content {
+  margin-bottom: 16px;
 }
 
 .specialties_page .as-items {
@@ -261,11 +267,99 @@
 }
 
 .specialties_page .as-items .as-item {
-  margin: 0 0 40px;
+  margin: 0;
   width: 20%;
 }
 
 .specialties_page .as-items--navigator .as-items__list, .specialties_page .as-items--navigator .as-items__chunk {
   padding: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+  .specialties_page .MuiBreadcrumbs-root {
+    padding: 60px 45px 0;
+  }
+  .specialties_page #specialties_page_article1 {
+    font-size: 50px;
+    padding: 0 45px;
+  }
+  .specialties_page #specialties_page_article2 {
+    padding: 0 45px;
+  }
+  .specialties_page .specialties_page_search_group {
+    padding: 0 45px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 30px 0;
+  }
+  .specialties_page .specialties_page_search_group div[role="combobox"] {
+    margin: 10px 0;
+  }
+  .specialties_page .specialties_page_search_group div[role=combobox]:first-child {
+    margin-left: 0;
+  }
+  .specialties_page .specialties_page_search_group .MuiAutocomplete-root {
+    width: 100% !important;
+  }
+  .specialties_page .specialties_page_search_group a {
+    margin-top: 20px;
+  }
+  .specialties_page .specialties_page_search_group #specialties_page_search_button {
+    padding: 13px;
+    width: 100%;
+  }
+  .specialties_page .specialties_page_specialties {
+    padding: 0 45px;
+  }
+  .specialties_page .as-items {
+    padding: 0 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .specialties_page .MuiBreadcrumbs-root {
+    padding: 60px 39px 0;
+  }
+  .specialties_page #specialties_page_article1 {
+    font-size: 40px;
+    padding: 0 39px;
+  }
+  .specialties_page #specialties_page_article2 {
+    padding: 0 39px;
+  }
+  .specialties_page .specialties_page_search_group {
+    padding: 0 39px;
+  }
+  .specialties_page .specialties_page_specialties {
+    padding: 0 39px;
+  }
+  .specialties_page .as-items {
+    padding: 0 39px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .specialties_page .MuiBreadcrumbs-root {
+    padding: 60px 16px 0;
+  }
+  .specialties_page #specialties_page_article1 {
+    font-size: 30px;
+    padding: 0 16px;
+  }
+  .specialties_page #specialties_page_article2 {
+    padding: 0 16px;
+    display: none;
+  }
+  .specialties_page .specialties_page_search_group {
+    padding: 0 16px;
+  }
+  .specialties_page .specialties_page_specialties {
+    padding: 0 16px;
+  }
+  .specialties_page .as-items {
+    padding: 0 16px;
+  }
 }
 /*# sourceMappingURL=specialties.css.map */

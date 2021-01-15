@@ -95,7 +95,7 @@
 }
 
 .phone-auth_page .phone-auth_page_container form {
-  width: 35%;
+  width: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,7 +240,7 @@
   font-size: 16px;
   text-align: center;
   color: #2B2B2B;
-  width: 18%;
+  width: 100%;
   margin-bottom: 24px;
 }
 
@@ -262,5 +262,41 @@
   color: #00AFCA;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+}
+
+@media only screen and (max-width: 1024px) {
+  .phone-auth_page .MuiBreadcrumbs-root {
+    padding: 60px 45px;
+  }
+  .phone-auth_page .phone-auth_page_container {
+    padding: 0 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .phone-auth_page .MuiBreadcrumbs-root {
+    padding: 40px 39px;
+  }
+  .phone-auth_page .phone-auth_page_container {
+    padding: 0 39px;
+  }
+  .phone-auth_page #validate-title {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .phone-auth_page .phone-auth_page_container form {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .phone-auth_page .MuiBreadcrumbs-root {
+    padding: 40px 16px;
+  }
+  .phone-auth_page .phone-auth_page_container {
+    padding: 0 16px;
+  }
 }
 /*# sourceMappingURL=phoneAuth.css.map */

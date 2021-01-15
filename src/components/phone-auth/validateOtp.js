@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect, useHistory, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import firebase from '../../redux/auth/_services/firebase';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { userActions } from '../../redux/auth/_actions'
 
 import Header from '../header/header';
@@ -18,7 +17,7 @@ import PropTypes from 'prop-types';
 import MaskedInput from 'react-text-mask';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const ValidateOtp = (props) => {
 
@@ -45,66 +44,53 @@ const ValidateOtp = (props) => {
     e.preventDefault();
     let otpInput = otp;
     let otpConfirm = window.confirmationResult;
-    // console.log(codee);
     otpConfirm
       .confirm(otpInput)
-      // .then((result) => {
-      //   // User signed in successfully.
-      //   // alert("Код подтвержден!")
-      //   // console.log("Result" + result.verificationID);
-      //   let user = result.user;
-      //   // console.log(user);
-      // })
-      .then(() => {
-        firebase.auth().currentUser.getIdToken()
-        .then((idtoken) => {
-          localStorage.setItem('fireToken', idtoken);
-          let clientType = localStorage.getItem('clientType');
-          
-          props.checkToken(idtoken)
-          .then(()=> {
-            let userToken = localStorage.getItem('userToken');
-
-            // console.log(typeof userToken);
-            // console.log(userToken);
-
-            if (clientType === 'client') {
-              if(userToken === 'false') {
-                props.registrateclient(idtoken);
-                alert('Клиент успешно зарегистрировался в системе');
-                props.history.push('/');
-              } else {
-                alert('Клиент успешно вошел в систему');
-                props.history.push('/pc-client');
-              }
-            } 
+        .then(() => {
+          firebase.auth().currentUser.getIdToken()
+          .then((idtoken) => {
+            localStorage.setItem('fireToken', idtoken);
+            let clientType = localStorage.getItem('clientType');
             
-            else if (clientType === 'doctor') {
-              if(userToken === 'false') {
-                props.history.push('/registration');
-              }
-              else {
-                alert('Доктор успешно вошел в систему');
-                props.history.push('/pc-doctor/info');
-              }            
-            }
+            props.checkToken(idtoken)
+            .then(()=> {
+              let userToken = localStorage.getItem('userToken');
 
-            // console.log(typeof userToken);
-            // console.log(userToken);
+              if (clientType === 'client') {
+                if(userToken === 'false') {
+                  props.registrateclient(idtoken);
+                  alert('Клиент успешно зарегистрировался в системе');
+                  props.history.push('/');
+                } else {
+                  alert('Клиент успешно вошел в систему');
+                  props.history.push('/pc-client');
+                }
+              } 
+              
+              else if (clientType === 'doctor') {
+                if(userToken === 'false') {
+                  props.history.push('/registration');
+                }
+                else {
+                  alert('Доктор успешно вошел в систему');
+                  props.history.push('/pc-doctor/info');
+                }            
+              }
+
+            })
+            .catch((error) => {
+              console.error(error);
+            })
           })
           .catch((error) => {
             console.error(error);
-          })
+            alert("Неправильный FireToken");
+          });
         })
         .catch((error) => {
           console.error(error);
-          alert("Неправильный FireToken");
-        });
-      })
-    .catch((error) => {
-      console.error(error);
-      alert("Неправильный код!");
-    })
+          alert("Неправильный код!");
+        })
   }
 
 
@@ -123,7 +109,7 @@ const ValidateOtp = (props) => {
             onClick={handleClick}
             aria-current="page"
           >
-            <Link id="phone-auth_page_breadcrumb_active" to="/phone-auth">Регистрация через телефон</Link>
+            <Link id="phone-auth_page_breadcrumb_active" to="/validate-otp">Подтверждение через телефон</Link>
           </LinkMaterial>
         </Breadcrumbs>
 

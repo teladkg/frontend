@@ -647,4 +647,77 @@
   //     opacity: 1;
   //   }
   // }
+  @media only screen and (max-width: 1400px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 45px;
+    }
+    #personal_doctor_page_title {
+      padding: 0 45px;
+      font-size: 50px;
+    }
+    .personal_doctor_page_main {
+      padding: 0 45px;
+      flex-direction: column;
+      margin-bottom: 100px;
+      .personal_doctor_page_main_left {
+        width: 100%;
+        #personal_doctor_page_doctors_data {
+          flex-direction: row;
+          justify-content: space-between;
+          .personal_doctor_page_doctors_data_imagegroup {
+            width: 37%;
+            .personal_doctor_page_doctors_data_image_buttongroup {
+              top: 47%;
+              right: 5%;
+            }
+          }
+          #personal_doctor_page_doctors_data_info {
+            width: 60%;
+          }
+        }
+      }
+      .personal_doctor_page_main_right {
+        width: 100%;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 45px;
+    }
+    #personal_doctor_page_title {
+      padding: 0 45px;
+      font-size: 50px;
+    }
+    .personal_doctor_page_main {
+      padding: 0 45px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .MuiBreadcrumbs-root {
+      padding: 40px 39px;
+    }
+    #personal_doctor_page_title {
+      padding: 0 39px;
+      font-size: 40px;
+    }
+    .personal_doctor_page_main {
+      padding: 0 39px;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .MuiBreadcrumbs-root {
+      padding: 40px 16px;
+    }
+    #personal_doctor_page_title {
+      padding: 0 16px;
+      font-size: 30px;
+    }
+    .personal_doctor_page_main {
+      padding: 0 16px;
+    }
+  }
 }

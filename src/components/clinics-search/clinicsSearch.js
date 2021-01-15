@@ -113,7 +113,7 @@ const ClinicsSearch = (props) => {
             style={{ width: "26%" }}
             renderInput={(params) => <TextField {...params} label="Радиус" variant="outlined" />}
           />
-          <Link to="/clinics-search"><button id="clinics_page_search_button">Найти</button></Link>
+          <button id="clinics_page_search_button">Найти</button>
         </div>
         
         <div className="clinics_page_clinics">
