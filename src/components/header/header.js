@@ -97,7 +97,6 @@ const Header = (props) => {
                   : '' 
                 }
               </div>
-              
             </ul>
           </div>
 

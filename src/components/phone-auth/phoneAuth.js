@@ -23,9 +23,9 @@ import FormControl from '@material-ui/core/FormControl';
 const PhoneAuth = (props) => {
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     // console.log(props);
-  });
+  }, []);
   let history = useHistory();
 
 

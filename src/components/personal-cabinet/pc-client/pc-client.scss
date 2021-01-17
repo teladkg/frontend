@@ -58,7 +58,7 @@
         color: #828282;
       }
       .MuiTabs-flexContainer {
-        justify-content: flex-start;
+        justify-content: space-between;
       }
       .MuiPaper-elevation4 {
         box-shadow: none;
@@ -381,6 +381,65 @@
       width: 50%;
       fill: #fff !important;
       stroke: none;
+    }
+  }
+
+  /* FOR MEDIA QUERIES */ 
+  @media only screen and (max-width: 1500px) {
+    .personal_client_page_main_right {
+      .personal_client_page_tabs_container {
+        .MuiPaper-root.MuiAppBar-root {
+          width: 340px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 45px 0;
+    }
+    #personal_client_page_title {
+      padding: 0 45px;
+      font-size: 50px;
+    }
+    .personal_client_page_main_right {
+      .personal_client_page_tabs_container {
+        padding: 25px 45px;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 39px 0;
+    }
+    #personal_client_page_title {
+      padding: 0 39px;
+      font-size: 40px;
+    }
+    .personal_client_page_main_right {
+      .personal_client_page_tabs_container {
+        padding: 25px 39px;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 375px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 16px 0;
+    }
+    #personal_client_page_title {
+      padding: 0 16px;
+      font-size: 30px;
+    }
+    .personal_client_page_main_right {
+      .personal_client_page_tabs_container {
+        padding: 25px 16px;
+        .MuiPaper-root.MuiAppBar-root {
+          width: 300px;
+        }
+      }
     }
   }
 }

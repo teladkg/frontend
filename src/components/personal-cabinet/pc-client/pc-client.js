@@ -38,7 +38,7 @@ import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 const PCClient = (props) => {
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
   }, []);
 
 
@@ -101,7 +101,7 @@ const PCClient = (props) => {
               </AppBar>
               <TabPanel value={value} index={0}>
                 <div className="search_page_doctors_list">
-                  <div id="search_page_doctors_slide">
+                  {/* <div id="search_page_doctors_slide">
                     <div className="search_page_doctors_slide_imagegroup">
                     <img id="search_page_doctors_slide_image" src={require('../../../content/images/main/image_10.png')} alt="doctor pic"/>
                       <div className="search_page_doctors_slide_image_buttongroup">
@@ -151,12 +151,12 @@ const PCClient = (props) => {
                         </div>
                       </div>            
                     </div>
-                  </div>
+                  </div> */}
                 </div>                
               </TabPanel>
               <TabPanel value={value} index={1}>       
                 <div className="clinics_page_clinics">         
-                  <div id="clinics_page_clinics_slide">
+                  {/* <div id="clinics_page_clinics_slide">
                     <div className="clinics_page_clinics_slide_imagegroup">
                       <img id="clinics_page_clinics_slide_image" src={require('../../../content/images/main/Frame_67.png')} alt="clinic pic"/>
                       <div className="clinics_page_clinics_slide_image_buttongroup">
@@ -187,7 +187,7 @@ const PCClient = (props) => {
                         </div>
                       </div>            
                     </div>
-                  </div>
+                  </div> */}
                 </div>  
               </TabPanel>
             </div>

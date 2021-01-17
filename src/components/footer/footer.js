@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './footer.module.css'
 
 const Footer = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <footer className={styles.footer}>
@@ -41,7 +46,7 @@ const Footer = () => {
           <div className={styles.footer_fourth_col}>
             <p id={styles.footer_fourth_col_title}>Сервис</p>
             <ul className={styles.fourth_col_links}>
-              <li>О нас</li>
+              <li><Link to="/about">О нас</Link></li>
               <li><Link to="/map">Карта</Link></li>
             </ul>
           </div>

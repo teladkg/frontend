@@ -55,11 +55,11 @@
           align-items: center;
 }
 
-.search .main_header ul {
+.search .main_header .main_header_nav .main_header_nav_bar ul {
   list-style: none;
 }
 
-.search .main_header .main_header_nav_bar .main_header_nav_items {
+.search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -70,12 +70,12 @@
   font-size: 20px;
 }
 
-.search .main_header .main_header_nav_bar .main_header_nav_items li {
+.search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items li {
   margin: 0 42.5px;
   color: #fff;
 }
 
-.search .main_header .main_header_nav_bar .main_header_nav_items li:hover {
+.search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items li:hover {
   cursor: pointer;
   text-decoration: underline;
   -webkit-text-decoration-color: #fff;
@@ -86,11 +86,49 @@
   transition: all .3s ease-in-out;
 }
 
-.search .main_header .main_header_nav_bar .main_header_nav_items li a {
+.search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items li a {
   color: #fff;
 }
 
-.search .main_header .main_header_icon_group {
+.search .main_header .main_header_nav .main_header_nav_bar .log-buttons-mobile {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.search .main_header .main_header_nav .main_header_nav_bar .log-buttons-mobile #reg-mobile {
+  border-radius: 3px;
+  border: 1px solid #919191;
+  margin-bottom: 10px;
+}
+
+.search .main_header .main_header_nav .main_header_nav_bar .log-buttons-mobile #login-mobile {
+  border-radius: 3px;
+  border: 1px solid #919191;
+  margin-bottom: 10px;
+}
+
+.search .main_header .main_header_nav .main_header_nav_bar .log-buttons-mobile #logout-mobile {
+  color: #000;
+  background-color: transparent;
+  border-radius: 3px;
+  border: 1px solid #919191;
+  margin-bottom: 10px;
+  padding: 10px 50px;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.search .main_header .main_header_nav .main_header_nav_bar .log-buttons-mobile #logout-mobile:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #00AFCA;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -100,51 +138,79 @@
   width: 10%;
 }
 
-.search .main_header .main_header_icon_group svg:hover {
+.search .main_header .main_header_nav .main_header_icon_group svg:hover {
   cursor: pointer;
 }
 
-.search .main_header .main_header_icon_group img {
+.search .main_header .main_header_nav .main_header_icon_group img {
   width: 23px;
   height: 23px;
 }
 
-.search .main_header .main_header_icon_group #main_header_logout-button {
+.search .main_header .main_header_nav .main_header_icon_group #main_header_logout-button {
   outline: none;
   border: none;
   background-color: transparent;
 }
 
-.search .main_header .main_header_icon_group #main_header_logout-button:hover {
+.search .main_header .main_header_nav .main_header_icon_group #main_header_logout-button:hover {
   cursor: pointer;
 }
 
-.search .main_header .main_header_icon_group a {
+.search .main_header .main_header_nav .main_header_icon_group a {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
 }
 
-.search .main_header .main_header_icon_group .MuiPaper-root .MuiList-padding {
+.search .main_header .main_header_nav .main_header_icon_group .MuiPaper-root .MuiList-padding {
   padding: 15px 15px 8px;
 }
 
-.search .main_header .main_header_icon_group .MuiPaper-root .MuiListItem-button {
+.search .main_header .main_header_nav .main_header_icon_group .MuiPaper-root .MuiListItem-button {
   border-radius: 3px;
   border: 1px solid #919191;
   text-transform: uppercase;
 }
 
-.search .main_header .main_header_icon_group .MuiPaper-root .MuiListItem-button {
+.search .main_header .main_header_nav .main_header_icon_group .MuiPaper-root .MuiListItem-button {
   margin-bottom: 10px;
 }
 
-.search .main_header .main_header_icon_group .MuiPaper-root .MuiListItem-button:hover {
+.search .main_header .main_header_nav .main_header_icon_group .MuiPaper-root .MuiListItem-button:hover {
   background-color: #00AFCA;
   -webkit-transition: .1s all ease-in-out;
   transition: .1s all ease-in-out;
   color: #fff;
   border-color: #00AFCA;
+}
+
+.search .main_header .main_header_nav .mobile-menu {
+  display: none;
+}
+
+.search .main_header .main_header_nav .mobile-menu #menu-icon {
+  width: 25px;
+  height: 25px;
+  color: #fff;
+}
+
+.search .main_header .main_header_nav .mobile-menu #menu-icon:hover {
+  cursor: pointer;
+}
+
+.search .main_header .main_header_nav .mobile-menu #x-mark {
+  width: 25px;
+  height: 25px;
+  color: #000;
+  position: fixed;
+  z-index: 1500;
+  top: 28px;
+  right: 45px;
+}
+
+.search .main_header .main_header_nav .mobile-menu #x-mark:hover {
+  cursor: pointer;
 }
 
 .search #search_title1 {
@@ -464,7 +530,7 @@
   text-underline-offset: 4px;
 }
 
-.clinics .clinics_slide {
+.clinics #clinics_slide {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -482,7 +548,7 @@
       flex-wrap: nowrap;
 }
 
-.clinics .clinics_slide:hover {
+.clinics #clinics_slide:hover {
   cursor: pointer;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
@@ -490,12 +556,12 @@
   transition: all .2s ease-in-out;
 }
 
-.clinics .clinics_slide #clinics_slide_image {
+.clinics #clinics_slide #clinics_slide_image {
   width: 100%;
   margin-bottom: 16px;
 }
 
-.clinics .clinics_slide #clinics_slide_info {
+.clinics #clinics_slide #clinics_slide_info {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -509,14 +575,14 @@
           justify-content: space-evenly;
 }
 
-.clinics .clinics_slide #clinics_slide_info h3 {
+.clinics #clinics_slide #clinics_slide_info h3 {
   font-weight: bold;
   font-size: 24px;
   color: #2B2B2B;
   padding-bottom: 16px;
 }
 
-.clinics .clinics_slide #clinics_slide_info h3:hover {
+.clinics #clinics_slide #clinics_slide_info h3:hover {
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 6px;
@@ -524,20 +590,20 @@
   transition: all .3s ease-in-out;
 }
 
-.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_typeofclinic {
+.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_typeofclinic {
   font-weight: bold;
   font-size: 17px;
   color: #4F4F4F;
   padding-bottom: 16px;
 }
 
-.clinics .clinics_slide #clinics_slide_info_article {
+.clinics #clinics_slide #clinics_slide_info_article {
   font-size: 15px;
   color: #464646;
   padding-bottom: 17px;
 }
 
-.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_address {
+.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_address {
   font-weight: 600;
   font-size: 17px;
   color: #333333;
@@ -545,7 +611,7 @@
   padding-bottom: 16px;
 }
 
-.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock {
+.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -561,7 +627,7 @@
           justify-content: space-between;
 }
 
-.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup {
+.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -577,11 +643,11 @@
   color: #828282;
 }
 
-.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup svg {
+.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_phonegroup svg {
   margin-right: 8px;
 }
 
-.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup {
+.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -597,7 +663,7 @@
   color: #828282;
 }
 
-.clinics .clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup svg {
+.clinics #clinics_slide #clinics_slide_info #clinics_slide_info_lastblock #clinics_slide_info_stargroup svg {
   margin-right: 8px;
 }
 
@@ -864,6 +930,59 @@ aside[data-testid="react-scroll-up-button"] svg {
   .search {
     padding: 0;
   }
+  .search .main_header {
+    padding: 28px 45px 24px;
+  }
+  .search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items {
+    display: none;
+  }
+  .search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items_mobile {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background: #fafafa;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    z-index: 1500;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    padding: 78px 0 0 45px;
+  }
+  .search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items_mobile a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 1px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items_mobile a:hover {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    background-color: #00AFCA;
+  }
+  .search .main_header .main_header_nav .main_header_nav_bar .log-buttons-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .search .main_header .main_header_nav .main_header_icon_group {
+    display: none;
+  }
+  .search .main_header .main_header_nav .mobile-menu {
+    display: block;
+  }
   .search #search_title1 {
     font-size: 40px;
     margin: 55px 0 130px;
@@ -923,6 +1042,15 @@ aside[data-testid="react-scroll-up-button"] svg {
 }
 
 @media only screen and (max-width: 768px) {
+  .search .main_header {
+    padding: 28px 39px 24px;
+  }
+  .search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items_mobile {
+    padding: 78px 0 0 39px;
+  }
+  .search .main_header .main_header_nav .mobile-menu #x-mark {
+    right: 39px;
+  }
   .search #search_title1 {
     font-size: 35px;
     padding: 0 20%;
@@ -954,7 +1082,7 @@ aside[data-testid="react-scroll-up-button"] svg {
   .clinics .clinics_titles #clinics_titles_link {
     font-size: 16px;
   }
-  .clinics .clinics_slide {
+  .clinics #clinics_slide {
     width: 325px !important;
   }
   .doctors {
@@ -1014,6 +1142,15 @@ aside[data-testid="react-scroll-up-button"] svg {
 }
 
 @media only screen and (max-width: 375px) {
+  .search .main_header {
+    padding: 28px 16px 24px;
+  }
+  .search .main_header .main_header_nav .main_header_nav_bar .main_header_nav_items_mobile {
+    padding: 78px 0 0 16px;
+  }
+  .search .main_header .main_header_nav .mobile-menu #x-mark {
+    right: 16px;
+  }
   .search_group_mobile {
     padding: 0 16px 0;
   }

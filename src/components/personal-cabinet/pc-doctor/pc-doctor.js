@@ -37,7 +37,7 @@ import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 const PCDoctor = (props) => {
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     props.getPCDoctor();
   }, []);
   

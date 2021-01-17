@@ -29,11 +29,12 @@
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 0 80px;
     margin-top: 60px;
     .doctor_page_main_left {
-      width: 31%;
+      width: 380px;
+      margin-right: 30px;
       #doctor_page_doctors_data {
         display: flex;
         flex-direction: column;
@@ -50,7 +51,7 @@
         }
         #doctor_page_doctors_data_image {
           width: 100%;
-          max-height: 280px;
+          height: auto;
           margin-bottom: 16px;
           border-radius: 5px;
         }
@@ -155,7 +156,7 @@
       }
     }
     .doctor_page_main_right {
-      width: 67%;
+      width: 70%;
       .doctor_page_tabs_container {
         display: flex;
         flex-direction: column;
@@ -163,8 +164,8 @@
         height: auto;
         background-color:#FCFCFC;
         border-radius: 5px;
-        margin: 0 25px 25px 0;
-        padding: 25px;
+        margin: 0;
+        padding: 30px;
         &:hover {
           cursor: pointer;
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
@@ -173,6 +174,9 @@
         .MuiAppBar-colorPrimary {
           background-color: transparent;
           color: #828282;
+        }
+        .MuiBox-root  {
+          padding: 30px 0 0;
         }
         .MuiTabs-flexContainer {
           justify-content: space-between;
@@ -218,6 +222,7 @@
           .doctor_page_tabs_reception_type {
             display: flex;
             flex-direction: column;
+            width: 100%;
             #doctor_page_tabs_reception_type_title {
               font-family: 'Roboto';
               font-weight: 500;
@@ -232,7 +237,7 @@
                 display: flex;
                 flex-direction: row;
                 th {
-                  width: 100%;
+                  width: 320px;
                   font-family: 'Roboto';
                   font-weight: 500;
                   font-size: 18px;
@@ -249,7 +254,7 @@
                 display: flex;
                 flex-direction: row;
                 td {
-                  width: 100%;
+                  width: 320px;
                   font-family: 'Roboto';
                   font-weight: 500;
                   font-size: 18px;
@@ -268,6 +273,7 @@
             display: flex;
             flex-direction: column;
             margin-top: 50px;
+            width: 100%;
             #doctor_page_tabs_reception_schedule_title {
               font-family: 'Roboto';
               font-weight: 500;
@@ -282,7 +288,7 @@
                 display: flex;
                 flex-direction: row;
                 th {
-                  width: 100%;
+                  width: 320px !important;
                   font-family: 'Roboto';
                   font-weight: 500;
                   font-size: 18px;
@@ -302,14 +308,14 @@
                   display: flex;
                   flex-direction: column;
                   align-items: center;
-                  width: 100%;
+                  width: 320px !important;
                   margin: 0 5px 5px 0;
                   font-family: 'Inter', sans-serif;
                   font-weight: 500;
                   font-size: 13px;
                   line-height: 16px;
                   color: #2B2B2B;
-                  padding: 12px 0;
+                  padding: 10px;
                   text-align: center;
                   background: #E3EFF4;
                   border-radius: 5px;
@@ -379,7 +385,7 @@
     font-weight: 500;
     font-size: 45px;
     color: #2B2B2B;
-    margin-top: 100px;
+    margin-top: 80px;
   }
 
 
@@ -387,7 +393,7 @@
     width: 100%;
     height: 100%;
     background-color: transparent;
-    padding: 0 55px 0 80px;
+    padding: 0 80px;
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
@@ -396,7 +402,7 @@
     #doctor_page_doctors_slide {
       display: inline-flex;
       flex-direction: row;
-      width: auto !important;
+      width: 406px !important;
       height: auto;
       background-color:#FCFCFC;
       border-radius: 5px;
@@ -524,36 +530,221 @@
 
   .slick-track {
     float: left;
+    display: flex !important;
   }
 
-  // @media only screen and (max-width: 1400px) {
-  //   .MuiBreadcrumbs-root {
-  //     padding: 60px 45px;
-  //   }
-  //   #doctor_page_title {
-  //     padding: 0 45px;
-  //     font-size: 50px;
-  //   }
-  //   .doctor_page_main {
-  //     padding: 0 45px;
-  //     flex-direction: column;
-  //     margin-bottom: 100px;
-  //     .doctor_page_main_left {
-  //       width: 100%;
-  //       #doctor_page_doctors_data {
-  //         flex-direction: row;
-  //         justify-content: space-between;
-  //         #doctor_page_doctors_data_image {
-  //           width: 37%;
-  //         }
-  //         #doctor_page_doctors_data_info {
-  //           width: 60%;
-  //         }
-  //       }
-  //     }
-  //     .doctor_page_main_right {
-  //       width: 100%;
-  //     }
-  //   }
-  // }
+
+  /* FOR MEDIA QUERIES */ 
+  @media only screen and (max-width: 1500px) {
+    .doctor_page_main {
+      .doctor_page_main_right {
+        .doctor_page_tabs_container {
+          margin: 0;
+          .doctor_page_tabs_reception_schedule {
+            width: 870px;
+            overflow-x: scroll;
+            padding-bottom: 10px;
+            #doctor_page_tabs_reception_schedule_title {
+              width: 870px;
+            }
+            .doctor_page_tabs_reception_schedule_cells {
+              width: 870px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .doctor_page_main {
+      flex-direction: column;
+      // margin-bottom: 80px;
+      .doctor_page_main_left {
+        width: 100%;
+        #doctor_page_doctors_data {
+          flex-direction: row;
+          justify-content: space-between;
+          #doctor_page_doctors_data_image {
+            width: 37%;
+          }
+          #doctor_page_doctors_data_info {
+            width: 60%;
+          }
+        }
+      }
+      .doctor_page_main_right {
+        width: 100%;
+        .doctor_page_tabs_container {
+          margin: 0;
+          .doctor_page_tabs_reception_schedule {
+            width: 100%;
+            #doctor_page_tabs_reception_schedule_title {
+              width: 100%;
+            }
+            .doctor_page_tabs_reception_schedule_cells {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    .doctor_page_main {
+      .doctor_page_main_left {
+        #doctor_page_doctors_data {
+          #doctor_page_doctors_data_image {
+            height: 100%;
+          }
+        }
+      }
+      .doctor_page_main_right {
+        .doctor_page_tabs_container {
+          margin: 0;
+          .doctor_page_tabs_reception_schedule {
+            width: 870px;
+            overflow-x: scroll;
+            padding-bottom: 10px;
+            #doctor_page_tabs_reception_schedule_title {
+              width: 870px;
+            }
+            .doctor_page_tabs_reception_schedule_cells {
+              width: 870px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 45px 0;
+    }
+    .doctor_page_main {
+      padding: 0 45px;
+    }
+    #doctor_page_rating_title {
+      padding: 0 45px;
+      font-size: 40px;
+      margin-top: 50px;
+    }
+    .doctor_page_rating {
+      padding: 0 45px;
+      margin-top: 45px;
+    }
+    #doctor_page_doctors_title {
+      padding: 0 45px;
+      font-size: 40px;
+    }
+    .doctor_page_doctors {
+      padding: 0 45px;
+      margin-top: 45px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 39px 0;
+    }
+    .doctor_page_main {
+      padding: 0 39px;
+      .doctor_page_main_left {
+        #doctor_page_doctors_data {
+          flex-direction: column;
+          justify-content: center;
+          #doctor_page_doctors_data_image {
+            width: 100%;
+            height: auto;
+            align-self: center;
+          }
+          #doctor_page_doctors_data_info {
+            width: 100%;
+          }
+        }
+      }
+    }
+    #doctor_page_rating_title {
+      padding: 0 39px;
+    }
+    .doctor_page_rating {
+      padding: 0 39px;
+      #doctor_page_rating_p {
+        font-size: 25px;
+      }
+    }
+    #doctor_page_doctors_title {
+      padding: 0 39px;
+    }
+    .doctor_page_doctors {
+      padding: 0 39px;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .doctor_page_main {
+      .doctor_page_main_right {
+        .doctor_page_tabs_container {
+          margin: 0;
+          .doctor_page_tabs_reception_type {
+            width: 360px;
+            overflow-x: scroll;
+            padding-bottom: 10px;
+            #doctor_page_tabs_reception_type_title {
+              width: 360px;
+            }
+            .doctor_page_tabs_reception_type_cells {
+              width: 360px;
+              #doctor_page_tabs_reception_type_cells_titles {
+                th {
+                  width: 120px;
+                }
+              } 
+              #doctor_page_tabs_reception_type_cells_cost {
+                th {
+                  width: 120px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .MuiBreadcrumbs-root {
+      padding: 60px 16px 0;
+    }
+    .doctor_page_main {
+      padding: 0 16px;
+      .doctor_page_main_left {
+        #doctor_page_doctors_data {
+          padding: 10px;
+        }
+      }
+    }
+    #doctor_page_rating_title {
+      padding: 0 16px;
+      font-size: 30px;
+    }
+    .doctor_page_rating {
+      padding: 0 16px;
+      #doctor_page_rating_p {
+        font-size: 20px;
+      }
+    }
+    #doctor_page_doctors_title {
+      padding: 0 16px;
+      font-size: 30px;
+    }
+    .doctor_page_doctors {
+      padding: 0 16px;
+      #doctor_page_doctors_slide {
+        padding: 10px;
+      }
+    }
+  }
 }

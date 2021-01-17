@@ -31,7 +31,10 @@ function checkToken(idtoken) {
           dispatch(failure(error));
           dispatch(alertActions.error(error));
         }
-      );
+      )
+      .catch((err) => {
+        console.log(err);
+      })
   };
     
   function request(idtoken) { return { type: userConstants.CHECK_TOKEN_REQUEST, idtoken } }
@@ -54,7 +57,10 @@ function registration(data) {
           dispatch(failure(error));
           dispatch(alertActions.error(error));
         }
-      );
+      )
+      .catch((err) => {
+        console.log(err);
+      })
   };
     
   function request(data) { return { type: userConstants.DOCTOR_REGISTER_REQUEST, data } }
@@ -69,10 +75,13 @@ function getPCDoctor() {
     await axios.get('http://167.172.109.15/userinfo/editdoctor/', {
       headers: authHeader()
     })
-    .then(
-      res => dispatch(success(res.data)),
-      error => dispatch(failure(error))
-    );
+      .then(
+        res => dispatch(success(res.data)),
+        error => dispatch(failure(error))
+      )
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   function request() { return { type: userConstants.GET_PCDOCTOR_REQUEST } }
@@ -112,7 +121,10 @@ function editPCDoctor(data) {
             });
           dispatch(alertActions.error(error));
         }
-      );
+      )
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   function request(data) { return { type: userConstants.EDIT_PCDOCTOR_REQUEST, data } }
@@ -135,7 +147,10 @@ function registrateclient(data) {
           dispatch(failure(error));
           dispatch(alertActions.error(error));
         }
-      );
+      )
+      .catch(err => {
+        console.log(err);
+      })
   };
     
   function request(data) { return { type: userConstants.CLIENT_REGISTER_REQUEST, data } }
@@ -179,7 +194,10 @@ function postFeedback(data) {
           });
           dispatch(alertActions.error(error));
         }
-      );
+      )
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   function request(data) { return { type: userConstants.POST_FEEDBACK_REQUEST, data } }
@@ -223,7 +241,10 @@ function postClinicFeedback(data) {
           });
           dispatch(alertActions.error(error));
         }
-      );
+      )
+      .catch(err => {
+        console.log(err);
+      })
   };
 
   function request(data) { return { type: userConstants.POST_CLINIC_FEEDBACK_REQUEST, data } }

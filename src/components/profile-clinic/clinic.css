@@ -10,6 +10,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: 'Roboto', sans-serif;
+  /* FOR MEDIA QUERIES */
 }
 
 .clinic_page .MuiBreadcrumbs-root {
@@ -42,15 +43,16 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   padding: 0 80px;
   margin-top: 60px;
 }
 
 .clinic_page .clinic_page_main .clinic_page_main_left {
-  width: 31%;
+  width: 380px;
+  margin-right: 30px;
 }
 
 .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data {
@@ -63,7 +65,7 @@
           flex-direction: column;
   background-color: #FCFCFC;
   border-radius: 5px;
-  margin: 0 25px 25px 0;
+  margin: 0;
   padding: 25px;
 }
 
@@ -77,7 +79,9 @@
 
 .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data #clinic_page_clinics_data_image {
   width: 100%;
+  height: auto;
   margin-bottom: 16px;
+  border-radius: 5px;
 }
 
 .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data #clinic_page_clinics_data_info {
@@ -187,7 +191,7 @@
 }
 
 .clinic_page .clinic_page_main .clinic_page_main_right {
-  width: 67%;
+  width: 70%;
 }
 
 .clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container {
@@ -202,8 +206,8 @@
   height: auto;
   background-color: #FCFCFC;
   border-radius: 5px;
-  margin: 0 25px 25px 0;
-  padding: 25px;
+  margin: 0;
+  padding: 30px;
 }
 
 .clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container:hover {
@@ -217,6 +221,10 @@
 .clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container .MuiAppBar-colorPrimary {
   background-color: transparent;
   color: #828282;
+}
+
+.clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container .MuiBox-root {
+  padding: 30px 0 0;
 }
 
 .clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container .MuiTabs-flexContainer {
@@ -366,7 +374,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: auto !important;
+  width: 406px !important;
   height: auto;
   background-color: #FCFCFC;
   border-radius: 5px;
@@ -468,7 +476,7 @@
           justify-content: space-between;
 }
 
-.clinic_page .clinic_page_doctors #clinic_page_doctors_slide #clinic_page_doctors_slide_info #clinic_page_doctors_slide_info_lastblock #doctor_page_doctors_slide_info_phonegroup {
+.clinic_page .clinic_page_doctors #clinic_page_doctors_slide #clinic_page_doctors_slide_info #clinic_page_doctors_slide_info_lastblock #clinic_page_doctors_slide_info_phonegroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -484,7 +492,7 @@
   color: #828282;
 }
 
-.clinic_page .clinic_page_doctors #clinic_page_doctors_slide #clinic_page_doctors_slide_info #clinic_page_doctors_slide_info_lastblock #doctor_page_doctors_slide_info_phonegroup svg {
+.clinic_page .clinic_page_doctors #clinic_page_doctors_slide #clinic_page_doctors_slide_info #clinic_page_doctors_slide_info_lastblock #clinic_page_doctors_slide_info_phonegroup svg {
   margin-right: 8px;
 }
 
@@ -558,7 +566,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  width: auto !important;
+  width: 406px !important;
   height: auto;
   background-color: #FCFCFC;
   border-radius: 5px;
@@ -725,5 +733,166 @@
 
 .clinic_page .slick-track {
   float: left;
+}
+
+@media only screen and (max-width: 1200px) {
+  .clinic_page .clinic_page_main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left {
+    width: 100%;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data #clinic_page_clinics_data_image {
+    width: 37%;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data #clinic_page_clinics_data_info {
+    width: 60%;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_right {
+    width: 100%;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .clinic_page .MuiBreadcrumbs-root {
+    padding: 60px 45px 0;
+  }
+  .clinic_page .clinic_page_main {
+    padding: 0 45px;
+  }
+  .clinic_page #clinic_page_rating_title {
+    padding: 0 45px;
+    font-size: 40px;
+    margin-top: 50px;
+  }
+  .clinic_page .clinic_page_rating {
+    padding: 0 45px;
+    margin-top: 45px;
+  }
+  .clinic_page #clinic_page_doctors_title {
+    padding: 0 45px;
+    font-size: 40px;
+  }
+  .clinic_page .clinic_page_doctors {
+    padding: 0 45px;
+    margin-top: 45px;
+  }
+  .clinic_page #clinic_page_clinics_title {
+    padding: 0 45px;
+    font-size: 40px;
+  }
+  .clinic_page .clinic_page_clinics {
+    padding: 0 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .clinic_page .MuiBreadcrumbs-root {
+    padding: 60px 39px 0;
+  }
+  .clinic_page .clinic_page_main {
+    padding: 0 39px;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data #clinic_page_clinics_data_image {
+    width: 100%;
+    height: auto;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_clinics_data #clinic_page_clinics_data_info {
+    width: 100%;
+  }
+  .clinic_page #clinic_page_rating_title {
+    padding: 0 39px;
+  }
+  .clinic_page .clinic_page_rating {
+    padding: 0 39px;
+  }
+  .clinic_page .clinic_page_rating #clinic_page_rating_p {
+    font-size: 25px;
+  }
+  .clinic_page #clinic_page_doctors_title {
+    padding: 0 39px;
+  }
+  .clinic_page .clinic_page_doctors {
+    padding: 0 39px;
+  }
+  .clinic_page #clinic_page_clinics_title {
+    padding: 0 39px;
+  }
+  .clinic_page .clinic_page_clinics {
+    padding: 0 39px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .clinic_page .MuiBreadcrumbs-root {
+    padding: 60px 16px 0;
+  }
+  .clinic_page .clinic_page_main {
+    padding: 0 16px;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_left #clinic_page_doctors_data {
+    padding: 10px;
+  }
+  .clinic_page .clinic_page_main .clinic_page_main_right .clinic_page_tabs_container {
+    padding: 10px;
+  }
+  .clinic_page #clinic_page_rating_title {
+    padding: 0 16px;
+    font-size: 30px;
+  }
+  .clinic_page .clinic_page_rating {
+    padding: 0 16px;
+  }
+  .clinic_page .clinic_page_rating #clinic_page_rating_p {
+    font-size: 20px;
+  }
+  .clinic_page #clinic_page_doctors_title {
+    padding: 0 16px;
+    font-size: 30px;
+  }
+  .clinic_page .clinic_page_doctors {
+    padding: 0 16px;
+  }
+  .clinic_page .clinic_page_doctors #clinic_page_doctors_slide {
+    padding: 10px;
+  }
+  .clinic_page #clinic_page_clinics_title {
+    padding: 0 16px;
+    font-size: 30px;
+  }
+  .clinic_page .clinic_page_clinics {
+    padding: 0 16px;
+  }
+  .clinic_page .clinic_page_clinics #clinic_page_clinics_slide {
+    padding: 10px;
+  }
 }
 /*# sourceMappingURL=clinic.css.map */

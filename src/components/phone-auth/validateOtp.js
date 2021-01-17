@@ -22,9 +22,9 @@ import { ToastContainer } from 'react-toastify';
 const ValidateOtp = (props) => {
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     // firebase.auth().currentUser.getIdToken()
-  });
+  }, []);
 
 
   /* FOR OTP INPUT */

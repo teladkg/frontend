@@ -18,8 +18,8 @@ import LinkMaterial from '@material-ui/core/Link';
 const Registration = (props) => {
 
   useEffect(() => {
-    // window.scrollTo(0, 0)
-  });
+    window.scrollTo(0, 0);
+  }, []);
   let history = useHistory();
 
 

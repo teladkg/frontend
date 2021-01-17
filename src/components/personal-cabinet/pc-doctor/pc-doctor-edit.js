@@ -71,7 +71,7 @@ const PCDoctorEdit = (props) => {
   const [tableArr2, setTableArr2] = useState();
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     props.getPCDoctor();
     props.getSpecialties();
   }, []);

@@ -14,7 +14,6 @@ import Clinic from './components/profile-clinic/clinic';
 import Map from './components/map/map';
 
 import Registration from './components/registration/registration';
-// import Login from './components/login/login';
 import PhoneAuth from './components/phone-auth/phoneAuth';
 import ValidateOtp from './components/phone-auth/validateOtp';
 
@@ -22,6 +21,9 @@ import PCDoctor from './components/personal-cabinet/pc-doctor/pc-doctor';
 import PCDoctorEdit from './components/personal-cabinet/pc-doctor/pc-doctor-edit';
 // import PCClinic from './components/personal-cabinet/pc-clinic/pc-clinic';
 import PCClient from './components/personal-cabinet/pc-client/pc-client';
+
+import About from './components/about/about';
+import NotFound from './components/not-found/not-found';
 
 
 function App() {
@@ -58,9 +60,6 @@ function App() {
         <Route path = "/registration"
           component = {Registration}
         />
-        {/* <Route path = "/login"
-          component = {Login}
-        /> */}
         <Route path = "/phone-auth"
           component = {PhoneAuth}
         />
@@ -68,9 +67,6 @@ function App() {
           component = {ValidateOtp}
         />
 
-        {/* <Route path = "/pc-doctor"
-          component = {PCDoctor}
-        /> */}
         <PrivateRoute path="/pc-doctor/info" 
           component={PCDoctor} 
         />
@@ -83,7 +79,15 @@ function App() {
         {/* <Route path = "/pc-clinic"
           component = {PCClinic}
         /> */}
+
+        <Route path = "/about"
+          component = {About}
+        />
         
+        {/* <Route path = "/not-found"
+          component = {NotFound}
+        /> */}
+        <Route path="*" component={NotFound} />
       </Switch>
     </div>
   );

@@ -6,6 +6,7 @@ import { getDoctors, getDoctorById, getSpecialties, getCities, getFilterData, se
 
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import NotFound from '../not-found/not-found';
 
 import './search.css';
 
@@ -338,7 +339,7 @@ const Search = (props) => {
           }
           {
             doctors && doctors.length===0
-            ? <span>Нет подходящих врачей</span> 
+            ? <NotFound />
             : ''
           }
         </div>

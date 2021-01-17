@@ -10,6 +10,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   font-family: 'Roboto', sans-serif;
+  /* FOR MEDIA QUERIES */
 }
 
 .personal_client_page .MuiBreadcrumbs-root {
@@ -81,9 +82,9 @@
 }
 
 .personal_client_page .personal_client_page_main_right .personal_client_page_tabs_container .MuiTabs-flexContainer {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .personal_client_page .personal_client_page_main_right .personal_client_page_tabs_container .MuiPaper-elevation4 {
@@ -557,5 +558,53 @@
   width: 50%;
   fill: #fff !important;
   stroke: none;
+}
+
+@media only screen and (max-width: 1500px) {
+  .personal_client_page .personal_client_page_main_right .personal_client_page_tabs_container .MuiPaper-root.MuiAppBar-root {
+    width: 340px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .personal_client_page .MuiBreadcrumbs-root {
+    padding: 60px 45px 0;
+  }
+  .personal_client_page #personal_client_page_title {
+    padding: 0 45px;
+    font-size: 50px;
+  }
+  .personal_client_page .personal_client_page_main_right .personal_client_page_tabs_container {
+    padding: 25px 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .personal_client_page .MuiBreadcrumbs-root {
+    padding: 60px 39px 0;
+  }
+  .personal_client_page #personal_client_page_title {
+    padding: 0 39px;
+    font-size: 40px;
+  }
+  .personal_client_page .personal_client_page_main_right .personal_client_page_tabs_container {
+    padding: 25px 39px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .personal_client_page .MuiBreadcrumbs-root {
+    padding: 60px 16px 0;
+  }
+  .personal_client_page #personal_client_page_title {
+    padding: 0 16px;
+    font-size: 30px;
+  }
+  .personal_client_page .personal_client_page_main_right .personal_client_page_tabs_container {
+    padding: 25px 16px;
+  }
+  .personal_client_page .personal_client_page_main_right .personal_client_page_tabs_container .MuiPaper-root.MuiAppBar-root {
+    width: 300px;
+  }
 }
 /*# sourceMappingURL=pc-client.css.map */

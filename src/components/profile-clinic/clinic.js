@@ -133,11 +133,48 @@ const Clinic = (props) => {
     customDoctorSlider.current.slickPrev();
   }
   const doctors_slider = {
-    infinite: userData.doctors && userData.doctors.length > 3,
+    // infinite: userData.doctors && userData.doctors.length > 3,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    arrows: false
+    arrows: false,
+    variableWidth: true, 
+    // swipeToSlide: true,
+    // adaptiveHeight: true,
+    responsive: [
+      {
+        breakpoint: 1430,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+        }
+      },
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: false,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
 
@@ -150,12 +187,50 @@ const Clinic = (props) => {
     customClinicSlider.current.slickPrev();
   }
   const clinics_slider = {
-    // dots: true,
-    infinite: clinicsData && clinicsData.length > 3,
+    // infinite: clinicsData && clinicsData.length > 3,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    arrows: false
+    arrows: false,
+    variableWidth: true,
+    // adaptiveHeight: true
+    responsive: [
+      {
+        breakpoint: 1430,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          // dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: false,
+          // dots: true
+        }
+      },
+      {
+        breakpoint: 920,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: false,
+          // initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
 

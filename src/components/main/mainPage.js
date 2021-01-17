@@ -271,10 +271,17 @@ const MainPage = (props) => {
   };
 
 
+  /* FOR LOGOUT */ 
   const handleLogout = () => {
     userActions.logout();
     history.push('/');
   }
+
+
+  /* MAINPAGE HEADER */ 
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
 
   const doctors = props.data.results;
@@ -290,6 +297,7 @@ const MainPage = (props) => {
       <section className="search">
         <div className="main_header">
           <div className="main_header_nav">
+
             <Link to="/">
               <svg width="101" height="28" viewBox="0 0 101 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.56 6.15995H0V1.19995H21.56V6.15995H14V26.96H7.56V6.15995Z" fill="white"/>
@@ -301,72 +309,100 @@ const MainPage = (props) => {
             </Link> 
 
             <div className="main_header_nav_bar">
-              <ul className="main_header_nav_items">
+              <ul className={click ? "main_header_nav_items_mobile" : "main_header_nav_items"}>
                 { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
                   ? localStorage.getItem('clientType') === 'doctor'
-                    ? <li><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
-                    : <li><Link to="/pc-client">Мой кабинет</Link></li>  
+                    ? <li onClick={closeMobileMenu}><Link to="/pc-doctor/info">Мой кабинет</Link></li> 
+                    : <li onClick={closeMobileMenu}><Link to="/pc-client">Мой кабинет</Link></li>  
                   : ''
                 }
-                <li><Link to="/search">Врачи</Link></li>
-                <li><Link to="/clinics-search">Клиники</Link></li>
-                <li><Link to="/map">Карта</Link></li>
+                <li onClick={closeMobileMenu}><Link to="/search">Врачи</Link></li>
+                <li onClick={closeMobileMenu}><Link to="/clinics-search">Клиники</Link></li>
+                <li onClick={closeMobileMenu}><Link to="/map">Карта</Link></li>
+                <div className="log-buttons-mobile">
+                  { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
+                    ? 
+                      <div id="login-reg-mobile">
+                        <Link id="reg-mobile" to="/phone-auth" title="Зарегистрироваться">Зарегистрироваться</Link>
+                        <Link id="login-mobile" to="/phone-auth" title="Войти">Войти</Link>
+                      </div>
+                    : '' 
+                  }
+                  { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false' 
+                    ? <button id="logout-mobile" title="Выйти" onClick={handleLogout}>Выйти</button>
+                    : '' 
+                  }
+                </div>
               </ul>
             </div>
 
             <div className="main_header_icon_group">
-              <Link to="/search">
+              <Link to="/search" onClick={closeMobileMenu}>
                 <svg id="main_header_icon_group_first" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </Link>
-              {!localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
-              ? 
-                <div>
-                  <Button
-                    ref={anchorRef}
-                    aria-controls={open ? 'menu-list-grow' : undefined}
-                    aria-haspopup="true"
-                    onClick={handleToggle}
-                    title="Авторизация"
-                  >
-                    <svg id="main_header_icon_group_second" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M16 17L11 12L16 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M11 12H23" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
+                ? 
+                  <div>
+                    <Button
+                      ref={anchorRef}
+                      aria-controls={open ? 'menu-list-grow' : undefined}
+                      aria-haspopup="true"
+                      onClick={handleToggle}
+                      title="Авторизация"
+                    >
+                      <svg id="main_header_icon_group_second" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 17L11 12L16 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11 12H23" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </Button>
+                    <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
+                        >
+                          <Paper>
+                            <ClickAwayListener onClickAway={handleClose}>
+                              <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
+                                <Link to="/phone-auth" title="Зарегистрироваться"><MenuItem onClick={handleClose}>Зарегистрироваться</MenuItem></Link>
+                                <Link to="/phone-auth" title="Войти"><MenuItem onClick={handleClose}>Войти</MenuItem></Link>
+                              </MenuList>
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
+                  </div>
+                : '' 
+              }
+              { localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false'
+                ? 
+                  <button id="main_header_logout-button" title="Выйти" onClick={handleLogout}>
+                    {/* <img id="main_header_logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M13 19H17C17.5304 19 18.0391 18.7893 18.4142 18.4142C18.7893 18.0391 19 17.5304 19 17V3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M6 15L1 10L6 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M1 10H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                  </Button>
-                  <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                    {({ TransitionProps, placement }) => (
-                      <Grow
-                        {...TransitionProps}
-                        style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
-                      >
-                        <Paper>
-                          <ClickAwayListener onClickAway={handleClose}>
-                            <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                              <Link to="/phone-auth" title="Зарегистрироваться"><MenuItem onClick={handleClose}>Зарегистрироваться</MenuItem></Link>
-                              <Link to="/phone-auth" title="Войти"><MenuItem onClick={handleClose}>Войти</MenuItem></Link>
-                            </MenuList>
-                          </ClickAwayListener>
-                        </Paper>
-                      </Grow>
-                    )}
-                  </Popper>
-                </div>
-              : '' }
-              {localStorage.getItem('userToken') && localStorage.getItem('userToken') !== 'false'
-              ? 
-                <button id="main_header_logout-button" title="Выйти" onClick={handleLogout}>
-                  {/* <img id="main_header_logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13 19H17C17.5304 19 18.0391 18.7893 18.4142 18.4142C18.7893 18.0391 19 17.5304 19 17V3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 15L1 10L6 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M1 10H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              : '' }
+                  </button>
+                : '' 
+              }
+            </div>
+
+            <div className="mobile-menu" onClick={handleClick}>
+              {click ? (
+                <svg id="x-mark" className="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="black">
+                  <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                </svg>
+              ) : (
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+              )}
             </div>
 
           </div>
@@ -490,7 +526,7 @@ const MainPage = (props) => {
             clinics &&
             clinics.map(clinic => {
               return( 
-                <div className="clinics_slide">
+                <div id="clinics_slide">
                   <img id="clinics_slide_image" src={require('../../content/images/main/Frame_67.png')} alt="clinic pic"/>
                   <div id="clinics_slide_info">
                     <Link to={`/clinic/${clinic.id}`}><h3>{clinic.name}</h3></Link>
