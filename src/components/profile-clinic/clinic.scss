@@ -555,6 +555,9 @@
     .clinic_page_doctors {
       padding: 0 45px;
       margin-top: 45px;
+      .clinic_page_doctors_button_group {
+        display: none;
+      }
     }
     #clinic_page_clinics_title {
       padding: 0 45px;
@@ -562,6 +565,9 @@
     }
     .clinic_page_clinics {
       padding: 0 45px;
+      .clinic_page_clinics_button_group {
+        display: none;
+      }
     }
   }
 

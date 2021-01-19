@@ -164,6 +164,10 @@ const Map = (props) => {
                             id: res2.id,
                           });
                         }}
+                        icon={{ 
+                          url: "/doctor.svg",
+                          scaledSize: new window.google.maps.Size(35, 35),
+                        }}
                       />
                         {selectedDoc ? (
                           <InfoWindow 
@@ -204,6 +208,10 @@ const Map = (props) => {
                               last_name: doctor.user.last_name,
                               id: doctor.id,
                             });
+                          }}
+                          icon={{ 
+                            url: "/doctor.svg",
+                            scaledSize: new window.google.maps.Size(35, 35),
                           }}
                         />
                           {selectedDoc ? (
@@ -247,6 +255,10 @@ const Map = (props) => {
                           id: res1.id
                         });
                       }}
+                      icon={{ 
+                        url: "/location.svg",
+                        scaledSize: new window.google.maps.Size(35, 35),
+                      }}
                     />
                       {selectedClinic ? (
                         <InfoWindow 
@@ -277,6 +289,10 @@ const Map = (props) => {
                             address: elem.address,
                             id: elem.id
                           });
+                        }}
+                        icon={{ 
+                          url: "/location.svg",
+                          scaledSize: new window.google.maps.Size(35, 35),
                         }}
                       />
                         {selectedClinic ? (

@@ -278,6 +278,15 @@ const MainPage = (props) => {
   }
 
 
+  /* FOR HTML SANITIZER */ 
+  const stripHTML = (html) => {
+    var clean = sanitizeHtml(html);
+    clean = clean.replace(/<(?:.|\n)*?>/gm, "\n");
+    clean = clean.replace(/(?:(?:\r\n|\r|\n)\s*){2}/ig, "\n");
+    return clean.trim();
+  }
+
+
   /* MAINPAGE HEADER */ 
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -531,7 +540,7 @@ const MainPage = (props) => {
                   <div id="clinics_slide_info">
                     <Link to={`/clinic/${clinic.id}`}><h3>{clinic.name}</h3></Link>
                     <p id="clinics_slide_info_typeofclinic">Детская клиника</p>
-                    <p id="clinics_slide_info_article">{sanitizeHtml(clinic.description)}</p>
+                    <p id="clinics_slide_info_article">{stripHTML(clinic.description)}</p>
                     <p id="clinics_slide_info_address">{clinic.address}</p>
                     <div id="clinics_slide_info_lastblock">
                       <div id="clinics_slide_info_phonegroup">

@@ -40,6 +40,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
+import sanitizeHtml from 'sanitize-html';
+
 import { ToastContainer } from 'react-toastify';
 
 
@@ -234,6 +236,15 @@ const Clinic = (props) => {
   };
 
 
+  /* FOR HTML SANITIZER */ 
+  const stripHTML = (html) => {
+    var clean = sanitizeHtml(html);
+    clean = clean.replace(/<(?:.|\n)*?>/gm, "\n");
+    clean = clean.replace(/(?:(?:\r\n|\r|\n)\s*){2}/ig, "\n");
+    return clean.trim();
+  }
+
+
   console.log(userData);
 
 
@@ -282,7 +293,7 @@ const Clinic = (props) => {
                 <div id="clinic_page_clinics_data_info">
                   <Link to="/clinic"><h3>{userData.name}</h3></Link>
                   <p id="clinic_page_clinics_data_info_typeofclinic">Детская клиника</p>
-                  <p id="clinic_page_clinics_data_info_article">{userData.description}</p>
+                  <p id="clinic_page_clinics_data_info_article">{stripHTML(userData.description)}</p>
                   <p id="clinic_page_clinics_data_info_address">{userData.address}</p>
                   <div id="clinic_page_clinics_data_info_lastblock">
                     <div id="clinic_page_clinics_data_info_phonegroup">
@@ -313,7 +324,7 @@ const Clinic = (props) => {
                   </AppBar>
                   <TabPanel value={value} index={0}>
                     <div id="clinic_page_tabs_about">
-                      {userData.description==null ? <p>Информация отсутствует...</p> : userData.description}
+                      {userData.description==null ? <p>Информация отсутствует...</p> : stripHTML(userData.description)}
                     </div>                 
                   </TabPanel>
                   <TabPanel value={value} index={1}>                  
@@ -492,7 +503,7 @@ const Clinic = (props) => {
                     <div id="clinic_page_clinics_slide_info">
                       <Link to={`/clinic/${elem.id}`}><h3>{elem.name}</h3></Link>
                       <p id="clinic_page_clinics_slide_info_typeofclinic">Детская клиника</p>
-                      <p id="clinic_page_clinics_slide_info_article">{elem.description}</p>
+                      <p id="clinic_page_clinics_slide_info_article">{stripHTML(elem.description)}</p>
                       <p id="clinic_page_clinics_slide_info_address">{elem.address}</p>
                       <div id="clinic_page_clinics_slide_info_lastblock">
                         <div id="clinic_page_clinics_slide_info_phonegroup">

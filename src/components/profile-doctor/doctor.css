@@ -883,6 +883,9 @@
     padding: 0 45px;
     margin-top: 45px;
   }
+  .doctor_page .doctor_page_doctors .doctor_page_doctors_button_group {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 768px) {

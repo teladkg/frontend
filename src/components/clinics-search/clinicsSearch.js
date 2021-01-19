@@ -18,6 +18,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
+import sanitizeHtml from 'sanitize-html';
+
 const ClinicsSearch = (props) => {
 
   useEffect(() => {
@@ -59,6 +61,15 @@ const ClinicsSearch = (props) => {
     setClinicParam(event.target.textContent);
   };
   console.log(res1);
+
+
+  /* FOR HTML SANITIZER */ 
+  const stripHTML = (html) => {
+    var clean = sanitizeHtml(html);
+    clean = clean.replace(/<(?:.|\n)*?>/gm, "\n");
+    clean = clean.replace(/(?:(?:\r\n|\r|\n)\s*){2}/ig, "\n");
+    return clean.trim();
+  }
 
 
   const clinics = props.clinics.results;
@@ -124,7 +135,7 @@ const ClinicsSearch = (props) => {
               <div id="clinics_page_clinics_slide_info">
                 <Link to={`/clinic/${res1.id}`}><h3>{res1.name}</h3></Link>
                 <p id="clinics_page_clinics_slide_info_typeofclinic">Детская клиника</p>
-                <p id="clinics_page_clinics_slide_info_article">{res1.description}</p>
+                <p id="clinics_page_clinics_slide_info_article">{stripHTML(res1.description)}</p>
                 <p id="clinics_page_clinics_slide_info_address">{res1.address}</p>
                 <div id="clinics_page_clinics_slide_info_lastblock">
                   <div id="clinics_page_clinics_slide_info_phonegroup">
@@ -150,7 +161,7 @@ const ClinicsSearch = (props) => {
                   <div id="clinics_page_clinics_slide_info">
                     <Link to={`/clinic/${elem.id}`}><h3>{elem.name}</h3></Link>
                     <p id="clinics_page_clinics_slide_info_typeofclinic">Детская клиника</p>
-                    <p id="clinics_page_clinics_slide_info_article">{elem.description}</p>
+                    <p id="clinics_page_clinics_slide_info_article">{stripHTML(elem.description)}</p>
                     <p id="clinics_page_clinics_slide_info_address">{elem.address}</p>
                     <div id="clinics_page_clinics_slide_info_lastblock">
                       <div id="clinics_page_clinics_slide_info_phonegroup">

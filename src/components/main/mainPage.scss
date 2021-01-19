@@ -757,6 +757,9 @@ aside[data-testid="react-scroll-up-button"] {
         font-size: 22px;
       }
     }
+    .specialties_button_group {
+      display: none;
+    }
   }
   .clinics {
     padding: 0 45px 0;
@@ -769,6 +772,9 @@ aside[data-testid="react-scroll-up-button"] {
         font-size: 22px;
       }
     }
+    .clinics_button_group {
+      display: none;
+    }
   }
   .doctors {
     padding: 0 45px 0;
@@ -780,6 +786,9 @@ aside[data-testid="react-scroll-up-button"] {
       #doctors_titles_link {
         font-size: 22px;
       }
+    }
+    .doctors_button_group {
+      display: none;
     }
   }
 }

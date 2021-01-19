@@ -1015,6 +1015,9 @@ aside[data-testid="react-scroll-up-button"] svg {
   .specialties .specialties_titles #specialties_titles_link {
     font-size: 22px;
   }
+  .specialties .specialties_button_group {
+    display: none;
+  }
   .clinics {
     padding: 0 45px 0;
   }
@@ -1027,6 +1030,9 @@ aside[data-testid="react-scroll-up-button"] svg {
   .clinics .clinics_titles #clinics_titles_link {
     font-size: 22px;
   }
+  .clinics .clinics_button_group {
+    display: none;
+  }
   .doctors {
     padding: 0 45px 0;
   }
@@ -1038,6 +1044,9 @@ aside[data-testid="react-scroll-up-button"] svg {
   }
   .doctors .doctors_titles #doctors_titles_link {
     font-size: 22px;
+  }
+  .doctors .doctors_button_group {
+    display: none;
   }
 }
 

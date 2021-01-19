@@ -642,6 +642,9 @@
     .doctor_page_doctors {
       padding: 0 45px;
       margin-top: 45px;
+      .doctor_page_doctors_button_group {
+        display: none;
+      }
     }
   }
 
