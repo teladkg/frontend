@@ -132,19 +132,106 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  width: 10%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.search .main_header .main_header_nav .main_header_icon_group svg:hover {
+.search .main_header .main_header_nav .main_header_icon_group #main_header_icon_group_search_link {
+  padding: 6px 8px;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 53px;
+  -webkit-transition: 0.4s linear;
+  transition: 0.4s linear;
+  overflow: hidden;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox #main_header_icon_group_searchbox_input {
+  display: block;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 10px;
+  color: #2b2b2b;
+  font-size: 18px;
   cursor: pointer;
+  -webkit-transition: 0.4s linear;
+  transition: 0.4s linear;
 }
 
-.search .main_header .main_header_nav .main_header_icon_group img {
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox #main_header_icon_group_searchbox_input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox #main_header_icon_group_searchbox_input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox #main_header_icon_group_searchbox_input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox #main_header_icon_group_searchbox_input::placeholder {
+  color: transparent;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox #main_header_icon_group_first {
+  position: absolute;
+  right: calc(53px / 2);
+  top: 50%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
   width: 23px;
   height: 23px;
+  pointer-events: none;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox #main_header_icon_group_first path {
+  stroke: #fff;
+  -webkit-transition: 0.4s linear;
+  transition: 0.4s linear;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox:focus-within {
+  max-width: 270px;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox:focus-within #main_header_icon_group_searchbox_input {
+  background-color: #fff;
+  padding-right: 50px;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox:focus-within #main_header_icon_group_searchbox_input::-webkit-input-placeholder {
+  color: #BDBDBD;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox:focus-within #main_header_icon_group_searchbox_input:-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox:focus-within #main_header_icon_group_searchbox_input::-ms-input-placeholder {
+  color: #BDBDBD;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox:focus-within #main_header_icon_group_searchbox_input::placeholder {
+  color: #BDBDBD;
+}
+
+.search .main_header .main_header_nav .main_header_icon_group .main_header_icon_group_searchbox:focus-within #main_header_icon_group_first path {
+  stroke: #00afca;
 }
 
 .search .main_header .main_header_nav .main_header_icon_group #main_header_logout-button {

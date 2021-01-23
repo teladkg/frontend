@@ -76,14 +76,64 @@
 
     .icon_group {
       display: flex;
-      justify-content: space-evenly;
-      width: 10%;
-      svg:hover {
-        cursor: pointer;
+      justify-content: flex-end;
+      align-items: center;
+      #icon_group_search_link {
+        padding: 6px 8px;
       }
-      img {
-        width: 23px;
-        height: 23px;
+      .icon_group_searchbox {
+        display: block;
+        position: relative;
+        width: 100%;
+        max-width: 53px;
+        transition: 0.4s linear;
+        overflow: hidden;
+        #icon_group_searchbox_input {
+          display: block;
+          appearance: none;
+          width: 100%;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          background-color: transparent;
+          padding: 10px;
+          color: #fff;
+          font-size: 18px;
+          cursor: pointer;
+          transition: 0.4s linear;
+          
+          &::placeholder {
+            color: transparent;
+          }
+        }
+        #icon_group_first {
+          position: absolute;
+          right: calc(53px / 2);
+          top: 50%;
+          transform: translate(50%, -50%);
+          width: 23px;
+          height: 23px;
+          pointer-events: none;
+          path {
+            stroke: #fff;
+            transition: 0.4s linear;
+          }
+        }
+        &:focus-within {
+          max-width: 270px;
+          #icon_group_searchbox_input {
+            background-color: #fff; 
+            padding-right: 50px;
+            &::placeholder {
+              color: #BDBDBD;
+            }
+          }
+          #icon_group_first {
+            path {
+              stroke: #00afca;
+            }
+          }
+        }
       }
       #logout-button {
         outline: none;

@@ -53,6 +53,14 @@ const Header = (props) => {
   }
 
 
+  const handleKeypress = e => {      
+    if (e.key === "Enter") {      
+      e.preventDefault();
+      history.push('/search') 
+    }  
+  };
+
+
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -101,12 +109,19 @@ const Header = (props) => {
           </div>
 
           <div className="icon_group">
-            <Link to="/search" onClick={closeMobileMenu}>
+            <div className="icon_group_searchbox">
+              <input id="icon_group_searchbox_input" type="text" placeholder="Поиск..." onKeyPress={handleKeypress} />
               <svg id="icon_group_first" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </Link>
+            </div>
+            {/* <Link id="icon_group_search_link" to="/search" onClick={closeMobileMenu}>
+              <svg id="icon_group_first" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </Link> */}
             { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
               ? 
                 <div>
