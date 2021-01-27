@@ -358,14 +358,14 @@ const MainPage = (props) => {
               <div className="main_header_icon_group_searchbox">
                 <input id="main_header_icon_group_searchbox_input" type="text" placeholder="Поиск..." onKeyPress={handleKeypress} />
                 <svg id="main_header_icon_group_first" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
               {/* <Link id="main_header_icon_group_search_link" to="/search" onClick={closeMobileMenu}>
                 <svg id="main_header_icon_group_first" width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M10.0625 18.6875C14.826 18.6875 18.6875 14.826 18.6875 10.0625C18.6875 5.29904 14.826 1.4375 10.0625 1.4375C5.29904 1.4375 1.4375 5.29904 1.4375 10.0625C1.4375 14.826 5.29904 18.6875 10.0625 18.6875Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M16.5312 16.5312L21.5625 21.5625" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link> */}
               { !localStorage.getItem('userToken') || localStorage.getItem('userToken') === 'false' 
@@ -379,9 +379,9 @@ const MainPage = (props) => {
                       title="Авторизация"
                     >
                       <svg id="main_header_icon_group_second" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M16 17L11 12L16 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M11 12H23" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M16 17L11 12L16 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M11 12H23" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </Button>
                     <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
@@ -409,9 +409,9 @@ const MainPage = (props) => {
                   <button id="main_header_logout-button" title="Выйти" onClick={handleLogout}>
                     {/* <img id="main_header_logout-button-icon" src={require('../../content/images/main/logout.svg')} alt="Выйти"/> */}
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M13 19H17C17.5304 19 18.0391 18.7893 18.4142 18.4142C18.7893 18.0391 19 17.5304 19 17V3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M6 15L1 10L6 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M1 10H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M13 19H17C17.5304 19 18.0391 18.7893 18.4142 18.4142C18.7893 18.0391 19 17.5304 19 17V3C19 2.46957 18.7893 1.96086 18.4142 1.58579C18.0391 1.21071 17.5304 1 17 1H13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M6 15L1 10L6 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M1 10H13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </button>
                 : '' 
@@ -425,7 +425,7 @@ const MainPage = (props) => {
                 </svg>
               ) : (
                 <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
               )}
             </div>
@@ -513,7 +513,7 @@ const MainPage = (props) => {
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8588 13.0094C16.5079 13.0079 17.1509 13.1345 17.7511 13.3818C18.3516 13.6292 18.8974 13.9927 19.3572 14.4513C19.817 14.91 20.1818 15.4549 20.4307 16.0548C20.6796 16.6546 20.8077 17.2977 20.8077 17.9472L20.8077 18.4863H15.2374V17.4081H19.6917C19.6463 17.0859 19.5601 16.7699 19.4349 16.468C19.2403 15.9991 18.9552 15.5732 18.5957 15.2146C18.2363 14.8561 17.8097 14.572 17.3404 14.3786C16.871 14.1852 16.3681 14.0863 15.8604 14.0875L15.8584 14.0875C15.2264 14.0867 14.6038 14.2415 14.0458 14.5383L13.5396 13.5864C14.2536 13.2066 15.0501 13.0085 15.8588 13.0094Z" fill="white"/>
                         </svg>
                       </div>              
-                      <svg id="specialties_slide_content_right" width="11" height="21" viewBox="0 0 11 21" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                      <svg id="specialties_slide_content_right" width="11" height="21" viewBox="0 0 11 21" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.125 1.75L9.875 10.5L1.125 19.25"/>
                       </svg>
                     </div>
