@@ -964,6 +964,9 @@
   .doctor_page .doctor_page_main .doctor_page_main_left #doctor_page_doctors_data {
     padding: 10px;
   }
+  .doctor_page .doctor_page_main .doctor_page_main_right .doctor_page_tabs_container {
+    padding: 24px 10px;
+  }
   .doctor_page #doctor_page_rating_title {
     padding: 0 16px;
     font-size: 30px;

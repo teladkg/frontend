@@ -114,9 +114,27 @@ const PCDoctorEdit = (props) => {
 
   const { register, handleSubmit, control, setValue } = useForm();
   const onSubmit = (data, event) => {
-    const specialtiesIds = data.specialties.map((e)=> {
+    const specialtiesIds = data.specialties.map((e) => {
       return { id: e.id }
     })
+    // const locationsData = editState.locations && editState.locations.map((e) => {
+    //   if (e.length === 0 && locationsState.length > 0) {
+    //     return [{ 
+    //       latitude: locationsState.latitude,
+    //       longitude: locationsState.longitude,
+    //       address: locationsState.address 
+    //     }]
+    //   }
+    //   else if (e.length > 0 && locationsState.length === 0) {
+    //     return [{
+    //       id: editState.locations[0].id,
+    //       latitude: editState.locations[0].latitude,
+    //       longitude: editState.locations[0].longitude,
+    //       address: editState.locations[0].address
+    //     }]
+    //   }
+    //   else return [];
+    // })
 
     let patchData = {
       user: {
@@ -127,6 +145,7 @@ const PCDoctorEdit = (props) => {
       },
       description: data.description,
       started_working: data.started_working,
+      // locations: locationsData,
       locations: [ 
         editState.locations[0] &&
         editState.locations[0].latitude === locationsState.latitude &&
@@ -137,17 +156,62 @@ const PCDoctorEdit = (props) => {
           longitude: locationsState.longitude,
           address: locationsState.address
         }
-        : locationsState.length === 0 ? {
-          id: editState.locations[0].id,
-          latitude: editState.locations[0].latitude,
-          longitude: editState.locations[0].longitude,
-          address: editState.locations[0].address
-        } : {
+          ? locationsState.length === 0 
+          : {
+            id: editState.locations[0].id,
+            latitude: editState.locations[0].latitude,
+            longitude: editState.locations[0].longitude,
+            address: editState.locations[0].address
+          } 
+        : {
           latitude: locationsState.latitude,
           longitude: locationsState.longitude,
           address: locationsState.address
         }
       ],
+
+      // locations: [ 
+      //   editState.locations.length === 0 && locationsState.length === 0
+      //   ? {
+          
+      //   }
+      //     : locationsState.length > 0 
+      //     ? {
+      //       id: editState.locations[0].id,
+      //       latitude: locationsState.latitude,
+      //       longitude: locationsState.longitude,
+      //       address: locationsState.address
+      //     } 
+      //   : {
+      //     id: editState.locations[0].id,
+      //     latitude: editState.locations[0].latitude,
+      //     longitude: editState.locations[0].longitude,
+      //     address: editState.locations[0].address
+      //   }
+      // ],
+
+      // locations: [ 
+      //   ...(editState.locations.length === 0 && locationsState.length === 0)
+      //     && {
+            
+      //     },
+
+      //   ...(editState.locations.length === 0 && locationsState.length > 0) 
+      //     && {
+      //       id: editState.locations[0].id,
+      //       latitude: locationsState.latitude,
+      //       longitude: locationsState.longitude,
+      //       address: locationsState.address
+      //     },
+
+      //   ...(editState.locations.length > 0 && locationsState.length === 0) 
+      //     && {
+      //       id: editState.locations[0].id,
+      //       latitude: editState.locations[0].latitude,
+      //       longitude: editState.locations[0].longitude,
+      //       address: editState.locations[0].address
+      //     },
+      // ],
       specialty: specialtiesIds,
       schedules: tableProps.data,
       prices: convertIntObj(tableProps2.data)[0]
@@ -156,10 +220,12 @@ const PCDoctorEdit = (props) => {
       //   return item;
       // })
     }
-    props.editPCDoctor(patchData);
-    // console.log(patchData);
+    // props.editPCDoctor(patchData);
+    console.log(patchData);
+    // console.log(locationsData);
   }
   console.log(tableProps.data);
+  
 
 
   const CustomLookupEditor = ({

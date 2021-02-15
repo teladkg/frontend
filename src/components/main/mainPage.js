@@ -303,9 +303,13 @@ const MainPage = (props) => {
 
 
   const doctors = props.data.results;
-  // const doctorsFiltred = doctors && doctors.filter(doctor => doctor.rate>0 && doctor<6)
   const specialties = props.specialties.results;
   const clinics = props.clinics.results;
+
+  const ratedSpecialties = specialties && specialties.filter(specialty => specialty.doctors_count > 0);
+  const ratedClinics = clinics && clinics.filter(clinic => clinic.rate>0 && clinic<6)
+  const ratedDoctors = doctors && doctors.filter(doctor => doctor.rate>0 && doctor<6);
+  
   console.log(doctors);
   // console.log(doctorsFiltred);
 
@@ -497,10 +501,10 @@ const MainPage = (props) => {
         </div>
         <Slider ref={customSpecSlider} {...specialties_slider}>
           {
-            specialties &&
-            specialties.map(specialty => {
+            ratedSpecialties &&
+            ratedSpecialties.map(specialty => {
               return(
-                <Link id="specialties_slide-link" to={{pathname: '/search', state: {filterParam: specialty.name}}}>
+                <Link id="specialties_slide-link" to={{pathname: `/search/${specialty.name}`}}>
                   <div id="specialties_slide">
                     <div id="specialties_slide_content">
                       <div id="specialties_slide_content_left">
@@ -548,8 +552,8 @@ const MainPage = (props) => {
         {/* <div id="doctors_slider_container"> */}
         <Slider ref={customClinicSlider} {...clinics_slider}>
           {
-            clinics &&
-            clinics.map(clinic => {
+            ratedClinics &&
+            ratedClinics.map(clinic => {
               return( 
                 <div id="clinics_slide">
                   <img id="clinics_slide_image" src={require('../../content/images/main/Frame_67.png')} alt="clinic pic"/>
@@ -604,8 +608,8 @@ const MainPage = (props) => {
         {/* <div id="doctors_slider_container"> */}
           <Slider ref={customDoctorSlider} {...doctors_slider}>
             {
-              doctors &&
-              doctors.map(elem => {
+              ratedDoctors &&
+              ratedDoctors.map(elem => {
                 return(
                   <div id="doctors_slide">
                     <img id="doctors_slide_image" src={elem.user.avatar == null ? require('../../content/images/main/image_10.png') : elem.user.avatar} alt="clinic pic"/>

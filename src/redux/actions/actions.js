@@ -12,7 +12,7 @@ const getDoctorsSuccess = (json) => {
 const getDoctors = () => {
   return async dispatch => {
     // dispatch(showLoader())
-    await axios.get('http://167.172.109.15/userinfo/doctor/')
+    await axios.get('http://167.172.109.15/userinfo/doctor/?limit=200')
     .then(res => {
       dispatch(getDoctorsSuccess(res.data))
       // dispatch(hideLoader())
@@ -31,7 +31,7 @@ const getClinicsSuccess = (json) => {
 const getClinics = () => {
   return async dispatch => {
     // dispatch(showLoader())
-    await axios.get('http://167.172.109.15/userinfo/clinic/')
+    await axios.get('http://167.172.109.15/userinfo/clinic/?limit=200')
     .then(res => {
       dispatch(getClinicsSuccess(res.data))
       // dispatch(hideLoader())
@@ -71,7 +71,7 @@ const getSpecialtiesSuccess = (json) => {
 }
 const getSpecialties = () => {
   return async dispatch => {
-    await axios.get('http://167.172.109.15/userinfo/specialty/')
+    await axios.get('http://167.172.109.15/userinfo/specialty/?limit=200')
     .then(res => {
       dispatch(getSpecialtiesSuccess(res.data))
     })

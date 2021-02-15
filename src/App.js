@@ -30,9 +30,7 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        
-        <Route
-          exact path = "/"
+        <Route exact path = "/"
           component = {MainPage}
         />
 
@@ -84,9 +82,6 @@ function App() {
           component = {About}
         />
         
-        {/* <Route path = "/not-found"
-          component = {NotFound}
-        /> */}
         <Route path="*" component={NotFound} />
       </Switch>
     </div>

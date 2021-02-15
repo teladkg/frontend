@@ -90,7 +90,12 @@ const Search = (props) => {
   const res1 = props.specialties.results && props.specialties.results.find(param => param.name === spec);
   
   const setFilter = (event) => {
-    setSpec(event.target.textContent);
+    if (props.location.state && props.location.state !== undefined) {
+      setSpec(props.location.state.filterParam);
+    } else {
+      setSpec(event.target.textContent);
+    }
+    
     setReceptionState(event.target.value);
     // let array = document.getElementById('specsfilter');
     // let items = '';
@@ -102,6 +107,11 @@ const Search = (props) => {
     // props.setFilterItems(items);
     // console.log(res1);
   };
+
+  useEffect(()=> {
+    console.log(spec);
+    // console.log(props.location.state.filterParam);
+  }, [spec]);
 
   useEffect(()=> {
     if (receptionState === 'Home') {
