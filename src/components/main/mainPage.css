@@ -507,6 +507,8 @@
   cursor: pointer;
   -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
+  -webkit-transition: .3s all ease-in-out;
+  transition: .3s all ease-in-out;
 }
 
 .specialties #specialties_slide-link:hover #specialties_slide_right {
