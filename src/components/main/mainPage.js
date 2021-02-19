@@ -507,7 +507,7 @@ const MainPage = (props) => {
             ratedSpecialties.map(specialty => {
               return( 
                 <>
-                  <Link to={{pathname: `/search/${specialty.name}`}} id="specialties_slide-link" style={{backgroundColor: randomColor({ luminosity: 'light', hue: 'blue' })}}>
+                  <Link to={{pathname: `/search/${specialty.name}`}} id="specialties_slide-link" style={{backgroundColor: randomColor({ luminosity: 'bright', hue: 'blue' })}}>
                     <div id="specialties_slide">
                       <div id="specialties_slide_left">
                         <h3>{specialty.name}</h3>
