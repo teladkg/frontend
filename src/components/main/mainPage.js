@@ -32,6 +32,8 @@ import { CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 import sanitizeHtml from 'sanitize-html';
 
+import randomColor from 'randomcolor';
+
 const MainPage = (props) => {
 
   useEffect(() => {
@@ -503,11 +505,11 @@ const MainPage = (props) => {
           {
             ratedSpecialties &&
             ratedSpecialties.map(specialty => {
-              return(
-                <Link id="specialties_slide-link" to={{pathname: `/search/${specialty.name}`}}>
-                  <div id="specialties_slide">
-                    <div id="specialties_slide_content">
-                      <div id="specialties_slide_content_left">
+              return( 
+                <>
+                  <Link to={{pathname: `/search/${specialty.name}`}} id="specialties_slide-link" style={{backgroundColor: randomColor({ luminosity: 'light', hue: 'blue' })}}>
+                    <div id="specialties_slide">
+                      <div id="specialties_slide_left">
                         <h3>{specialty.name}</h3>
                         <p>{specialty.doctors_count}</p>
                         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -517,12 +519,12 @@ const MainPage = (props) => {
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8588 13.0094C16.5079 13.0079 17.1509 13.1345 17.7511 13.3818C18.3516 13.6292 18.8974 13.9927 19.3572 14.4513C19.817 14.91 20.1818 15.4549 20.4307 16.0548C20.6796 16.6546 20.8077 17.2977 20.8077 17.9472L20.8077 18.4863H15.2374V17.4081H19.6917C19.6463 17.0859 19.5601 16.7699 19.4349 16.468C19.2403 15.9991 18.9552 15.5732 18.5957 15.2146C18.2363 14.8561 17.8097 14.572 17.3404 14.3786C16.871 14.1852 16.3681 14.0863 15.8604 14.0875L15.8584 14.0875C15.2264 14.0867 14.6038 14.2415 14.0458 14.5383L13.5396 13.5864C14.2536 13.2066 15.0501 13.0085 15.8588 13.0094Z" fill="white"/>
                         </svg>
                       </div>              
-                      <svg id="specialties_slide_content_right" width="11" height="21" viewBox="0 0 11 21" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                      <svg id="specialties_slide_right" width="11" height="21" viewBox="0 0 11 21" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1.125 1.75L9.875 10.5L1.125 19.25"/>
                       </svg>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </>
               )
             })
           }

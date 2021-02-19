@@ -22,6 +22,7 @@
     "ka-table": "^6.1.0",
     "material-table": "^1.69.2",
     "mdbreact": "^4.27.0",
+    "randomcolor": "^0.6.2",
     "react": "^16.13.1",
     "react-alphabet-sorter": "^1.0.2",
     "react-dom": "^16.13.1",
